@@ -10,10 +10,12 @@
 
 我在这些 OJ 上的帐号：
 
-- AtCoder: [macesuted](https://atcoder.jp/users/macesuted)
-- CodeForces: [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
-- LibreOJ: [Macesuted](https://loj.ac/u/Macesuted)
-- Luogu: [Macesuted](https://www.luogu.com.cn/user/98482)
-- Sphere Online Judge: [macesuted](https://www.spoj.com/users/macesuted/)
-- Universal Online Judge: [macesuted](https://uoj.ac/user/profile/macesuted)
-- Uva: [macesuted](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=19&page=show_authorstats&userid=999082)
+- [AtCoder](https://atcoder.jp/): [macesuted](https://atcoder.jp/users/macesuted)
+- [BZOJ](https://hydro.org.cn/d/bzoj/): [Macesuted](https://hydro.org.cn/d/bzoj/user/2)
+- [CodeForces](https://codeforces.com/): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
+- [CodeForces Gym](https://codeforces.com/gyms): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
+- [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
+- [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)
+- [Sphere Online Judge](https://spoj.com/): [macesuted](https://www.spoj.com/users/macesuted/)
+- [Universal Online Judge](https://uoj.ac/): [macesuted](https://uoj.ac/user/profile/macesuted)
+- [Uva](https://onlinejudge.org/): [macesuted](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=19&page=show_authorstats&userid=999082)
