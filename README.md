@@ -18,4 +18,4 @@
 - [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)
 - [Sphere Online Judge](https://spoj.com/): [macesuted](https://www.spoj.com/users/macesuted/)
 - [Universal Online Judge](https://uoj.ac/): [macesuted](https://uoj.ac/user/profile/macesuted)
-- [Uva](https://onlinejudge.org/): [macesuted](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=19&page=show_authorstats&userid=999082)
+- [UVa](https://onlinejudge.org/): [macesuted](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=19&page=show_authorstats&userid=999082)
