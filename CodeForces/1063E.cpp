@@ -1,6 +1,7 @@
 /**
  * @author Macesuted (macesuted@qq.com)
  * @copyright Copyright (c) 2021
+ * @brief https://www.macesuted.cn/article/cf1063e/
  */
 
 #include <bits/stdc++.h>

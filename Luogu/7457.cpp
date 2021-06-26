@@ -1,6 +1,7 @@
 /**
  * @author Macesuted (macesuted@qq.com)
  * @copyright Copyright (c) 2021
+ * @brief My Solution: https://www.macesuted.cn/article/lg7457/
  */
 
 #include <bits/stdc++.h>
