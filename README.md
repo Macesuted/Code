@@ -12,10 +12,10 @@
 
 - [AtCoder](https://atcoder.jp/): [macesuted](https://atcoder.jp/users/macesuted)
 - [BZOJ](https://hydro.org.cn/d/bzoj/): [Macesuted](https://hydro.org.cn/d/bzoj/user/2)
-- [CodeForces](https://codeforces.com/): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [CodeForces Gym](https://codeforces.com/gyms): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
+- [CodeForces](https://codeforces.com/): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
 - [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)
 - [Sphere Online Judge](https://spoj.com/): [macesuted](https://www.spoj.com/users/macesuted/)
-- [Universal Online Judge](https://uoj.ac/): [macesuted](https://uoj.ac/user/profile/macesuted)
 - [UVa](https://onlinejudge.org/): [macesuted](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=19&page=show_authorstats&userid=999082)
+- [Universal Online Judge](https://uoj.ac/): [macesuted](https://uoj.ac/user/profile/macesuted)
