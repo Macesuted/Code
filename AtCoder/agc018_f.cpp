@@ -1,6 +1,8 @@
 /**
  * @author Macesuted (macesuted@qq.com)
  * @copyright Copyright (c) 2021
+ * @brief
+ *      My Turtorial: https://www.macesuted.cn/article/agc018f/
  */
 
 #include <bits/stdc++.h>
