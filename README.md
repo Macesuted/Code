@@ -12,6 +12,7 @@
 
 - [AtCoder](https://atcoder.jp/): [macesuted](https://atcoder.jp/users/macesuted)
 - [BZOJ](https://hydro.org.cn/d/bzoj/): [Macesuted](https://hydro.org.cn/d/bzoj/user/2)
+- [CodeChef](https://www.codechef.com/): [Macesuted](https://www.codechef.com/users/macesuted)
 - [CodeForces Gym](https://codeforces.com/gyms): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [CodeForces](https://codeforces.com/): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [HDU Online Judge](http://acm.hdu.edu.cn/): [Macesuted](http://acm.hdu.edu.cn/userstatus.php?user=macesuted)
