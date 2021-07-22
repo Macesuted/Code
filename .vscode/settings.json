@@ -1,0 +1,17 @@
+{
+  "editor.formatOnType": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.snippetSuggestions": "top",
+  "code-runner.runInTerminal": true,
+  "code-runner.executorMap": {
+    "c": "cd $dir && gcc '$fileName' -o '$fileNameWithoutExt.exe' -lm -Wall && &'$dir$fileNameWithoutExt'",
+    "cpp": "cd $dir && g++ '$fileName' -o '$fileNameWithoutExt.exe' -lm -Wall -std=c++11 && &'$dir$fileNameWithoutExt'"
+  },
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.preserveFocus": false,
+  "code-runner.clearPreviousOutput": false,
+  "code-runner.ignoreSelection": true,
+  "C_Cpp.clang_format_sortIncludes": true,
+  "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google, UseTab: Never,IndentWidth: 4,TabWidth: 4,UseTab: Never,ColumnLimit: 0}",
+}
