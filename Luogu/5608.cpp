@@ -181,9 +181,12 @@ class SegmentTree {
             return;
         }
         p->allMul = Pow(num, r - l + 1), p->allPlus = 1LL * (r - l + 1) * num % mod, p->ans = 0;
-        long long po = num;
-        for (register int i = 1; i < sqrtn; i++, po = po * num % mod)
-            if (p->midLenS[i]) p->ans = Mod(p->ans + po * p->midLenS[i] % mod);
+        long long lastPow = 1;
+        int lastPos = 0;
+        for (register int i = 1; i < sqrtn; i++)
+            if (p->midLenS[i])
+                lastPow = lastPow * Pow(num, i - lastPos) % mod, lastPos = i,
+                p->ans = Mod(p->ans + lastPow * p->midLenS[i] % mod);
         for (register int i = 1; i <= p->tail; i++) p->ans = Mod(p->ans + Pow(num, p->midLenL[i]));
         p->lNum = p->rNum = num;
         if (p->lLen) p->lMul = Pow(num, p->lLen);
