@@ -16,6 +16,7 @@
 - [CodeForces Gym](https://codeforces.com/gyms): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [CodeForces](https://codeforces.com/): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [HDU Online Judge](http://acm.hdu.edu.cn/): [Macesuted](http://acm.hdu.edu.cn/userstatus.php?user=macesuted)
+- [HydroOJ](https://hydro.ac/): [Macesuted](https://hydro.ac/user/2)
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
 - [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)
 - [Sphere Online Judge](https://spoj.com/): [macesuted](https://www.spoj.com/users/macesuted/)
