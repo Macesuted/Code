@@ -60,9 +60,11 @@ using io::read;
 using io::write;
 
 #define maxn 100005
-#define sqrtn 180
+#define sqrtn 320
 #define mod 1000000007
-#define leafLen 60
+#define leafLen 50
+
+typedef pair<int, int> pii;
 
 long long Pow(long long a, long long x) {
     long long ans = 1;
@@ -76,6 +78,8 @@ long long Pow(long long a, long long x) {
 
 inline int Mod(int x) { return x >= mod ? x - mod : x; }
 
+pii cache[sqrtn];
+
 class SegmentTree {
    private:
     struct Node {
@@ -83,20 +87,18 @@ class SegmentTree {
         long long allMul, lMul, rMul;
         int allPlus, ans, lazyNum;
         int lNum, rNum, lLen, rLen;
-        int midLenS[sqrtn], midLenL[maxn / sqrtn + 5], tail;
+        pii midLen[sqrtn];
+        int tail;
+        int len, sqrtLen;
         Node *l, *r;
-        Node(void) { hasLazyOp = hasLazyNum = false, l = r = NULL, clear(); }
-        void clear(void) {
-            memset(midLenS, 0, sizeof(midLenS));
-            tail = 0;
-            return;
-        }
-        void add(int val) {
+        Node(void) { hasLazyOp = hasLazyNum = false, l = r = NULL, tail = 0; }
+        void add(int val, int cnt = 1) {
             if (val == 0) return;
-            if (val < sqrtn)
-                midLenS[val]++;
-            else
-                midLenL[++tail] = val;
+            for (register int i = 1; i <= tail; i++)
+                if (midLen[i].first == val) return midLen[i].second += cnt, void();
+            int p = tail++;
+            while (p > 0 && midLen[p].first > val) swap(midLen[p], midLen[p + 1]), p--;
+            midLen[p + 1] = (pii){val, cnt};
             return;
         }
         Node operator+(const Node& oth) const {
@@ -105,8 +107,20 @@ class SegmentTree {
             a.allMul = a.allMul * b.allMul % mod;
             a.allPlus = Mod(a.allPlus + b.allPlus);
             a.rNum = b.rNum;
-            for (register int i = 0; i < sqrtn; i++) a.midLenS[i] += b.midLenS[i];
-            for (register int i = 1; i <= b.tail; i++) a.add(b.midLenL[i]);
+            a.sqrtLen = sqrt(a.len += b.len);
+            int ctail = a.tail;
+            for (register int i = 1; i <= a.tail; i++) cache[i] = a.midLen[i];
+            int pb = 1, pc = 1;
+            a.tail = 0;
+            while (pb <= b.tail && pc <= ctail)
+                if (b.midLen[pb].first == cache[pc].first)
+                    a.midLen[++a.tail] = (pii){b.midLen[pb].first, b.midLen[pb].second + cache[pc].second}, pb++, pc++;
+                else if (b.midLen[pb].first < cache[pc].first)
+                    a.midLen[++a.tail] = b.midLen[pb], pb++;
+                else
+                    a.midLen[++a.tail] = cache[pc], pc++;
+            while (pb <= b.tail) a.midLen[++a.tail] = b.midLen[pb], pb++;
+            while (pc <= ctail) a.midLen[++a.tail] = cache[pc], pc++;
             if (!a.op) {
                 if (!a.lLen) swap(a.lLen, a.rLen), swap(a.lMul, a.rMul);
                 if (!b.rLen) swap(b.lLen, b.rLen), swap(b.lMul, b.rMul);
@@ -151,9 +165,10 @@ class SegmentTree {
     Node reCalc(int l, int r) {
         Node p;
         p.op = op[r], p.ans = 0;
-        p.clear();
+        p.tail = 0;
         p.lNum = a[l], p.rNum = a[r];
         p.lLen = 1, p.lMul = a[l], p.rLen = 0, p.rMul = 0;
+        p.sqrtLen = sqrt(p.len = r - l + 1);
         while (l + p.lLen <= r && op[l + p.lLen - 1]) p.lMul = p.lMul * a[l + p.lLen] % mod, p.lLen++;
         if (l + p.lLen - 1 < r) {
             p.rLen = 1, p.rMul = a[r];
@@ -183,11 +198,9 @@ class SegmentTree {
         p->allMul = Pow(num, r - l + 1), p->allPlus = 1LL * (r - l + 1) * num % mod, p->ans = 0;
         long long lastPow = 1;
         int lastPos = 0;
-        for (register int i = 1; i < sqrtn; i++)
-            if (p->midLenS[i])
-                lastPow = lastPow * Pow(num, i - lastPos) % mod, lastPos = i,
-                p->ans = Mod(p->ans + lastPow * p->midLenS[i] % mod);
-        for (register int i = 1; i <= p->tail; i++) p->ans = Mod(p->ans + Pow(num, p->midLenL[i]));
+        for (register int i = 1; i <= p->tail; i++)
+            lastPow = lastPow * Pow(num, p->midLen[i].first - lastPos) % mod, lastPos = p->midLen[i].first,
+            p->ans = (p->ans + lastPow * p->midLen[i].second) % mod;
         p->lNum = p->rNum = num;
         if (p->lLen) p->lMul = Pow(num, p->lLen);
         if (p->rLen) p->rMul = Pow(num, p->rLen);
@@ -205,12 +218,12 @@ class SegmentTree {
             p->ans = Mod(Mod(p->allPlus + mod - p->lNum) + mod - p->rNum);
             p->lLen = 1, p->lMul = p->lNum;
             p->rLen = 1, p->rMul = p->rNum;
-            p->clear(), p->midLenS[1] = r - l - 1;
+            p->tail = 0, p->add(1, r - l - 1);
         } else {
             p->ans = 0;
             p->lLen = r - l + 1, p->lMul = p->allMul;
             p->rLen = 0, p->rMul = 0;
-            p->clear();
+            p->tail = 0;
         }
         p->hasLazyOp = true, p->lazyOp = _op;
         return;
@@ -231,6 +244,7 @@ class SegmentTree {
         if (p == NULL) p = new Node();
         if (r - l + 1 < leafLen) {
             for (register int i = l; i <= r; i++) a[i] = _a[i], op[i] = _op[i];
+            p->sqrtLen = sqrt(p->len = r - l + 1);
             *p = reCalc(l, r);
             return;
         }
