@@ -2,7 +2,7 @@
  * @author Macesuted (macesuted@qq.com)
  * @copyright Copyright (c) 2021
  * @brief
- *      My tutorial: https://macesuted.cn/article/592/
+ *      My tutorial: https://macesuted.cn/article/htr003d/
  */
 
 #include <bits/stdc++.h>
