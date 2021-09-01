@@ -1,5 +1,5 @@
 /**
- * @author Macesuted (macesuted@qq.com)
+ * @author Macesuted (macesuted@outlook.com)
  * @copyright Copyright (c) 2021
  * @brief
  *      My Tutorial: https://www.macesuted.cn/article/agc032e/
