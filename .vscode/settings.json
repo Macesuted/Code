@@ -6,12 +6,12 @@
   "code-runner.runInTerminal": true,
   "code-runner.executorMap": {
     "c": "cd $dir && gcc '$fileName' -o '$fileNameWithoutExt.exe' -lm -Wall && &'$dir$fileNameWithoutExt'",
-    "cpp": "cd $dir && g++ '$fileName' -o '$fileNameWithoutExt.exe' -lm -Wall -std=c++11 -O2 \"-Wl,--stack=512000000\" && &'$dir$fileNameWithoutExt'"
+    "cpp": "cd $dir && compile '$fileNameWithoutExt' && &'$dir$fileNameWithoutExt'"
   },
   "code-runner.saveFileBeforeRun": true,
   "code-runner.preserveFocus": false,
   "code-runner.clearPreviousOutput": false,
   "code-runner.ignoreSelection": true,
   "C_Cpp.clang_format_sortIncludes": true,
-  "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google, UseTab: Never,IndentWidth: 4,TabWidth: 4,UseTab: Never,ColumnLimit: 0}",
+  "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google, UseTab: Never, IndentWidth: 4, TabWidth: 4, UseTab: Never, ColumnLimit: 0}",
 }
