@@ -15,6 +15,7 @@
 - [CodeChef](https://www.codechef.com/): [Macesuted](https://www.codechef.com/users/macesuted)
 - [CodeForces Gym](https://codeforces.com/gyms): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [CodeForces](https://codeforces.com/): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
+- [CS Academy](https://csacademy.com/): [Macesuted](https://csacademy.com/user/Macesuted)
 - [HDU Online Judge](http://acm.hdu.edu.cn/): [Macesuted](http://acm.hdu.edu.cn/userstatus.php?user=macesuted)
 - [HydroOJ](https://hydro.ac/): [Macesuted](https://hydro.ac/user/2)
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
