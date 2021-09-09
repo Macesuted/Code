@@ -1,6 +1,6 @@
-# Macesuted's Code
+# Macesuted's Code Repository
 
-这里存放了 Macesuted 自 Mar. 1st 2021 以来在学习 OI 过程中于各大公开 OJ 所做题目的 AC 代码。
+这里存放了 Macesuted 自 2021 年 5 月 1 日以来在学习 OI 过程中于各大公开 OJ 所做题目的 AC 代码。
 
 **仅供学习参考使用，请不要直接复制这些代码以 AC 对应题目，转载请注明出处。**
 
