@@ -3,7 +3,7 @@
  * @copyright Copyright (c) 2021
  * @brief
  *      My Draft: https://img-kysic-1258722770.file.myqcloud.com/b78115e628143efb1c9163c7bd5d44c7/75b95a13254dd.png
- *      My Tutorial: https://www.macesuted.cn/article/cf979e/
+ *      My solution: https://www.macesuted.cn/article/cf979e/
  */
 
 #include <bits/stdc++.h>

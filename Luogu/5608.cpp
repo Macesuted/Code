@@ -2,7 +2,7 @@
  * @author Macesuted (macesuted@outlook.com)
  * @copyright Copyright (c) 2021
  * @brief
- *      My tutorial: https://www.macesuted.cn/article/lg5608/
+ *      My solution: https://www.macesuted.cn/article/lg5608/
  */
 
 #include <bits/stdc++.h>

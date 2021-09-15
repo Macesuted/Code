@@ -1,14 +1,16 @@
 # Macesuted's Code Repository
 
-这里存放了 Macesuted 自 2021 年 5 月 1 日以来在学习 OI 过程中于各大公开 OJ 所做题目的 AC 代码。
+Here Macesuted shares his solutions of the problems those he has done in public online judges.
 
-**仅供学习参考使用，请不要直接复制这些代码以 AC 对应题目，转载请注明出处。**
+**Please do not simply submit these codes.**
 
-<https://macesuted.cn/> 中包含部分题目的题解。
+If you find it useful, please star it, thank you!
+
+[My blog site](https://macesuted.cn/) contains solutions to some problems.
 
 ---
 
-我在这些 OJ 上的帐号：
+My accounts in these online judges:
 
 - [AtCoder](https://atcoder.jp/): [macesuted](https://atcoder.jp/users/macesuted)
 - [BZOJ](https://hydro.ac/d/bzoj/): [Macesuted](https://hydro.ac/d/bzoj/user/2)
