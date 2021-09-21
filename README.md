@@ -1,9 +1,7 @@
 # Macesuted's Code Repository
 
-Here Macesuted shares his solutions of the problems those he has done in public online judges.
-
-**Please do not simply submit these codes.**
-
+Here Macesuted shares her solutions to the problems those she has done in some public online judges.  
+**Please do not simply submit these codes.**  
 If you find it useful, please star it, thank you!
 
 [My blog site](https://macesuted.cn/) contains solutions to some problems.
