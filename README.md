@@ -4,11 +4,11 @@ Here Macesuted shares her solutions to the problems those she has done in some p
 **Please do not simply submit these codes.**  
 If you find it useful, please star it, thank you!
 
-[My blog site](https://macesuted.cn/) contains solutions to some problems.
+[Her blog site](https://macesuted.cn/) contains solutions to some problems.
 
 ---
 
-My accounts in these online judges:
+Her accounts in these online judges:
 
 - [AtCoder](https://atcoder.jp/): [macesuted](https://atcoder.jp/users/macesuted)
 - [BZOJ](https://hydro.ac/d/bzoj/): [Macesuted](https://hydro.ac/d/bzoj/user/2)
