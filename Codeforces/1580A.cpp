@@ -59,7 +59,6 @@ void work(void) {
 }
 
 signed main() {
-    freopen("tat.in", "r", stdin);
     ios::sync_with_stdio(false);
     cout << setiosflags(ios::fixed) << setprecision(11);
     int _ = 1;
