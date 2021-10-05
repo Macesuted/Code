@@ -1,5 +1,5 @@
 /**
- * @author Macesuted (macesuted@outlook.com)
+ * @author Macesuted (i@macesuted.moe)
  * @copyright Copyright (c) 2021
  * @brief https://www.macesuted.cn/article/cf1063e/
  */

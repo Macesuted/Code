@@ -1,5 +1,5 @@
 /**
- * @author Macesuted (macesuted@outlook.com)
+ * @author Macesuted (i@macesuted.moe)
  * @copyright Copyright (c) 2021
  * @brief
  *      My Draft: https://img-kysic-1258722770.file.myqcloud.com/b78115e628143efb1c9163c7bd5d44c7/75b95a13254dd.png
