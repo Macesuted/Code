@@ -11,6 +11,7 @@ If you find it useful, please star it, thank you!
 Her accounts in these online judges:
 
 - [AtCoder](https://atcoder.jp/): [macesuted](https://atcoder.jp/users/macesuted)
+- [Baekjoon](https://www.acmicpc.net/): [macesuted](https://www.acmicpc.net/user/macesuted)
 - [BZOJ](https://hydro.ac/d/bzoj/): [Macesuted](https://hydro.ac/d/bzoj/user/2)
 - [CS Academy](https://csacademy.com/): [Macesuted](https://csacademy.com/user/Macesuted)
 - [CodeChef](https://www.codechef.com/): [Macesuted](https://www.codechef.com/users/macesuted)
