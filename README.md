@@ -10,6 +10,7 @@ If you find it useful, please star it, thank you!
 
 Her accounts in these online judges:
 
+- [51nod](https://www.51nod.com/): [Macesuted](https://www.51nod.com/User/Index.html#userId=199786)
 - [AtCoder](https://atcoder.jp/): [macesuted](https://atcoder.jp/users/macesuted)
 - [Baekjoon](https://www.acmicpc.net/): [macesuted](https://www.acmicpc.net/user/macesuted)
 - [BZOJ](https://hydro.ac/d/bzoj/): [Macesuted](https://hydro.ac/d/bzoj/user/2)
