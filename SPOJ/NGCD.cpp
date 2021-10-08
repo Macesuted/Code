@@ -1,7 +1,8 @@
 /**
  * @author Macesuted (i@macesuted.moe)
  * @copyright Copyright (c) 2021
- * @brief My Solution: https://www.macesuted.cn/article/sp-ngcd/
+ * @brief
+ *      My Solution: https://macesuted.moe/article/sp-ngcd
  */
 
 #include <bits/stdc++.h>

@@ -2,7 +2,7 @@
  * @author Macesuted (i@macesuted.moe)
  * @copyright Copyright (c) 2021
  * @brief
- *      My solution: https://www.macesuted.cn/article/agc032e/
+ *      My solution: https://macesuted.moe/article/agc032e
  */
 
 #include <bits/stdc++.h>

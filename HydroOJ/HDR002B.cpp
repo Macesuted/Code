@@ -2,7 +2,7 @@
  * @author Macesuted (i@macesuted.moe)
  * @copyright Copyright (c) 2021
  * @brief
- *      My solution: https://macesuted.cn/article/hdr002b/
+ *      My solution: https://macesuted.moe/article/hdr002b
  */
 
 #include <bits/stdc++.h>

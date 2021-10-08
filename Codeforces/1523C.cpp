@@ -1,7 +1,8 @@
 /**
  * @author Macesuted (i@macesuted.moe)
  * @copyright Copyright (c) 2021
- * @brief My Solution: https://www.macesuted.cn/article/cf1523c/
+ * @brief
+ *      My Solution: https://macesuted.moe/article/cf1523c
  */
 
 #include <bits/stdc++.h>
