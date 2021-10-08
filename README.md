@@ -4,7 +4,7 @@ Here Macesuted shares her solutions to the problems those she has done in some p
 **Please do not simply submit these codes.**  
 If you find it useful, please star it, thank you!
 
-[Her blog site](https://macesuted.moe/) contains solutions to some problems.
+[Her blog site](https://macesuted.moe/) contains solutions to some problems. (Only in Chinese)
 
 ---
 
