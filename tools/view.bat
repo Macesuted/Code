@@ -1,4 +1,4 @@
 @echo off
-start %1-%2.in
-start %1-%2.out
-start %1-%2.ans
+start sample\%1\%2.in
+start sample\%1\%2.out
+start sample\%1\%2.ans
