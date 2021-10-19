@@ -5,8 +5,7 @@
   "editor.snippetSuggestions": "top",
   "code-runner.runInTerminal": true,
   "code-runner.executorMap": {
-    "c": "cd $dir && gcc '$fileName' -o '$fileNameWithoutExt.exe' -lm -Wall && &'$dir$fileNameWithoutExt'",
-    "cpp": "cd $dir && compile '$fileNameWithoutExt' && &'$dir$fileNameWithoutExt'"
+    "cpp": "cd $dir && run '$fileNameWithoutExt'"
   },
   "code-runner.saveFileBeforeRun": true,
   "code-runner.preserveFocus": false,
