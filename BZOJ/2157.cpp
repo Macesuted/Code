@@ -1,3 +1,12 @@
+/**
+ * @file 2157.cpp
+ * @author Macesuted (i@macesuted.moe)
+ * @date 2021-10-18
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
