@@ -1,6 +1,10 @@
 /**
+ * @file 3381.cpp
  * @author Macesuted (i@macesuted.moe)
+ * @date 2021-10-21
+ * 
  * @copyright Copyright (c) 2021
+ * 
  */
 
 #include <bits/stdc++.h>
@@ -11,7 +15,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -57,100 +63,96 @@ using io::putstr;
 using io::read;
 using io::write;
 
-template <size_t maxn>
-class ZkwCostFlow {
+bool mem1;
+
+template <typename flowType, typename costType>
+class CostFlow {
 #define INF 0x3f3f3f3f3f3f3f3f
-
    private:
-    long long dist[maxn];
-    bool vis[maxn];
-    int n, S, T;
-    deque<int> que;
+    struct Edge {
+        int to;
+        flowType cap, flow;
+        costType cost;
+        int rev;
+    };
 
-    bool SPFA(void) {
-        memset(vis, 0, sizeof(vis));
-        for (register int i = 1; i <= n; i++) dist[i] = INF;
-        que.clear(), que.push_back(T), dist[T] = 0, vis[T] = true;
+    vector<vector<Edge>> graph;
+    vector<typename vector<Edge>::iterator> cur;
+    vector<bool> vis;
+    vector<costType> dist;
+    int S, T, n;
+    costType minCost;
+
+    bool bfs(void) {
+        for (int i = 1; i <= n; i++) vis[i] = false, dist[i] = INF;
+        static queue<int> que;
+        que.push(S), dist[S] = 0;
         while (!que.empty()) {
             int p = que.front();
-            que.pop_front();
-            for (typename vector<Edge>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
-                if (graph[i->to][i->rev].cap > graph[i->to][i->rev].flow && dist[i->to] > dist[p] - i->cost) {
-                    dist[i->to] = dist[p] - i->cost;
-                    if (!vis[i->to]) {
-                        vis[i->to] = true;
-                        (!que.empty() && dist[i->to] < dist[que.front()])
-                            ? que.push_front(i->to)
-                            : que.push_back(i->to);
-                    }
+            que.pop(), vis[p] = false;
+            for (auto& i : graph[p])
+                if (i.cap > i.flow && dist[i.to] > dist[p] + i.cost) {
+                    dist[i.to] = dist[p] + i.cost;
+                    if (!vis[i.to]) vis[i.to] = true, que.push(i.to);
                 }
-            vis[p] = false;
         }
-        return dist[S] < INF;
+        return dist[T] < INF;
     }
-    long long DFS(int p, long long rest) {
+    flowType dfs(int p, flowType rest) {
+        if (p == T || rest == 0) return rest;
         vis[p] = true;
-        if (p == T) return rest;
-        long long flow = 0;
-        for (typename vector<Edge>::iterator& i = cur[p]; i != graph[p].end(); i++)
-            if (!vis[i->to] && i->cap > i->flow && dist[p] - i->cost == dist[i->to]) {
-                long long ret = DFS(i->to, min(i->cap - i->flow, rest));
-                if (!ret) continue;
-                answer += ret * i->cost, i->flow += ret, graph[i->to][i->rev].flow -= ret, flow += ret, rest -= ret;
-                if (!rest) break;
-            }
+        flowType flow = 0, use;
+        for (auto& i = cur[p]; i != graph[p].end(); i++)
+            if (dist[i->to] == dist[p] + i->cost && !vis[i->to] && (use = dfs(i->to, min(rest, i->cap - i->flow))))
+                flow += use, rest -= use, minCost += use * i->cost, i->flow += use, graph[i->to][i->rev].flow -= use;
         return flow;
     }
 
    public:
-    struct Edge {
-        int to;
-        long long cap, flow, cost;
-        int rev;
-        bool real;
-    };
-
-    vector<vector<Edge> > graph;
-    typename vector<Edge>::iterator cur[maxn];
-    long long answer;
-
-    void INIT(int tn) {
-        n = tn;
-        clear();
-        graph.resize(n + 1);
-        return;
+    inline void resize(int _n) {
+        return n = _n, graph.resize(n + 1), cur.resize(n + 1), vis.resize(n + 1), dist.resize(n + 1);
     }
-    void clear(void) {
-        graph.clear();
-        return;
+    inline void addEdge(int from, int to, flowType cap, costType cost) {
+        return graph[from].push_back(Edge{to, cap, 0, cost, (int)graph[to].size()}),
+               graph[to].push_back(Edge{from, cap, cap, -cost, (int)graph[from].size() - 1});
     }
-    void addEdge(int from, int to, long long cap, long long cost) {
-        graph[from].push_back((Edge){to, cap, 0, cost, (int)graph[to].size(), true});
-        graph[to].push_back((Edge){from, 0, 0, -cost, (int)graph[from].size() - 1, false});
-        return;
-    }
-    long long minCostFlow(int tS, int tT) {
-        S = tS, T = tT, answer = 0;
-        long long flow = 0;
-        while (SPFA()) {
-            for (register int i = 1; i <= n; i++) cur[i] = graph[i].begin();
-            flow += DFS(S, INF);
+    tuple<flowType, costType> maxFlow(int _S, int _T) {
+        S = _S, T = _T;
+        flowType maxFlow = minCost = 0;
+        while (bfs()) {
+            for (int i = 1; i <= n; i++) cur[i] = graph[i].begin();
+            maxFlow += dfs(S, INF);
         }
-        return flow;
+        return make_tuple(maxFlow, minCost);
     }
-
 #undef INF
 };
 
-ZkwCostFlow<50005> web;
+CostFlow<long long, long long> flow;
+
+void solve(void) {
+    int n = read<int>(), m = read<int>(), S = read<int>(), T = read<int>();
+    flow.resize(n);
+    for (int i = 1; i <= m; i++) {
+        int from = read<int>(), to = read<int>(), cap = read<int>(), cost = read<int>();
+        flow.addEdge(from, to, cap, cost);
+    }
+    long long maxFlow, minCost;
+    tie(maxFlow, minCost) = flow.maxFlow(S, T);
+    write(maxFlow), putch(' '), write(minCost), putch('\n');
+    return;
+}
+
+bool mem2;
 
 int main() {
-    int n = read<int>(), m = read<int>(), S = read<int>(), T = read<int>();
-    web.INIT(n);
-    for (register int i = 1; i <= m; i++) {
-        int from = read<int>(), to = read<int>(), w = read<int>(), c = read<int>();
-        web.addEdge(from, to, w, c);
-    }
-    write(web.minCostFlow(S, T)), putch(' '), write(web.answer), putch('\n');
+    clock_t t1 = clock();
+    cerr << "Memory: " << abs(&mem1 - &mem2) / 1024.0 / 1024.0 << "MB" << endl;
+
+    int _ = 1;
+    while (_--) solve();
+
+    clock_t t2 = clock();
+    cerr << "Time: " << (t2 - t1) * 1000.0 / CLOCKS_PER_SEC << "ms" << endl;
     return 0;
 }
