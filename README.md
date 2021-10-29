@@ -13,7 +13,6 @@ Her accounts in these online judges:
 - [51nod](https://www.51nod.com/): [Macesuted](https://www.51nod.com/User/Index.html#userId=199786)
 - [AtCoder](https://atcoder.jp/): [macesuted](https://atcoder.jp/users/macesuted)
 - [Baekjoon](https://www.acmicpc.net/): [macesuted](https://www.acmicpc.net/user/macesuted)
-- [BZOJ](https://hydro.ac/d/bzoj/): [Macesuted](https://hydro.ac/d/bzoj/user/2)
 - [CS Academy](https://csacademy.com/): [Macesuted](https://csacademy.com/user/Macesuted)
 - [CodeChef](https://www.codechef.com/): [Macesuted](https://www.codechef.com/users/macesuted)
 - [Codeforces Gym](https://codeforces.com/gyms): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
