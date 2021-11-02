@@ -1,3 +1,3 @@
-tools/check
-tools/check.exe
 tools/testlib.h
+tools/linux/check
+tools/windows/check.exe

@@ -1,0 +1,9 @@
+#!/bin/bash
+echo Compiling...
+compile $1
+echo Running...
+ulimit -s unlimited
+./$1 < ./sample/$1/$2.in > ./sample/$1/$2.out
+echo Checking...
+check ./sample/$1/$2.in ./sample/$1/$2.out ./sample/$1/$2.ans
+rm $1
