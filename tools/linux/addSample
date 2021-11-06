@@ -1,0 +1,7 @@
+#!/bin/bash
+mkdir sample &>/dev/null
+mkdir sample/$1 &>/dev/null
+touch sample/$1/$2.in
+touch sample/$1/$2.ans
+subl sample/$1/$2.in
+subl sample/$1/$2.ans
