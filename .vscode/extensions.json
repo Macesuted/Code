@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "aaron-bond.better-comments",
+        "coenraads.bracket-pair-colorizer-2",
+        "ms-vscode.cpptools",
+        "formulahendry.code-runner",
+        "cschlosser.doxdocgen",
+        "icrawl.discord-vscode"
+    ]
+}

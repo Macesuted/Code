@@ -1,3 +1,6 @@
 tools/testlib.h
 tools/linux/check
 tools/windows/check.exe
+
+_work
+_work/*

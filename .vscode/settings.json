@@ -13,4 +13,19 @@
   "code-runner.ignoreSelection": true,
   "C_Cpp.clang_format_sortIncludes": true,
   "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google, UseTab: Never, IndentWidth: 4, TabWidth: 4, UseTab: Never, ColumnLimit: 0}",
+  "files.autoSave": "onFocusChange",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "600",
+  "files.associations": {
+    "chrono": "cpp",
+    "random": "cpp",
+    "limits": "cpp",
+    "valarray": "cpp",
+    "ostream": "cpp",
+    "cmath": "cpp"
+  }
 }

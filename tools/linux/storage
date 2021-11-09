@@ -1,2 +1,2 @@
 #!/bin/bash
-mv $1.cpp ../../Objects/Code/$2/
+mv $1.cpp ../$2/
