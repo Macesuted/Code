@@ -26,6 +26,11 @@
     "limits": "cpp",
     "valarray": "cpp",
     "ostream": "cpp",
-    "cmath": "cpp"
-  }
+    "cmath": "cpp",
+    "iosfwd": "cpp"
+  },
+  "doxdocgen.generic.authorEmail": "i@macesuted.moe",
+  "doxdocgen.generic.authorName": "Macesuted",
+  "doxdocgen.file.versionTag": "",
+  "doxdocgen.generic.briefTemplate": ""
 }

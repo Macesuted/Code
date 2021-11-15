@@ -5,6 +5,11 @@
         "ms-vscode.cpptools",
         "formulahendry.code-runner",
         "cschlosser.doxdocgen",
-        "icrawl.discord-vscode"
+        "icrawl.discord-vscode",
+        "equinusocio.vsc-community-material-theme",
+        "zh9528.file-size",
+        "donjayamanne.githistory",
+        "spywhere.guides",
+        "pkief.material-icon-theme"
     ]
 }
