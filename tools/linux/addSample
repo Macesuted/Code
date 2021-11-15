@@ -1,6 +1,5 @@
 #!/bin/bash
-mkdir sample &>/dev/null
-mkdir sample/$1 &>/dev/null
+mkdir -p sample/$1
 touch sample/$1/$2.in
 touch sample/$1/$2.ans
 subl sample/$1/$2.in
