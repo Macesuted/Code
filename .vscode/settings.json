@@ -27,7 +27,11 @@
     "valarray": "cpp",
     "ostream": "cpp",
     "cmath": "cpp",
-    "iosfwd": "cpp"
+    "iosfwd": "cpp",
+    "tuple": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp"
   },
   "doxdocgen.generic.authorEmail": "i@macesuted.moe",
   "doxdocgen.generic.authorName": "Macesuted",
