@@ -36,5 +36,6 @@
   "doxdocgen.generic.authorEmail": "i@macesuted.moe",
   "doxdocgen.generic.authorName": "Macesuted",
   "doxdocgen.file.versionTag": "",
-  "doxdocgen.generic.briefTemplate": ""
+  "doxdocgen.generic.briefTemplate": "",
+  "editor.bracketPairColorization.enabled": true
 }
