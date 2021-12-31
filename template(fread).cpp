@@ -54,8 +54,6 @@ using io::putstr;
 using io::read;
 using io::write;
 
-typedef pair<int, int> pii;
-
 bool mem1;
 
 void solve(void) {
