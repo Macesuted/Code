@@ -2,7 +2,7 @@
 echo Compiling...
 call compile %1
 echo Running...
-%1.exe < ./sample/%1/%2.in > ./sample/%1/%2.out
+%1.exe < .\sample\%1\%2.in > .\sample\%1\%2.out
 echo Checking...
-check ./sample/%1/%2.in ./sample/%1/%2.out ./sample/%1/%2.ans
+check .\sample\%1\%2.in .\sample\%1\%2.out .\sample\%1\%2.ans
 del %1.exe
