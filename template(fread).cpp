@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define MP make_pair
+#define MT make_tuple
+
 namespace io {
 #define SIZE (1 << 20)
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];

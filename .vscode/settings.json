@@ -32,7 +32,14 @@
     "deque": "cpp",
     "string": "cpp",
     "vector": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "*.tcc": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "any": "cpp",
+    "system_error": "cpp"
   },
   "doxdocgen.generic.authorEmail": "i@macesuted.moe",
   "doxdocgen.generic.authorName": "Macesuted",

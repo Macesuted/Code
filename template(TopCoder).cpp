@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define MP make_pair
+#define MT make_tuple
+
 #ifdef MACESUTED
 
 bool mem1;
@@ -24,8 +27,8 @@ class Class {
 bool mem2;
 
 int main() {
-    cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
     ios::sync_with_stdio(false);
+    cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 
     Class _;
     _.Method();

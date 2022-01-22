@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define MP make_pair
+#define MT make_tuple
+
 bool mem1;
 
 void solve(void) {
@@ -10,6 +13,7 @@ void solve(void) {
 bool mem2;
 
 int main() {
+    ios::sync_with_stdio(false);
 #ifdef MACESUTED
     cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
