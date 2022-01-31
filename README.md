@@ -27,3 +27,4 @@ Her accounts in these online judges:
 - [SPOJ](https://spoj.com/): [macesuted](https://www.spoj.com/users/macesuted/)
 - [TopCoder](https://www.topcoder.com/): [Macesuted](https://www.topcoder.com/members/Macesuted)
 - [UOJ](https://uoj.ac/): [macesuted](https://uoj.ac/user/profile/macesuted)
+- [USACO](http://usaco.org/): Macesuted Moe
