@@ -4,11 +4,12 @@
         "ms-vscode.cpptools",
         "formulahendry.code-runner",
         "cschlosser.doxdocgen",
-        "icrawl.discord-vscode",
         "equinusocio.vsc-community-material-theme",
         "zh9528.file-size",
         "donjayamanne.githistory",
         "spywhere.guides",
-        "pkief.material-icon-theme"
+        "pkief.material-icon-theme",
+        "tomoki1207.pdf",
+        "MS-CEINTL.vscode-language-pack-zh-hans"
     ]
 }
