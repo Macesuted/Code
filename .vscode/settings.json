@@ -39,7 +39,8 @@
     "unordered_map": "cpp",
     "unordered_set": "cpp",
     "any": "cpp",
-    "system_error": "cpp"
+    "system_error": "cpp",
+    "istream": "cpp"
   },
   "doxdocgen.generic.authorEmail": "i@macesuted.moe",
   "doxdocgen.generic.authorName": "Macesuted",
