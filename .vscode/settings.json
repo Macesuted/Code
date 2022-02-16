@@ -40,11 +40,21 @@
     "unordered_set": "cpp",
     "any": "cpp",
     "system_error": "cpp",
-    "istream": "cpp"
+    "istream": "cpp",
+    "complex": "cpp"
   },
   "doxdocgen.generic.authorEmail": "i@macesuted.moe",
   "doxdocgen.generic.authorName": "Macesuted",
   "doxdocgen.file.versionTag": "",
   "doxdocgen.generic.briefTemplate": "",
-  "editor.bracketPairColorization.enabled": true
+  "editor.bracketPairColorization.enabled": true,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": null,
+    "JavaScript Debug Terminal": null,
+    "pwsh": {
+      "path": "pwsh.exe",
+      "icon": "terminal-powershell"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "pwsh"
 }
