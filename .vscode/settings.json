@@ -41,7 +41,8 @@
     "any": "cpp",
     "system_error": "cpp",
     "istream": "cpp",
-    "complex": "cpp"
+    "complex": "cpp",
+    "iomanip": "cpp"
   },
   "doxdocgen.generic.authorEmail": "i@macesuted.moe",
   "doxdocgen.generic.authorName": "Macesuted",
