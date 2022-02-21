@@ -10,6 +10,7 @@
         "spywhere.guides",
         "pkief.material-icon-theme",
         "tomoki1207.pdf",
-        "MS-CEINTL.vscode-language-pack-zh-hans"
+        "ms-ceintl.vscode-language-pack-zh-hans",
+        "ms-vscode-remote.remote-ssh"
     ]
 }
