@@ -13,8 +13,7 @@ bool mem1;
 class Class {
    private:
    public:
-    void Method(void) {
-    }
+    void Method(void) {}
 };
 
 #ifdef MACESUTED

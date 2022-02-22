@@ -1,11 +1,9 @@
 /**
- * @file 1616G.cpp
+ * @file 1610H.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-02-22
  *
  * @copyright Copyright (c) 2022
- * @brief
- *      My Tutorial: https://macesuted.moe/article/cf1616g
  *
  */
 
@@ -70,57 +68,75 @@ using io::write;
 
 bool mem1;
 
-#define maxn 150005
+#define maxn 300005
+#define maxlgn 20
 
-bool cons[maxn], vis[2][maxn * 2];
+typedef pair<int, int> pii;
 
-vector<vector<int>> graph, g, gr;
+class FenwickTree {
+   private:
+    int tree[maxn];
 
-void dfs(int p, vector<vector<int>>& graph, int id) {
-    vis[id][p] = true;
-    for (auto i : graph[p])
-        if (!vis[id][i]) dfs(i, graph, id);
+   public:
+    void add(int p, int v) {
+        for (int i = p; i < maxn; i += i & -i) tree[i] += v;
+        return;
+    }
+    int sum(int p) {
+        int sum = 0;
+        for (int i = p; i; i -= i & -i) sum += tree[i];
+        return sum;
+    }
+} FT;
+
+vector<vector<int>> graph;
+vector<pii> edges;
+int fa[maxn][maxlgn], dfni[maxn], dfno[maxn], dep[maxn];
+pii b[maxn];
+
+int tim = 0;
+void dfs(int p) {
+    dfni[p] = ++tim;
+    for (int i = 1; i < maxlgn; i++) fa[p][i] = fa[fa[p][i - 1]][i - 1];
+    for (auto i : graph[p]) dep[i] = dep[p] + 1, dfs(i);
+    dfno[p] = tim;
     return;
+}
+int get(int p) { return FT.sum(dfno[p]) - FT.sum(dfni[p] - 1); }
+int jump(int p, int step) {
+    for (int i = maxlgn - 1; ~i; i--)
+        if (step >> i & 1) p = fa[p][i];
+    return p;
 }
 
 void solve(void) {
-    int n = read<int>() + 2, m = read<int>();
-    graph.clear(), g.clear(), gr.clear(), graph.resize(n + 1), g.resize(2 * n + 1), gr.resize(2 * n + 1);
-    for (int i = 1; i <= n; i++) cons[i] = false, vis[0][i] = vis[1][i] = vis[0][n + i] = vis[1][n + i] = false;
-    for (int i = 3; i < n; i++) graph[1].push_back(i), graph[i - 1].push_back(n);
-    cons[1] = cons[n - 1] = true;
+    int n = read<int>(), m = read<int>();
+    graph.resize(n + 1);
+    for (int i = 2; i <= n; i++) graph[fa[i][0] = read<int>()].push_back(i);
+    dfs(1);
     for (int i = 1; i <= m; i++) {
-        int x = read<int>() + 1, y = read<int>() + 1;
-        if (x + 1 == y)
-            cons[x] = true;
-        else
-            graph[x].push_back(y);
+        int x = read<int>(), y = read<int>();
+        if (dep[x] > dep[y]) swap(x, y);
+        if (x == fa[y][0]) return write(-1), putch('\n');
+        b[i] = {x, y};
     }
-    int p = 0, l = 0, r = 0;
-    for (int i = 1; i < n; i++)
-        if (!cons[i]) {
-            if (!p) p = l = i;
-            r = i;
+    sort(b + 1, b + m + 1, [=](pii a, pii b) { return dep[a.first] > dep[b.first]; });
+    int ans = 0;
+    for (int i = 1; i <= m; i++) {
+        int x = b[i].first, y = b[i].second, t;
+        if (dep[x] == dep[y] || fa[t = jump(y, dep[y] - dep[x] - 1)][0] != x) {
+            edges.push_back(b[i]);
+            continue;
         }
-    if (p == 0) return write(1LL * (n - 2) * (n - 3) / 2), putch('\n');
-    for (int i = n, r = n; i > 1; i--) {
-        if (!cons[i]) r = i;
-        for (auto j : graph[i - 1])
-            if (j <= r + 1)
-                g[i - 1].push_back(n + j), g[n + i].push_back(j - 1), gr[n + j].push_back(i - 1), gr[j - 1].push_back(n + i);
+        if (get(t) > get(y)) continue;
+        FT.add(dfni[t], 1), ans++;
     }
-    dfs(p, g, 0), dfs(p, gr, 0), dfs(n + p + 1, g, 1), dfs(n + p + 1, gr, 1);
-    long long ans = 0, cnt1 = 0, cnt2 = 0;
-    for (int i = 1; i <= l; i++) cnt1 += vis[0][i];
-    for (int i = r; i < n; i++) cnt2 += vis[0][i];
-    ans += cnt1 * cnt2, cnt1 = cnt2 = 0;
-    for (int i = 1; i <= l; i++) cnt1 += vis[1][i];
-    for (int i = r; i < n; i++) cnt2 += vis[1][i];
-    ans += cnt1 * cnt2, cnt1 = cnt2 = 0;
-    for (int i = 1; i <= l; i++) cnt1 += (vis[0][i] & vis[1][i]);
-    for (int i = r; i < n; i++) cnt2 += (vis[0][i] & vis[1][i]);
-    ans -= cnt1 * cnt2;
-    return write(ans - (l == r)), putch('\n');
+    for (auto i : edges) {
+        if (get(i.first) + get(i.second) < ans) continue;
+        ans++;
+        break;
+    }
+    return write(ans), putch('\n');
 }
 
 bool mem2;
@@ -130,7 +146,7 @@ int main() {
     cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
-    int _ = read<int>();
+    int _ = 1;
     while (_--) solve();
 
 #ifdef MACESUTED

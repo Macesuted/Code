@@ -6,9 +6,7 @@ using namespace std;
 
 bool mem1;
 
-void solve(void) {
-    return;
-}
+void solve(void) { return; }
 
 bool mem2;
 
