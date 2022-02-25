@@ -83,7 +83,6 @@ class SegmentTree {
             return ret;
         }
     };
-    Node a, b;
     Node tree[maxn << 2];
 
    public:
