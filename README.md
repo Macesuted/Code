@@ -26,6 +26,7 @@ Her accounts in these online judges:
 - [Online Judge](https://onlinejudge.org/): [macesuted](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=19&page=show_authorstats&userid=999082)
 - [POJ](http://poj.org/): [Macesuted](http://poj.org/userstatus?user_id=Macesuted)
 - [QingyuOJ](https://qoj.ac): [Macesuted](https://qoj.ac/user/profile/Macesuted)
+- SCUOJ
 - [SPOJ](https://spoj.com/): [macesuted](https://www.spoj.com/users/macesuted/)
 - [TopCoder](https://www.topcoder.com/): [Macesuted](https://www.topcoder.com/members/Macesuted)
 - [UOJ](https://uoj.ac/): [macesuted](https://uoj.ac/user/profile/macesuted)
