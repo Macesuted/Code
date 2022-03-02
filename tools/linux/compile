@@ -1,2 +1,2 @@
 #!/bin/bash
-g++-10 $1.cpp -o $1 -lm -Wall -O2 -std=c++14 -DMACESUTED
+g++-10 $1.cpp -o $1 -lm -Wall -Wextra -O2 -std=c++14 -DMACESUTED
