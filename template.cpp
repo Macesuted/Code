@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define MP make_pair
-#define MT make_tuple
-
 bool mem1;
 
 void solve(void) { return; }

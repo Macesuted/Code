@@ -8,11 +8,8 @@
             "defines": [
                 "MACESUTED"
             ],
-            "cppStandard": "c++14",
-            "intelliSenseMode": "linux-gcc-x64",
-            "compilerArgs": [
-                "-lm -Wall -O2 -std=c++14"
-            ]
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-gcc-x64"
         },
         {
             "name": "Linux",
@@ -23,12 +20,9 @@
             "defines": [
                 "MACESUTED"
             ],
-            "cppStandard": "c++14",
+            "cppStandard": "c++20",
             "intelliSenseMode": "linux-gcc-x64",
-            "compilerPath": "/usr/bin/g++-10",
-            "compilerArgs": [
-                "-lm -Wall -O2 -std=c++14"
-            ]
+            "compilerPath": "/usr/bin/g++-10"
         }
     ],
     "version": 4

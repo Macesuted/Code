@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define MP make_pair
-#define MT make_tuple
-
 #ifdef MACESUTED
 
 bool mem1;
