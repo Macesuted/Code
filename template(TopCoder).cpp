@@ -10,6 +10,9 @@ bool mem1;
 
 #endif
 
+#define Class ClassName
+#define Method MethodName
+
 class Class {
    private:
    public:
