@@ -10,14 +10,14 @@ bool mem2;
 int main() {
     ios::sync_with_stdio(false);
 #ifdef MACESUTED
-    cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
+    cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
     int _ = 1;
     while (_--) solve();
 
 #ifdef MACESUTED
-    cerr << "Time: " << clock() * 1000. / CLOCKS_PER_SEC << "ms" << endl;
+    cerr << "Time Cost: " << clock() * 1000. / CLOCKS_PER_SEC << "MS" << endl;
 #endif
     return 0;
 }
