@@ -27,7 +27,7 @@ void putstr(string str, int begin = 0, int end = -1) {
     return;
 }
 template <typename T>
-T read() {
+T read(void) {
     T x = 0;
     for (f = 1, c = getch(); c < '0' || c > '9'; c = getch())
         if (c == '-') f = -1;
