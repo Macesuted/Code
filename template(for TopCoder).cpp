@@ -1,9 +1,5 @@
 #include <bits/stdc++.h>
-using std::cerr;
-using std::cin;
-using std::cout;
-using std::endl;
-using std::string;
+using namespace std;
 
 #ifdef MACESUTED
 
@@ -27,7 +23,7 @@ Class _;
 bool mem2;
 
 int main() {
-    std::ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false);
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 
     _.Method();

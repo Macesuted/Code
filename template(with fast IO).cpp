@@ -1,8 +1,10 @@
 #include <bits/stdc++.h>
+using namespace std;
 
 namespace io {
 const int SIZE = 1 << 20;
 char Ibuf[SIZE], *Il = Ibuf, *Ir = Ibuf, Obuf[SIZE], *Ol = Obuf, *Or = Ol + SIZE - 1, stack[32];
+char isspace(char c) { return c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'; }
 void fill(void) { return Ir = (Il = Ibuf) + fread(Ibuf, 1, SIZE, stdin), void(); }
 void flush(void) { return fwrite(Obuf, 1, Ol - Obuf, stdout), Ol = Obuf, void(); }
 char buftop(void) { return Ir == Il ? fill(), *Il : *Il; }
@@ -25,22 +27,21 @@ void write(T x) {
     while (top) putch(stack[--top]);
     return;
 }
-std::string getstr(const std::string& suf = "") {
-    std::string s = suf;
+string getstr(const string& suf = "") {
+    string s = suf;
     char c = getch();
-    while (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r') c = getch();
+    while (isspace(c)) c = getch();
     Il--;
     while (Il != Ir) {
         char* p = Il;
-        while (Il < Ir && *Il != ' ' && *Il != '\t' && *Il != '\n' && *Il != '\v' && *Il != '\f' && *Il != '\r' && *Il != EOF)
-            Il++;
+        while (Il < Ir && !isspace(*Il) && *Il != EOF) Il++;
         s.append(p, Il);
         if (Il < Ir) break;
         fill();
     }
     return s;
 }
-void putstr(std::string str, int begin = 0, int end = -1) {
+void putstr(string str, int begin = 0, int end = -1) {
     if (end == -1) end = str.size();
     for (int i = begin; i < end; i++) putch(str[i]);
     return;
@@ -52,18 +53,11 @@ struct Flusher_ {
 using io::buftop;
 using io::getch;
 using io::getstr;
+using io::isspace;
 using io::putch;
 using io::putstr;
 using io::read;
 using io::write;
-using std::cerr;
-using std::cin;
-using std::cout;
-using std::endl;
-using std::max;
-using std::min;
-using std::string;
-using std::tie;
 
 bool mem1;
 
