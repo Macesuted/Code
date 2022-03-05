@@ -19,7 +19,7 @@ Her accounts in these online judges:
 - [Codeforces Gym](https://codeforces.com/gyms): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [Codeforces](https://codeforces.com/): [Macesuted_AB](https://codeforces.com/profile/Macesuted_AB)
 - [HDOJ](https://acm.hdu.edu.cn/): [Macesuted](https://acm.hdu.edu.cn/userstatus.php?user=macesuted)
-- HLOJ
+- HLOJ([UOJ version](http://10.10.22.16)/[Hydro version](http://47.96.42.133:8888/))(Only for students of Hailiang Senior High School): Macesuted([UOJ version](http://10.10.22.16/user/profile/Macesuted)/[Hydro version](http://47.96.42.133:8888/user/31))
 - [HydroOJ](https://hydro.ac/): [Macesuted](https://hydro.ac/user/2)
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
 - [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)

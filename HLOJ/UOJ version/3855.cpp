@@ -1,3 +1,14 @@
+/**
+ * @file support.cpp
+ * @author Macesuted (i@macesuted.moe)
+ * @date 2022-03-05
+ *
+ * @copyright Copyright (c) 2022
+ * @brief
+ *      Time Limit: 1S  Memory Limit: 512M
+ *
+ */
+
 #include <bits/stdc++.h>
 
 namespace io {
@@ -60,18 +71,51 @@ using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
-using std::max;
-using std::min;
 using std::string;
-using std::tie;
 
 bool mem1;
 
-void solve(void) { return; }
+#define maxn 1000005
+
+long long fac[maxn], ifac[maxn], sum[maxn], a[maxn], mod;
+
+long long Pow(long long a, long long x) {
+    long long ans = 1;
+    while (x) {
+        if (x & 1) ans = ans * a % mod;
+        a = a * a % mod, x >>= 1;
+    }
+    return ans;
+}
+long long binom(int n, int m) { return fac[n] * ifac[m] % mod * ifac[n - m] % mod; }
+
+void solve(void) {
+    int n = read<int>();
+    mod = read<long long>();
+    fac[0] = ifac[0] = 1;
+    for (int i = 1; i < maxn; i++) fac[i] = fac[i - 1] * i % mod;
+    ifac[maxn - 1] = Pow(fac[maxn - 1], mod - 2);
+    for (int i = maxn - 2; i; i--) ifac[i] = ifac[i + 1] * (i + 1) % mod;
+    for (int i = 0; i <= n; i++) sum[i + 1] = (sum[i] + binom(n, i)) % mod;
+    for (int d = 1; d <= n; d++) {
+        int L = (n - d + 1) / 2, R = (n + d) / 2;
+        for (int i = 1, id = -1; R - (d + 1) * i >= 0; i++, id = -id)
+            a[d] = (a[d] + id * (sum[R - (d + 1) * i + 1] + mod - sum[std::max(0, L - (d + 1) * i)])) % mod;
+        a[d] = (a[d] + a[d] + sum[R + 1] + mod - sum[L]) % mod;
+        a[d] = a[d] * a[d] % mod;
+    }
+    long long ans = 0;
+    for (int i = 1; i <= n; i++) ans = (ans + (a[i] + mod - a[i - 1]) * i) % mod;
+    write(ans * Pow(Pow(2, n + n), mod - 2) % mod), putch('\n');
+    return;
+}
 
 bool mem2;
 
 int main() {
+#ifndef MACESUTED
+    freopen("support.in", "r", stdin), freopen("support.out", "w", stdout);
+#endif
 #ifdef MACESUTED
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif

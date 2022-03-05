@@ -1,3 +1,14 @@
+/**
+ * @file minion.cpp
+ * @author Macesuted (i@macesuted.moe)
+ * @date 2022-03-05
+ *
+ * @copyright Copyright (c) 2022
+ * @brief
+ *      Time Limit: 3S  Memory Limit: 256M
+ *
+ */
+
 #include <bits/stdc++.h>
 
 namespace io {
@@ -67,11 +78,54 @@ using std::tie;
 
 bool mem1;
 
-void solve(void) { return; }
+#define maxn 1000005
+
+typedef std::pair<long long, long long> pll;
+
+pll a[maxn], f[maxn], g[maxn];
+int n;
+
+pll solve(long long lim) {
+    f[0] = g[0] = {0, 0};
+    for (int i = 1, p = 0; i <= n; i++) {
+        while (p < i && a[p].second < a[i].first) p++;
+        f[i] = {0, 0};
+        if (p < i) f[i] = max(f[i], pll{f[p].first + a[i].second - a[p].second - lim, f[p].second + 1});
+        f[i] = max(f[i], pll{g[p - 1].first + a[i].second - a[i].first + 1 - lim, g[p - 1].second + 1});
+        g[i] = max(f[i], g[i - 1]);
+    }
+    return {g[n].first, g[n].second};
+}
+
+void solve(void) {
+    n = read<int>();
+    int m = read<int>();
+    for (int i = 1; i <= n; i++) a[i].first = read<long long>(), a[i].second = read<long long>() - 1;
+    sort(a + 1, a + n + 1, [](pll x, pll y) { return x.first < y.first || (x.first == y.first && x.first > y.first); });
+    int tn = n;
+    n = 1;
+    for (int i = 2; i <= tn; i++)
+        if (a[i].second > a[n].second) a[++n] = a[i];
+    long long l = 0, r = 1e18, ans, cnt;
+    tie(ans, cnt) = solve(0);
+    if (cnt <= m) return write(ans), putch('\n');
+    while (l + 1 < r) {
+        long long mid = (l + r) >> 1;
+        tie(ans, cnt) = solve(mid);
+        cnt > m ? l = mid : r = mid;
+    }
+    tie(ans, cnt) = solve(r);
+    assert(cnt <= m);
+    write(ans + cnt * r), putch('\n');
+    return;
+}
 
 bool mem2;
 
 int main() {
+#ifndef MACESUTED
+    freopen("minion.in", "r", stdin), freopen("minion.out", "w", stdout);
+#endif
 #ifdef MACESUTED
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
