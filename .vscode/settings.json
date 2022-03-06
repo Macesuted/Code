@@ -20,6 +20,21 @@
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.fontWeight": "600",
+  "doxdocgen.generic.authorEmail": "i@macesuted.moe",
+  "doxdocgen.generic.authorName": "Macesuted",
+  "doxdocgen.file.versionTag": "",
+  "doxdocgen.generic.briefTemplate": "",
+  "editor.bracketPairColorization.enabled": true,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": null,
+    "JavaScript Debug Terminal": null,
+    "pwsh": {
+      "path": "pwsh.exe",
+      "icon": "terminal-powershell"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "pwsh",
+  "editor.cursorBlinking": "smooth",
   "files.associations": {
     "chrono": "cpp",
     "random": "cpp",
@@ -107,19 +122,5 @@
     "typeindex": "cpp",
     "typeinfo": "cpp",
     "variant": "cpp"
-  },
-  "doxdocgen.generic.authorEmail": "i@macesuted.moe",
-  "doxdocgen.generic.authorName": "Macesuted",
-  "doxdocgen.file.versionTag": "",
-  "doxdocgen.generic.briefTemplate": "",
-  "editor.bracketPairColorization.enabled": true,
-  "terminal.integrated.profiles.windows": {
-    "PowerShell": null,
-    "JavaScript Debug Terminal": null,
-    "pwsh": {
-      "path": "pwsh.exe",
-      "icon": "terminal-powershell"
-    }
-  },
-  "terminal.integrated.defaultProfile.windows": "pwsh"
+  }
 }
