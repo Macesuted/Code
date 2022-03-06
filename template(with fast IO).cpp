@@ -29,9 +29,7 @@ void write(T x) {
 }
 string getstr(const string& suf = "") {
     string s = suf;
-    char c = getch();
-    while (isspace(c)) c = getch();
-    Il--;
+    while (isspace(buftop())) getch();
     while (Il != Ir) {
         char* p = Il;
         while (Il < Ir && !isspace(*Il) && *Il != EOF) Il++;
@@ -50,10 +48,8 @@ struct Flusher_ {
     ~Flusher_() { flush(); }
 } io_flusher_;
 }  // namespace io
-using io::buftop;
 using io::getch;
 using io::getstr;
-using io::isspace;
 using io::putch;
 using io::putstr;
 using io::read;
