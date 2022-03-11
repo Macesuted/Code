@@ -1,6 +1,6 @@
-[submodule "tools/libs/testlib"]
-	path = tools/libs/testlib
-	url = https://github.com/MikeMirzayanov/testlib
 [submodule "tools/libs/ac-library"]
 	path = tools/libs/ac-library
 	url = https://github.com/atcoder/ac-library
+[submodule "tools/libs/testlib"]
+	path = tools/libs/testlib
+	url = https://github.com/MikeMirzayanov/testlib

@@ -1,38 +1,40 @@
+/**
+ * @file check.cpp
+ * @author Macesuted (i@macesuted.moe)
+ * @date 2022-03-11
+ *
+ * @copyright Copyright (c) 2022
+ * @brief
+ *      An efficient testlib checker that ignores end-of-line blank characters and end-of-text blank lines.
+ *
+ */
+
 #include "testlib.h"
 
-void eraseSpace(std::string& str) {
-    while (!str.empty() && isspace(str.back())) str.pop_back();
-    return;
+bool checkLine(InStream& in) {
+    while (!in.eoln())
+        if (!isBlanks(in.readChar())) return false;
+    return in.readChar(), true;
 }
 
 int main(int argc, char* argv[]) {
     registerTestlibCmd(argc, argv);
     int line = 0;
-    while (!ans.seekEof() && !ouf.seekEof()) {
+    while (!ans.eof() && !ouf.eof()) {
         line++;
-        std::string a, o;
-        a = ans.readLine(), o = ouf.readLine();
-        eraseSpace(a), eraseSpace(o);
-        int len = std::min(a.size(), o.size());
-        for (int column = 0; column < len; column++)
-            if (a[column] != o[column])
-                quitf(_wa, "On line %d column %d, read %c, expected %c.", line, column + 1, o[column], a[column]);
-        if (a.size() < o.size()) quitf(_wa, "Too long on line %d.", line);
-        if (a.size() > o.size()) quitf(_wa, "Too short on line %d.", line);
+        int column = 0;
+        while (!ans.eof() && !ouf.eof() && !isEoln(ans.curChar()) && !isEoln(ouf.curChar())) {
+            column++;
+            if (ans.curChar() != ouf.curChar()) break;
+            ans.readChar(), ouf.readChar();
+        }
+        char charAns = ans.curChar(), charOuf = ouf.curChar();
+        bool eolnAns = checkLine(ans), eolnOuf = checkLine(ouf);
+        if (!eolnAns && !eolnOuf) quitf(_wa, "On line %d column %d, read '%c', expected '%c'.", line, column, charOuf, charAns);
+        if (!eolnAns && eolnOuf) quitf(_wa, "Too short on line %d.", line);
+        if (eolnAns && !eolnOuf) quitf(_wa, "Too long on line %d.", line);
     }
-    if (ans.seekEof())
-        while (!ouf.seekEof()) {
-            std::string str;
-            str = ouf.readLine();
-            eraseSpace(str);
-            if (!str.empty()) quit(_wa, "User output longer than standard answer.");
-        }
-    if (ouf.seekEof())
-        while (!ans.seekEof()) {
-            std::string str;
-            str = ans.readLine();
-            eraseSpace(str);
-            if (!str.empty()) quit(_wa, "Standard answer longer than user output.");
-        }
+    if (ans.eof() && !ouf.seekEof()) quit(_wa, "User output longer than standard answer.");
+    if (ouf.eof() && !ans.seekEof()) quit(_wa, "Standard answer longer than user output.");
     quit(_ok, "Accepted!");
 }

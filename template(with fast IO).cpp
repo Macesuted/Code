@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-namespace io {
+namespace IO {
 const int SIZE = 1 << 20;
 char Ibuf[SIZE], *Il = Ibuf, *Ir = Ibuf, Obuf[SIZE], *Ol = Obuf, *Or = Ol + SIZE - 1, stack[32];
 char isspace(char c) { return c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'; }
@@ -47,13 +47,13 @@ void putstr(string str, int begin = 0, int end = -1) {
 struct Flusher_ {
     ~Flusher_() { flush(); }
 } io_flusher_;
-}  // namespace io
-using io::getch;
-using io::getstr;
-using io::putch;
-using io::putstr;
-using io::read;
-using io::write;
+}  // namespace IO
+using IO::getch;
+using IO::getstr;
+using IO::putch;
+using IO::putstr;
+using IO::read;
+using IO::write;
 
 bool mem1;
 
