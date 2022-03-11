@@ -1,16 +1,18 @@
 {
     "recommendations": [
         "aaron-bond.better-comments",
-        "ms-vscode.cpptools",
-        "formulahendry.code-runner",
         "cschlosser.doxdocgen",
-        "equinusocio.vsc-community-material-theme",
-        "zh9528.file-size",
         "donjayamanne.githistory",
-        "spywhere.guides",
-        "pkief.material-icon-theme",
-        "tomoki1207.pdf",
+        "equinusocio.vsc-community-material-theme",
+        "formulahendry.code-runner",
         "ms-ceintl.vscode-language-pack-zh-hans",
-        "ms-vscode-remote.remote-ssh"
+        "ms-vscode.cpptools",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-ssh-edit",
+        "pkief.material-icon-theme",
+        "spywhere.guides",
+        "tomoki1207.pdf",
+        "yzhang.markdown-all-in-one",
+        "zh9528.file-size"
     ]
 }
