@@ -6,7 +6,8 @@
  * @copyright Copyright (c) 2022
  * @brief
  *      Statement: https://1drv.ms/b/s!ApjY84dJhOY-gZ4rgTquhTC5DE50kg?e=VUgeWS
- * 
+ *      Link: https://thupc2022.thusaac.com/#!/contest/2/problem/10
+ *
  */
 
 #include <bits/stdc++.h>

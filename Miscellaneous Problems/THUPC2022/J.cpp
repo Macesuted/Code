@@ -6,6 +6,7 @@
  * @copyright Copyright (c) 2022
  * @brief
  *      Statement: https://1drv.ms/b/s!ApjY84dJhOY-gZ4qAwAmknmaJ99wJw?e=aEKzEQ
+ *      Link: https://thupc2022.thusaac.com/#!/contest/2/problem/9
  *
  */
 
