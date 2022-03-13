@@ -1,7 +1,7 @@
 /**
  * @file check.cpp
  * @author Macesuted (i@macesuted.moe)
- * @date 2022-03-11
+ * @date 2022-03-13
  *
  * @copyright Copyright (c) 2022
  * @brief
@@ -11,10 +11,11 @@
 
 #include "testlib.h"
 
-bool checkLine(InStream& in) {
+bool checkEoln(InStream& in) {
     while (!in.eoln())
         if (!isBlanks(in.readChar())) return false;
-    return in.readChar(), true;
+    while (in.eoln() && !in.eof()) in.readChar();
+    return true;
 }
 
 int main(int argc, char* argv[]) {
@@ -29,7 +30,7 @@ int main(int argc, char* argv[]) {
             ans.readChar(), ouf.readChar();
         }
         char charAns = ans.curChar(), charOuf = ouf.curChar();
-        bool eolnAns = checkLine(ans), eolnOuf = checkLine(ouf);
+        bool eolnAns = checkEoln(ans), eolnOuf = checkEoln(ouf);
         if (!eolnAns && !eolnOuf) quitf(_wa, "On line %d column %d, read '%c', expected '%c'.", line, column, charOuf, charAns);
         if (!eolnAns && eolnOuf) quitf(_wa, "Too short on line %d.", line);
         if (eolnAns && !eolnOuf) quitf(_wa, "Too long on line %d.", line);
