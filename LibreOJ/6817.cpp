@@ -1,12 +1,9 @@
 /**
- * @file K.cpp
+ * @file 6817.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-03-12
  *
  * @copyright Copyright (c) 2022
- * @brief
- *      Statement: https://1drv.ms/b/s!ApjY84dJhOY-gZ4rgTquhTC5DE50kg?e=VUgeWS
- *      Link: https://thupc2022.thusaac.com/#!/contest/2/problem/10
  *
  */
 
