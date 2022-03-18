@@ -23,6 +23,7 @@ Her accounts in these online judges:
 - [HydroOJ](https://hydro.ac/): [Macesuted](https://hydro.ac/user/2)
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
 - [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)
+- [NFLSOJ](http://www.nfls.com.cn:20034/): [Macesuted](http://www.nfls.com.cn:20034/user/456)
 - [Nowcoder](https://www.nowcoder.com/)
 - [Online Judge](https://onlinejudge.org/): [macesuted](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=19&page=show_authorstats&userid=999082)
 - [POJ](http://poj.org/): [Macesuted](http://poj.org/userstatus?user_id=Macesuted)
