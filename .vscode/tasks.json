@@ -10,7 +10,15 @@
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-std=c++11"
+                "-lm",
+                "-Wall",
+                "-Wextra",
+                "-O2",
+                "-std=c++20",
+                "'-Wl,--stack=512000000'",
+                "-I E:\\Code\\tools\\libs\\atcoder",
+                "-I E:\\Code\\tools\\libs\\testlib",
+                "-DMACESUTED"
             ],
             "problemMatcher": [
                 "$gcc"
