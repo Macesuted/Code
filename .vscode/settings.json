@@ -8,7 +8,7 @@
     "cpp": "cd $dir && run '$fileNameWithoutExt'"
   },
   "code-runner.saveFileBeforeRun": true,
-  "code-runner.preserveFocus": false,
+  "code-runner.preserveFocus": true,
   "code-runner.clearPreviousOutput": false,
   "code-runner.ignoreSelection": true,
   "C_Cpp.clang_format_sortIncludes": true,
