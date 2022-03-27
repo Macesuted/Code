@@ -4,19 +4,19 @@ using namespace std;
 namespace IO {
 const int SIZE = 1 << 20;
 char Ibuf[SIZE], *Il = Ibuf, *Ir = Ibuf, Obuf[SIZE], *Ol = Obuf, *Or = Ol + SIZE - 1;
-int stack[100];
+int cache1[100], cache2[100];
 char isspace(char c) { return c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'; }
 char iseoln(char c) { return c == '\n' || c == '\r'; }
 void fill(void) { return Ir = (Il = Ibuf) + fread(Ibuf, 1, SIZE, stdin), void(); }
 void flush(void) { return fwrite(Obuf, 1, Ol - Obuf, stdout), Ol = Obuf, void(); }
-char buftop(void) { return Ir == Il ? fill(), *Il : *Il; }
+char buftop(void) { return Ir == Il && (fill(), 1), *Il; }
 char getch(void) { return Il == Ir ? fill(), Il == Ir ? EOF : *Il++ : *Il++; }
-void putch(char x) { return *Ol++ = x, Ol == Or ? flush() : void(); }
+void putch(char x) { return *Ol++ = x, Ol == Or && (flush(), 1), void(); }
 template <typename T = int>
 T read(void) {
     T x = 0, f = +1;
     char c = getch();
-    while (c < '0' || c > '9') c == '-' ? void(f = -f) : void(), c = getch();
+    while (c < '0' || c > '9') (c == '-') && (f = -f), c = getch();
     while ('0' <= c && c <= '9') x = (x << 3) + (x << 1) + (c ^ 48), c = getch();
     return x * f;
 }
@@ -25,48 +25,43 @@ void write(T x) {
     if (!x) return putch('0');
     if (x < 0) putch('-'), x = -x;
     int top = 0;
-    while (x) stack[top++] = x % 10, x /= 10;
-    while (top) putch(stack[--top] ^ 48);
+    while (x) cache1[top++] = x % 10, x /= 10;
+    while (top) putch(cache1[--top] ^ 48);
     return;
 }
 template <typename T>
 void writeDouble(T x, int dep = 10) {
     if (x < 0) putch('-'), x = -x;
     __int128 fx = x;
-    for (int i = 0; i < dep; i++) stack[i] = (x *= 10), x -= int(x);
+    x -= fx;
+    for (int i = 0; i < dep; i++) cache2[i] = (x *= 10), x -= int(x);
     if (int(x * 10) > 4) {
-        stack[dep - 1]++;
+        cache2[dep - 1]++;
         for (int i = dep - 1; i; i--)
-            if (stack[i] == 10) stack[i] = 0, stack[i - 1]++;
-        if (stack[0] == 10) stack[0] = 0, fx++;
+            if (cache2[i] == 10) cache2[i] = 0, cache2[i - 1]++;
+        if (cache2[0] == 10) cache2[0] = 0, fx++;
     }
-    write(fx), x -= fx;
-    if (!dep) return;
-    putch('.');
-    for (int i = 0; i < dep; i++) putch(stack[i] ^ 48);
+    write(fx), putch('.');
+    for (int i = 0; i < dep; i++) putch(cache2[i] ^ 48);
     return;
 }
 string getstr(const string& suf = "") {
     string s = suf;
     while (isspace(buftop())) getch();
-    while (Il != Ir) {
-        char* p = Il;
+    for (char* p = Il; Il != Ir; fill(), p = Il) {
         while (Il < Ir && !isspace(*Il) && *Il != EOF) Il++;
         s.append(p, Il);
         if (Il < Ir) break;
-        fill();
     }
     return s;
 }
 string getline(const string& suf = "") {
     string s = suf;
     while (iseoln(buftop())) getch();
-    while (Il != Ir) {
-        char* p = Il;
+    for (char* p = Il; Il != Ir; fill(), p = Il) {
         while (Il < Ir && !iseoln(*Il) && *Il != EOF) Il++;
         s.append(p, Il);
         if (Il < Ir) break;
-        fill();
     }
     return s;
 }
