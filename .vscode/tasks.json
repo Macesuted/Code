@@ -20,6 +20,9 @@
                 "-I E:\\Code\\tools\\libs\\testlib",
                 "-DMACESUTED"
             ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
             "problemMatcher": [
                 "$gcc"
             ],

@@ -13,14 +13,14 @@
             "externalConsole": false,
             "MIMode": "gdb",
             "miDebuggerPath": "gdb.exe",
-            "preLaunchTask": "compile-debug",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "preLaunchTask": "compile-debug"
         }
     ]
 }
