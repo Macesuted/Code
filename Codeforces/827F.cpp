@@ -1,3 +1,12 @@
+/**
+ * @file 827F.cpp
+ * @author Macesuted (i@macesuted.moe)
+ * @date 2022-04-03
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -85,7 +94,40 @@ using IO::writeDouble;
 
 bool mem1;
 
-void solve(void) { return; }
+#define maxn 500005
+
+typedef tuple<int, int, int> tiii;
+
+vector<vector<tiii>> graph;
+vector<vector<tiii>::iterator> cur;
+int dist[maxn];
+
+void addEdge(int x, int y, int l, int r) {
+    return l <= r &&
+               (graph[x].emplace_back(l + (l & 1), r - (r & 1), y), graph[y].emplace_back(l + !(l & 1), r - !(r & 1), x), 1),
+           void();
+}
+
+void solve(void) {
+    int n = read(), m = read();
+    graph.resize(2 * n + 1), cur.resize(2 * n + 1);
+    for (int i = 1; i <= m; i++) {
+        int x = read(), y = read(), l = read(), r = read() - 1;
+        addEdge(x, y + n, l, r), addEdge(y, x + n, l, r);
+    }
+    for (int i = 1; i <= 2 * n; i++) sort(cur[i] = graph[i].begin(), graph[i].end());
+    memset(dist, 0x3f, sizeof(dist)), dist[1] = 0;
+    static priority_queue<tiii, vector<tiii>, greater<tiii>> que;
+    while (!que.empty()) que.pop();
+    while (cur[1] != graph[1].end() && get<0>(*cur[1]) == 0) que.emplace(1, get<1>(*cur[1]) + 1, get<2>(*cur[1])), cur[1]++;
+    while (!que.empty()) {
+        auto [l, r, x] = que.top();
+        que.pop(), dist[(x - 1) % n + 1] = min(dist[(x - 1) % n + 1], l);
+        for (auto& i = cur[x]; i != graph[x].end() && get<0>(*i) <= r; i++)
+            if (get<1>(*i) >= l) que.emplace(max(l, get<0>(*i)) + 1, get<1>(*i) + 1, get<2>(*i));
+    }
+    return write(dist[n] == 0x3f3f3f3f ? -1 : dist[n]), putch('\n');
+}
 
 bool mem2;
 
