@@ -1,5 +1,5 @@
 /**
- * @file 8252.cpp
+ * @file NOIOLTG2022B.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-03-26
  *
@@ -69,30 +69,22 @@ bool mem1;
 #define maxn 1000005
 
 vector<int> a[maxn];
-int id[maxn], rec[maxn];
-bool vis[maxn];
-
-bool check(int x, int y) {
-    bool p = false, q = false;
-    for (auto i : a[x]) vis[i] = true;
-    for (auto i : a[y]) (vis[i] ? p : q) = true;
-    for (auto i : a[x]) vis[i] = false;
-    return p && q;
-}
+int k[maxn], id[maxn], cnt[maxn], lst[maxn];
 
 void solve(void) {
     int n = read<int>();
     for (int i = 1; i <= n; i++) {
-        a[i].clear(), a[i].resize(read<int>());
+        a[i].clear(), a[i].resize(k[i] = read<int>());
         for (int j = 0; j < (int)a[i].size(); j++) a[i][j] = read<int>();
     }
-    for (int i = 1; i <= n; i++) id[i] = i, rec[i] = 0;
-    sort(id + 1, id + n + 1, [&](int x, int y) { return a[x].size() > a[y].size(); });
+    for (int i = 1; i <= n; i++) id[i] = i, cnt[i] = lst[i] = 0;
+    sort(id + 1, id + n + 1, [&](int x, int y) { return k[x] < k[y]; });
     for (int i = 1; i <= n; i++) {
-        int w = 0;
-        for (auto u : a[id[i]]) w = max(w, rec[u]);
-        if (w && check(id[w], id[i])) return putstr("YES\n"), write(id[w]), putch(' '), write(id[i]), putch('\n');
-        for (auto u : a[id[i]]) rec[u] = i;
+        for (auto j : a[id[i]]) cnt[lst[j]]++;
+        for (auto j : a[id[i]])
+            if (j && cnt[lst[j]] < (int)a[lst[j]].size() && cnt[lst[j]] < (int)a[id[i]].size())
+                return putstr("YES\n"), write(id[i]), putch(' '), write(lst[j]), putch('\n');
+        for (auto j : a[id[i]]) cnt[lst[j]]--, lst[j] = id[i];
     }
     return putstr("NO\n");
 }
