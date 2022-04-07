@@ -98,25 +98,36 @@ bool mem1;
 
 typedef pair<int, int> pii;
 
-int sa[maxn], rk[maxn], h[maxn], fa[maxn];
+int sa[maxn], rk[maxn], h[maxn], fa[maxn * 20];
 bool vis[maxn];
 char a[maxn];
 vector<vector<pii>> graph;
 
 int getfa(int p) { return fa[p] == p ? p : fa[p] = getfa(fa[p]); }
+bool check(int x, int y) { return getfa(x) == getfa(y); }
+void merge(int x, int y) { return fa[getfa(x)] = getfa(y), void(); }
+void merge(int l, int r, int dep) {
+    if (check(l + dep * maxn, r + dep * maxn)) return;
+    merge(l + dep * maxn, r + dep * maxn);
+    if (!dep) return;
+    return merge(l, r, dep - 1), merge(l + (1 << (dep - 1)), r + (1 << (dep - 1)), dep - 1);
+}
+void merge(int l1, int r1, int l2, int r2) {
+    int lglen = 0;
+    while ((1 << (lglen + 1)) <= r1 - l1 + 1) lglen++;
+    return merge(l1, l2, lglen), merge(r1 - (1 << lglen) + 1, r2 - (1 << lglen) + 1, lglen);
+}
 
 void solve(void) {
     int n = read();
     graph.resize(n + 1);
-    for (int i = 1; i <= n; i++) rk[sa[i] = read()] = fa[i] = i;
+    for (int i = 1; i <= n; i++) rk[sa[i] = read()] = i;
+    for (int i = 1; i < 20 * maxn; i++) fa[i] = i;
     for (int i = 1; i < n; i++) h[i] = read();
-    for (int i = 1, j = 0; i <= n; i++) {
-        if (j) j--;
-        if (rk[i] == n) continue;
-        while (j < h[rk[i]]) fa[getfa(i + j)] = getfa(sa[rk[i] + 1] + j), j++;
-    }
+    for (int i = 1; i < n; i++)
+        if (h[i] > 0) merge(sa[i], sa[i] + h[i] - 1, sa[i + 1], sa[i + 1] + h[i] - 1);
     for (int i = 1; i < n; i++) {
-        if (getfa(sa[i]) != getfa(sa[i + 1]))
+        if (h[i] == -1 && getfa(sa[i]) != getfa(sa[i + 1]))
             graph[getfa(sa[i])].emplace_back(getfa(sa[i + 1]), rk[sa[i] + 1] > rk[sa[i + 1] + 1]);
         if (h[i] != -1 && sa[i] + h[i] <= n && sa[i + 1] + h[i] <= n)
             graph[getfa(sa[i] + h[i])].emplace_back(getfa(sa[i + 1] + h[i]), 1);
