@@ -1,6 +1,6 @@
 # Macesuted's Code Repository
 
-Here Macesuted shares her solutions to the problems those she has done in some public online judges.  
+Here Macesuted shares her solutions to the problems those she has done in some online judges.  
 **Please do not simply submit these codes.**  
 If you find it useful, please star it, thank you!
 
