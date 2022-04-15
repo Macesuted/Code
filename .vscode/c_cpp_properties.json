@@ -1,17 +1,6 @@
 {
     "configurations": [
         {
-            "name": "Win64",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
-            "defines": [
-                "MACESUTED"
-            ],
-            "cppStandard": "c++20",
-            "intelliSenseMode": "linux-gcc-x64"
-        },
-        {
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
@@ -23,6 +12,17 @@
             "cppStandard": "c++20",
             "intelliSenseMode": "linux-gcc-x64",
             "compilerPath": "/usr/bin/g++-10"
+        },
+        {
+            "name": "Win64",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "MACESUTED"
+            ],
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4
