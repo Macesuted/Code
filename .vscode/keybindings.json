@@ -1,0 +1,15 @@
+// Move to C:\Users\<User>\AppData\Roaming\Code\User\keybindings.json to use
+[
+    {
+        "key": "f9",
+        "command": "workbench.action.tasks.runTask"
+    },
+    {
+        "key": "f11",
+        "command": "workbench.action.tasks.test"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "-workbench.action.tasks.build"
+    }
+]
