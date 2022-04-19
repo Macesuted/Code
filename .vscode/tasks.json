@@ -37,7 +37,8 @@
             },
             "presentation": {
                 "panel": "dedicated",
-                "focus": true
+                "focus": true,
+                "showReuseMessage": false
             }
         },
         {
