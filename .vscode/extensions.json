@@ -6,6 +6,7 @@
         "equinusocio.vsc-community-material-theme",
         "icrawl.discord-vscode",
         "ms-ceintl.vscode-language-pack-zh-hans",
+        "ms-python.python",
         "ms-vscode.cpptools",
         "ms-vscode.hexeditor",
         "ms-vscode-remote.remote-ssh",
@@ -13,7 +14,6 @@
         "pkief.material-icon-theme",
         "tomoki1207.pdf",
         "yzhang.markdown-all-in-one",
-        "zh9528.file-size",
-        "ms-python.python"
+        "zh9528.file-size"
     ]
 }
