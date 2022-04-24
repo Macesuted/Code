@@ -104,7 +104,7 @@ set<pii> S;
 int64_t sum = 0;
 
 void insert(int p) {
-    auto calc = [](pii x) { return (x.second - x.first + 2) * (x.second - x.first + 1) / 2; };
+    auto calc = [](pii x) { return int64_t(x.second - x.first + 2) * (x.second - x.first + 1) / 2; };
     int l = p, r = p;
     auto x = S.lower_bound({l, r});
     if (x != S.begin() && (--x)->second == p - 1) sum -= calc(*x), l = x->first, S.erase(x);
