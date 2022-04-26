@@ -17,6 +17,7 @@
   "editor.smoothScrolling": true,
   "editor.snippetSuggestions": "top",
   "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "editor.tabCompletion": "onlySnippets",
   "files.autoSave": "onFocusChange",
   "git.detectSubmodules": false,
   "workbench.list.smoothScrolling": true,
