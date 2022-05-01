@@ -51,7 +51,7 @@ void solve(void) {
 bool mem2;
 
 int main() {
-#ifndef MACESUTED
+#ifndef LOCAL
     freopen("palin.in", "r", stdin), freopen("palin.out", "w", stdout);
 #endif
     cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;

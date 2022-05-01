@@ -192,7 +192,7 @@ void solve(void) {
 bool mem2;
 
 int main() {
-#ifndef MACESUTED
+#ifndef LOCAL
     freopen("traffic.in", "r", stdin), freopen("traffic.out", "w", stdout);
 #endif
     clock_t t1 = clock();

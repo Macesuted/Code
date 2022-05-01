@@ -10,7 +10,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 bool mem1;
 
@@ -45,7 +45,7 @@ class KingdomAndTrees {
     }
 } _;
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 bool mem2;
 

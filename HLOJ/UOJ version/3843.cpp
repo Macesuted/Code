@@ -10,7 +10,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifndef MACESUTED
+#ifndef LOCAL
 #include "tree.h"
 #else
 
@@ -52,7 +52,7 @@ vector<int> solve(int n) {
     return fa;
 }
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 int main() {
     int n;

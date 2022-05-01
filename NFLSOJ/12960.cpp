@@ -122,11 +122,11 @@ void solve(void) {
 bool mem2;
 
 int main() {
-#ifndef MACESUTED
+#ifndef LOCAL
     freopen("wall.in", "r", stdin), freopen("wall.out", "w", stdout);
 #endif
     ios::sync_with_stdio(false);
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
@@ -136,7 +136,7 @@ int main() {
     cin >> _;
     for (int i = 1; i <= _; i++) cout << "Case #" << i << ':' << endl, solve();
 
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Time Cost: " << clock() * 1000. / CLOCKS_PER_SEC << "MS" << endl;
 #endif
     return 0;

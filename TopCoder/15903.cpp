@@ -10,7 +10,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 bool mem1;
 
@@ -74,7 +74,7 @@ class EllysNim {
     }
 };
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 EllysNim _;
 

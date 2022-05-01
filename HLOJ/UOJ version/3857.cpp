@@ -191,17 +191,17 @@ void solve(void) {
 bool mem2;
 
 int main() {
-#ifndef MACESUTED
+#ifndef LOCAL
     freopen("team.in", "r", stdin), freopen("team.out", "w", stdout);
 #endif
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
     int _ = 1;
     while (_--) solve();
 
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Time Cost: " << clock() * 1000. / CLOCKS_PER_SEC << "MS" << endl;
 #endif
     return 0;

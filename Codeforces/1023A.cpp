@@ -34,14 +34,14 @@ bool solve(void) {
 bool mem2;
 
 int main() {
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
     int _ = 1;
     while (_--) cout << (solve() ? "YES" : "NO") << endl;
 
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Time: " << clock() * 1000. / CLOCKS_PER_SEC << "ms" << endl;
 #endif
     return 0;

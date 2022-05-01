@@ -13,7 +13,7 @@ using namespace std;
 #define MP make_pair
 #define MT make_tuple
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 bool mem1;
 
@@ -94,7 +94,7 @@ class FoxAndCity {
     }
 };
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 FoxAndCity _;
 

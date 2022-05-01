@@ -1,4 +1,77 @@
 {
+    "Base": {
+        "scope": "cpp",
+        "prefix": [
+            "template-Base"
+        ],
+        "body": [
+            "#include <bits/stdc++.h>",
+            "using namespace std;",
+            "",
+            "bool mem1;",
+            "",
+            "void solve(void) { return; }",
+            "",
+            "bool mem2;",
+            "",
+            "int main() {",
+            "    ios::sync_with_stdio(false);",
+            "#ifdef LOCAL",
+            "    cerr << \"Memory Cost: \" << abs(&mem1 - &mem2) / 1024. / 1024. << \"MB\" << endl;",
+            "#endif",
+            "",
+            "    int _ = 1;",
+            "    while (_--) solve();",
+            "",
+            "#ifdef LOCAL",
+            "    cerr << \"Time Cost: \" << clock() * 1000. / CLOCKS_PER_SEC << \"MS\" << endl;",
+            "#endif",
+            "    return 0;"
+        ]
+    },
+    "TopCoder": {
+        "scope": "cpp",
+        "prefix": [
+            "template-TopCoder"
+        ],
+        "body": [
+            "#include <bits/stdc++.h>",
+            "using namespace std;",
+            "",
+            "#ifdef LOCAL",
+            "",
+            "bool mem1;",
+            "",
+            "#endif",
+            "",
+            "#define Class ClassName",
+            "#define Method MethodName",
+            "",
+            "class Class {",
+            "   private:",
+            "   public:",
+            "    void Method(void) {}",
+            "};",
+            "",
+            "#ifdef LOCAL",
+            "",
+            "Class _;",
+            "",
+            "bool mem2;",
+            "",
+            "int main() {",
+            "    ios::sync_with_stdio(false);",
+            "    cerr << \"Memory Cost: \" << abs(&mem1 - &mem2) / 1024. / 1024. << \"MB\" << endl;",
+            "",
+            "    _.Method();",
+            "",
+            "    cerr << \"Time Cost: \" << clock() * 1000. / CLOCKS_PER_SEC << \"MS\" << endl;",
+            "    return 0;",
+            "}",
+            "",
+            "#endif"
+        ]
+    },
     "FastIO": {
         "scope": "cpp",
         "prefix": [

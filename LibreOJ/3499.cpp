@@ -12,7 +12,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifdef MACESUTED
+#ifdef LOCAL
 bool mem1;
 #endif
 
@@ -76,22 +76,22 @@ void solve(void) {
     return;
 }
 
-#ifdef MACESUTED
+#ifdef LOCAL
 bool mem2;
 #endif
 
 int main() {
-#ifndef MACESUTED
+#ifndef LOCAL
     // freopen("card.in", "r", stdin), freopen("card.out", "w", stdout);
 #endif
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << " MB" << endl;
 #endif
 
     int _ = 1;
     while (_--) solve();
 
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Time: " << clock() * 1000. / CLOCKS_PER_SEC << " ms" << endl;
 #endif
 

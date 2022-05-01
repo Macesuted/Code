@@ -45,10 +45,10 @@ int solve(void) {
 bool mem2;
 
 int main() {
-#ifndef MACESUTED
+#ifndef LOCAL
     freopen("number.in", "r", stdin), freopen("number.out", "w", stdout);
 #endif
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
@@ -64,7 +64,7 @@ int main() {
     int _ = readInt();
     while (_--) write(solve()), putchar('\n');
 
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Time: " << clock() * 1000. / CLOCKS_PER_SEC << "ms" << endl;
 #endif
     return 0;

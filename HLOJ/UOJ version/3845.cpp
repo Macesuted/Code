@@ -81,10 +81,10 @@ void solve(void) {
 bool mem2;
 
 int main() {
-#ifndef MACESUTED
+#ifndef LOCAL
     freopen("tower.in", "r", stdin), freopen("tower.out", "w", stdout);
 #endif
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Memory: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
@@ -93,7 +93,7 @@ int main() {
     int _ = 1;
     while (_--) solve();
 
-#ifdef MACESUTED
+#ifdef LOCAL
     cerr << "Time: " << clock() * 1000. / CLOCKS_PER_SEC << "MS" << endl;
 #endif
 }

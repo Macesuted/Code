@@ -13,7 +13,7 @@ using namespace std;
 #define MP make_pair
 #define MT make_tuple
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 bool mem1;
 
@@ -68,7 +68,7 @@ class SlimeXSlimeRancher {
     }
 };
 
-#ifdef MACESUTED
+#ifdef LOCAL
 
 SlimeXSlimeRancher _;
 
