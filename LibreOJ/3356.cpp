@@ -1,5 +1,5 @@
 /**
- * @file 1404.cpp
+ * @file 3356.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-05-30
  * 
@@ -80,9 +80,6 @@ bool mem2;
 
 int main() {
     ios::sync_with_stdio(false);
-#ifndef LOCAL
-    freopen("toll.in", "r", stdin), freopen("toll.out", "w", stdout);
-#endif
 #ifdef LOCAL
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
