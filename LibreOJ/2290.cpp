@@ -15,37 +15,49 @@ bool mem1;
 #define maxn 16
 #define mod 1000000007
 
-typedef tuple<int, int, int, int> tiiii;
+typedef tuple<int, int, int> tiii;
 
-vector<int> edge1[maxn];
-vector<tiiii> edge2[maxn];
-unordered_map<int, int> F[1 << maxn];
+const int BASE = 1 << 20;
+
+vector<tiii> edge[maxn];
+unordered_map<int, int> F[BASE];
 int n, m;
+int xxxx = -1;
+
+int Mod(int x) { return x >= mod ? x - mod : x; }
+
+int getF(int S, int T) {
+    int x = S << n | T;
+    S = x & (BASE - 1), T = x - S;
+    auto p = F[S].find(T);
+    if (p == F[S].end()) return -1;
+    return p->second;
+}
+int &getFF(int S, int T) {
+    int x = S << n | T;
+    S = x & (BASE - 1), T = x - S;
+    return F[S][T];
+}
 
 int f(int S, int T) {
     if (S == (1 << n) - 1 && T == (1 << n) - 1) return 1;
-    if (F[S].count(T)) return F[S][T];
-    int& t = F[S][T];
-    int p = 0;
-    while (S >> p & 1) p++;
-    for (auto i : edge1[p])
-        if (!(T >> i & 1)) t = (t + f(S | (1 << p), T | (1 << i))) % mod;
-    for (auto i : edge2[p])
-        if (!(T >> get<0>(i) & 1) && !(S >> get<1>(i) & 1) && !(T >> get<2>(i) & 1))
-            t = (t + 1LL * f(S | (1 << p) | (1 << get<1>(i)), T | (1 << get<0>(i)) | (1 << get<2>(i))) * get<3>(i)) % mod;
-    return t;
+    if (~getF(S, T)) return getF(S, T);
+    int t = 0, p = log2((~S) & -(~S));
+    for (auto i : edge[p])
+        if (!(S & get<0>(i)) && !(T & get<1>(i))) t = Mod(t + Mod(mod + f(S | get<0>(i), T | get<1>(i)) * get<2>(i)));
+    return getFF(S, T) = t;
 }
 
 void solve(void) {
     cin >> n >> m;
     for (int i = 1, op, a1, b1, a2, b2; i <= m; i++) {
-        cin >> op;
+        cin >> op >> a1 >> b1, a1--, b1--;
         if (op == 0)
-            cin >> a1 >> b1, a1--, b1--, edge1[a1].push_back(b1);
+            edge[a1].emplace_back(1 << a1, 1 << b1, 1);
         else {
-            cin >> a1 >> b1 >> a2 >> b2, a1--, b1--, a2--, b2--;
-            edge1[a1].push_back(b1), edge1[a2].push_back(b2);
-            if (a1 != a2) edge2[min(a1, a2)].emplace_back(b1, max(a1, a2), b2, op == 1 ? 1 : mod - 1);
+            cin >> a2 >> b2, a2--, b2--;
+            edge[a1].emplace_back(1 << a1, 1 << b1, 1), edge[a2].emplace_back(1 << a2, 1 << b2, 1);
+            if (a1 != a2) edge[min(a1, a2)].emplace_back((1 << a1) | (1 << a2), (1 << b1) | (1 << b2), op == 1 ? 1 : -1);
         }
     }
     cout << f(0, 0) << endl;
