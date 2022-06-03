@@ -9,7 +9,7 @@
             "using namespace std;",
             "",
             "#ifndef LOCAL",
-            "#define endl '\n'",
+            "#define endl '\\n'",
             "#endif",
             "",
             "bool mem1;",
