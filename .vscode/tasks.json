@@ -45,7 +45,9 @@
                 "cwd": "${fileDirname}"
             },
             "presentation": {
-                "panel": "dedicated"
+                "panel": "dedicated",
+                "focus": true,
+                "showReuseMessage": false
             }
         },
         {
@@ -60,7 +62,6 @@
         },
         {
             "label": "C++ Compile & Run",
-            "type": "shell",
             "group": {
                 "kind": "test",
                 "isDefault": true
