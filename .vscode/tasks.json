@@ -7,9 +7,22 @@
             "group": {
                 "kind": "test"
             },
-            "command": "compile",
+            "command": "g++",
             "args": [
-                "${fileBasenameNoExtension}"
+                "${file}",
+                "-o",
+                "${fileBasenameNoExtension}",
+                "-lm",
+                "-Wall",
+                "-Wextra",
+                "-O2",
+                "-std=c++20",
+                "'-Wl,--stack=512000000'",
+                "-I",
+                "/Code/libs/ac-library",
+                "-I",
+                "/Code/libs/testlib",
+                "-DLOCAL"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -22,16 +35,41 @@
             }
         },
         {
+            "label": "C++ Run",
+            "type": "shell",
+            "group": {
+                "kind": "test"
+            },
+            "command": "./${fileBasenameNoExtension} && rm ${fileBasenameNoExtension}.exe",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "presentation": {
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Kill Process",
+            "type": "shell",
+            "command": "taskkill",
+            "args": [
+                "/IM",
+                "${fileBasenameNoExtension}",
+                "/F",
+            ]
+        },
+        {
             "label": "C++ Compile & Run",
             "type": "shell",
             "group": {
                 "kind": "test",
                 "isDefault": true
             },
-            "command": "run",
-            "args": [
-                "${fileBasenameNoExtension}"
+            "dependsOn": [
+                "C++ Compile",
+                "C++ Run"
             ],
+            "dependsOrder": "sequence",
             "options": {
                 "cwd": "${fileDirname}"
             },
@@ -44,26 +82,34 @@
         {
             "label": "C++ Compile (Debug)",
             "type": "shell",
+            "group": {
+                "kind": "build"
+            },
             "command": "g++",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${fileBasenameNoExtension}",
                 "-lm",
                 "-Wall",
                 "-Wextra",
                 "-std=c++20",
                 "'-Wl,--stack=512000000'",
-                "-I E:\\Code\\libs\\ac-library",
-                "-I E:\\Code\\libs\\testlib",
+                "-I",
+                "/Code/libs/ac-library",
+                "-I",
+                "/Code/libs/testlib",
                 "-DLOCAL"
             ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
             "problemMatcher": [
                 "$gcc"
             ],
-            "group": {
-                "kind": "build"
+            "presentation": {
+                "reveal": "silent"
             }
         }
     ]

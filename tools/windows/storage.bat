@@ -1,1 +1,1 @@
-move %1 E:\Code\%2\
+move %1 \Code\%2\

@@ -1,7 +1,0 @@
-#!/bin/bash
-echo Compiling...
-compile $1
-echo Running...
-ulimit -s unlimited
-./$1
-rm $1 &>/dev/null

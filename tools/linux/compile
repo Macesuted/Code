@@ -1,2 +1,0 @@
-#!/bin/bash
-g++-10 $1.cpp -o $1 -lm -Wall -Wextra -fno-stack-limit -O2 -std=c++14 -DLOCAL
