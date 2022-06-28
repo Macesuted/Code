@@ -9,9 +9,9 @@
             },
             "command": "g++",
             "args": [
-                "${file}",
+                "\"${file}\"",
                 "-o",
-                "${fileBasenameNoExtension}",
+                "\"${fileBasenameNoExtension}\"",
                 "-lm",
                 "-Wall",
                 "-Wextra",
@@ -40,7 +40,7 @@
             "group": {
                 "kind": "test"
             },
-            "command": "./${fileBasenameNoExtension} && rm ${fileBasenameNoExtension}.exe",
+            "command": "./\"${fileBasenameNoExtension}\" && rm \"${fileBasenameNoExtension}.exe\"",
             "options": {
                 "cwd": "${fileDirname}"
             },
