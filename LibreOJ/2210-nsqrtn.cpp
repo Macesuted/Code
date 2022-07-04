@@ -1,5 +1,5 @@
 /**
- * @file 2210.cpp
+ * @file 2210-nsqrtn.cpp
  * @author Macesuted Moe (i@macesuted.moe)
  * @date 2022-03-16
  * 
