@@ -40,7 +40,7 @@
             "group": {
                 "kind": "test"
             },
-            "command": "./\"${fileBasenameNoExtension}\" && rm \"${fileBasenameNoExtension}.exe\"",
+            "command": "./\"${fileBasenameNoExtension}\"; if ($?) { rm \"${fileBasenameNoExtension}.exe\" };",
             "options": {
                 "cwd": "${fileDirname}"
             },
