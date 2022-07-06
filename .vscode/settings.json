@@ -1,7 +1,7 @@
 {
   "C_Cpp.autoAddFileAssociations": false,
   "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google, UseTab: Never, IndentWidth: 4, TabWidth: 4, ColumnLimit: 128}",
-  "C_Cpp.clang_format_sortIncludes": true,
+  "C_Cpp.clang_format_sortIncludes": false,
   "doxdocgen.file.versionTag": "",
   "doxdocgen.generic.authorEmail": "i@macesuted.moe",
   "doxdocgen.generic.authorName": "Macesuted",
