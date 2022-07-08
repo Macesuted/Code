@@ -20,7 +20,7 @@
   "editor.tabCompletion": "onlySnippets",
   "files.autoSave": "onFocusChange",
   "git.detectSubmodules": false,
-  "git.mergeEditor":true,
+  "git.mergeEditor": true,
   "workbench.list.smoothScrolling": true,
   "task.quickOpen.skip": false,
   "workbench.settings.openDefaultKeybindings": false
