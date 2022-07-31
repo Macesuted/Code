@@ -62,6 +62,5 @@ void work(int n) {
             else
                 i = S.erase(i);
     }
-    assert(l <= r);
     return checkR(l, n);
 }
