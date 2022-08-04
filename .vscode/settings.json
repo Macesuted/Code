@@ -23,5 +23,6 @@
   "workbench.settings.openDefaultKeybindings": false,
   "clangd.arguments": [
     "--clang-tidy"
-  ]
+  ],
+  "C_Cpp.intelliSenseEngine": "Disabled"
 }
