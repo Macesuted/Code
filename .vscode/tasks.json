@@ -27,9 +27,6 @@
             "options": {
                 "cwd": "${fileDirname}"
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
             "presentation": {
                 "panel": "dedicated"
             }
@@ -106,9 +103,6 @@
             "options": {
                 "cwd": "${fileDirname}"
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
             "presentation": {
                 "reveal": "silent"
             }
