@@ -21,8 +21,7 @@ void solve(void) {
     for (int t = 0; t < 26; t++) {
         long long sum = 0;
         for (auto i : pos[t]) sum += n - i + 1;
-        for (auto i : pos[t])
-            sum -= n - i + 1, answer = (answer + i * sum * 2 + i * (n - i + 1)) % mod;
+        for (auto i : pos[t]) sum -= n - i + 1, answer = (answer + i * sum * 2 + i * (n - i + 1)) % mod;
         pos[t].clear();
     }
     cout << answer << endl;

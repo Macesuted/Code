@@ -2,9 +2,9 @@
  * @file 2763.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-04
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -78,10 +78,10 @@ void solve(void) {
     graph.resize((k + 1) * n + 1);
     for (int i = 1; i <= m; i++) {
         int x = read<int>(), y = read<int>(), d = read<int>();
-        for (int t = 0; t <= k; t++) graph[t * n + x].emplace_back(t * n + y, d),
-                                     graph[t * n + y].emplace_back(t * n + x, d);
-        for (int t = 1; t <= k; t++) graph[t * n + x].emplace_back((t - 1) * n + y, 0),
-                                     graph[t * n + y].emplace_back((t - 1) * n + x, 0);
+        for (int t = 0; t <= k; t++)
+            graph[t * n + x].emplace_back(t * n + y, d), graph[t * n + y].emplace_back(t * n + x, d);
+        for (int t = 1; t <= k; t++)
+            graph[t * n + x].emplace_back((t - 1) * n + y, 0), graph[t * n + y].emplace_back((t - 1) * n + x, 0);
     }
     static priority_queue<pii, vector<pii>, greater<pii>> que;
     while (!que.empty()) que.pop();
@@ -93,8 +93,7 @@ void solve(void) {
         if (vis[p]) continue;
         vis[p] = true;
         for (auto i : graph[p])
-            if (dist[i.first] > dist[p] + i.second)
-                que.emplace(dist[i.first] = dist[p] + i.second, i.first);
+            if (dist[i.first] > dist[p] + i.second) que.emplace(dist[i.first] = dist[p] + i.second, i.first);
     }
     int answer = numeric_limits<int>::max();
     for (int i = 0; i <= k; i++) answer = min(answer, dist[i * n + T]);

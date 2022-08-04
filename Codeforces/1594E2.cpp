@@ -49,8 +49,7 @@ STR dfs(int p, int dep) {
             for (int lc = 1; lc <= 6; lc++)
                 if (abs(cp - lc) % 3)
                     for (int rc = 1; rc <= 6; rc++)
-                        if (abs(cp - rc) % 3)
-                            g[cp] = (g[cp] + l.p[lc] % mod * r.p[rc]) % mod;
+                        if (abs(cp - rc) % 3) g[cp] = (g[cp] + l.p[lc] % mod * r.p[rc]) % mod;
     return STR({g[0], g[1], g[2], g[3], g[4], g[5], g[6]});
 }
 

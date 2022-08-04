@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -168,8 +170,7 @@ int main() {
     if (ret < tot) return putstr("No Solution!"), 0;
     for (register int i = 1; i <= n; i++)
         for (vector<HLPP::Edge>::iterator j = HLPP::graph[i].begin(); j != HLPP::graph[i].end(); j++)
-            if (j->to != S && !j->cap)
-                answer[j->to - n].push_back(i);
+            if (j->to != S && !j->cap) answer[j->to - n].push_back(i);
     for (register int i = 1; i <= k; i++) {
         write(i), putch(':');
         for (vector<int>::iterator j = answer[i].begin(); j != answer[i].end(); j++) putch(' '), write(*j);

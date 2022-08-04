@@ -2,9 +2,9 @@
  * @file 724C.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-19
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>

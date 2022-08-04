@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -88,8 +90,7 @@ int F(int n, Edge* edge, int k) {
     for (vector<Edge>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
         if (i->id != (edge->id ^ 1))
             for (register int j = k; j; j--)
-                for (register int s = j; ~s; s--)
-                    g[j] = max(g[j], min(g[j - s], F(n, &*i, s)));
+                for (register int s = j; ~s; s--) g[j] = max(g[j], min(g[j - s], F(n, &*i, s)));
     return f[n][edge->id][k] = edge->dist + g[k];
 }
 

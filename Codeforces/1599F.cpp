@@ -2,9 +2,9 @@
  * @file 1599F.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-29
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -81,8 +81,8 @@ long long Pow(long long a, long long x) {
 }
 
 bool check(int l, int r, int d) {
-    int f = ((sum[0][r] + mod - sum[0][l - 1]) * 2LL % mod * Pow(r - l + 1, mod - 2) % mod -
-             1LL * (r - l) * d % mod + mod) *
+    int f = ((sum[0][r] + mod - sum[0][l - 1]) * 2LL % mod * Pow(r - l + 1, mod - 2) % mod - 1LL * (r - l) * d % mod +
+             mod) *
             Pow(2, mod - 2) % mod;
     // cerr << "First: " << f << endl;
     for (int t = 0; t < 3; t++) {

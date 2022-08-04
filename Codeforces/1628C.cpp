@@ -80,8 +80,7 @@ set<pii> S;
 void solve(void) {
     int n = read<int>();
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= n; j++)
-            a[i][j] = read<int>(), S.emplace(i, j);
+        for (int j = 1; j <= n; j++) a[i][j] = read<int>(), S.emplace(i, j);
     int ans = 0;
     while (!S.empty()) {
         int x, y;

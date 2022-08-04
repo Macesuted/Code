@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -65,9 +67,7 @@ class Basis {
    public:
     long long a[maxlgv];
 
-    Basis(void) {
-        memset(a, 0, sizeof(a));
-    }
+    Basis(void) { memset(a, 0, sizeof(a)); }
     void insert(long long val) {
         for (register int i = maxlgv - 1; ~i && val; i--)
             if (val >> i & 1)
@@ -106,7 +106,8 @@ vector<vector<int> > graph;
 
 void dfs(int p, int pre = 0) {
     dep[p] = dep[pre] + 1, fa[p][0] = pre, g[p][0].insert(a[pre]);
-    for (register int i = 1; i < maxlgn; i++) fa[p][i] = fa[fa[p][i - 1]][i - 1], g[p][i] = g[p][i - 1] + g[fa[p][i - 1]][i - 1];
+    for (register int i = 1; i < maxlgn; i++)
+        fa[p][i] = fa[fa[p][i - 1]][i - 1], g[p][i] = g[p][i - 1] + g[fa[p][i - 1]][i - 1];
     for (vector<int>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
         if (*i != pre) dfs(*i, p);
     return;

@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -79,8 +81,7 @@ int main() {
         int m = read<int>();
         for (register int i = 1; i <= m; i++) record[b[i] = read<int>()].insert(i);
         for (register int i = 1; i <= n; i++)
-            for (register int j = 1; j <= m; j++)
-                f[i][j] = 0;
+            for (register int j = 1; j <= m; j++) f[i][j] = 0;
         for (register int i = 1; i <= n; i++)
             if (record.find(a[i]) != record.end()) f[i][*record[a[i]].begin()] = 1;
         for (register int i = 1; i < n; i++)

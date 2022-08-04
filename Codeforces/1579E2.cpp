@@ -34,7 +34,7 @@ void work(void) {
     for (register int i = 1; i <= n; i++) a[i] = lower_bound(b + 1, b + n + 1, a[i]) - b;
     int answer = 0;
     for (register int i = 1; i <= n; i++) {
-        answer += min(sum(a[i] - 1), i - 1 -sum(a[i]));
+        answer += min(sum(a[i] - 1), i - 1 - sum(a[i]));
         add(a[i], 1);
     }
     for (register int i = 1; i <= n; i++) add(a[i], -1);

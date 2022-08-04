@@ -2,9 +2,9 @@
  * @file 1383D.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-01
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -76,8 +76,7 @@ queue<pii> up, lef;
 void solve(void) {
     int n = read<int>(), m = read<int>();
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            a[i][j] = read<int>();
+        for (int j = 1; j <= m; j++) a[i][j] = read<int>();
     for (int i = 1; i <= n; i++) {
         int maxv = 0;
         for (int j = 1; j <= m; j++) maxv = max(maxv, a[i][j]);

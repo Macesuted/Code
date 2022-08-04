@@ -2,9 +2,9 @@
  * @file 100712H.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-19
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -15,7 +15,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -109,8 +111,7 @@ void solve(void) {
         if (bel[i] == i) cnt++;
     for (int i = 1; i <= n; i++)
         for (auto j : graph[i])
-            if (i < j && bel[i] != bel[j])
-                tree[bel[i]].push_back(bel[j]), tree[bel[j]].push_back(bel[i]);
+            if (i < j && bel[i] != bel[j]) tree[bel[i]].push_back(bel[j]), tree[bel[j]].push_back(bel[i]);
     write(cnt - dfs(dfs(1).second).first), putch('\n');
     graph.clear(), tree.clear();
     return;

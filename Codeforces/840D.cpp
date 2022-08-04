@@ -2,9 +2,9 @@
  * @file 840D.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-19
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -15,7 +15,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -102,9 +104,7 @@ class SegmentTree {
     SegmentTree(void) { roots.push_back(NULL); }
     inline void resize(int _n) { return n = _n, void(); }
     inline void build(void) { return build(roots[0], 1, n); }
-    inline void insert(int p) {
-        return roots.push_back(NULL), insert(roots.back(), roots[roots.size() - 2], 1, n, p);
-    }
+    inline void insert(int p) { return roots.push_back(NULL), insert(roots.back(), roots[roots.size() - 2], 1, n, p); }
     inline int getAns(int verL, int verR, int limit) { return getAns(roots[verL], roots[verR], 1, n, limit); }
 };
 

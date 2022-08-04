@@ -2,9 +2,9 @@
  * @file 2127.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-06
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -86,8 +86,7 @@ class Network {
             int p = que.front();
             que.pop();
             for (auto i : graph[p])
-                if (!dist[i.to] && i.cap > i.flow)
-                    que.push(i.to), dist[i.to] = dist[p] + 1;
+                if (!dist[i.to] && i.cap > i.flow) que.push(i.to), dist[i.to] = dist[p] + 1;
         }
         return dist[T];
     }
@@ -124,33 +123,35 @@ void solve(void) {
 #define INF (numeric_limits<long long>::max())
     long long ans = 0;
     for (int i = 1, d; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            net.addEdge(S, turn(i, j), d = read<long long>()), ans += d;
+        for (int j = 1; j <= m; j++) net.addEdge(S, turn(i, j), d = read<long long>()), ans += d;
     for (int i = 1, d; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            net.addEdge(turn(i, j), T, d = read<long long>()), ans += d;
+        for (int j = 1; j <= m; j++) net.addEdge(turn(i, j), T, d = read<long long>()), ans += d;
     for (int i = 1, d; i < n; i++)
         for (int j = 1; j <= m; j++) {
             int x = turn(i, j) + a;
-            net.addEdge(S, x, d = read<long long>()), net.addEdge(x, turn(i, j), INF), net.addEdge(x, turn(i + 1, j), INF);
+            net.addEdge(S, x, d = read<long long>()), net.addEdge(x, turn(i, j), INF),
+                net.addEdge(x, turn(i + 1, j), INF);
             ans += d;
         }
     for (int i = 1, d; i < n; i++)
         for (int j = 1; j <= m; j++) {
             int x = turn(i, j) + 2 * a;
-            net.addEdge(turn(i, j), x, INF), net.addEdge(turn(i + 1, j), x, INF), net.addEdge(x, T, d = read<long long>());
+            net.addEdge(turn(i, j), x, INF), net.addEdge(turn(i + 1, j), x, INF),
+                net.addEdge(x, T, d = read<long long>());
             ans += d;
         }
     for (int i = 1, d; i <= n; i++)
         for (int j = 1; j < m; j++) {
             int x = turn(i, j) + 3 * a;
-            net.addEdge(S, x, d = read<long long>()), net.addEdge(x, turn(i, j), INF), net.addEdge(x, turn(i, j + 1), INF);
+            net.addEdge(S, x, d = read<long long>()), net.addEdge(x, turn(i, j), INF),
+                net.addEdge(x, turn(i, j + 1), INF);
             ans += d;
         }
     for (int i = 1, d; i <= n; i++)
         for (int j = 1; j < m; j++) {
             int x = turn(i, j) + 4 * a;
-            net.addEdge(turn(i, j), x, INF), net.addEdge(turn(i, j + 1), x, INF), net.addEdge(x, T, d = read<long long>());
+            net.addEdge(turn(i, j), x, INF), net.addEdge(turn(i, j + 1), x, INF),
+                net.addEdge(x, T, d = read<long long>());
             ans += d;
         }
     write(ans - net.maxFlow(S, T)), putch('\n');

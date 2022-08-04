@@ -91,15 +91,15 @@ void insert(int v) {
     Node *fp = getPointer(f), *vp = getPointer(v);
     vp->mark = true;
     fp->edges.insert(vp), vp->edges.insert(fp);
-    while (fp->edges.size() == 1 && f != 0) v = f, vp = fp, (fp = getPointer(f = nex(v)))->edges.insert(vp), vp->edges.insert(fp);
+    while (fp->edges.size() == 1 && f != 0)
+        v = f, vp = fp, (fp = getPointer(f = nex(v)))->edges.insert(vp), vp->edges.insert(fp);
     if (root == NULL) root = fp;
     return;
 }
 pii dfs(Node* p, Node* pre = NULL) {
     pii ans = pii{p->mark ? -1 : -0x3f3f3f3f, p->v};
     for (auto i : p->edges)
-        if (i != pre)
-            ans = max(ans, dfs(i, p));
+        if (i != pre) ans = max(ans, dfs(i, p));
     return pii{ans.first + 1, ans.second};
 }
 

@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -112,8 +114,8 @@ int main() {
             long long l = read<int>(), r = read<int>() - 1;
             sum1 = sum2 = sum3 = 0;
             getAns(1, 1, n, l, r);
-            long long up = (r - l + 1 - l * r) * sum1 + (l + r) * sum2 - sum3,
-                      down = (r - l + 2) * (r - l + 1) / 2, GCD = gcd(up, down);
+            long long up = (r - l + 1 - l * r) * sum1 + (l + r) * sum2 - sum3, down = (r - l + 2) * (r - l + 1) / 2,
+                      GCD = gcd(up, down);
             write(up / GCD), putch('/'), write(down / GCD), putch('\n');
         }
     }

@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -137,11 +139,9 @@ void solve(void) {
                 sign(li[0].first, li[0].second, li[1].first, li[1].second, li[2].first, li[2].second);
             }
         }
-    write((int)answer.size()),
-        putch('\n');
+    write((int)answer.size()), putch('\n');
     for (vector<Option>::iterator i = answer.begin(); i != answer.end(); i++)
-        write(i->a1), putch(' '), write(i->b1), putch(' '),
-            write(i->a2), putch(' '), write(i->b2), putch(' '),
+        write(i->a1), putch(' '), write(i->b1), putch(' '), write(i->a2), putch(' '), write(i->b2), putch(' '),
             write(i->a3), putch(' '), write(i->b3), putch('\n');
     return;
 }

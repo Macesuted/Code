@@ -2,9 +2,9 @@
  * @file 3381.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-21
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>

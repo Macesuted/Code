@@ -17,8 +17,7 @@ void work(void) {
     int n, m, k;
     cin >> n >> m >> k;
     for (register int i = 1; i <= n; i++)
-        for (register int j = 1; j <= m; j++)
-            cin >> a[i][j], vis[i][j] = false;
+        for (register int j = 1; j <= m; j++) cin >> a[i][j], vis[i][j] = false;
     for (register int i = n; i; i--)
         for (register int j = 1; j <= m; j++) {
             if (a[i][j] == '.') continue;

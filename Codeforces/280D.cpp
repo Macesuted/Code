@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -101,13 +103,15 @@ inline void pushUp(int p, int l, int r) {
     tree[p].bl = left.bl;
     if (tree[p].bl.sum < left.sum + right.bl.sum) tree[p].bl = (Segment){l, right.bl.r, left.sum + right.bl.sum};
     tree[p].bm = left.bm.sum > right.bm.sum ? left.bm : right.bm;
-    if (tree[p].bm.sum < left.br.sum + right.bl.sum) tree[p].bm = (Segment){left.br.l, right.bl.r, left.br.sum + right.bl.sum};
+    if (tree[p].bm.sum < left.br.sum + right.bl.sum)
+        tree[p].bm = (Segment){left.br.l, right.bl.r, left.br.sum + right.bl.sum};
     tree[p].br = right.br;
     if (tree[p].br.sum < left.br.sum + right.sum) tree[p].br = (Segment){left.br.l, r, left.br.sum + right.sum};
     tree[p].sl = left.sl;
     if (tree[p].sl.sum > left.sum + right.sl.sum) tree[p].sl = (Segment){l, right.sl.r, left.sum + right.sl.sum};
     tree[p].sm = left.sm.sum < right.sm.sum ? left.sm : right.sm;
-    if (tree[p].sm.sum > left.sr.sum + right.sl.sum) tree[p].sm = (Segment){left.sr.l, right.sl.r, left.sr.sum + right.sl.sum};
+    if (tree[p].sm.sum > left.sr.sum + right.sl.sum)
+        tree[p].sm = (Segment){left.sr.l, right.sl.r, left.sr.sum + right.sl.sum};
     tree[p].sr = right.sr;
     if (tree[p].sr.sum > left.sr.sum + right.sum) tree[p].sr = (Segment){left.sr.l, r, left.sr.sum + right.sum};
     return;
@@ -136,9 +140,10 @@ void build(int p, int l, int r) {
     return pushUp(p, l, r);
 }
 void update(int p, int l, int r, int qp, int val) {
-    if (l == r) return tree[p].sum = tree[p].bl.sum = tree[p].bm.sum = tree[p].br.sum =
-                           tree[p].sl.sum = tree[p].sm.sum = tree[p].sr.sum = val,
-                       void();
+    if (l == r)
+        return tree[p].sum = tree[p].bl.sum = tree[p].bm.sum = tree[p].br.sum = tree[p].sl.sum = tree[p].sm.sum =
+                   tree[p].sr.sum = val,
+               void();
     pushDown(p);
     int mid = (l + r) >> 1;
     qp <= mid ? update(p << 1, l, mid, qp, val) : update(p << 1 | 1, mid + 1, r, qp, val);

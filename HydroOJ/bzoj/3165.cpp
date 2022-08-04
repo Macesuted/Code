@@ -2,9 +2,9 @@
  * @file 3165.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-28
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -86,8 +86,7 @@ class LiChaoTree {
     void insert(int p, int l, int r, int ql, int qr, pdd v, int id) {
         int mid = (l + r) >> 1;
         if (ql <= l && r <= qr) {
-            bool lef = (getVal(tree[p].val, l) < getVal(v, l)),
-                 rig = (getVal(tree[p].val, r) < getVal(v, r));
+            bool lef = (getVal(tree[p].val, l) < getVal(v, l)), rig = (getVal(tree[p].val, r) < getVal(v, r));
             if (getVal(tree[p].val, mid) < getVal(v, mid)) {
                 if (lef && !rig) insert(p << 1 | 1, mid + 1, r, l, r, tree[p].val, tree[p].id);
                 if (!lef && rig) insert(p << 1, l, mid, l, r, tree[p].val, tree[p].id);

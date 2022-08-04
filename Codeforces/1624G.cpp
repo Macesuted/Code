@@ -108,13 +108,11 @@ void solve(void) {
         UnionSet US;
         US.resize(n);
         for (auto i : edges)
-            if (!(get<2>(i) >> t & 1))
-                US.merge(get<0>(i), get<1>(i));
+            if (!(get<2>(i) >> t & 1)) US.merge(get<0>(i), get<1>(i));
         if (US.cnt == 1) {
             vector<tiii> cache;
             for (auto i : edges)
-                if (get<2>(i) >> t & 1)
-                    cache.push_back(i);
+                if (get<2>(i) >> t & 1) cache.push_back(i);
             for (auto i : cache) edges.erase(i);
         } else
             ans ^= 1 << t;

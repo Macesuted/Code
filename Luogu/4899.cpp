@@ -14,8 +14,7 @@ inline T read() {
     char c = getchar();
     for (; c < '0' || c > '9'; c = getchar())
         if (c == '-') f = -1;
-    for (; c <= '9' && c >= '0'; c = getchar())
-        x = x * 10 + (c & 15);
+    for (; c <= '9' && c >= '0'; c = getchar()) x = x * 10 + (c & 15);
     return x * f;
 }
 
@@ -48,8 +47,7 @@ class KruscalTree {
         for (int i = 1; i <= n; i++) {
             vis[p[i]] = true;
             for (auto j : graph[p[i]])
-                if (vis[j] && getfa(p[i]) != getfa(j))
-                    tree[p[i]].push_back(getfa(j)), f[getfa(j)] = p[i];
+                if (vis[j] && getfa(p[i]) != getfa(j)) tree[p[i]].push_back(getfa(j)), f[getfa(j)] = p[i];
         }
         return dfs(p[n], p[n]);
     }

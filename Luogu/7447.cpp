@@ -13,7 +13,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -116,11 +118,11 @@ class SegmentTree {
     inline void pushUp(Node* p) {
         p->minVal = 0x3f3f3f3f, p->maxVal = 0, p->sum = 0, p->size = 0;
         if (p->l != NULL)
-            p->minVal = min(p->minVal, p->l->minVal), p->maxVal = max(p->maxVal, p->l->maxVal),
-            p->sum += p->l->sum, p->size += p->l->size;
+            p->minVal = min(p->minVal, p->l->minVal), p->maxVal = max(p->maxVal, p->l->maxVal), p->sum += p->l->sum,
+            p->size += p->l->size;
         if (p->r != NULL)
-            p->minVal = min(p->minVal, p->r->minVal), p->maxVal = max(p->maxVal, p->r->maxVal),
-            p->sum += p->r->sum, p->size += p->r->size;
+            p->minVal = min(p->minVal, p->r->minVal), p->maxVal = max(p->maxVal, p->r->maxVal), p->sum += p->r->sum,
+            p->size += p->r->size;
         return;
     }
     void insert(Node*& p, int l, int r, int qp, int val) {
@@ -159,7 +161,8 @@ class SegmentTree {
             AnsType ans = (AnsType){0, 0x3f3f3f3f, 0};
             for (vector<pii>::iterator i = p->rec.begin(); i != p->rec.end(); i++)
                 if (ql <= i->first && i->first <= qr)
-                    ans.sum += i->second, ans.minVal = min(ans.minVal, i->second), ans.maxVal = max(ans.maxVal, i->second);
+                    ans.sum += i->second, ans.minVal = min(ans.minVal, i->second),
+                                          ans.maxVal = max(ans.maxVal, i->second);
             return ans;
         }
         pushDown(p, l, r);

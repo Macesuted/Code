@@ -2,9 +2,9 @@
  * @file 2478.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-19
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -15,7 +15,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -81,10 +83,9 @@ void dfs(int p, long long limit, int pre = -1) {
         int x = i.first;
         if (x == pre) continue;
         dfs(x, limit, p);
-        tie(f[p][0], f[p][1], f[p][2]) = make_tuple(
-            f[p][0] + f[x][0],
-            max({f[p][1] + f[x][0], f[p][0] + f[x][1] + pli{i.second, 0}}),
-            max({f[p][2] + f[x][0], f[p][1] + f[x][1] + pli{i.second + limit, 1}}));
+        tie(f[p][0], f[p][1], f[p][2]) =
+            make_tuple(f[p][0] + f[x][0], max({f[p][1] + f[x][0], f[p][0] + f[x][1] + pli{i.second, 0}}),
+                       max({f[p][2] + f[x][0], f[p][1] + f[x][1] + pli{i.second + limit, 1}}));
     }
     f[p][0] = max({f[p][0], f[p][1] + pli{limit, 1}, f[p][2]});
     return;

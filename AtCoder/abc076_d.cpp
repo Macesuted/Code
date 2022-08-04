@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -90,8 +92,7 @@ int main() {
             if (v[j] && pre < j) {
                 int l = pre, r = j;
                 if (speed[l] + (r - l) / 2. <= a[i].limit && ((r - l) & 1)) answer += 0.25;
-                for (register int t = l + 1; t <= r - 1; t++)
-                    speed[t] = min(a[i].limit, speed[l] + min(t - l, r - t));
+                for (register int t = l + 1; t <= r - 1; t++) speed[t] = min(a[i].limit, speed[l] + min(t - l, r - t));
                 for (register int t = l; t < r; t++) v[t] = true;
                 for (register int t = l; t < r; t++)
                     if (speed[t] == speed[t + 1] && speed[t] == a[i].limit) v[t] = false;

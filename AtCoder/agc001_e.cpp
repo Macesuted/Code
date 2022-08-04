@@ -12,8 +12,7 @@ inline T read() {
     char c = getchar();
     for (; c < '0' || c > '9'; c = getchar())
         if (c == '-') f = -1;
-    for (; c <= '9' && c >= '0'; c = getchar())
-        x = x * 10 + (c & 15);
+    for (; c <= '9' && c >= '0'; c = getchar()) x = x * 10 + (c & 15);
     return x * f;
 }
 
@@ -53,8 +52,7 @@ int main() {
     for (int i = 1; i <= n; i++) a[i] = {read<int>(), read<int>()};
     for (int i = 1; i <= n; i++) f[deltaC - a[i].first][deltaC - a[i].second]++;
     for (int i = 1; i < maxc; i++)
-        for (int j = 1; j < maxc; j++)
-            f[i][j] = (f[i][j] + f[i - 1][j] + f[i][j - 1]) % mod;
+        for (int j = 1; j < maxc; j++) f[i][j] = (f[i][j] + f[i - 1][j] + f[i][j - 1]) % mod;
     long long answer = 0;
     for (int i = 1; i <= n; i++) answer = (answer + f[deltaC + a[i].first][deltaC + a[i].second]) % mod;
     for (int i = 1; i <= n; i++) answer = (answer + mod - C((a[i].first + a[i].second) * 2, a[i].first * 2)) % mod;

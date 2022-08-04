@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -99,12 +101,13 @@ inline void upd(int p, int t) { return sgtree.update(a[p].l, a[p].r, t); }
 
 int main() {
     int n = read<int>(), m = read<int>();
-    for (register int i = 1; i <= n; i++) a[i].l = read<int>() + 1, a[i].r = read<int>() + 1, a[i].len = a[i].r - a[i].l + 1,
-                                          b[++cntb] = a[i].l, b[++cntb] = a[i].r;
+    for (register int i = 1; i <= n; i++)
+        a[i].l = read<int>() + 1, a[i].r = read<int>() + 1, a[i].len = a[i].r - a[i].l + 1, b[++cntb] = a[i].l,
+        b[++cntb] = a[i].r;
     sort(b + 1, b + cntb + 1);
     cntb = sgtree.n = unique(b + 1, b + cntb + 1) - b - 1;
-    for (register int i = 1; i <= n; i++) a[i].l = lower_bound(b + 1, b + cntb + 1, a[i].l) - b,
-                                          a[i].r = lower_bound(b + 1, b + cntb + 1, a[i].r) - b;
+    for (register int i = 1; i <= n; i++)
+        a[i].l = lower_bound(b + 1, b + cntb + 1, a[i].l) - b, a[i].r = lower_bound(b + 1, b + cntb + 1, a[i].r) - b;
     sort(a + 1, a + n + 1);
     int answer = 0x3f3f3f3f;
     for (register int i = 1, j = 1; i <= n; i++) {

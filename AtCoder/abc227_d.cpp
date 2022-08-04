@@ -2,9 +2,9 @@
  * @file abc227_d.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-13
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>

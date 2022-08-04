@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -74,8 +76,7 @@ class Dinic {
             int p = que.front();
             que.pop();
             for (typename vector<Edge>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
-                if (!vis[i->to] && i->cap > i->flow)
-                    que.push(i->to), vis[i->to] = true, h[i->to] = h[p] + 1;
+                if (!vis[i->to] && i->cap > i->flow) que.push(i->to), vis[i->to] = true, h[i->to] = h[p] + 1;
         }
         return vis[T];
     }
@@ -119,8 +120,7 @@ class Dinic {
     }
     long long maxFlow(int tS, int tT) {
         for (register int i = 1; i <= n; i++)
-            for (typename vector<Edge>::iterator j = graph[i].begin(); j != graph[i].end(); j++)
-                j->flow = 0;
+            for (typename vector<Edge>::iterator j = graph[i].begin(); j != graph[i].end(); j++) j->flow = 0;
         S = tS, T = tT;
         long long flow = 0;
         while (BFS()) {
@@ -161,8 +161,7 @@ int main() {
     for (register int i = 1; i <= n; i++) a[i] = read<int>();
     for (register int i = 1; i <= m; i++) b[i] = read<int>();
     for (register int i = 1; i <= m; i++)
-        for (register int j = 1; j <= n; j++)
-            alow[i][j] = read<int>();
+        for (register int j = 1; j <= n; j++) alow[i][j] = read<int>();
     long long l = 0, r = 100000000000;
     while (l + 1 < r) {
         long long mid = (l + r) >> 1;

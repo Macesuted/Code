@@ -2,9 +2,9 @@
  * @file abc227_e.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-13
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -41,16 +41,13 @@ void solve(void) {
                     else
                         p[a[x]] = min(p[a[x]], cnt++);
                 if (p[1] != n + 1) {
-                    for (int t = 0; t + p[1] <= n * n; t++)
-                        f[i + 1][j][k][t + p[1]] += f[i][j][k][t];
+                    for (int t = 0; t + p[1] <= n * n; t++) f[i + 1][j][k][t + p[1]] += f[i][j][k][t];
                 }
                 if (p[2] != n + 1) {
-                    for (int t = 0; t + p[2] <= n * n; t++)
-                        f[i][j + 1][k][t + p[2]] += f[i][j][k][t];
+                    for (int t = 0; t + p[2] <= n * n; t++) f[i][j + 1][k][t + p[2]] += f[i][j][k][t];
                 }
                 if (p[3] != n + 1) {
-                    for (int t = 0; t + p[3] <= n * n; t++)
-                        f[i][j][k + 1][t + p[3]] += f[i][j][k][t];
+                    for (int t = 0; t + p[3] <= n * n; t++) f[i][j][k + 1][t + p[3]] += f[i][j][k][t];
                 }
             }
     long long ans = 0;

@@ -29,14 +29,12 @@ void solve(void) {
     while (true) {
         int p = 0;
         for (int i = 1; i <= n; i++)
-            if ((!vis[i]) && ((p == 0) || (dist[i] < dist[p])))
-                p = i;
+            if ((!vis[i]) && ((p == 0) || (dist[i] < dist[p]))) p = i;
         if (p == 0) break;
         vis[p] = true;
         ans = max(ans, dist[p]);
         for (int i = 1; i <= n; i++)
-            if ((!vis[i]) && dist[i] > Dist(a[p], a[i]))
-                dist[i] = Dist(a[p], a[i]);
+            if ((!vis[i]) && dist[i] > Dist(a[p], a[i])) dist[i] = Dist(a[p], a[i]);
     }
     cout << ans << endl;
     return;

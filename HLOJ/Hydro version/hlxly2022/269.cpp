@@ -66,8 +66,7 @@ void solve(void) {
             while (val[j] < 0) out.push(-max((int64_t)0, val[j] + k)), val[j] = min((int64_t)0, val[j] + k);
         }
         for (auto v : buf)
-            if (!out.empty() && out.top() + v > 0)
-                ans -= out.top() + v, out.pop(), out.push(-v);
+            if (!out.empty() && out.top() + v > 0) ans -= out.top() + v, out.pop(), out.push(-v);
     }
     cout << ans << endl;
     return;

@@ -19,8 +19,7 @@ void solve(void) {
     for (int i = 1; i <= n; i++) cin >> a[i], a[i] = ' ' + a[i];
     for (int i = 1; i < n; i++)
         for (int j = 1; j < m; j++)
-            if (a[i][j + 1] == 'X' && a[i + 1][j] == 'X')
-                S.insert(j);
+            if (a[i][j + 1] == 'X' && a[i + 1][j] == 'X') S.insert(j);
     int q;
     cin >> q;
     while (q--) {

@@ -27,9 +27,7 @@ int dp(int len, int up, int cnt) {
     int answer = 0;
     for (int mid = 0; mid < len; mid++)
         for (int t = 0; t <= cnt; t++)
-            answer = (answer +
-                      dp(mid, up - 1, t) * dp(len - mid - 1, up - 1, cnt - t) % mod * C[len - 1][mid]) %
-                     mod;
+            answer = (answer + dp(mid, up - 1, t) * dp(len - mid - 1, up - 1, cnt - t) % mod * C[len - 1][mid]) % mod;
     return f[len][up][cnt] = answer;
 }
 

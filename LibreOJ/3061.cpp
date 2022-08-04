@@ -141,7 +141,8 @@ void solve(void) {
     write(ans.size()), putch('\n');
     if (!g) return;
     for (auto i : ans)
-        write((i.first - 1) / c + 1), putch(' '), write((i.first - 1) % c + 1), putch(' '), write(i.second), putch('\n');
+        write((i.first - 1) / c + 1), putch(' '), write((i.first - 1) % c + 1), putch(' '), write(i.second),
+            putch('\n');
     return;
 }
 

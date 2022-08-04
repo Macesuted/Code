@@ -111,8 +111,8 @@ class SegmentTree {
                tree[p].vr = min(max(tree[p].vr, vl), vr), void();
     }
     void pushDown(int p) {
-        return upd(p << 1, tree[p].vl, tree[p].vr), upd(p << 1 | 1, tree[p].vl, tree[p].vr), tree[p].vl = 0, tree[p].vr = 1e5,
-                                                                                             void();
+        return upd(p << 1, tree[p].vl, tree[p].vr), upd(p << 1 | 1, tree[p].vl, tree[p].vr), tree[p].vl = 0,
+                                                                                             tree[p].vr = 1e5, void();
     }
     void update(int p, int l, int r, int ql, int qr, int vl, int vr) {
         if (ql <= l && r <= qr) return upd(p, vl, vr);

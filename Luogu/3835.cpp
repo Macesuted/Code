@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -64,7 +66,9 @@ class FhqTreap {
         T val;
         int rank, size, ver, deg;
         Node *l, *r;
-        Node(int rnk = 0, T v = 0, int version = 0) { rank = rnk, size = 1, l = r = NULL, val = v, ver = version, deg = 0; }
+        Node(int rnk = 0, T v = 0, int version = 0) {
+            rank = rnk, size = 1, l = r = NULL, val = v, ver = version, deg = 0;
+        }
         Node(const Node* p) { *this = *p; }
     };
     static const long long kMul = 0x9ddfea08eb382d69ULL;

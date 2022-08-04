@@ -2,9 +2,9 @@
  * @file 2322.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-04-05
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -121,8 +121,7 @@ class Base {
     }
     int64_t query(int64_t v) {
         for (int i = maxlgv - 1; ~i; i--)
-            if ((v >> i & 1) && a[i])
-                    v ^= a[i];
+            if ((v >> i & 1) && a[i]) v ^= a[i];
         return v;
     }
 } base;
@@ -153,12 +152,14 @@ void dfs(int p) {
 
 void solve(void) {
     int n = read(), m = read(), q = read();
-    for (int i = 1; i <= m; i++) get<0>(edges[i]) = read(), get<1>(edges[i]) = read(), get<2>(edges[i]) = read<int64_t>();
+    for (int i = 1; i <= m; i++)
+        get<0>(edges[i]) = read(), get<1>(edges[i]) = read(), get<2>(edges[i]) = read<int64_t>();
     for (int i = 1; i <= q; i++) era[ques[i] = read()] = true;
     graph.resize(n + 1);
     for (int i = 1; i <= m; i++)
-        if (!era[i]) graph[get<0>(edges[i])].emplace_back(get<1>(edges[i]), get<2>(edges[i])),
-                        graph[get<1>(edges[i])].emplace_back(get<0>(edges[i]), get<2>(edges[i]));
+        if (!era[i])
+            graph[get<0>(edges[i])].emplace_back(get<1>(edges[i]), get<2>(edges[i])),
+                graph[get<1>(edges[i])].emplace_back(get<0>(edges[i]), get<2>(edges[i]));
     S.insert(0), dfs(1);
     ans[q + 1] = (int64_t)S.size() << base.siz;
     for (int i = q; i; i--) {

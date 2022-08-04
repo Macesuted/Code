@@ -2,9 +2,9 @@
  * @file abc227_f.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-13
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -44,7 +44,8 @@ void solve(void) {
                     continue;
                 }
                 for (int k = choose[i][j]; k <= i + j; k++)
-                    f[i][j][k] = min(f[i - 1][j][k - choose[i][j]], f[i][j - 1][k - choose[i][j]]) + (int)choose[i][j] * a[i][j];
+                    f[i][j][k] =
+                        min(f[i - 1][j][k - choose[i][j]], f[i][j - 1][k - choose[i][j]]) + (int)choose[i][j] * a[i][j];
             }
         ans = min(ans, f[n][m][k]);
     }

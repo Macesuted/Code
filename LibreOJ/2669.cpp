@@ -7,11 +7,9 @@ T read(void) {
     char c = getchar();
 
     for (; !isdigit(c); c = getchar())
-        if (c == '-')
-            f = -f;
+        if (c == '-') f = -f;
 
-    for (; isdigit(c); c = getchar())
-        num = (num << 3) + (num << 1) + (c ^ 48);
+    for (; isdigit(c); c = getchar()) num = (num << 3) + (num << 1) + (c ^ 48);
 
     return f * num;
 }
@@ -32,9 +30,9 @@ long long dep[maxn];
 vector<list<Edge>> graph;
 
 long long A[maxn],  //前缀+子树最大深度
-     B[maxn],        //前缀中两个子树的最大深度+两点距离
-     C[maxn],        //后缀+子树最大深度
-     D[maxn];        //后缀中两个子树的最大深度+两点距离
+    B[maxn],        //前缀中两个子树的最大深度+两点距离
+    C[maxn],        //后缀+子树最大深度
+    D[maxn];        //后缀中两个子树的最大深度+两点距离
 
 void dfs(int p) {
     dfn[p] = ++timet;
@@ -82,22 +80,17 @@ int main() {
     for (int i = 1; i <= n; i++) {
         fa[i] = i;
         int from = read<int>(), to = read<int>(), dist = read<int>();
-        graph[from].push_back((Edge) {
-            to, dist
-        }), graph[to].push_back((Edge) {
-            from, dist
-        });
+        graph[from].push_back((Edge){to, dist}), graph[to].push_back((Edge){from, dist});
     }
 
     dfs(1);
 
-    for (int i = 1; i <= ringCnt; i++)
-        work(ring[i], 0);
+    for (int i = 1; i <= ringCnt; i++) work(ring[i], 0);
 
     long long sum = 0, maxx = 0;
 
     for (int i = 1; i <= ringCnt; i++) {
-        sum += ringDist[i - 1];                           //sum是前缀
+        sum += ringDist[i - 1];                           // sum是前缀
         A[i] = max(A[i - 1], dep[ring[i]] + sum);         //子树深度+前缀长度
         B[i] = max(B[i - 1], sum + maxx + dep[ring[i]]);  //用之前最深的+当前子树深度+前缀长度
         maxx = max(maxx, dep[ring[i]] - sum);             //维护最深的子树深度
@@ -108,7 +101,7 @@ int main() {
     ringDist[ringCnt] = 0;
 
     for (int i = ringCnt; i; i--) {
-        sum += ringDist[i];                               //sum是后缀
+        sum += ringDist[i];                               // sum是后缀
         C[i] = max(C[i + 1], dep[ring[i]] + sum);         //子树深度+后缀长度
         D[i] = max(D[i + 1], sum + maxx + dep[ring[i]]);  //用之前最深的+当前子树深度+前缀长度
         maxx = max(maxx, dep[ring[i]] - sum);             //维护最深的子树深度

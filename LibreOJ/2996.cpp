@@ -121,7 +121,8 @@ void solve(void) {
     for (int i = 1; i <= n; i++)
         ST.update(H[i], f[i] = ST.query(1, H[i]) + P[i]), (H[i] > 1) && (ST.add(1, H[i] - 1, -C[i]), 0);
     ST.clear();
-    for (int i = n; i; i--) ST.update(H[i], g[i] = ST.query(1, H[i]) + P[i]), (H[i] > 1) && (ST.add(1, H[i] - 1, -C[i]), 0);
+    for (int i = n; i; i--)
+        ST.update(H[i], g[i] = ST.query(1, H[i]) + P[i]), (H[i] > 1) && (ST.add(1, H[i] - 1, -C[i]), 0);
     long long ans = 0;
     for (int i = 1; i <= n; i++) ans = max(ans, f[i] + g[i] - P[i]);
     write(ans), putch('\n');

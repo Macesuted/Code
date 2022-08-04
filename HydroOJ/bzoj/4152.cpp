@@ -2,9 +2,9 @@
  * @file 4152.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-04
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -84,11 +84,13 @@ void solve(void) {
     graph.resize(n + 1);
     for (int i = 1; i <= n; i++) a[i].x = read<int>(), a[i].y = read<int>(), a[i].id = i;
     sort(a + 1, a + n + 1, [](Node a, Node b) { return a.x < b.x; });
-    for (int i = 1; i < n; i++) graph[a[i].id].emplace_back(a[i + 1].id, a[i + 1].x - a[i].x),
-                                graph[a[i + 1].id].emplace_back(a[i].id, a[i + 1].x - a[i].x);
+    for (int i = 1; i < n; i++)
+        graph[a[i].id].emplace_back(a[i + 1].id, a[i + 1].x - a[i].x),
+            graph[a[i + 1].id].emplace_back(a[i].id, a[i + 1].x - a[i].x);
     sort(a + 1, a + n + 1, [](Node a, Node b) { return a.y < b.y; });
-    for (int i = 1; i < n; i++) graph[a[i].id].emplace_back(a[i + 1].id, a[i + 1].y - a[i].y),
-                                graph[a[i + 1].id].emplace_back(a[i].id, a[i + 1].y - a[i].y);
+    for (int i = 1; i < n; i++)
+        graph[a[i].id].emplace_back(a[i + 1].id, a[i + 1].y - a[i].y),
+            graph[a[i + 1].id].emplace_back(a[i].id, a[i + 1].y - a[i].y);
     static priority_queue<pii, vector<pii>, greater<pii>> que;
     while (!que.empty()) que.pop();
     memset(dist, 0x3f, sizeof(dist));
@@ -99,8 +101,7 @@ void solve(void) {
         if (vis[p]) continue;
         vis[p] = true;
         for (auto i : graph[p])
-            if (dist[i.first] > dist[p] + i.second)
-                que.emplace(dist[i.first] = dist[p] + i.second, i.first);
+            if (dist[i.first] > dist[p] + i.second) que.emplace(dist[i.first] = dist[p] + i.second, i.first);
     }
     write(dist[n]), putch('\n');
     return;

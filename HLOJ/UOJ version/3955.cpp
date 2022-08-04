@@ -36,8 +36,8 @@ void solve(void) {
         l -= x * m, r -= x * m;
         if (l < 0) l += m, r += m;
         if (r < m) return upper_bound(S[k].begin(), S[k].end(), r) - lower_bound(S[k].begin(), S[k].end(), l);
-        return (S[k].end() - lower_bound(S[k].begin(), S[k].end(), l)) + 
-               (r / m - 1) * (int64_t)S[k].size() + (upper_bound(S[k].begin(), S[k].end(), r % m) - S[k].begin());
+        return (S[k].end() - lower_bound(S[k].begin(), S[k].end(), l)) + (r / m - 1) * (int64_t)S[k].size() +
+               (upper_bound(S[k].begin(), S[k].end(), r % m) - S[k].begin());
     };
     for (int i = 0; i < n; i++)
         if (way[i])

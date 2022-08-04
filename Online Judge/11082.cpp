@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -167,8 +169,7 @@ int main() {
         int n = read<int>(), m = read<int>(), S = n + m + 1, T = n + m + 2;
         HLPP::INIT(n + m + 2);
         for (register int i = 1; i <= n; i++)
-            for (register int j = 1; j <= m; j++)
-                HLPP::addEdge(i, j + n, 19);
+            for (register int j = 1; j <= m; j++) HLPP::addEdge(i, j + n, 19);
         for (register int i = 1, pre = 0, now; i <= n; i++, pre = now)
             now = read<int>(), HLPP::addEdge(S, i, now - pre - m);
         for (register int i = 1, pre = 0, now; i <= m; i++, pre = now)
@@ -178,8 +179,7 @@ int main() {
             for (vector<HLPP::Edge>::iterator j = HLPP::graph[i].begin(); j != HLPP::graph[i].end(); j++)
                 if (j->real) ans[i][j->to - n] = 20 - j->cap;
         for (register int i = 1; i <= n; i++)
-            for (register int j = 1; j <= m; j++)
-                write(ans[i][j]), putch(" \n"[j == m]);
+            for (register int j = 1; j <= m; j++) write(ans[i][j]), putch(" \n"[j == m]);
     }
     return 0;
 }

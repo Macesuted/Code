@@ -2,9 +2,9 @@
  * @file CSPS2021D.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-02
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -94,11 +94,9 @@ void Dijkstra(int S, int rest) {
         rest -= choose[p];
         if (rest == 0) return;
         for (auto i : graph[p])
-            if (dist[i.first] > dist[p] + i.second)
-                que.emplace(dist[i.first] = dist[p] + i.second, i.first);
+            if (dist[i.first] > dist[p] + i.second) que.emplace(dist[i.first] = dist[p] + i.second, i.first);
         for (auto i : extra[p])
-            if (dist[i.first] > dist[p] + i.second)
-                que.emplace(dist[i.first] = dist[p] + i.second, i.first);
+            if (dist[i.first] > dist[p] + i.second) que.emplace(dist[i.first] = dist[p] + i.second, i.first);
     }
     return;
 }
@@ -121,11 +119,11 @@ void solve(void) {
     while (q--) {
         extra.resize((n + 1) * (m + 1)), a.clear();
         for (int i = 1; i <= m; i++)
-            extra[turn(0, i - 1)][turn(0, i)] = extra[turn(0, i)][turn(0, i - 1)] =
-                extra[turn(n, i - 1)][turn(n, i)] = extra[turn(n, i)][turn(n, i - 1)] = 0;
+            extra[turn(0, i - 1)][turn(0, i)] = extra[turn(0, i)][turn(0, i - 1)] = extra[turn(n, i - 1)][turn(n, i)] =
+                extra[turn(n, i)][turn(n, i - 1)] = 0;
         for (int i = 1; i <= n; i++)
-            extra[turn(i, 0)][turn(i - 1, 0)] = extra[turn(i - 1, 0)][turn(i, 0)] =
-                extra[turn(i, m)][turn(i - 1, m)] = extra[turn(i - 1, m)][turn(i, m)] = 0;
+            extra[turn(i, 0)][turn(i - 1, 0)] = extra[turn(i - 1, 0)][turn(i, 0)] = extra[turn(i, m)][turn(i - 1, m)] =
+                extra[turn(i - 1, m)][turn(i, m)] = 0;
         int k = read<int>();
         for (int i = 1; i <= k; i++) {
             int v = read<int>(), p = read<int>(), c = read<int>();
@@ -168,12 +166,10 @@ void solve(void) {
         }
         for (int i = 0; i < t; i++) choose[x[i]] = false;
         for (int i = 0; i < 2 * t; i++)
-            for (int j = t; j < 2 * t; j++)
-                f[i][j] = f[j][i] = f[i][j - t];
+            for (int j = t; j < 2 * t; j++) f[i][j] = f[j][i] = f[i][j - t];
         for (int i = 0; i < t; i++) x[i + t] = x[i];
         for (int i = 0; i < 2 * t; i++)
-            for (int j = 0; j < 2 * t; j++)
-                g[i][j] = INF;
+            for (int j = 0; j < 2 * t; j++) g[i][j] = INF;
         for (int i = 1; i < 2 * t; i++) g[i - 1][i] = f[i - 1][i];
         for (int len = 4; len <= t; len += 2)
             for (int l = 0, r = len - 1; r < 2 * t; l++, r++) {

@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -124,8 +126,7 @@ bool work(void) {
         T[0].clear(), T[1].clear();
         for (register int x = 0; x < 2; x++)
             for (register int y = 0; y < 2; y++)
-                for (multiset<int>::iterator i = S[x][y].begin(); i != S[x][y].end(); i++)
-                    T[x].insert(*i);
+                for (multiset<int>::iterator i = S[x][y].begin(); i != S[x][y].end(); i++) T[x].insert(*i);
         while (T[0].size()) {
             if (*T[0].begin() != *T[1].begin()) return false;
             T[0].erase(T[0].begin()), T[1].erase(T[1].begin());

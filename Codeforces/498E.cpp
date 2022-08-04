@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -122,16 +124,14 @@ int main() {
             int l = (i & 1), r = t - (i >> (t - 1) & 1) - 1;
             int last = l;
             for (register int j = l + 1; j <= r; j++)
-                if (j == r || !(i >> j & 1))
-                    g[i] = g[i] * h[j - last] % mod, last = j;
+                if (j == r || !(i >> j & 1)) g[i] = g[i] * h[j - last] % mod, last = j;
         }
         if (t == 1) g[1] = 0;
         Matrix ans, base;
         ans.resize(1, 1 << t), base.resize(1 << t, 1 << t);
         for (register int i = 0; i < (1 << t); i++) ans[1][i + 1] = f[i];
         for (register int i = 0; i < (1 << t); i++)
-            for (register int j = 0; j < (1 << t); j++)
-                base[i + 1][j + 1] = g[i & j];
+            for (register int j = 0; j < (1 << t); j++) base[i + 1][j + 1] = g[i & j];
         ans = ans * (base ^ cnt);
         for (register int i = 0; i < (1 << t); i++) f[i] = ans[1][i + 1];
     }

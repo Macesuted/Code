@@ -55,7 +55,8 @@ void solve(void) {
             for (int px = 1; px <= n; px++)
                 for (int py = 1; py <= m; py++) {
                     int tc = a[px][py] - 'A';
-                    if (vis[px][py] || a[px][py] == '#' || ('A' <= a[px][py] && a[px][py] <= 'Z' && S / pow3[tc] % 3 != 1))
+                    if (vis[px][py] || a[px][py] == '#' ||
+                        ('A' <= a[px][py] && a[px][py] <= 'Z' && S / pow3[tc] % 3 != 1))
                         continue;
                     static queue<pii> que;
                     static vector<pii> cache;

@@ -2,9 +2,9 @@
  * @file 1023D.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-09
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -60,8 +60,7 @@ void solve(void) {
         work(q);
     for (int i = q - 1; i; i--) work(i);
     for (int i = 1; i <= n; i++)
-        if (c[i] == 0 || (a[i] != 0 && c[i] != a[i]))
-            return cout << "NO" << endl, void();
+        if (c[i] == 0 || (a[i] != 0 && c[i] != a[i])) return cout << "NO" << endl, void();
     cout << "YES" << endl;
     for (int i = 1; i <= n; i++) cout << c[i] << ' ';
     cout << endl;

@@ -12,8 +12,7 @@ inline T read() {
     char c = getchar();
     for (; c < '0' || c > '9'; c = getchar())
         if (c == '-') f = -1;
-    for (; c <= '9' && c >= '0'; c = getchar())
-        x = x * 10 + (c & 15);
+    for (; c <= '9' && c >= '0'; c = getchar()) x = x * 10 + (c & 15);
     return x * f;
 }
 
@@ -88,8 +87,7 @@ int main() {
             if (top[i] == top[j])
                 answer += 1.0 / dist(i, j);
             else {
-                int x = top[i], y = top[j], dx = dep[i], dy = dep[j],
-                    d1 = abs(x - y) - 1, d2 = m - d1 - 2;
+                int x = top[i], y = top[j], dx = dep[i], dy = dep[j], d1 = abs(x - y) - 1, d2 = m - d1 - 2;
                 answer += 1.0 / (dx + d1 + dy) + 1.0 / (dx + d2 + dy) - 1.0 / (dx + d1 + d2 + dy);
             }
     cout << answer << endl;

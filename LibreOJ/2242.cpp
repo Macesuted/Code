@@ -48,7 +48,8 @@ void solve(void) {
         val = (val * base + s[i] - 'a') % mod, len++;
     }
     if (s[1] != '*') head = hashS.front(), lenHead = lenHashS.front(), hashS.pop_front(), lenHashS.pop_front();
-    if (s[n] != '*' && !hashS.empty()) tail = hashS.back(), lenTail = lenHashS.back(), hashS.pop_back(), lenHashS.pop_back();
+    if (s[n] != '*' && !hashS.empty())
+        tail = hashS.back(), lenTail = lenHashS.back(), hashS.pop_back(), lenHashS.pop_back();
     int tn = hashS.size(), q;
     cin >> q;
     while (q--) {

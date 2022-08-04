@@ -21,8 +21,7 @@ void solve(void) {
     for (int i = 1; i <= n; i++) cin >> a[i], rec[a[i]].push_back(i);
     int ans = -1;
     for (auto i : rec)
-        for (auto j = i.second.begin(); j + 1 != i.second.end(); j++)
-            ans = max(ans, *j + (n - *(j + 1)));
+        for (auto j = i.second.begin(); j + 1 != i.second.end(); j++) ans = max(ans, *j + (n - *(j + 1)));
     cout << ans << endl;
     rec.clear();
     return;

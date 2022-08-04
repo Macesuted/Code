@@ -97,9 +97,11 @@ void solve(void) {
             for (int k = 0; k < (int)f[i][j].size(); k++)
                 if (f[i][j][k]) {
                     f[i + 1][j][k] = (f[i + 1][j][k] + f[i][j][k] * (i + 1 - j)) % mod;
-                    f[i + 1][j + 1][k + i + 1] = (f[i + 1][j + 1][k + i + 1] + f[i][j][k] * (2 * (i - 1 - j) + 2)) % mod;
+                    f[i + 1][j + 1][k + i + 1] =
+                        (f[i + 1][j + 1][k + i + 1] + f[i][j][k] * (2 * (i - 1 - j) + 2)) % mod;
                     if (j < i - 1)
-                        f[i + 1][j + 2][k + 2 * (i + 1)] = (f[i + 1][j + 2][k + 2 * (i + 1)] + f[i][j][k] * (i - 1 - j)) % mod;
+                        f[i + 1][j + 2][k + 2 * (i + 1)] =
+                            (f[i + 1][j + 2][k + 2 * (i + 1)] + f[i][j][k] * (i - 1 - j)) % mod;
                 }
     long long ans = 0;
     for (int i = 0; i < (int)f[n][n - 1].size(); i++)

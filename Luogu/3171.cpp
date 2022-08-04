@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -162,8 +164,7 @@ void Dijkstra(int start) {
         pq.pop();
         if (vis[p]) continue;
         for (vector<pli>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
-            if (dist[i->second] > dist[p] + i->first)
-                pq.push((pli){dist[i->second] = dist[p] + i->first, i->second});
+            if (dist[i->second] > dist[p] + i->first) pq.push((pli){dist[i->second] = dist[p] + i->first, i->second});
     }
     return;
 }
@@ -183,8 +184,7 @@ int main() {
     }
     for (register int i = 1; i <= n; i++)
         for (vector<pli>::iterator j = graph[i].begin(); j != graph[i].end(); j++)
-            if (dist[j->second] == dist[i] + j->first)
-                HLPP::addEdge(i + n, j->second, 0x3f3f3f3f3f3f3f3f);
+            if (dist[j->second] == dist[i] + j->first) HLPP::addEdge(i + n, j->second, 0x3f3f3f3f3f3f3f3f);
     write(HLPP::work(1, n << 1)), putch('\n');
     return 0;
 }

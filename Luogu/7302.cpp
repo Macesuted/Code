@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -80,8 +82,9 @@ int maxVal(int p) {
 
 int main() {
     int w = read<int>(), n = read<int>();
-    for (register int i = 1; i <= n; i++) a[i].t = read<int>(), a[i].p = read<int>(), a[i].v = read<int>(),
-                                          a[i].k1 = a[i].p + 2 * a[i].t, b[i] = a[i].k2 = a[i].p - 2 * a[i].t;
+    for (register int i = 1; i <= n; i++)
+        a[i].t = read<int>(), a[i].p = read<int>(), a[i].v = read<int>(), a[i].k1 = a[i].p + 2 * a[i].t,
+        b[i] = a[i].k2 = a[i].p - 2 * a[i].t;
     sort(b + 1, b + n + 1);
     int btail = unique(b + 1, b + n + 1) - b - 1;
     for (register int i = 1; i <= n; i++) a[i].k2 = lower_bound(b + 1, b + btail + 1, a[i].k2) - b;

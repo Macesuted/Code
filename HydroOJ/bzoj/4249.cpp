@@ -129,7 +129,8 @@ void solve(void) {
             for (auto i = ques.begin(); i != ques.end() && i->first < tim; i = ques.erase(i)) {
                 int t = S.begin()->second;
                 if (S.begin()->second > inc(S.begin())->second) t -= i->first;
-                for (auto j : i->second) ans[j.second] = answer + abs(t - j.first) - 1LL * ((int)S.size() - 1) * i->first;
+                for (auto j : i->second)
+                    ans[j.second] = answer + abs(t - j.first) - 1LL * ((int)S.size() - 1) * i->first;
             }
         last = tim;
         auto p = S.lower_bound({ip, 0}), q = inc(p);
@@ -151,7 +152,8 @@ void solve(void) {
             if (S.begin()->second - (i.first - last) <= j.first && j.first <= S.begin()->second)
                 ans[j.second] = 0;
             else
-                ans[j.second] = min(abs(S.begin()->second - j.first), abs(S.begin()->second - (i.first - last) - j.first));
+                ans[j.second] =
+                    min(abs(S.begin()->second - j.first), abs(S.begin()->second - (i.first - last) - j.first));
     for (int i = 1; i <= n; i++) write(ans[i]), putch('\n');
     return;
 }

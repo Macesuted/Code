@@ -2,9 +2,9 @@
  * @file abc227_c.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-13
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -18,8 +18,7 @@ void solve(void) {
     long long n, ans = 0;
     cin >> n;
     for (long long i = 1; i * i * i <= n; i++)
-        for (long long j = i; i * j * j <= n; j++)
-            ans += n / (i * j) - j + 1;
+        for (long long j = i; i * j * j <= n; j++) ans += n / (i * j) - j + 1;
     cout << ans << endl;
     return;
 }

@@ -1,9 +1,9 @@
 /**
  * @author Macesuted
  * @date 2021-02-23
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>

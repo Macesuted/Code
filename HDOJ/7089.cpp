@@ -2,9 +2,9 @@
  * @file 7089.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-04
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -77,8 +77,7 @@ void solve(void) {
     for (int i = 1; i <= n; i++) a[i] = read<int>();
     for (int i = 0; i <= m; i++) f[0][i] = 0;
     for (int i = 1; i <= n; i++)
-        for (int j = 0; j <= m; j++)
-            f[i][j] = numeric_limits<int>::max();
+        for (int j = 0; j <= m; j++) f[i][j] = numeric_limits<int>::max();
     for (int i = 1; i <= n; i++) {
         int lim = read<int>();
         static vector<int> rec;
@@ -89,8 +88,7 @@ void solve(void) {
             while (ceil(a[i], r + 1) == ceil(a[i], l) && r < lim) r++;
         }
         for (auto j : rec)
-            for (int k = m, cost = ceil(a[i], j + 1); k >= j; k--)
-                f[i][k] = min(f[i][k], f[i - 1][k - j] + cost);
+            for (int k = m, cost = ceil(a[i], j + 1); k >= j; k--) f[i][k] = min(f[i][k], f[i - 1][k - j] + cost);
     }
     int ans = numeric_limits<int>::max();
     for (int i = 0; i <= m; i++) ans = min(ans, f[n][i]);

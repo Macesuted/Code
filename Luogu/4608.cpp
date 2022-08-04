@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -118,8 +120,7 @@ BigInt dfs2(int p1, int p2) {
     vis[p1][p2] = true;
     f[p1][p2] = 1;
     for (register int i = 0; i < 60; i++)
-        if (pa[p1][i] && pb[p2][i])
-            f[p1][p2] = f[p1][p2] + dfs2(pa[p1][i], pb[p2][i]);
+        if (pa[p1][i] && pb[p2][i]) f[p1][p2] = f[p1][p2] + dfs2(pa[p1][i], pb[p2][i]);
     return f[p1][p2];
 }
 

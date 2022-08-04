@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -151,8 +153,8 @@ int main() {
         while (j != changes.end() && j->first < i->tim) tree.update(dfni[j->second], dfno[j->second]), j++;
         int t = lca(i->from, i->to);
         ans1[i->id] = dep[i->from] + dep[i->to] - dep[t] - dep[fa[t][0]];
-        ans2[i->id] = tree.getVal(dfni[i->from]) + tree.getVal(dfni[i->to]) -
-                      tree.getVal(dfni[t]) - tree.getVal(dfni[fa[t][0]]);
+        ans2[i->id] =
+            tree.getVal(dfni[i->from]) + tree.getVal(dfni[i->to]) - tree.getVal(dfni[t]) - tree.getVal(dfni[fa[t][0]]);
     }
     for (register int i = 1; i <= cnt; i++) write(ans1[i]), putch(' '), write(ans2[i]), putch('\n');
     return 0;

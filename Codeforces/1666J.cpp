@@ -117,7 +117,9 @@ void solve(void) {
         for (int j = 1; j <= n; j++) c[i][j] = c[i][j - 1] + read();
     for (int j = 1; j <= n; j++)
         for (int i = 1; i <= n; i++) c[i][j] += c[i - 1][j];
-    auto sum = [&](int r1, int r2, int c1, int c2) { return c[r2][c2] - c[r1 - 1][c2] - c[r2][c1 - 1] + c[r1 - 1][c1 - 1]; };
+    auto sum = [&](int r1, int r2, int c1, int c2) {
+        return c[r2][c2] - c[r1 - 1][c2] - c[r2][c1 - 1] + c[r1 - 1][c1 - 1];
+    };
     for (int len = 2; len <= n; len++)
         for (int l = 1, r = len; r <= n; l++, r++) {
             f[l][r] = min(pli{f[l][r - 1].first + sum(l, r - 1, 1, l - 1) + sum(l, r - 1, r, n), r},

@@ -48,7 +48,8 @@ void dfs(int p) {
         for (int i = 1; i <= siz[p] + siz[x]; i++)
             for (int j = 1; j <= siz[p]; j++)
                 for (int k = max(1, i - j); k <= siz[x]; k++)
-                    f[p][i] = (f[p][i] + g[j] * f[x][k] % mod * binom[i - 1][j - 1] % mod * binom[j - 1][k + j - i]) % mod;
+                    f[p][i] =
+                        (f[p][i] + g[j] * f[x][k] % mod * binom[i - 1][j - 1] % mod * binom[j - 1][k + j - i]) % mod;
         siz[p] += siz[x];
     }
     return;

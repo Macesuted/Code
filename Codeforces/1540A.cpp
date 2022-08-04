@@ -72,8 +72,7 @@ void work(void) {
     for (register int i = 1; i <= n; i++) cin >> a[i];
     sort(a + 2, a + n + 1);
     long long answer = 0;
-    for (register int i = 2; i <= n; i++)
-        answer -= ((i - 1) * (n - i + 1) - 1) * (a[i] - a[i - 1]);
+    for (register int i = 2; i <= n; i++) answer -= ((i - 1) * (n - i + 1) - 1) * (a[i] - a[i - 1]);
     cout << answer << endl;
     return;
 }

@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -99,7 +101,8 @@ void Dijkstra(int start) {
 void dfs(int p, int pre = 0) {
     f[p][0] = pre, dep[p] = dep[pre] + 1;
     for (register int i = 1; i < maxlgn; i++) f[p][i] = f[f[p][i - 1]][i - 1];
-    for (vector<int>::iterator i = tree[p].begin(); i != tree[p].end(); i++) dfs(*i, p), dist[p] = min(dist[p], dist[*i]);
+    for (vector<int>::iterator i = tree[p].begin(); i != tree[p].end(); i++)
+        dfs(*i, p), dist[p] = min(dist[p], dist[*i]);
     return;
 }
 
@@ -109,7 +112,8 @@ int main() {
         int n = read<int>(), m = read<int>(), tn = n;
         graph.resize(n + 1), edges.resize(m), tree.resize(n << 1);
         for (register int i = 0; i < m; i++) {
-            edges[i].from = read<int>(), edges[i].to = read<int>(), edges[i].dist = read<int>(), edges[i].height = read<int>();
+            edges[i].from = read<int>(), edges[i].to = read<int>(), edges[i].dist = read<int>(),
+            edges[i].height = read<int>();
             graph[edges[i].from].push_back((pli){edges[i].dist, edges[i].to});
             graph[edges[i].to].push_back((pli){edges[i].dist, edges[i].from});
         }

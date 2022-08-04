@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -70,8 +72,7 @@ long long dfs(int p, int val, int lcmv, bool op) {
     if (!op && f[p][val][a[lcmv]]) return f[p][val][a[lcmv]];
     int lim = op ? bits[p] : 9;
     long long answer = 0;
-    for (register int i = 0; i <= lim; i++)
-        answer += dfs(p - 1, (val * 10 + i) % 2520, lcm(lcmv, i), op & (i == lim));
+    for (register int i = 0; i <= lim; i++) answer += dfs(p - 1, (val * 10 + i) % 2520, lcm(lcmv, i), op & (i == lim));
     if (!op) f[p][val][a[lcmv]] = answer;
     return answer;
 }

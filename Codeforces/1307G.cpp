@@ -89,7 +89,9 @@ class Dinic {
     int n;
 
    public:
-    void resize(int _n) { return n = _n, graph.resize(n + 1), vis.resize(n + 1), dist.resize(n + 1), pre.resize(n + 1); }
+    void resize(int _n) {
+        return n = _n, graph.resize(n + 1), vis.resize(n + 1), dist.resize(n + 1), pre.resize(n + 1);
+    }
     void addEdge(int from, int to, int cap, int cost) {
         return graph[from].push_back(Edge{to, cap, cost, (int)graph[to].size()}),
                graph[to].push_back(Edge{from, 0, -cost, (int)graph[from].size() - 1});

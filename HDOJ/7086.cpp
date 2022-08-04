@@ -2,9 +2,9 @@
  * @file 7086.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-08
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>

@@ -12,8 +12,7 @@ inline T read() {
     char c = getchar();
     for (; c < '0' || c > '9'; c = getchar())
         if (c == '-') f = -1;
-    for (; c <= '9' && c >= '0'; c = getchar())
-        x = x * 10 + (c & 15);
+    for (; c <= '9' && c >= '0'; c = getchar()) x = x * 10 + (c & 15);
     return x * f;
 }
 
@@ -35,8 +34,7 @@ void dfs(int p) {
     if (tree[p].empty()) return f[p] = 0x3f3f3f3f, siz[p] = c[p], void();
     int l = tree[p][0], r = tree[p][1];
     dfs(l), dfs(r), siz[p] = siz[l] + siz[r];
-    f[p] = max(min({v[p] - siz[l], f[l], f[r] - siz[l]}),
-               min({v[p] - siz[r], f[r], f[l] - siz[r]}));
+    f[p] = max(min({v[p] - siz[l], f[l], f[r] - siz[l]}), min({v[p] - siz[r], f[r], f[l] - siz[r]}));
     return;
 }
 

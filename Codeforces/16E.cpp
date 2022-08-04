@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -69,8 +71,7 @@ int main() {
     cin >> n;
     int maxS = 1 << n;
     for (register int i = 0; i < n; i++)
-        for (register int j = 0; j < n; j++)
-            cin >> a[i][j];
+        for (register int j = 0; j < n; j++) cin >> a[i][j];
     for (register int i = 1; i < maxS; i++) cnt[i] = cnt[i >> 1] + (i & 1);
     f[maxS - 1] = 1;
     for (register int i = maxS - 2; i; i--)

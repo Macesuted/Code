@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -91,6 +93,7 @@ int main() {
     write((int)answer.size()), putch('\n');
     for (vector<int>::iterator i = answer.begin(); i != answer.end(); i++) write(*i), putch(' ');
     if (!answer.empty()) putch('\n');
-    for (register int i = 1; i <= k; i++) write(from[i]), putch(' '), write(to[i]), putch(' '), write(w[i]), putch('\n');
+    for (register int i = 1; i <= k; i++)
+        write(from[i]), putch(' '), write(to[i]), putch(' '), write(w[i]), putch('\n');
     return 0;
 }

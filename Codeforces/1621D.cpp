@@ -76,14 +76,12 @@ int c[max2n][max2n];
 void solve(void) {
     int n = read<int>();
     for (int i = 1; i <= n * 2; i++)
-        for (int j = 1; j <= n * 2; j++)
-            c[i][j] = read<int>();
+        for (int j = 1; j <= n * 2; j++) c[i][j] = read<int>();
     long long sum = 0;
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= n; j++)
-            sum += c[i][j] + c[i + n][j + n];
-    cout << sum + min({c[1][n + 1], c[1][2 * n], c[n][n + 1], c[n][2 * n],
-                       c[n + 1][1], c[n + 1][n], c[2 * n][1], c[2 * n][n]})
+        for (int j = 1; j <= n; j++) sum += c[i][j] + c[i + n][j + n];
+    cout << sum + min({c[1][n + 1], c[1][2 * n], c[n][n + 1], c[n][2 * n], c[n + 1][1], c[n + 1][n], c[2 * n][1],
+                       c[2 * n][n]})
          << endl;
     return;
 }

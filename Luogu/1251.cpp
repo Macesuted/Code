@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -79,9 +81,8 @@ class ZkwCostFlow {
                     dist[i->to] = dist[p] - i->cost;
                     if (!vis[i->to]) {
                         vis[i->to] = true;
-                        (!que.empty() && dist[i->to] < dist[que.front()])
-                            ? que.push_front(i->to)
-                            : que.push_back(i->to);
+                        (!que.empty() && dist[i->to] < dist[que.front()]) ? que.push_front(i->to)
+                                                                          : que.push_back(i->to);
                     }
                 }
             vis[p] = false;

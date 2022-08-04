@@ -107,7 +107,8 @@ void solve(void) {
                 string sta = ch[t ^ 2] + stat;
                 if (fo[tx][ty]) ts |= 1 << (fo[tx][ty] - 1);
                 if (!fo[tx][ty]) sta.pop_back();
-                if (tx < 1 || tx > n || ty < 1 || ty > m || a[tx][ty] == 0 || !valid[sta.size() + 1].count(sta)) continue;
+                if (tx < 1 || tx > n || ty < 1 || ty > m || a[tx][ty] == 0 || !valid[sta.size() + 1].count(sta))
+                    continue;
                 int staid = valid[sta.size() + 1][sta];
                 if (dist[ts][tx][ty][staid] <= d + abs(a[x][y] - a[tx][ty]) + 1) continue;
                 dist[ts][tx][ty][staid] = d + abs(a[x][y] - a[tx][ty]) + 1, last[ts][tx][ty][staid] = {s, x, y, statid};

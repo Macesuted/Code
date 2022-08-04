@@ -21,8 +21,7 @@ long long getSolution(long long a, long long b, long long &x, long long &y) {
 struct Ans {
     long long x, y;
     inline bool operator<(const Ans &oth) const {
-        return abs(x) + abs(y) < abs(oth.x) + abs(oth.y) ||
-               (abs(x) + abs(y) == abs(oth.x) + abs(oth.y) && x <= y);
+        return abs(x) + abs(y) < abs(oth.x) + abs(oth.y) || (abs(x) + abs(y) == abs(oth.x) + abs(oth.y) && x <= y);
     }
 };
 

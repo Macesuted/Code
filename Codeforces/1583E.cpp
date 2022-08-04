@@ -74,8 +74,7 @@ void solve(void) {
             cout << endl;
         }
     } else {
-        cout << "NO" << endl
-             << cnt << endl;
+        cout << "NO" << endl << cnt << endl;
     }
     return;
 }

@@ -13,7 +13,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -73,8 +75,7 @@ int main() {
             cac[i][j] = (cac[i][j - 1] + f[i - 1][j]) % mod, f[i][j] = (f[i][j - 1] + cac[i][j]) % mod;
     }
     for (register int i = 1; i <= n; i++)
-        for (register int j = 0; j <= m - 2; j++)
-            g[i][j] = (g[i - 1][j] + f[i][j]) % mod;
+        for (register int j = 0; j <= m - 2; j++) g[i][j] = (g[i - 1][j] + f[i][j]) % mod;
     memset(cac, 0, sizeof(cac));
     for (register int i = 1; i < n; i++)
         for (register int j = 1; j <= m - 2; j++)

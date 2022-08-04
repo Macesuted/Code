@@ -81,8 +81,7 @@ vector<vector<pii>> graph;
 void solve(void) {
     int n = read<int>(), k = read<int>();
     for (int i = 1; i <= k; i++)
-        for (int j = 1; j <= k; j++)
-            dow[i][j] = rig[i][j] = 0;
+        for (int j = 1; j <= k; j++) dow[i][j] = rig[i][j] = 0;
     for (int i = 1; i <= n; i++) {
         int r1 = read<int>(), c1 = read<int>(), r2 = read<int>(), c2 = read<int>();
         if (r1 > r2 || c1 > c2) swap(r1, r2), swap(c1, c2);
@@ -99,14 +98,17 @@ void solve(void) {
     }
     graph.clear(), graph.resize((k + 1) * (k + 1) + 1);
 #define _(x, y) (((x)-1) * (k + 1) + (y))
-    for (int i = 1; i <= k; i++) graph[_(1, i)].emplace_back(_(1, i + 1), 0), graph[_(1, i + 1)].emplace_back(_(1, i), 0);
     for (int i = 1; i <= k; i++)
-        for (int j = 1; j <= k; j++) graph[_(i + 1, j)].emplace_back(_(i + 1, j + 1), dow[i][j]),
-                                     graph[_(i + 1, j + 1)].emplace_back(_(i + 1, j), dow[i][j]);
+        graph[_(1, i)].emplace_back(_(1, i + 1), 0), graph[_(1, i + 1)].emplace_back(_(1, i), 0);
+    for (int i = 1; i <= k; i++)
+        for (int j = 1; j <= k; j++)
+            graph[_(i + 1, j)].emplace_back(_(i + 1, j + 1), dow[i][j]),
+                graph[_(i + 1, j + 1)].emplace_back(_(i + 1, j), dow[i][j]);
     for (int i = 1; i <= k; i++) {
         graph[_(i, 1)].emplace_back(_(i + 1, 1), 0), graph[_(i + 1, 1)].emplace_back(_(i, 1), 0);
-        for (int j = 1; j <= k; j++) graph[_(i, j + 1)].emplace_back(_(i + 1, j + 1), rig[i][j]),
-                                     graph[_(i + 1, j + 1)].emplace_back(_(i, j + 1), rig[i][j]);
+        for (int j = 1; j <= k; j++)
+            graph[_(i, j + 1)].emplace_back(_(i + 1, j + 1), rig[i][j]),
+                graph[_(i + 1, j + 1)].emplace_back(_(i, j + 1), rig[i][j]);
     }
     static priority_queue<pii, vector<pii>, greater<pii>> que;
     while (!que.empty()) que.pop();
@@ -118,8 +120,7 @@ void solve(void) {
         if (vis[p]) continue;
         vis[p] = true;
         for (auto i : graph[p])
-            if (dist[i.first] > dist[p] + i.second)
-                que.emplace(dist[i.first] = dist[p] + i.second, i.first);
+            if (dist[i.first] > dist[p] + i.second) que.emplace(dist[i.first] = dist[p] + i.second, i.first);
     }
     cout << n - dist[_(k / 2 + 1, k / 2 + 1)] << endl;
 #undef _

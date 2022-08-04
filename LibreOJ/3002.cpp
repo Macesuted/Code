@@ -2,9 +2,9 @@
  * @file 3002.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-03-22
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -79,13 +79,12 @@ void solve(void) {
     C[n + 1] = A[n + 1] = 114514, C[n + 2] = A[n + 2] = 1919810;
     int ans = 0, minV = numeric_limits<int>::min();
     for (int a = 1; a <= n + 2; a++)
-        for (int b = 1; b <= n + 2; b++)
-            f[a][b][0][0] = f[a][b][0][1] = f[a][b][1][0] = f[a][b][1][1] = minV;
+        for (int b = 1; b <= n + 2; b++) f[a][b][0][0] = f[a][b][0][1] = f[a][b][1][0] = f[a][b][1][1] = minV;
     f[1][2][1][0] = f[1][2][1][1] = 0;
     for (int c = 3; c <= n + 2; c++) {
         int tc = c & 1;
         for (int a = 1; a < c - 1; a++)
-            for (int b = a + 1; b < c; b++) 
+            for (int b = a + 1; b < c; b++)
                 if (f[a][b][tc][0] != minV || f[a][b][tc][1] != minV) {
                     int va = f[a][b][tc][0] + V[a], vc = f[a][b][tc][1] + V[c];
                     qmax(ans, va), qmax(ans, vc);

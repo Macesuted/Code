@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -73,8 +75,7 @@ bool check(int p, int _col = 1) {
     vec.push_back(p);
     col[p] = _col;
     for (auto i : graph[p])
-        if (!check(i, 3 - _col))
-            return false;
+        if (!check(i, 3 - _col)) return false;
     return true;
 }
 int bfs(int p) {
@@ -88,8 +89,7 @@ int bfs(int p) {
             int p = que.front();
             que.pop();
             for (auto i : graph[p])
-                if (vis[i] != tim)
-                    vis[i] = tim, cache.push(i);
+                if (vis[i] != tim) vis[i] = tim, cache.push(i);
         }
         que = cache;
     }

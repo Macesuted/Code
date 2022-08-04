@@ -1,8 +1,8 @@
 /**
  * @author Macesuted
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -21,7 +21,9 @@ inline void flush(void) {
     return;
 }
 
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -102,7 +104,8 @@ int main() {
         for (register int j = 1; j <= n; j++) cin >> inp[i][j];
     for (register int i = 1; i <= n; i++)
         for (register int j = 1; j <= n; j++)
-            gauss.a[i][j] = 2 * (inp[i][j] - inp[i + 1][j]), gauss.a[i][0] += inp[i][j] * inp[i][j] - inp[i + 1][j] * inp[i + 1][j];
+            gauss.a[i][j] = 2 * (inp[i][j] - inp[i + 1][j]),
+            gauss.a[i][0] += inp[i][j] * inp[i][j] - inp[i + 1][j] * inp[i + 1][j];
     gauss.n = gauss.m = n;
     gauss.work();
     for (register int i = 1; i <= n; i++) printf("%.3lf%c", gauss.a[i][0], " \n"[i == n]);

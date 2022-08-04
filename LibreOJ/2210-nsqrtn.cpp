@@ -2,7 +2,7 @@
  * @file 2210-nsqrtn.cpp
  * @author Macesuted Moe (i@macesuted.moe)
  * @date 2022-03-16
- * 
+ *
  * @copyright Copyright (c) 2022
  * @brief
  *      Time Limit: 1S  Memory Limit: 256M

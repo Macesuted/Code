@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -78,7 +80,8 @@ int main() {
         while (a[i - p[i]] == a[i + p[i]]) p[i]++;
         if (i + p[i] > r) r = (mid = i) + p[i] - 1;
     }
-    for (register int i = 1; i <= n; i++) f[(i + 1) / 2]++, f[(i + p[i]) / 2]--, g[(i - p[i] + 2) / 2]++, g[(i + 2) / 2]--;
+    for (register int i = 1; i <= n; i++)
+        f[(i + 1) / 2]++, f[(i + p[i]) / 2]--, g[(i - p[i] + 2) / 2]++, g[(i + 2) / 2]--;
     n = n / 2 - 1;
     for (register int i = 1; i <= n; i++) f[i] = (f[i] + f[i - 1]) % mod, g[i] = (g[i] + g[i - 1]) % mod;
     for (register int i = n; i; i--) g[i] = (g[i] + g[i + 1]) % mod;

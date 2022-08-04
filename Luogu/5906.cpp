@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -55,7 +57,9 @@ int a[maxn], b[maxn];
 
 struct Ask {
     int l, r, bell, id;
-    inline bool operator<(const Ask& oth) const { return this->bell != oth.bell ? this->bell < oth.bell : this->r < oth.r; }
+    inline bool operator<(const Ask& oth) const {
+        return this->bell != oth.bell ? this->bell < oth.bell : this->r < oth.r;
+    }
 };
 
 Ask ask[maxn];
@@ -89,12 +93,14 @@ int main() {
         int pl = (ask[i].l / block + 1) * block;
         if (pl != l) l = pl, r = pl - 1, clear();
         while (r < ask[i].r) add(++r);
-        for (register int j = min(pl - 1, ask[i].r); j >= ask[i].l; j--) pack[0][a[j]] = minPos[a[j]], pack[1][a[j]] = maxPos[a[j]];
+        for (register int j = min(pl - 1, ask[i].r); j >= ask[i].l; j--)
+            pack[0][a[j]] = minPos[a[j]], pack[1][a[j]] = maxPos[a[j]];
         int tatAns = ans;
         for (register int j = min(pl - 1, ask[i].r); j >= ask[i].l; j--) add(j);
         answer[ask[i].id] = ans;
         ans = tatAns;
-        for (register int j = min(pl - 1, ask[i].r); j >= ask[i].l; j--) minPos[a[j]] = pack[0][a[j]], maxPos[a[j]] = pack[1][a[j]];
+        for (register int j = min(pl - 1, ask[i].r); j >= ask[i].l; j--)
+            minPos[a[j]] = pack[0][a[j]], maxPos[a[j]] = pack[1][a[j]];
     }
     for (register int i = 1; i <= q; i++) write(answer[i]), putch('\n');
     return 0;

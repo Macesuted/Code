@@ -39,7 +39,8 @@ class SegmentTree1 {
     }
     void build(int p, int l, int r, int a[]) {
         if (l == r)
-            return tree[p].sum[0] = 0, tree[p].sum[1] = a[l], tree[p].ans = 0, tree[p].lazy = -1, tree[p].len = 1, void();
+            return tree[p].sum[0] = 0, tree[p].sum[1] = a[l], tree[p].ans = 0, tree[p].lazy = -1, tree[p].len = 1,
+                   void();
         int mid = (l + r) >> 1;
         build(p << 1, l, mid, a), build(p << 1 | 1, mid + 1, r, a);
         return tree[p] = tree[p << 1] + tree[p << 1 | 1], void();
@@ -131,7 +132,9 @@ void solve(void) {
                     v ^= true, p = top[p];
                 }
                 if (fa[p]) {
-                    if (v) ST1.update(dfni[fa[p]], 0), ST2.update(dfni[fa[p]], dfni[fa[p]], false), ST2.update(dfni[fa[p]], 1);
+                    if (v)
+                        ST1.update(dfni[fa[p]], 0), ST2.update(dfni[fa[p]], dfni[fa[p]], false),
+                            ST2.update(dfni[fa[p]], 1);
                     if (!v)
                         ST1.update(dfni[fa[p]], 1), ST2.update(dfni[fa[p]], dfni[fa[p]], true),
                             ST2.update(dfni[fa[p]], a[dfni[fa[p]]] - 1);

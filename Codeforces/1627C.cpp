@@ -24,8 +24,7 @@ int ans[maxn];
 
 void dfs(int p, int col = 1, int pre = -1) {
     for (auto i : graph[p])
-        if (i.first != pre)
-            ans[i.second] = col, dfs(i.first, !col, p);
+        if (i.first != pre) ans[i.second] = col, dfs(i.first, !col, p);
     return;
 }
 
@@ -40,8 +39,7 @@ void solve(void) {
         graph[x].emplace_back(y, i), graph[y].emplace_back(x, i);
     }
     for (int i = 1; i <= n; i++)
-        if ((int)graph[i].size() > 2)
-            return cout << -1 << endl, void();
+        if ((int)graph[i].size() > 2) return cout << -1 << endl, void();
     for (int i = 1; i <= n; i++)
         if ((int)graph[i].size() == 1) {
             dfs(i);

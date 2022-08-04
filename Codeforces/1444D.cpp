@@ -2,9 +2,9 @@
  * @file 1444D.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-01
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -80,8 +80,7 @@ bool solve(int n, vector<int>& x, vector<int>& y) {
     f[0] = 0;
     for (int i = 0; i < n; i++)
         for (int j = sum; j >= x[i]; j--)
-            if (f[j] < 0 && f[j - x[i]] >= 0)
-                f[j] = j - x[i];
+            if (f[j] < 0 && f[j - x[i]] >= 0) f[j] = j - x[i];
     if (f[sum] < 0) return false;
     int p = sum;
     while (p) y.push_back(f[p] - p), del[p - f[p]]++, p = f[p];

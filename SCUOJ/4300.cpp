@@ -29,7 +29,8 @@ void solve(int n) {
     for (int i = 1; i <= n; i++) cin >> get<1>(a[i]);
     for (int i = 1; i <= n; i++) cin >> get<2>(a[i]);
     long long sum = 0;
-    for (int i = 1; i <= n; i++) A[i] = get<0>(a[i]), B[i] = get<1>(a[i]), C[i] = get<2>(a[i]), sum += A[i] + B[i] + C[i];
+    for (int i = 1; i <= n; i++)
+        A[i] = get<0>(a[i]), B[i] = get<1>(a[i]), C[i] = get<2>(a[i]), sum += A[i] + B[i] + C[i];
     sort(A + 1, A + n + 1), sort(B + 1, B + n + 1), sort(C + 1, C + n + 1);
     for (int i = 1; i <= n; i++)
         get<0>(a[i]) = lower_bound(A + 1, A + n + 1, get<0>(a[i])) - A,

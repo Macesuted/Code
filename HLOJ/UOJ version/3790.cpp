@@ -110,15 +110,13 @@ void solve(void) {
             if (l == r) r = l % (n - 1) + 1, p = 1;
             while (r != l && Q[r].p != 1 && in(Q[r].fv, Q[l].fv, Q[l].fv + PI))
                 p = p * (mod + 1 - Q[r].p) % mod, r = r % (n - 1) + 1;
-            if (r != l && Q[r].p == 1 && in(Q[r].fv, Q[l].fv, Q[l].fv + PI))
-                continue;
+            if (r != l && Q[r].p == 1 && in(Q[r].fv, Q[l].fv, Q[l].fv + PI)) continue;
             ans = (ans + p * Q[l].p % mod * P[i].p) % mod;
         }
     }
     f[0] = 1;
     for (int i = 1; i <= n; i++) {
-        for (int j = i; j; j--)
-            f[j] = (f[j] * (mod + 1 - P[i].p) + f[j - 1] * P[i].p) % mod;
+        for (int j = i; j; j--) f[j] = (f[j] * (mod + 1 - P[i].p) + f[j - 1] * P[i].p) % mod;
         f[0] = f[0] * (mod + 1 - P[i].p) % mod;
     }
     long long ans2 = 0;

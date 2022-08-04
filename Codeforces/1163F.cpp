@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -165,12 +167,13 @@ class SPT {
             que.pop();
             if (vis[p.second]) continue;
             vis[p.second] = true;
-            if (pre[p.second]) tree[pre[p.second]].push_back((pli){dist[p.second] - dist[pre[p.second]], p.second, pid[p.second]}),
-                               tree[p.second].push_back((pli){dist[p.second] - dist[pre[p.second]], pre[p.second], pid[p.second]});
+            if (pre[p.second])
+                tree[pre[p.second]].push_back((pli){dist[p.second] - dist[pre[p.second]], p.second, pid[p.second]}),
+                    tree[p.second].push_back((pli){dist[p.second] - dist[pre[p.second]], pre[p.second], pid[p.second]});
             for (vector<pli>::iterator i = graph[p.second].begin(); i != graph[p.second].end(); i++)
                 if (dist[i->second] > dist[p.second] + i->first)
-                    que.push((pli){dist[i->second] = dist[p.second] + i->first, i->second}),
-                        pre[i->second] = p.second, pid[i->second] = i->id;
+                    que.push((pli){dist[i->second] = dist[p.second] + i->first, i->second}), pre[i->second] = p.second,
+                                                                                             pid[i->second] = i->id;
         }
         dfs1(root, 0);
         return;
@@ -212,8 +215,8 @@ int main() {
     for (register int i = 0; i < (int)Snodes.size(); i++) pos[Snodes[i]] = i;
     sgtree.build(n);
     for (register int i = 1; i <= m; i++)
-        if (!S.count(i)) work(edges[i].from, edges[i].to, edges[i].dist),
-                         work(edges[i].to, edges[i].from, edges[i].dist);
+        if (!S.count(i))
+            work(edges[i].from, edges[i].to, edges[i].dist), work(edges[i].to, edges[i].from, edges[i].dist);
     // for (register int i = 0; i < (int)Snodes.size(); i++) printf("%d ", Snodes[i]);
     // puts("");
     // for (register int i = 1; i < (int)Snodes.size(); i++) printf("%lld ", sgtree.get(i));

@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -65,24 +67,21 @@ int a[maxn][maxn];
 
 void insert(int id, int x, int y, int val) {
     for (register int i = x; i < maxn; i += i & -i)
-        for (register int j = y; j < maxn; j += j & -j)
-            tree[id][i][j] += val;
+        for (register int j = y; j < maxn; j += j & -j) tree[id][i][j] += val;
     return;
 }
 int getSum(int id, int x, int y) {
     if (x == 0 || y == 0) return 0;
     int sum = 0;
     for (register int i = x; i; i -= i & -i)
-        for (register int j = y; j; j -= j & -j)
-            sum += tree[id][i][j];
+        for (register int j = y; j; j -= j & -j) sum += tree[id][i][j];
     return sum;
 }
 
 int main() {
     int n = read<int>(), m = read<int>();
     for (register int i = 1; i <= n; i++)
-        for (register int j = 1; j <= m; j++)
-            insert(a[i][j] = read<int>(), i, j, 1);
+        for (register int j = 1; j <= m; j++) insert(a[i][j] = read<int>(), i, j, 1);
     int q = read<int>();
     while (q--)
         if (read<int>() == 1) {
@@ -90,7 +89,8 @@ int main() {
             insert(a[x][y], x, y, -1), insert(a[x][y] = c, x, y, 1);
         } else {
             int X1 = read<int>(), X2 = read<int>(), Y1 = read<int>(), Y2 = read<int>(), c = read<int>();
-            write(getSum(c, X2, Y2) - getSum(c, X1 - 1, Y2) - getSum(c, X2, Y1 - 1) + getSum(c, X1 - 1, Y1 - 1)), putch('\n');
+            write(getSum(c, X2, Y2) - getSum(c, X1 - 1, Y2) - getSum(c, X2, Y1 - 1) + getSum(c, X1 - 1, Y1 - 1)),
+                putch('\n');
         }
     return 0;
 }

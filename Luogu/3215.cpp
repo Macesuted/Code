@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -98,7 +100,8 @@ class FhqTreap {
     inline void markInvert(Node* p) {
         if (p == NULL) return;
         p->lazyInvert ^= true;
-        p->val = -p->val, p->sum = -p->sum, p->lMin = -p->lMin, p->lMax = -p->lMax, p->rMin = -p->rMin, p->rMax = -p->rMax;
+        p->val = -p->val, p->sum = -p->sum, p->lMin = -p->lMin, p->lMax = -p->lMax, p->rMin = -p->rMin,
+        p->rMax = -p->rMax;
         swap(p->lMin, p->lMax), swap(p->rMin, p->rMax);
         return;
     }

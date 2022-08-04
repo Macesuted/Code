@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -142,8 +144,7 @@ int main() {
     tree.resize(n), tree.build();
     for (register int r = 2; r <= n; r++) {
         tree.update(1, r - 1, a[r]);
-        for (vector<Ask>::iterator i = ask[r].begin(); i != ask[r].end(); i++)
-            answer[i->id] = tree.getAns(i->l, r);
+        for (vector<Ask>::iterator i = ask[r].begin(); i != ask[r].end(); i++) answer[i->id] = tree.getAns(i->l, r);
     }
     for (register int i = 1; i <= m; i++) write(answer[i]), putch('\n');
     return 0;

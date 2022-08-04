@@ -13,7 +13,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -98,8 +100,7 @@ void rollback(void) {
 void dfs(int p, int l, int r, int lim) {
     for (vector<Edge>::iterator i = tree[p].begin(); i != tree[p].end(); i++)
         if (i->dist <= lim) insert(i->x, i->y);
-    if (l == r && vis[l] && answer[l] == -1 && getfa(ask[l].first) == getfa(ask[l].second))
-        answer[l] = lim;
+    if (l == r && vis[l] && answer[l] == -1 && getfa(ask[l].first) == getfa(ask[l].second)) answer[l] = lim;
     int mid = (l + r) >> 1;
     if (l != r) dfs(p << 1, l, mid, lim), dfs(p << 1 | 1, mid + 1, r, lim);
     for (vector<Edge>::iterator i = tree[p].begin(); i != tree[p].end(); i++)

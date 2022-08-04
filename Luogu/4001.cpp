@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -74,8 +76,7 @@ class Dinic {
             int p = que.front();
             que.pop();
             for (typename vector<Edge>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
-                if (!vis[i->to] && i->cap > i->flow)
-                    que.push(i->to), vis[i->to] = true, h[i->to] = h[p] + 1;
+                if (!vis[i->to] && i->cap > i->flow) que.push(i->to), vis[i->to] = true, h[i->to] = h[p] + 1;
         }
         return vis[T];
     }
@@ -142,14 +143,11 @@ int main() {
     n = read<int>(), m = read<int>();
     dinic.INIT(n * m);
     for (register int i = 1, t; i <= n; i++)
-        for (register int j = 1; j < m; j++)
-            t = read<int>(), dinic.addEdge(turn(i, j), turn(i, j + 1), t);
+        for (register int j = 1; j < m; j++) t = read<int>(), dinic.addEdge(turn(i, j), turn(i, j + 1), t);
     for (register int i = 1, t; i < n; i++)
-        for (register int j = 1; j <= m; j++)
-            t = read<int>(), dinic.addEdge(turn(i, j), turn(i + 1, j), t);
+        for (register int j = 1; j <= m; j++) t = read<int>(), dinic.addEdge(turn(i, j), turn(i + 1, j), t);
     for (register int i = 1, t; i < n; i++)
-        for (register int j = 1; j < m; j++)
-            t = read<int>(), dinic.addEdge(turn(i, j), turn(i + 1, j + 1), t);
+        for (register int j = 1; j < m; j++) t = read<int>(), dinic.addEdge(turn(i, j), turn(i + 1, j + 1), t);
     write(dinic.maxFlow(1, n * m)), putch('\n');
     return 0;
 }

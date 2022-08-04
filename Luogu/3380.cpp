@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -198,7 +200,8 @@ int main() {
             int vl = -1, vr = 1e8;
             while (vl + 1 < vr) {
                 int mid = (vl + vr) >> 1, cnt = 0;
-                for (vector<FhqTreap<int>*>::iterator i = nodes.begin(); i != nodes.end(); i++) cnt += (*i)->rank(mid) - 1;
+                for (vector<FhqTreap<int>*>::iterator i = nodes.begin(); i != nodes.end(); i++)
+                    cnt += (*i)->rank(mid) - 1;
                 cnt < k ? vl = mid : vr = mid;
             }
             write(vl), putch('\n');

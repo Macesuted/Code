@@ -108,8 +108,7 @@ void solve(void) {
         S.emplace(sum ^ h[i], i);
     }
     for (int i = 1; i <= n; i++) {
-        if (S.find(h[i]) != S.end())
-            return banned.insert(i), banned.insert(S[h[i]]), print(n);
+        if (S.find(h[i]) != S.end()) return banned.insert(i), banned.insert(S[h[i]]), print(n);
     }
     return banned.insert(2), banned.insert(n / 2), banned.insert(n), print(n);
 }

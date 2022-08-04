@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -75,8 +77,7 @@ class Dinic {
             int p = que.front();
             que.pop();
             for (typename vector<Edge>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
-                if (!vis[i->to] && i->cap - i->flow > eps)
-                    que.push(i->to), vis[i->to] = true, h[i->to] = h[p] + 1;
+                if (!vis[i->to] && i->cap - i->flow > eps) que.push(i->to), vis[i->to] = true, h[i->to] = h[p] + 1;
         }
         return vis[T];
     }
@@ -161,7 +162,8 @@ int main() {
                 dinic.addEdge((i - 1) * (m + 1) + j, (i - 1) * (m + 1) + j + 1, f);
                 dinic.addEdge((i - 1) * (m + 1) + j + 1, (i - 1) * (m + 1) + j, INF);
             }
-        for (register int i = 1; i <= n; i++) dinic.addEdge(S, (i - 1) * (m + 1) + 1, INF), dinic.addEdge(i * (m + 1), T, INF);
+        for (register int i = 1; i <= n; i++)
+            dinic.addEdge(S, (i - 1) * (m + 1) + 1, INF), dinic.addEdge(i * (m + 1), T, INF);
         for (register int t = 1; t <= y; t++) {
             int x, y, k;
             scanf("%d%d%d", &x, &y, &k);

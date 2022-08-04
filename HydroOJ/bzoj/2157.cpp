@@ -2,9 +2,9 @@
  * @file 2157.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-18
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -15,7 +15,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -157,8 +159,7 @@ void dfs2(int p, int _top) {
     top[p] = _top;
     if (son[p]) dfs2(son[p], _top);
     for (auto i : graph[p])
-        if (i.first != fa[p] && i.first != son[p])
-            dfs2(i.first, i.first);
+        if (i.first != fa[p] && i.first != son[p]) dfs2(i.first, i.first);
     dfno[p] = tim;
     return;
 }

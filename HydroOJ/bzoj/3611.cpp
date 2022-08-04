@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -102,7 +104,8 @@ void dfs3(int p) {
         else if (maxdep[*i] > max2)
             max2 = maxdep[*i];
     }
-    if (virt[p].size() + choose[p] >= 2) ans2 = min(ans2, min1 + min2 - 2 * dep[p]), ans3 = max(ans3, max1 + max2 - 2 * dep[p]);
+    if (virt[p].size() + choose[p] >= 2)
+        ans2 = min(ans2, min1 + min2 - 2 * dep[p]), ans3 = max(ans3, max1 + max2 - 2 * dep[p]);
     return;
 }
 

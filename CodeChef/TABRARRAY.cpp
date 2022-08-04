@@ -85,17 +85,16 @@ void dfs1(int p) {
     for (auto x : graph[p]) {
         dfs1(x);
         for (int i = 0; i < maxlgn; i++)
-            for (int j = 0; j <= i; j++)
-                g[i][j] = f[p][i][j];
+            for (int j = 0; j <= i; j++) g[i][j] = f[p][i][j];
         for (int i1 = 0; i1 < maxlgn; i1++)
             for (int j1 = 0; j1 <= i1; j1++)
                 for (int i2 = 1; i1 + i2 < maxlgn; i2++)
                     for (int j2 = 0; j2 <= i2; j2++)
-                        f[p][i1 + i2][max(j1, j2)] = (f[p][i1 + i2][max(j1, j2)] + 1LL * g[i1][j1] * f[x][i2][j2]) % mod;
+                        f[p][i1 + i2][max(j1, j2)] =
+                            (f[p][i1 + i2][max(j1, j2)] + 1LL * g[i1][j1] * f[x][i2][j2]) % mod;
     }
     for (int i = 0; i < maxlgn; i++)
-        for (int j = 0; j <= i; j++)
-            g[i][j] = f[p][i][j], f[p][i][j] = 0;
+        for (int j = 0; j <= i; j++) g[i][j] = f[p][i][j], f[p][i][j] = 0;
     for (int i = 0; i < maxlgn; i++)
         for (int j = 0; j <= i; j++)
             for (int k = j; p == 1 ? (k == j) : (j + k < maxlgn); k++)
@@ -106,8 +105,7 @@ int dfs2(vector<int>::iterator p, long long val, long long k, long long sum) {
     if (p == prime.end() || k / val < 1LL * *p * *p) return k / val % mod * sum % mod;
     long long ans = dfs2(p + 1, val, k, sum);
     val = val * *p;
-    for (int i = 2; k / val >= *p; i++, val *= *p)
-        ans = (ans + dfs2(p + 1, val * *p, k, sum * h[i] % mod)) % mod;
+    for (int i = 2; k / val >= *p; i++, val *= *p) ans = (ans + dfs2(p + 1, val * *p, k, sum * h[i] % mod)) % mod;
     return ans;
 }
 
@@ -118,8 +116,7 @@ void solve(void) {
     for (int i = 2; i <= n; i++) graph[read<int>()].push_back(i);
     dfs1(1);
     for (int i = 0; i < maxlgn; i++)
-        for (int j = 0; j <= i; j++)
-            h[i] = (h[i] + f[1][i][j]) % mod;
+        for (int j = 0; j <= i; j++) h[i] = (h[i] + f[1][i][j]) % mod;
     write(dfs2(prime.begin(), 1, k, 1)), putch('\n');
     return;
 }

@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -107,7 +109,8 @@ long long sum(int p) {
 int main() {
     int n = read<int>(), q = read<int>();
     graph.resize(n + 1);
-    for (register int i = 1; i <= q; i++) ask[i].op = (getstr()[0] == 'Q'), ask[i].x = read<int>(), ask[i].y = read<int>();
+    for (register int i = 1; i <= q; i++)
+        ask[i].op = (getstr()[0] == 'Q'), ask[i].x = read<int>(), ask[i].y = read<int>();
     for (register int i = 0; i <= n; i++) f[i] = i;
     for (register int i = 1; i <= q; i++)
         if (!ask[i].op) {

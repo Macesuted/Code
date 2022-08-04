@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -72,7 +74,8 @@ long long solve(int l, int r) {
         minVal = min(minVal, a[i]), maxVal = max(maxVal, a[i]);
         f[0][i] = (f[0][i - 1] + minVal * (i - mid)) % mod, g[0][i] = (g[0][i - 1] + minVal) % mod;
         f[1][i] = (f[1][i - 1] + maxVal * (i - mid)) % mod, g[1][i] = (g[1][i - 1] + maxVal) % mod;
-        f[2][i] = (f[2][i - 1] + minVal * maxVal % mod * (i - mid)) % mod, g[2][i] = (g[2][i - 1] + minVal * maxVal) % mod;
+        f[2][i] = (f[2][i - 1] + minVal * maxVal % mod * (i - mid)) % mod,
+        g[2][i] = (g[2][i - 1] + minVal * maxVal) % mod;
     }
     long long answer = 0;
     minVal = a[mid], maxVal = a[mid];
@@ -81,12 +84,15 @@ long long solve(int l, int r) {
         while (p1 < r && a[p1 + 1] > minVal) p1++;
         while (p2 < r && a[p2 + 1] < maxVal) p2++;
         register int pl = min(p1, p2), pr = max(p1, p2);
-        if (pl > mid)
-            answer = (answer + minVal * maxVal % mod * ((mid + pl - i * 2 + 3) * (pl - mid) / 2 % mod)) % mod;
+        if (pl > mid) answer = (answer + minVal * maxVal % mod * ((mid + pl - i * 2 + 3) * (pl - mid) / 2 % mod)) % mod;
         if (p1 > pl)
-            answer = (answer + minVal * ((f[1][p1] - f[1][pl] + mod) + (mid - i + 1) * (g[1][p1] - g[1][pl] + mod) % mod)) % mod;
+            answer =
+                (answer + minVal * ((f[1][p1] - f[1][pl] + mod) + (mid - i + 1) * (g[1][p1] - g[1][pl] + mod) % mod)) %
+                mod;
         if (p2 > pl)
-            answer = (answer + maxVal * ((f[0][p2] - f[0][pl] + mod) + (mid - i + 1) * (g[0][p2] - g[0][pl] + mod) % mod)) % mod;
+            answer =
+                (answer + maxVal * ((f[0][p2] - f[0][pl] + mod) + (mid - i + 1) * (g[0][p2] - g[0][pl] + mod) % mod)) %
+                mod;
         answer = (answer + (f[2][r] - f[2][pr] + mod) % mod + (mid - i + 1) * (g[2][r] - g[2][pr] + mod) % mod) % mod;
     }
     return (answer + solve(l, mid) + solve(mid + 1, r)) % mod;

@@ -122,7 +122,8 @@ void tarjan(int p, int pre = -1) {
             tarjan(i.first), low[p] = min(low[p], low[i.first]);
             if (low[i.first] >= dfn[p]) {
                 nodes[++bcnt].push_back(p), tree[p].push_back(n + bcnt);
-                while (ts.top() != i.first) nodes[bcnt].push_back(ts.top()), tree[n + bcnt].push_back(ts.top()), ts.pop();
+                while (ts.top() != i.first)
+                    nodes[bcnt].push_back(ts.top()), tree[n + bcnt].push_back(ts.top()), ts.pop();
                 nodes[bcnt].push_back(ts.top()), tree[n + bcnt].push_back(ts.top()), ts.pop();
             }
         } else if (i.first != pre)
@@ -136,8 +137,9 @@ pll path(int x, int y, int t) {
     if (tx) return {(rsum[t] + (rcnt[t] - 2) * dist[y][x == dd[t][0]][t]) % mod, rcnt[t]};
     if (ty) return {(rsum[t] + (rcnt[t] - 2) * dist[x][y == dd[t][0]][t]) % mod, rcnt[t]};
     if (cbel[x][t] == cbel[y][t])
-        return {(rsum[t] + (rcnt[t] - 2) * (min(dist[x][0][t], dist[y][0][t]) + min(dist[x][1][t], dist[y][1][t]))) % mod,
-                rcnt[t]};
+        return {
+            (rsum[t] + (rcnt[t] - 2) * (min(dist[x][0][t], dist[y][0][t]) + min(dist[x][1][t], dist[y][1][t]))) % mod,
+            rcnt[t]};
     return {(2 * rsum[t] + (rcnt[t] - 3) * (dist[x][0][t] + dist[x][1][t] + dist[y][0][t] + dist[y][1][t])) % mod,
             2 * rcnt[t] - 2};
 }

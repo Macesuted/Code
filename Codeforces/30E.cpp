@@ -48,8 +48,8 @@ void solve(void) {
         if (par[i] * 2 - 1 > ans) ans = par[i] * 2 - 1, pos = -i;
     for (int i = 1; i <= n; i++) {
         int val = par[i] * 2 - 1 + f[i - par[i]].first * 2;
-        if (f[i - par[i]].second + f[i - par[i]].first - 1 < i - par[i] + 1 && i + par[i] - 1 < n - f[i - par[i]].first + 1 &&
-            val > ans)
+        if (f[i - par[i]].second + f[i - par[i]].first - 1 < i - par[i] + 1 &&
+            i + par[i] - 1 < n - f[i - par[i]].first + 1 && val > ans)
             ans = val, pos = i;
     }
     if (pos < 0)

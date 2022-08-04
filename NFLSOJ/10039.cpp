@@ -31,10 +31,8 @@ T read(void) {
 }
 template <typename T>
 void write(T x) {
-    if (!x)
-        return putch('0');
-    if (x < 0)
-        putch('-'), x = -x;
+    if (!x) return putch('0');
+    if (x < 0) putch('-'), x = -x;
     int top = 0;
     while (x) cache1[top++] = x % 10, x /= 10;
     while (top) putch(cache1[--top] ^ 48);
@@ -42,18 +40,15 @@ void write(T x) {
 }
 template <typename T>
 void writeDouble(T x, int dep = 10) {
-    if (x < 0)
-        putch('-'), x = -x;
+    if (x < 0) putch('-'), x = -x;
     __int128 fx = x;
     x -= fx;
     for (int i = 0; i < dep; i++) cache2[i] = (x *= 10), x -= int(x);
     if (int(x * 10) > 4) {
         cache2[dep - 1]++;
         for (int i = dep - 1; i; i--)
-            if (cache2[i] == 10)
-                cache2[i] = 0, cache2[i - 1]++;
-        if (cache2[0] == 10)
-            cache2[0] = 0, fx++;
+            if (cache2[i] == 10) cache2[i] = 0, cache2[i - 1]++;
+        if (cache2[0] == 10) cache2[0] = 0, fx++;
     }
     write(fx), putch('.');
     for (int i = 0; i < dep; i++) putch(cache2[i] ^ 48);
@@ -65,8 +60,7 @@ string getstr(const string& suf = "") {
     for (char* p = Il; Il != Ir; fill(), p = Il) {
         while (Il < Ir && !isspace(*Il) && *Il != EOF) Il++;
         s.append(p, Il);
-        if (Il < Ir)
-            break;
+        if (Il < Ir) break;
     }
     return s;
 }
@@ -76,14 +70,12 @@ string getline(const string& suf = "") {
     for (char* p = Il; Il != Ir; fill(), p = Il) {
         while (Il < Ir && !iseoln(*Il) && *Il != EOF) Il++;
         s.append(p, Il);
-        if (Il < Ir)
-            break;
+        if (Il < Ir) break;
     }
     return s;
 }
 void putstr(string str, int begin = 0, int end = -1) {
-    if (end == -1)
-        end = str.size();
+    if (end == -1) end = str.size();
     for (int i = begin; i < end; i++) putch(str[i]);
     return;
 }
@@ -117,8 +109,7 @@ void solve(void) {
     for (uint64_t t = k; t <= (uint64_t)r; t *= k)
         for (int64_t i = (l / t + 1) * t; i <= r; i += t) cnt[i - l] = Mod(cnt[i - l] + 1, k);
     uint32_t ans = 0, sum = calc(l, k);
-    for (int64_t i = l, ti = l % 20000116; i <= r;
-         sum = Mod(sum + cnt[++i - l] + 1, k), ti = Mod(ti + 1, 20000116))
+    for (int64_t i = l, ti = l % 20000116; i <= r; sum = Mod(sum + cnt[++i - l] + 1, k), ti = Mod(ti + 1, 20000116))
         ans += sum * uint32_t((ti * ti + i + 804) / 233);
     for (uint64_t t = k; t <= (uint64_t)r; t *= k)
         for (int64_t i = (l / t + 1) * t; i <= r; i += t) cnt[i - l] = 0;

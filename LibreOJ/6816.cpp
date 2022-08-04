@@ -171,7 +171,8 @@ bool checkC(void) {
                         for (auto& j15 : i15.second) {
                             int y15 = i15.first, l15 = j15.first, r15 = j15.second;
                             if (j15 == pii{-1, -1} || !check(p2, y15, j15, 1)) continue;
-                            if (d13 == y15 && y15 < u13 && u13 == y14 && x13 == l14 && l14 == l15 && l15 < r14 && r14 == r15)
+                            if (d13 == y15 && y15 < u13 && u13 == y14 && x13 == l14 && l14 == l15 && l15 < r14 &&
+                                r14 == r15)
                                 return j13 = j14 = j15 = {-1, -1}, true;
                         }
                 }

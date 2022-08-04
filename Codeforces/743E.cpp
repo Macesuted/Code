@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -75,7 +77,8 @@ bool check(int lim) {
                     if (!(j >> k & 1)) {
                         int p = cnt[k] + lim - 1;
                         if (p < pos[k].size()) f[pos[k][p]][j | (1 << k)] = max(f[pos[k][p]][j | (1 << k)], f[i][j]);
-                        if (p + 1 < pos[k].size()) f[pos[k][p + 1]][j | (1 << k)] = max(f[pos[k][p + 1]][j | (1 << k)], f[i][j] + 1);
+                        if (p + 1 < pos[k].size())
+                            f[pos[k][p + 1]][j | (1 << k)] = max(f[pos[k][p + 1]][j | (1 << k)], f[i][j] + 1);
                     }
         if (i) cnt[a[i]]++;
     }

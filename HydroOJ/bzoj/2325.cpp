@@ -2,9 +2,9 @@
  * @file 2325.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-19
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -147,8 +147,7 @@ void dfs2(int p, int _top) {
     dfni[p] = ++tim, top[p] = _top;
     if (son[p]) dfs2(son[p], _top);
     for (auto i : graph[p])
-        if (i != fa[p] && i != son[p])
-            dfs2(i, i);
+        if (i != fa[p] && i != son[p]) dfs2(i, i);
     dfno[p] = tim;
     return;
 }

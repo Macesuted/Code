@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -70,8 +72,7 @@ int match[maxn];
 long long sum(int l, int r) {
     long long sum = 0;
     for (register int i = 0; i < 3; i++)
-        for (register int j = 0; j < 3; j++)
-            sum += f[l][r][i][j];
+        for (register int j = 0; j < 3; j++) sum += f[l][r][i][j];
     return sum % mod;
 }
 void dfs(int l, int r) {
@@ -94,8 +95,7 @@ void dfs(int l, int r) {
         for (register int b = 0; b < 3; b++)
             for (register int x = 0; x < 3; x++)
                 for (register int y = 0; y < 3; y++)
-                    if (x != y || x == 0)
-                        f[l][r][a][b] = (f[l][r][a][b] + f[l][p][a][x] * f[p + 1][r][y][b]) % mod;
+                    if (x != y || x == 0) f[l][r][a][b] = (f[l][r][a][b] + f[l][p][a][x] * f[p + 1][r][y][b]) % mod;
     return;
 }
 

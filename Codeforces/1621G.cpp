@@ -95,11 +95,14 @@ pii b[maxn];
 void solve(void) {
     int n = read<int>();
     for (int i = 1; i <= n; i++) b[i] = {a[i] = read<int>(), i};
-    sort(b + 1, b + n + 1, [](pii a, pii b) { return a.first < b.first || (a.first == b.first && a.second > b.second); });
+    sort(b + 1, b + n + 1,
+         [](pii a, pii b) { return a.first < b.first || (a.first == b.first && a.second > b.second); });
     for (int i = 1; i <= n; i++) FT.add(b[i].second, f[b[i].second] = (FT.sum(b[i].second) + 1) % mod);
     for (int i = 1; i <= n; i++) FT.add(i, -f[i]);
-    sort(b + 1, b + n + 1, [](pii a, pii b) { return a.first > b.first || (a.first == b.first && a.second < b.second); });
-    for (int i = 1; i <= n; i++) FT.add(b[i].second, g[b[i].second] = (FT.sum(n) + mod - FT.sum(b[i].second) + 1) % mod);
+    sort(b + 1, b + n + 1,
+         [](pii a, pii b) { return a.first > b.first || (a.first == b.first && a.second < b.second); });
+    for (int i = 1; i <= n; i++)
+        FT.add(b[i].second, g[b[i].second] = (FT.sum(n) + mod - FT.sum(b[i].second) + 1) % mod);
     for (int i = 1; i <= n; i++) FT.add(i, -g[i]);
     vector<pii> sta;
     for (int i = n, last = 0; i; i--)
@@ -117,7 +120,8 @@ void solve(void) {
         } else {
             int cnt = (FT.sum(n) + mod - FT.sum(b[i].second)) % mod;
             if (b[i].second > p) cnt = 1;
-            FT.add(b[i].second, cnt), cache.emplace(b[i].second, cnt), ans = (ans + mod - 1LL * cnt * f[b[i].second] % mod) % mod;
+            FT.add(b[i].second, cnt), cache.emplace(b[i].second, cnt),
+                ans = (ans + mod - 1LL * cnt * f[b[i].second] % mod) % mod;
         }
     }
     while (!cache.empty()) FT.add(cache.top().first, -cache.top().second), cache.pop();

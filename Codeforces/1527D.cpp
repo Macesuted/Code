@@ -57,7 +57,8 @@ void work(void) {
     }
     dfs(1, 0);
     f[0] = 1LL * n * (n - 1) / 2, f[1] = 0;
-    for (vector<int>::iterator i = graph[1].begin(); i != graph[1].end(); i++) f[1] += 1LL * siz[*i] * (n - siz[*i] - 1);
+    for (vector<int>::iterator i = graph[1].begin(); i != graph[1].end(); i++)
+        f[1] += 1LL * siz[*i] * (n - siz[*i] - 1);
     f[1] = f[1] / 2 + n - 1;
     int l = 1, r = 1;
     for (register int i = 2; i <= n; i++) {
@@ -98,4 +99,4 @@ int main() {
     cin >> _;
     while (_--) work();
     return 0;
-}//awa
+}  // awa

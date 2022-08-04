@@ -103,8 +103,7 @@ long long maxDist(int x, int y) {
         if (dep[f[x][i]] >= dep[y]) maxDist = max(maxDist, g[x][i]), x = f[x][i];
     if (x == y) return maxDist;
     for (int i = maxlgn - 1; ~i; i--)
-        if (f[x][i] != f[y][i])
-            maxDist = max({maxDist, g[x][i], g[y][i]}), x = f[x][i], y = f[y][i];
+        if (f[x][i] != f[y][i]) maxDist = max({maxDist, g[x][i], g[y][i]}), x = f[x][i], y = f[y][i];
     return max({maxDist, g[x][0], g[y][0]});
 }
 
@@ -126,15 +125,13 @@ void solve(void) {
         if (vis[p]) continue;
         vis[p] = true;
         for (auto i : graph[p])
-            if (dist[i.first] > dist[p] + i.second)
-                que.emplace(dist[i.first] = dist[p] + i.second, i.first);
+            if (dist[i.first] > dist[p] + i.second) que.emplace(dist[i.first] = dist[p] + i.second, i.first);
     }
 
     edges.clear();
     for (int i = 1; i <= n; i++)
         for (auto j : graph[i])
-            if (i < j.first)
-                edges.push_back(Edge{i, j.first, dist[i] + j.second + dist[j.first]});
+            if (i < j.first) edges.push_back(Edge{i, j.first, dist[i] + j.second + dist[j.first]});
     sort(edges.begin(), edges.end());
     tree.resize(n + 1);
     for (int i = 1; i <= n; i++) fa[i] = i;

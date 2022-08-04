@@ -29,7 +29,7 @@ struct card {
 typedef std::vector<card>::iterator myit;
 
 class pig {
-private:
+   private:
     int hp;
     bool use_kill;
     bool crossbow;
@@ -51,7 +51,7 @@ private:
     bool ask_J(int);
     bool back_J(int);
 
-public:
+   public:
     pig(void);
     int num;
     bool dead;
@@ -79,8 +79,7 @@ int main() {
     for (register int i = 1; i <= n; i++) {
         cin >> member[i].name;
         member[i].num = i;
-        if (member[i].name == "FP")
-            FP++;
+        if (member[i].name == "FP") FP++;
         for (register int j = 1; j <= 4; j++) {
             card c;
             cin >> c.which;
@@ -99,8 +98,7 @@ int main() {
     member[1].jump();
     while (true) {
         point = point % n + 1;
-        if (member[point].dead == THIS_PIG_IS_DEAD)
-            continue;
+        if (member[point].dead == THIS_PIG_IS_DEAD) continue;
         member[point].myturn();
     }
 }
@@ -112,8 +110,7 @@ void gameover(std::string who) {
             cout << "DEAD";
         else
             for (myit it = member[i].cards.begin(); it != member[i].cards.end(); it++) {
-                if (it->use == CANNOT_USE_THIS_CARD)
-                    continue;
+                if (it->use == CANNOT_USE_THIS_CARD) continue;
                 cout << it->which << ' ';
             }
         cout << std::endl;
@@ -123,19 +120,15 @@ void gameover(std::string who) {
 
 void pig::die(int who) {
     this->dead = THIS_PIG_IS_DEAD;
-    if (this->name == "MP")
-        gameover("FP");
-    if (this->name == "FP")
-        FP--;
-    if (FP == 0)
-        gameover("MP");
+    if (this->name == "MP") gameover("FP");
+    if (this->name == "FP") FP--;
+    if (FP == 0) gameover("MP");
     if (this->name == "FP") {
         member[who].cut();
         member[who].cut();
         member[who].cut();
     }
-    if (this->name == "ZP" && member[who].name == "MP")
-        member[who].clear();
+    if (this->name == "ZP" && member[who].name == "MP") member[who].clear();
     return;
 }
 
@@ -152,18 +145,15 @@ void pig::del(myit& it) {
 
 myit pig::find(char which) {
     for (myit it = this->cards.begin(); it != this->cards.end(); it++) {
-        if (it->use == CANNOT_USE_THIS_CARD)
-            continue;
-        if (it->which == which)
-            return it;
+        if (it->use == CANNOT_USE_THIS_CARD) continue;
+        if (it->which == which) return it;
     }
     return this->cards.end();
 }
 
 void pig::cut(void) {
     this->cards.push_back(stack[top++]);
-    if (top > m)
-        top = m;
+    if (top > m) top = m;
     return;
 }
 
@@ -215,21 +205,17 @@ void pig::hurt(int who) {
 }
 
 bool pig::canuse(char c) {
-    if (c == 'P' && this->hp < 4)
-        return true;
-    if ((c == 'K' && this->find_K() != 0) || (c == 'F' && this->find_F() != 0) || c == 'N' || c == 'W' ||
-        c == 'Z')
+    if (c == 'P' && this->hp < 4) return true;
+    if ((c == 'K' && this->find_K() != 0) || (c == 'F' && this->find_F() != 0) || c == 'N' || c == 'W' || c == 'Z')
         return true;
     return false;
 }
 
 int pig::find_K(void) {
-    if (this->use_kill == THIS_TURN_USED_KILL && this->crossbow == CROSSBOW_DOWN)
-        return 0;
+    if (this->use_kill == THIS_TURN_USED_KILL && this->crossbow == CROSSBOW_DOWN) return 0;
     if (this->name == "MP")
         for (register int point = this->num % n + 1; point != this->num; point = point % n + 1) {
-            if (member[point].dead == THIS_PIG_IS_DEAD)
-                continue;
+            if (member[point].dead == THIS_PIG_IS_DEAD) continue;
             if (member[point].like_bad == THIS_PIG_LIKE_BAD ||
                 (member[point].name == "FP" && member[point].jumped == THIS_PIG_IS_JUMP))
                 return point;
@@ -238,8 +224,7 @@ int pig::find_K(void) {
         }
     else if (this->name == "ZP")
         for (register int point = this->num % n + 1; point != this->num; point = point % n + 1) {
-            if (member[point].dead == THIS_PIG_IS_DEAD)
-                continue;
+            if (member[point].dead == THIS_PIG_IS_DEAD) continue;
             if (member[point].name == "FP" && member[point].jumped == THIS_PIG_IS_JUMP)
                 return point;
             else
@@ -247,8 +232,7 @@ int pig::find_K(void) {
         }
     else if (this->name == "FP")
         for (register int point = this->num % n + 1; point != this->num; point = point % n + 1) {
-            if (member[point].dead == THIS_PIG_IS_DEAD)
-                continue;
+            if (member[point].dead == THIS_PIG_IS_DEAD) continue;
             if (member[point].name != "FP" && member[point].jumped == THIS_PIG_IS_JUMP)
                 return point;
             else
@@ -260,18 +244,15 @@ int pig::find_K(void) {
 int pig::find_F(void) {
     if (this->name == "MP")
         for (register int point = this->num % n + 1; point != this->num; point = point % n + 1) {
-            if (member[point].dead == THIS_PIG_IS_DEAD)
-                continue;
+            if (member[point].dead == THIS_PIG_IS_DEAD) continue;
             if (member[point].like_bad == THIS_PIG_LIKE_BAD ||
                 (member[point].name == "FP" && member[point].jumped == THIS_PIG_IS_JUMP))
                 return point;
         }
     else if (this->name == "ZP")
         for (register int point = this->num % n + 1; point != this->num; point = point % n + 1) {
-            if (member[point].dead == THIS_PIG_IS_DEAD)
-                continue;
-            if (member[point].name == "FP" && member[point].jumped == THIS_PIG_IS_JUMP)
-                return point;
+            if (member[point].dead == THIS_PIG_IS_DEAD) continue;
+            if (member[point].name == "FP" && member[point].jumped == THIS_PIG_IS_JUMP) return point;
         }
     else if (this->name == "FP")
         return 1;
@@ -280,40 +261,33 @@ int pig::find_F(void) {
 
 bool pig::K_respond(void) {
     myit it = this->find('D');
-    if (it == this->cards.end())
-        return false;
+    if (it == this->cards.end()) return false;
     this->del(it);
     return true;
 }
 
 bool pig::N_respond(void) {
     myit it = this->find('K');
-    if (it == this->cards.end())
-        return false;
+    if (it == this->cards.end()) return false;
     this->del(it);
     return true;
 }
 
 bool pig::W_respond(void) {
     myit it = this->find('D');
-    if (it == this->cards.end())
-        return false;
+    if (it == this->cards.end()) return false;
     this->del(it);
     return true;
 }
 
 bool pig::ask_J(int who) {
     bool check = true;
-    if (this->jumped == THIS_PIG_IS_NOT_JUMP)
-        return false;
+    if (this->jumped == THIS_PIG_IS_NOT_JUMP) return false;
     for (register int point = who; point != who || check == true; point = point % n + 1) {
-        if (member[point].dead == THIS_PIG_IS_DEAD)
-            continue;
+        if (member[point].dead == THIS_PIG_IS_DEAD) continue;
         check = false;
-        if (this->name != "FP" && member[point].name == "FP")
-            continue;
-        if (this->name == "FP" && member[point].name != "FP")
-            continue;
+        if (this->name != "FP" && member[point].name == "FP") continue;
+        if (this->name == "FP" && member[point].name != "FP") continue;
         myit it = member[point].find('J');
         if (it != member[point].cards.end()) {
             member[point].del(it);
@@ -326,14 +300,10 @@ bool pig::ask_J(int who) {
 
 bool pig::back_J(int to) {
     for (register int point = this->num % n + 1; point != this->num; point = point % n + 1) {
-        if (member[point].dead == THIS_PIG_IS_DEAD)
-            continue;
-        if (this->name != "FP" && member[point].name == "ZP")
-            continue;
-        if (this->name == "FP" && member[point].name == "FP")
-            continue;
-        if (this->name == "ZP" && member[point].name != "FP")
-            continue;
+        if (member[point].dead == THIS_PIG_IS_DEAD) continue;
+        if (this->name != "FP" && member[point].name == "ZP") continue;
+        if (this->name == "FP" && member[point].name == "FP") continue;
+        if (this->name == "ZP" && member[point].name != "FP") continue;
         myit it = member[point].find('J');
         if (it != member[point].cards.end()) {
             member[point].del(it);
@@ -361,13 +331,10 @@ void pig::myturn(void) {
     while (check) {
         check = false;
         for (myit it = this->cards.begin(); it != this->cards.end(); it++) {
-            if (it->use == CANNOT_USE_THIS_CARD)
-                continue;
-            if (canuse(it->which) == false)
-                continue;
+            if (it->use == CANNOT_USE_THIS_CARD) continue;
+            if (canuse(it->which) == false) continue;
             use(*it);
-            if (this->dead == THIS_PIG_IS_DEAD)
-                return;
+            if (this->dead == THIS_PIG_IS_DEAD) return;
             it = this->cards.begin() - 1;
             check = true;
         }
@@ -382,21 +349,18 @@ void pig::jump(void) {
 }
 
 void pig::K(int to) {
-    if (this->use_kill == THIS_TURN_USED_KILL && this->crossbow == false)
-        return;
+    if (this->use_kill == THIS_TURN_USED_KILL && this->crossbow == false) return;
     this->jump();
     this->like_bad = THIS_PIG_DO_NOT_LIKE_BAD;
     this->use_kill = THIS_TURN_USED_KILL;
-    if (member[to].K_respond() == false)
-        member[to].hurt(this->num);
+    if (member[to].K_respond() == false) member[to].hurt(this->num);
     return;
 }
 
 void pig::F(int to) {
     this->jump();
     this->like_bad = THIS_PIG_DO_NOT_LIKE_BAD;
-    if (member[to].ask_J(this->num) == true)
-        return;
+    if (member[to].ask_J(this->num) == true) return;
     if (this->name == "MP" && member[to].name == "ZP") {
         member[to].hurt(this->num);
         return;
@@ -417,19 +381,15 @@ void pig::F(int to) {
         } else
             this->del(t);
     }
-    if (who == 2)
-        member[to].hurt(this->num);
-    if (who == 1)
-        this->hurt(to);
+    if (who == 2) member[to].hurt(this->num);
+    if (who == 1) this->hurt(to);
     return;
 }
 
 void pig::N(void) {
     for (register int point = this->num % n + 1; point != this->num; point = point % n + 1) {
-        if (member[point].dead == THIS_PIG_IS_DEAD)
-            continue;
-        if (member[point].ask_J(this->num) == true)
-            continue;
+        if (member[point].dead == THIS_PIG_IS_DEAD) continue;
+        if (member[point].ask_J(this->num) == true) continue;
         if (member[point].N_respond() == false) {
             member[point].hurt(this->num);
             if (member[point].name == "MP" && this->jumped == THIS_PIG_IS_NOT_JUMP) {
@@ -442,14 +402,11 @@ void pig::N(void) {
 
 void pig::W(void) {
     for (register int point = this->num % n + 1; point != this->num; point = point % n + 1) {
-        if (member[point].dead == THIS_PIG_IS_DEAD)
-            continue;
-        if (member[point].ask_J(this->num) == true)
-            continue;
+        if (member[point].dead == THIS_PIG_IS_DEAD) continue;
+        if (member[point].ask_J(this->num) == true) continue;
         if (member[point].W_respond() == false) {
             member[point].hurt(this->num);
-            if (member[point].name == "MP" && this->jumped == THIS_PIG_IS_NOT_JUMP)
-                this->like_bad = THIS_PIG_LIKE_BAD;
+            if (member[point].name == "MP" && this->jumped == THIS_PIG_IS_NOT_JUMP) this->like_bad = THIS_PIG_LIKE_BAD;
         }
     }
     return;

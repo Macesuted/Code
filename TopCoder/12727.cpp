@@ -39,8 +39,7 @@ class FoxAndCity {
                 int p = que.front();
                 que.pop();
                 for (auto i : graph[p])
-                    if (i.cap > i.flow && dist[i.to] == 0)
-                        que.push(i.to), dist[i.to] = dist[p] + 1;
+                    if (i.cap > i.flow && dist[i.to] == 0) que.push(i.to), dist[i.to] = dist[p] + 1;
             }
             return dist[T];
         }
@@ -82,14 +81,14 @@ class FoxAndCity {
         for (int i = 2; i <= n; i++) {
             net.addEdge(S, (i - 1) * (n + 2) + 1, INF), net.addEdge((i - 1) * (n + 2) + 1, (i - 1) * (n + 2) + 2, INF);
             for (int j = 2; j <= n + 1; j++)
-                net.addEdge((i - 1) * (n + 2) + j, (i - 1) * (n + 2) + j + 1, abs(want[i - 1] - j + 1) * abs(want[i - 1] - j + 1));
+                net.addEdge((i - 1) * (n + 2) + j, (i - 1) * (n + 2) + j + 1,
+                            abs(want[i - 1] - j + 1) * abs(want[i - 1] - j + 1));
             net.addEdge(i * (n + 2), T, INF);
         }
         for (int i = 1; i <= n; i++)
             for (int j = 1; j <= n; j++)
                 if (linked[i - 1][j - 1] == 'Y')
-                    for (int k = 1; k <= n; k++)
-                        net.addEdge((j - 1) * (n + 2) + k + 1, (i - 1) * (n + 2) + k, INF);
+                    for (int k = 1; k <= n; k++) net.addEdge((j - 1) * (n + 2) + k + 1, (i - 1) * (n + 2) + k, INF);
         return net.maxFlow(S, T);
     }
 };

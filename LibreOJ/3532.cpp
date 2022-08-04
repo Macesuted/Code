@@ -37,7 +37,9 @@ class LinkCutTree {
     int getRigCol(Node* p) { return p ? p->rigCol : -1; }
     int getSum(Node* p) { return p ? p->sum : 0; }
     void rev(Node* p) { return p ? p->rev ^= true, swap(p->lefCol, p->rigCol), swap(p->son[0], p->son[1]) : void(); }
-    void mark(Node* p, int v) { return p ? p->col = p->lefCol = p->rigCol = p->laz = v, p->sum = p->siz - 1, void() : void(); }
+    void mark(Node* p, int v) {
+        return p ? p->col = p->lefCol = p->rigCol = p->laz = v, p->sum = p->siz - 1, void() : void();
+    }
     void pushDown(Node* p) {
         if (p->laz) mark(p->son[0], p->laz), mark(p->son[1], p->laz), p->laz = 0;
         if (p->rev) rev(p->son[0]), rev(p->son[1]), p->rev = false;
@@ -47,7 +49,8 @@ class LinkCutTree {
         if (!p) return;
         p->siz = 1 + getSiz(p->son[0]) + getSiz(p->son[1]);
         p->lefCol = (p->son[0] ? p->son[0]->lefCol : p->col), p->rigCol = (p->son[1] ? p->son[1]->rigCol : p->col);
-        p->sum = getSum(p->son[0]) + (getRigCol(p->son[0]) == p->col) + (p->col == getLefCol(p->son[1])) + getSum(p->son[1]);
+        p->sum =
+            getSum(p->son[0]) + (getRigCol(p->son[0]) == p->col) + (p->col == getLefCol(p->son[1])) + getSum(p->son[1]);
         return;
     }
     void rotate(Node* p) {

@@ -2,9 +2,9 @@
  * @file 1616A.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-01-02
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <bits/stdc++.h>

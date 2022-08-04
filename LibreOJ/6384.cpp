@@ -16,8 +16,7 @@ int n, k;
 long long f[2][maxn];
 
 inline long long cost(int l, int r) {
-    return l * (s[r - 1] - s[l] - a[l] * (r - l - 1)) +
-           4 * (t[r - 1] - t[l]) - (s[r - 1] - s[l]) * (l + r) * 2 +
+    return l * (s[r - 1] - s[l] - a[l] * (r - l - 1)) + 4 * (t[r - 1] - t[l]) - (s[r - 1] - s[l]) * (l + r) * 2 +
            (n - r + 1) * ((r - l - 1) * a[r] - (s[r - 1] - s[l]));
 }
 

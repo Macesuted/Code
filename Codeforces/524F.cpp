@@ -51,7 +51,8 @@ void solve(void) {
     for (int i = tn; i; i--) rmin[i] = min(rmin[i + 1], sum[i]);
     int ark = 0x3f3f3f3f, pos = 0, delt = max(0, -sum[tn]);
     for (int i = 1; i <= tn; i++)
-        if (ark > rk[i] && delt + rmin[i] - sum[i - 1] >= 0 && delt + lmin[i - 1] + sum[tn] - sum[i - 1] >= 0) ark = rk[pos = i];
+        if (ark > rk[i] && delt + rmin[i] - sum[i - 1] >= 0 && delt + lmin[i - 1] + sum[tn] - sum[i - 1] >= 0)
+            ark = rk[pos = i];
     for (int i = 0; i < -sum[tn]; i++) cout << '(';
     for (int i = pos; i <= tn; i++) cout << ts[i];
     for (int i = 1; i < pos; i++) cout << ts[i];

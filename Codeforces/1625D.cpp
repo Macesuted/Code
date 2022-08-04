@@ -43,7 +43,8 @@ class Trie {
         bool t = num >> dep & 1, lt = lim >> dep & 1;
         pii ans = {0, 0};
         if (!lt && p->son[t] != NULL) ans = max(ans, getMaxVal(p->son[t], dep - 1, num, lim));
-        if (p->son[!t] != NULL) ans = max(ans, lt ? getMaxVal(p->son[!t], dep - 1, num, lim ^ (1 << dep)) : p->son[!t]->val);
+        if (p->son[!t] != NULL)
+            ans = max(ans, lt ? getMaxVal(p->son[!t], dep - 1, num, lim ^ (1 << dep)) : p->son[!t]->val);
         return ans;
     }
 

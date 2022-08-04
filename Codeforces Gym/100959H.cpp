@@ -12,8 +12,7 @@ inline T read() {
     char c = getchar();
     for (; c < '0' || c > '9'; c = getchar())
         if (c == '-') f = -1;
-    for (; c <= '9' && c >= '0'; c = getchar())
-        x = x * 10 + (c & 15);
+    for (; c <= '9' && c >= '0'; c = getchar()) x = x * 10 + (c & 15);
     return x * f;
 }
 
@@ -40,8 +39,7 @@ int main() {
         for (int j = 1; j < i; j++) C[i][j] = (C[i - 1][j - 1] + C[i - 1][j]) % mod;
     }
     for (int i = 2; i <= n; i += 2) {
-        for (int j = 0; j <= i / 2; j++)
-            f[i] = (f[i] + C[i / 2][j] * C[i / 2][j]) % mod;
+        for (int j = 0; j <= i / 2; j++) f[i] = (f[i] + C[i / 2][j] * C[i / 2][j]) % mod;
         f[i] = f[i] * C[i][i / 2] % mod;
     }
     for (int i = 2; i <= n; i += 2) {
@@ -49,8 +47,7 @@ int main() {
         for (int j = 2; j < i; j += 2) g[i] = (g[i] + mod - f[i - j] * g[j] % mod) % mod;
     }
     long long answer = Pow(4, n) * (n + 1) % mod;
-    for (int i = 2; i <= n; i += 2)
-        answer = (answer + mod - g[i] * Pow(4, n - i) % mod * (n - i + 1) % mod) % mod;
+    for (int i = 2; i <= n; i += 2) answer = (answer + mod - g[i] * Pow(4, n - i) % mod * (n - i + 1) % mod) % mod;
     cout << answer << endl;
     return 0;
 }

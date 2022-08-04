@@ -36,8 +36,7 @@ void work(void) {
         for (auto g : T) {
             int cnt = 0;
             for (auto k : S)
-                if (k.first >= i->first && (k.first - i->first) % g == 0)
-                    cnt += k.second;
+                if (k.first >= i->first && (k.first - i->first) % g == 0) cnt += k.second;
             if (cnt * 2 >= n) answer = max(answer, g);
         }
     }

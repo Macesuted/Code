@@ -77,7 +77,9 @@ long long Pow(long long a, long long x) {
     return ans;
 }
 
-void opPlus(int x, int y, int to) { return putstr("+ "), write(x), putch(' '), write(y), putch(' '), write(to), putch('\n'); }
+void opPlus(int x, int y, int to) {
+    return putstr("+ "), write(x), putch(' '), write(y), putch(' '), write(to), putch('\n');
+}
 void opPow(int x, int to) { return putstr("^ "), write(x), putch(' '), write(to), putch('\n'); }
 
 int empt = 50;

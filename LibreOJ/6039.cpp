@@ -25,7 +25,8 @@ void solve(int x, int y, int l, int r, int vl, int vr) {
     int mid = (l + r) >> 1, vmid = -1;
     f[t][mid * x + y] = -1;
     for (int i = max(mid - (int)a[x].size(), vl); i <= min(mid, vr); i++)
-        if (f[!t][i * x + y] + sum[mid - i] > f[t][mid * x + y]) f[t][mid * x + y] = f[!t][i * x + y] + sum[mid - i], vmid = i;
+        if (f[!t][i * x + y] + sum[mid - i] > f[t][mid * x + y])
+            f[t][mid * x + y] = f[!t][i * x + y] + sum[mid - i], vmid = i;
     return solve(x, y, l, mid - 1, vl, vmid), solve(x, y, mid + 1, r, vmid, vr);
 }
 

@@ -143,7 +143,8 @@ void solve(void) {
         else if (a[a[i].x].type == 0)
             ST.update(a[a[i].x].x, {-a[a[i].x].y, 0});
         else
-            ST.update(1, {0, -a[a[i].x].y}), a[a[i].x].x == tcnt ? void() : ST.update(a[a[i].x].x + 1, {0, a[a[i].x].y});
+            ST.update(1, {0, -a[a[i].x].y}),
+                a[a[i].x].x == tcnt ? void() : ST.update(a[a[i].x].x + 1, {0, a[a[i].x].y});
         pii ret = ST.query();
         if (ret.first == 0)
             putstr("Peace\n");

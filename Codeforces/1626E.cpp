@@ -111,15 +111,13 @@ void solve(void) {
         if (c[i]) {
             ans[i] = true;
             for (auto j : graph[i])
-                if (!ans[j.first])
-                    ans[j.first] = true, que.push(j.first);
+                if (!ans[j.first]) ans[j.first] = true, que.push(j.first);
         }
     while (!que.empty()) {
         int p = que.front();
         que.pop();
         for (auto i : graph[p])
-            if (!i.second && !ans[i.first])
-                ans[i.first] = true, que.push(i.first);
+            if (!i.second && !ans[i.first]) ans[i.first] = true, que.push(i.first);
     }
     for (int i = 1; i <= n; i++) write((int)ans[i]), putch(" \n"[i == n]);
     graph.clear();

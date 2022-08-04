@@ -98,7 +98,8 @@ int calc(int p) {
         while (i != S.end()) d = (d + f * *i % mod * invm) % mod, f = f * inv2 % mod, i++;
         val[p] = d * Pow(Mod(1 + mod - f), mod - 2) % mod;
     }
-    for (auto i = S.rbegin(); i != S.rend(); i++) val[*i] = (*i * invm + val[Mod(*i + *i, m)] * inv2) % mod, ins[*i] = false;
+    for (auto i = S.rbegin(); i != S.rend(); i++)
+        val[*i] = (*i * invm + val[Mod(*i + *i, m)] * inv2) % mod, ins[*i] = false;
     return val[p];
 }
 

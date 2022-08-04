@@ -84,7 +84,8 @@ void solve(void) {
     f[n] = g[n][0] = g[n][1] = 0;
     for (int i = n - 1; ~i; i--) {
         g[i][0] = 1, g[i][1] = 0;
-        for (int j = i + 1; j <= min(n, i + p[i]); j++) g[i][0] = min(g[i][0], 1 - f[j]), g[i][1] = max(g[i][1], 1 - f[j]);
+        for (int j = i + 1; j <= min(n, i + p[i]); j++)
+            g[i][0] = min(g[i][0], 1 - f[j]), g[i][1] = max(g[i][1], 1 - f[j]);
         f[i] = g[i][1];
         for (int j = i + 1; j < min(n, i + p[i]); j++)
             f[i] = max(f[i], h[0][p[i] - j + i][q[i] + q[j]] * g[j][0] + h[1][p[i] - j + i][q[i] + q[j]] * g[j][1] +

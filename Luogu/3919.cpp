@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -83,7 +85,8 @@ class SegmentTree {
         *p = *old;
         if (l == r) return p->sum = val, void();
         int mid = (l + r) >> 1;
-        (qp <= mid) ? (change(p->l = NULL, old->l, l, mid, qp, val), p->r->indeg++) : (change(p->r = NULL, old->r, mid + 1, r, qp, val), p->l->indeg++);
+        (qp <= mid) ? (change(p->l = NULL, old->l, l, mid, qp, val), p->r->indeg++)
+                    : (change(p->r = NULL, old->r, mid + 1, r, qp, val), p->l->indeg++);
         p->sum = p->l->sum + p->r->sum;
         return;
     }

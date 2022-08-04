@@ -2,9 +2,9 @@
  * @file 367E.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-09
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -78,8 +78,7 @@ void solve(void) {
     for (int i = 1; i <= m; i++) {
         bool thi = i & 1, tha = !thi;
         for (int j = 0; j <= min(n, i); j++)
-            for (int k = 0; k <= min(n, i); k++)
-                f[thi][j][k] = 0;
+            for (int k = 0; k <= min(n, i); k++) f[thi][j][k] = 0;
         for (int j = 0; j <= min(n, i - 1); j++)
             for (int k = 0; k <= min(j, i - 1); k++) {
                 if (i != x) f[thi][j][k] = (f[thi][j][k] + f[tha][j][k]) % mod;

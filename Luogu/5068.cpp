@@ -13,7 +13,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -108,14 +110,14 @@ int main() {
         for (register int j = 0; j * i + 1 <= n; j++) {
             int l = j * i + 1, r = (j + 1) * i;
             if (j) f[i][j] = f[i][j - 1];
-            f[i][j] = max(f[i][j], min(ST[l][lg[i]], (r - (1 << lg[i]) + 1 > n) ? 0x3f3f3f3f : ST[r - (1 << lg[i]) + 1][lg[i]]));
+            f[i][j] = max(f[i][j],
+                          min(ST[l][lg[i]], (r - (1 << lg[i]) + 1 > n) ? 0x3f3f3f3f : ST[r - (1 << lg[i]) + 1][lg[i]]));
             changes.push_back((pii){f[i][j], i});
         }
     }
     sort(changes.begin(), changes.end());
     for (register int i = 1, j = 0; i <= cnt; i++) {
-        while (j < (int)changes.size() && changes[j].first <= ask[i].tim)
-            add(changes[j++].second, 1);
+        while (j < (int)changes.size() && changes[j].first <= ask[i].tim) add(changes[j++].second, 1);
         write(sum(ask[i].r) - sum(ask[i].l - 1) + (ask[i].r - ask[i].l + 1)), putch('\n');
     }
     return 0;

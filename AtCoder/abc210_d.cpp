@@ -15,8 +15,7 @@ signed main() {
     int n, m, c;
     cin >> n >> m >> c;
     for (register int i = 1; i <= n; i++)
-        for (register int j = 1; j <= m; j++)
-            cin >> a[i][j];
+        for (register int j = 1; j <= m; j++) cin >> a[i][j];
     int answer = 0x3f3f3f3f3f3f3f3f;
     for (register int i = 1; i <= n; i++) {
         for (register int j = 1; j <= m; j++) {

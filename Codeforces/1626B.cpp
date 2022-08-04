@@ -28,12 +28,10 @@ void solve(void) {
     cin >> a;
     bool poss = false;
     for (int i = 1; i < a.size(); i++)
-        if (a[i] - '0' + a[i - 1] - '0' >= 10)
-            poss = true;
+        if (a[i] - '0' + a[i - 1] - '0' >= 10) poss = true;
     if (poss) {
         for (int i = a.size() - 1; i; i--)
-            if (a[i] - '0' + a[i - 1] - '0' >= 10)
-                return print(a, i);
+            if (a[i] - '0' + a[i - 1] - '0' >= 10) return print(a, i);
     } else {
         for (int i = 1; i < a.size(); i++)
             if (a[i] != '0') return print(a, i);

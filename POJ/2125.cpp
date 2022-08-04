@@ -2,9 +2,9 @@
  * @file 2125.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-03
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <cstdio>
@@ -93,8 +93,7 @@ class Network {
             int p = que.front();
             que.pop();
             for (vector<Edge>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
-                if (!dist[i->to] && i->flow)
-                    dist[i->to] = dist[p] + 1, que.push(i->to);
+                if (!dist[i->to] && i->flow) dist[i->to] = dist[p] + 1, que.push(i->to);
         }
         return dist[T];
     }
@@ -113,7 +112,9 @@ class Network {
    public:
     vector<bool> col;
 
-    inline void resize(int _n) { return n = _n, graph.resize(n + 1), cur.resize(n + 1), dist.resize(n + 1), col.resize(n + 1); }
+    inline void resize(int _n) {
+        return n = _n, graph.resize(n + 1), cur.resize(n + 1), dist.resize(n + 1), col.resize(n + 1);
+    }
     inline void addEdge(int from, int to, long long cap) {
         return graph[from].push_back(Edge{to, cap, (int)graph[to].size()}),
                graph[to].push_back(Edge{from, 0, (int)graph[from].size() - 1});
@@ -149,7 +150,8 @@ void solve(void) {
     for (int i = 1; i <= n; i++)
         if (net.col[i + n]) answer.push(+i);
     write((int)answer.size()), putch('\n');
-    while (!answer.empty()) write(abs(answer.front())), putch(' '), putch("-+"[answer.front() > 0]), putch('\n'), answer.pop();
+    while (!answer.empty())
+        write(abs(answer.front())), putch(' '), putch("-+"[answer.front() > 0]), putch('\n'), answer.pop();
     return;
 }
 

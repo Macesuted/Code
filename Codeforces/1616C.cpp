@@ -2,9 +2,9 @@
  * @file 1616C.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-01-02
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -28,8 +28,7 @@ void solve(void) {
             pu /= pg, pd /= pg;
             int cnt = 0;
             for (int k = 1; k <= n; k++)
-                if (abs(i - k) % pd != 0 || a[i] + (k - i) / pd * pu != a[k])
-                    cnt++;
+                if (abs(i - k) % pd != 0 || a[i] + (k - i) / pd * pu != a[k]) cnt++;
             ans = min(ans, cnt);
         }
     cout << ans << endl;

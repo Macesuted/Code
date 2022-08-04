@@ -2,9 +2,9 @@
  * @file 4055.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-03-18
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -55,12 +55,10 @@ void solve(void) {
     for (int i = 1; i <= n; i++) f[i][i] = 1;
     for (int i = 1; i <= n; i++)
         for (auto j : graph[i])
-            if (i < get<0>(j) && dist[i][get<0>(j)] == get<1>(j))
-                f[i][get<0>(j)] += get<2>(j);
+            if (i < get<0>(j) && dist[i][get<0>(j)] == get<1>(j)) f[i][get<0>(j)] += get<2>(j);
     rec.reserve(n * (n - 1) / 2);
     for (int i = 1; i <= n; i++)
-        for (int j = i + 1; j <= n; j++)
-            rec.emplace_back(dist[i][j], i, j);
+        for (int j = i + 1; j <= n; j++) rec.emplace_back(dist[i][j], i, j);
     sort(rec.begin(), rec.end());
     for (auto i : rec) {
         int dis = get<0>(i), p1 = get<1>(i), p2 = get<2>(i);
@@ -68,8 +66,7 @@ void solve(void) {
             for (auto e2 : graph[p2]) {
                 int p3 = get<0>(e1), p4 = get<0>(e2);
                 if (p3 > p4) swap(p3, p4);
-                if (dis - get<1>(e1) - get<1>(e2) == dist[p3][p4])
-                    f[p1][p2] += get<2>(e1) * get<2>(e2) * f[p3][p4];
+                if (dis - get<1>(e1) - get<1>(e2) == dist[p3][p4]) f[p1][p2] += get<2>(e1) * get<2>(e2) * f[p3][p4];
             }
     }
     reverse(rec.begin(), rec.end());

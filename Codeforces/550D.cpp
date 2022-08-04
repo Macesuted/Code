@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -66,13 +68,11 @@ int main() {
     int n2 = n / 2;
     for (register int i = 2; i <= k; i++) write(1), putch(' '), write(i), putch('\n');
     for (register int i = 2; i <= k; i++)
-        for (register int j = k + 1; j <= 2 * k - 1; j++)
-            write(i), putch(' '), write(j), putch('\n');
+        for (register int j = k + 1; j <= 2 * k - 1; j++) write(i), putch(' '), write(j), putch('\n');
     for (register int i = k + 1; i <= 2 * k - 1; i += 2) write(i), putch(' '), write(i + 1), putch('\n');
     for (register int i = 2; i <= k; i++) write(n2 + 1), putch(' '), write(n2 + i), putch('\n');
     for (register int i = 2; i <= k; i++)
-        for (register int j = k + 1; j <= 2 * k - 1; j++)
-            write(n2 + i), putch(' '), write(n2 + j), putch('\n');
+        for (register int j = k + 1; j <= 2 * k - 1; j++) write(n2 + i), putch(' '), write(n2 + j), putch('\n');
     for (register int i = k + 1; i <= 2 * k - 1; i += 2) write(n2 + i), putch(' '), write(n2 + i + 1), putch('\n');
     write(1), putch(' '), write(n2 + 1), putch('\n');
     return 0;

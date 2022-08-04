@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -92,7 +94,9 @@ int main() {
             f[i][j] = (f[i][j] + f[i - 1][j]) % mod;
             for (register int k = 0; k < n; k++)
                 if (!(j >> k & 1))
-                    f[i][j | (1 << k)] = (f[i][j | (1 << k)] + f[i - 1][j] * C(tn - a[i] - j, (1 << k) - 1) % mod * fac[1 << k] % mod) % mod;
+                    f[i][j | (1 << k)] =
+                        (f[i][j | (1 << k)] + f[i - 1][j] * C(tn - a[i] - j, (1 << k) - 1) % mod * fac[1 << k] % mod) %
+                        mod;
         }
     long long answer = 0;
     for (register int S = 0; S < tn; S++)

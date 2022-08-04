@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -83,8 +85,9 @@ int main() {
         long long k = -a[i].second;
         while (que.size() > 1 && (Y(py) - Y(px)) > k * (X(py) - X(px))) que.pop_back();
         f[i] = f[py] + 1LL * a[py + 1].first * a[i].second;
-        while (que.size() > 1 && (Y(que[0]) - Y(i)) * (X(que[1]) - X(que[0])) >=
-                                     (Y(que[1]) - Y(que[0])) * (X(que[0]) - X(i))) que.pop_front();
+        while (que.size() > 1 &&
+               (Y(que[0]) - Y(i)) * (X(que[1]) - X(que[0])) >= (Y(que[1]) - Y(que[0])) * (X(que[0]) - X(i)))
+            que.pop_front();
         que.push_front(i);
     }
 #undef px

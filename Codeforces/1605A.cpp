@@ -2,9 +2,9 @@
  * @file 1605A.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-12-31
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -28,8 +28,7 @@ void solve(void) {
         for (int i = 0; i < cnt[2]; i++) cout << 'c';
     }
     for (int i = 3; i < 26; i++)
-        for (int j = 0; j < cnt[i]; j++)
-            cout << char('a' + i);
+        for (int j = 0; j < cnt[i]; j++) cout << char('a' + i);
     cout << endl;
     return;
 }

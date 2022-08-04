@@ -82,8 +82,7 @@ void solve(void) {
     }
     long long answer = numeric_limits<long long>::max();
     for (int i = 0; i < maxv; i++)
-        if (f[(n - 1) & 1][i] != 0x3f3f3f3f3f3f3f3f)
-            answer = min(answer, n * f[(n - 1) & 1][i] - 1LL * i * i);
+        if (f[(n - 1) & 1][i] != 0x3f3f3f3f3f3f3f3f) answer = min(answer, n * f[(n - 1) & 1][i] - 1LL * i * i);
     write(answer), putch('\n');
     return;
 }

@@ -31,10 +31,8 @@ void solve(void) {
                 cnt[a[i][j] - 'A']++;
     for (int i = 1; i <= 3; i++)
         for (int j = 0; j < 3; j++)
-            if (a[i][j] != b[i][j] && cnt[b[i][j] - 'A'])
-                y++, cnt[b[i][j] - 'A']--;
-    cout << g << endl
-         << y << endl;
+            if (a[i][j] != b[i][j] && cnt[b[i][j] - 'A']) y++, cnt[b[i][j] - 'A']--;
+    cout << g << endl << y << endl;
     return;
 }
 

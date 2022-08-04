@@ -2,9 +2,9 @@
  * @file 1391E.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-31
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -124,7 +124,8 @@ void solve(void) {
         }
         putstr("PAIRING\n");
         write((int)answer.size()), putch('\n');
-        while (!answer.empty()) write(answer.front().first), putch(' '), write(answer.front().second), putch('\n'), answer.pop();
+        while (!answer.empty())
+            write(answer.front().first), putch(' '), write(answer.front().second), putch('\n'), answer.pop();
     }
     graph.clear();
     return;

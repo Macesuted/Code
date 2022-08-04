@@ -41,8 +41,7 @@ void work(void) {
     int n, k, ans = 0, rest = 0;
     cin >> n >> k;
     for (register int i = 1; i <= n; i++)
-        for (register int j = 1; j <= k; j++)
-            ans += i * 100 + j;
+        for (register int j = 1; j <= k; j++) ans += i * 100 + j;
     cout << ans << endl;
     return;
 }

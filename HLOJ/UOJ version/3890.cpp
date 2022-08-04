@@ -92,7 +92,8 @@ class SegmentTree {
     void pushUp(int p, int l, int r) {
         int mid = (l + r) >> 1;
         tree[p].maxVal = max(tree[p << 1].maxVal, tree[p << 1 | 1].maxVal);
-        tree[p].ans = min(tree[p].croAns = getAns(p << 1, l, mid, tree[p << 1 | 1].maxVal).second, tree[p << 1 | 1].ans);
+        tree[p].ans =
+            min(tree[p].croAns = getAns(p << 1, l, mid, tree[p << 1 | 1].maxVal).second, tree[p << 1 | 1].ans);
         return;
     }
     void update(int p, int l, int r, int qp, int v, int ans) {

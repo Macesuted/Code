@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -65,9 +67,7 @@ struct Node {
     inline bool operator<(const Node& oth) const {
         return this->x != oth.x ? this->x < oth.x : (this->y != oth.y ? this->y < oth.y : this->z < oth.z);
     }
-    inline bool operator==(const Node& oth) const {
-        return this->x == oth.x && this->y == oth.y && this->z == oth.z;
-    }
+    inline bool operator==(const Node& oth) const { return this->x == oth.x && this->y == oth.y && this->z == oth.z; }
 };
 
 Node nodes[maxn];
@@ -112,8 +112,7 @@ int main() {
     sort(nodes + 1, nodes + n + 1);
     int tn = n;
     n = 1;
-    for (register int i = 2; i <= tn; i++)
-        nodes[i] == nodes[n] ? (nodes[n].cnt++, void()) : swap(nodes[i], nodes[++n]);
+    for (register int i = 2; i <= tn; i++) nodes[i] == nodes[n] ? (nodes[n].cnt++, void()) : swap(nodes[i], nodes[++n]);
     work(1, n);
     for (register int i = 1; i <= n; i++) cnt[nodes[i].ans + nodes[i].cnt - 1] += nodes[i].cnt;
     for (register int i = 0; i < tn; i++) write(cnt[i]), putch('\n');

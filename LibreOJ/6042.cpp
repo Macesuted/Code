@@ -24,7 +24,9 @@ class SegmentTree {
    private:
     int sum[maxn << 2], cnt[maxn << 2], n;
 
-    void pushUp(int p) { return sum[p] = sum[p << 1] + sum[p << 1 | 1], cnt[p] = cnt[p << 1] + cnt[p << 1 | 1], void(); }
+    void pushUp(int p) {
+        return sum[p] = sum[p << 1] + sum[p << 1 | 1], cnt[p] = cnt[p << 1] + cnt[p << 1 | 1], void();
+    }
     void insert(int p, int l, int r, int qp, int v) {
         if (l == r) return sum[p] += v * l, cnt[p] += v, void();
         int mid = (l + r) >> 1;

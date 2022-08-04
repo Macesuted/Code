@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -93,8 +95,7 @@ bool dfs2(int p, int k, int fa = -1, int dist = 0) {
     if (g[k - dist]) return true;
     cache.push(dist);
     for (vector<pii>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
-        if (i->first != fa && !vis[i->first] && dfs2(i->first, k, p, dist + i->second))
-            return true;
+        if (i->first != fa && !vis[i->first] && dfs2(i->first, k, p, dist + i->second)) return true;
     return false;
 }
 bool dfs1(int p, int k) {

@@ -2,9 +2,9 @@
  * @file 741D.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-10-19
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -15,7 +15,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -89,8 +91,7 @@ void dsu(int p) {
     if (son[p]) dsu(son[p]), ans[p] = max(ans[p], ans[son[p]]);
     if (record[statu[p]]) ans[p] = max(ans[p], record[statu[p]] - dep[p]);
     for (int i = 0; i < 22; i++)
-        if (record[statu[p] ^ (1 << i)])
-            ans[p] = max(ans[p], record[statu[p] ^ (1 << i)] - dep[p]);
+        if (record[statu[p] ^ (1 << i)]) ans[p] = max(ans[p], record[statu[p] ^ (1 << i)] - dep[p]);
     record[statu[p]] = max(record[statu[p]], dep[p]);
     for (auto i : graph[p])
         if (i != son[p]) dfs(i, p), mark(i, +1);
@@ -106,8 +107,7 @@ void solve(void) {
     }
     statu[1] = 0, dep[1] = 1;
     for (int i = 1; i <= n; i++)
-        for (auto j : graph[i])
-            statu[j] = statu[i] ^ (1 << a[j]), dep[j] = dep[i] + 1;
+        for (auto j : graph[i]) statu[j] = statu[i] ^ (1 << a[j]), dep[j] = dep[i] + 1;
     for (int i = n; i; i--) {
         siz[i] = 1;
         for (auto j : graph[i]) {

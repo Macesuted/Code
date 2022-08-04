@@ -13,8 +13,10 @@ void solve(void) {
     cin >> x >> y;
     if (x < y) swap(x, y);
     int a = x - y;
-    if (a == 0) cout << 0 << ' ' << 0 << endl;
-    else cout << a << ' ' << min(x % a, a - x % a) << endl;
+    if (a == 0)
+        cout << 0 << ' ' << 0 << endl;
+    else
+        cout << a << ' ' << min(x % a, a - x % a) << endl;
     return;
 }
 

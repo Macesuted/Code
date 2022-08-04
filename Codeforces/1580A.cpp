@@ -14,17 +14,16 @@ typedef pair<int, int> pii;
 
 int a[maxn][maxn], sum[maxn][maxn];
 
-int SUM(int i1, int j1, int i2, int j2) { return sum[i2][j2] - sum[i2][j1 - 1] - sum[i1 - 1][j2] + sum[i1 - 1][j1 - 1]; }
+int SUM(int i1, int j1, int i2, int j2) {
+    return sum[i2][j2] - sum[i2][j1 - 1] - sum[i1 - 1][j2] + sum[i1 - 1][j1 - 1];
+}
 int cost(int i1, int j1, int i2, int j2) {
-    return (j2 - j1 - 1 - SUM(i1, j1 + 1, i1, j2 - 1)) +
-           (j2 - j1 - 1 - SUM(i2, j1 + 1, i2, j2 - 1)) +
-           (i2 - i1 - 1 - SUM(i1 + 1, j1, i2 - 1, j1)) +
-           (i2 - i1 - 1 - SUM(i1 + 1, j2, i2 - 1, j2)) +
+    return (j2 - j1 - 1 - SUM(i1, j1 + 1, i1, j2 - 1)) + (j2 - j1 - 1 - SUM(i2, j1 + 1, i2, j2 - 1)) +
+           (i2 - i1 - 1 - SUM(i1 + 1, j1, i2 - 1, j1)) + (i2 - i1 - 1 - SUM(i1 + 1, j2, i2 - 1, j2)) +
            SUM(i1 + 1, j1 + 1, i2 - 1, j2 - 1);
 }
 int limit(int i1, int j1, int i2, int j2) {
-    return (j2 - j1 - 1 - SUM(i2, j1 + 1, i2, j2 - 1)) +
-           (i2 - i1 - 1 - SUM(i1 + 1, j2, i2 - 1, j2));
+    return (j2 - j1 - 1 - SUM(i2, j1 + 1, i2, j2 - 1)) + (i2 - i1 - 1 - SUM(i1 + 1, j2, i2 - 1, j2));
 }
 
 void work(void) {
@@ -37,11 +36,9 @@ void work(void) {
             sum[i][j] = a[i][j] = (c == '1');
         }
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            sum[i][j] += sum[i][j - 1];
+        for (int j = 1; j <= m; j++) sum[i][j] += sum[i][j - 1];
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            sum[i][j] += sum[i - 1][j];
+        for (int j = 1; j <= m; j++) sum[i][j] += sum[i - 1][j];
     int answer = 16;
     for (int i = 5; i <= n; i++)
         for (int j = 4; j <= m; j++) {

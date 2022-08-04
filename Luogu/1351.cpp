@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -67,7 +69,7 @@ vector<vector<int> > graph;
 int a[maxn];
 
 int main() {
-//    freopen("link.in", "r", stdin), freopen("link.out", "w", stdout);
+    //    freopen("link.in", "r", stdin), freopen("link.out", "w", stdout);
     int n = read<int>();
     graph.resize(n + 1);
     for (register int i = 1; i < n; i++) {
@@ -87,7 +89,8 @@ int main() {
                 max2 = a[*j];
         }
         ans1 = max(ans1, max1 * max2);
-        for (vector<int>::iterator j = graph[i].begin(); j != graph[i].end(); j++) ans2 = (ans2 + a[*j] * (sum - a[*j])) % mod;
+        for (vector<int>::iterator j = graph[i].begin(); j != graph[i].end(); j++)
+            ans2 = (ans2 + a[*j] * (sum - a[*j])) % mod;
     }
     write(ans1), putch(' '), write((ans2 + mod) % mod), putch('\n');
     return 0;

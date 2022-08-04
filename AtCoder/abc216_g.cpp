@@ -48,8 +48,7 @@ bool spfa(int s) {
 signed main() {
     int n, m;
     cin >> n >> m;
-    for (int i = 1; i <= n; i++)
-        addedge(n + 1, i, 0);
+    for (int i = 1; i <= n; i++) addedge(n + 1, i, 0);
     for (int i = 1; i <= n; i++) addedge(i - 1, i, 1), addedge(i, i - 1, 0);
     for (int i = 1; i <= m; i++) {
         int l, r, x;

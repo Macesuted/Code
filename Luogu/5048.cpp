@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -68,15 +70,14 @@ int main() {
     for (register int i = 1; i <= n; i++) b[i] = a[i] = read<int>();
     sort(b + 1, b + n + 1);
     int tt = unique(b + 1, b + n + 1) - (b + 1);
-    for (register int i = 1; i <= n; i++) a[i] = lower_bound(b + 1, b + tt + 1, a[i]) - b,
-                                          pos[i] = record[a[i]].size(), record[a[i]].push_back(i);
+    for (register int i = 1; i <= n; i++)
+        a[i] = lower_bound(b + 1, b + tt + 1, a[i]) - b, pos[i] = record[a[i]].size(), record[a[i]].push_back(i);
     int block = sqrt(n);
     int length = block ? n / block : n;
     for (register int i = 1; i <= block; i++) lef[i] = rig[i - 1] + 1, rig[i] = rig[i - 1] + length;
     if (rig[block] < n) lef[block + 1] = rig[block] + 1, rig[++block] = n;
     for (register int i = 1; i <= block; i++)
-        for (register int j = lef[i]; j <= rig[i]; j++)
-            bel[j] = i;
+        for (register int j = lef[i]; j <= rig[i]; j++) bel[j] = i;
     for (register int i = 1; i <= block; i++) {
         for (register int j = lef[i]; j <= n; j++) f[i][bel[j]] = max(f[i][bel[j]], max(f[i][bel[j] - 1], ++cnt[a[j]]));
         for (register int j = lef[i]; j <= n; j++) cnt[a[j]]--;

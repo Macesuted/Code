@@ -27,7 +27,8 @@ void dfs(int l, int r) {
     if (l == r) {
         int64_t sum = 0;
         ans = max(ans, f.back());
-        for (int i = (int)f.size() - 2, j = 0; ~i && j < (int)a[l].size(); i--, j++) ans = max(ans, f[i] + (sum += a[l][j]));
+        for (int i = (int)f.size() - 2, j = 0; ~i && j < (int)a[l].size(); i--, j++)
+            ans = max(ans, f[i] + (sum += a[l][j]));
         return;
     }
     int mid = (l + r) >> 1;

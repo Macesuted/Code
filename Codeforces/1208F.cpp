@@ -2,9 +2,9 @@
  * @file 1208F.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-09
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -87,14 +87,12 @@ void solve(void) {
     for (int i = 1; i <= n; i++) update(f[a[i] = read<int>()], i);
     for (int i = (1 << maxlgn) - 1; ~i; i--)
         for (int j = 0; j < maxlgn; j++)
-            if (i >> j & 1)
-                update(f[i ^ (1 << j)], f[i].first), update(f[i ^ (1 << j)], f[i].second);
+            if (i >> j & 1) update(f[i ^ (1 << j)], f[i].first), update(f[i ^ (1 << j)], f[i].second);
     int ans = 0;
     for (int i = 1; i <= n - 2; i++) {
         int t = 0;
         for (int j = maxlgn - 1; ~j; j--)
-            if (!(a[i] >> j & 1) && f[t | (1 << j)].second > i)
-                t ^= 1 << j;
+            if (!(a[i] >> j & 1) && f[t | (1 << j)].second > i) t ^= 1 << j;
         ans = max(ans, a[i] | t);
     }
     write(ans), putch('\n');

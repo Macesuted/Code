@@ -21,8 +21,7 @@ pii calc(vector<int>& a, vector<int>& b) {
     int cnt[2] = {0, 0};
     for (int i = 0; i < 4; i++)
         for (int j = 0; j < 4; j++)
-            if (a[i] != b[j])
-                cnt[a[i] > b[j]]++;
+            if (a[i] != b[j]) cnt[a[i] > b[j]]++;
     return MP(cnt[0], cnt[1]);
 }
 

@@ -37,8 +37,7 @@ void work(void) {
         vis[p.first] = true;
         if (p.second == k) continue;
         for (auto i : graph[p.first])
-            if (!vis[i] && --deg[i] <= 1)
-                que.push({i, p.second + 1});
+            if (!vis[i] && --deg[i] <= 1) que.push({i, p.second + 1});
     }
     int cnt = 0;
     for (int i = 1; i <= n; i++) cnt += !vis[i];

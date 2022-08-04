@@ -5,7 +5,7 @@
  *
  * @copyright Copyright (c) 2022
  * @brief
- *  My tutorial: https://macesuted.moe/article/cf1625e2  
+ *  My tutorial: https://macesuted.moe/article/cf1625e2
  *
  */
 

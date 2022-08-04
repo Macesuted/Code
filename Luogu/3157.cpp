@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -64,9 +66,7 @@ struct Node {
     inline bool operator<(const Node& oth) const {
         return this->x != oth.x ? this->x < oth.x : (this->y != oth.y ? this->y < oth.y : this->z < oth.z);
     }
-    inline bool operator==(const Node& oth) const {
-        return this->x == oth.x && this->y == oth.y && this->z == oth.z;
-    }
+    inline bool operator==(const Node& oth) const { return this->x == oth.x && this->y == oth.y && this->z == oth.z; }
 };
 
 Node nodes[maxn];
@@ -112,7 +112,8 @@ void work(int l, int r) {
 
 int main() {
     n = read<int>(), m = read<int>();
-    for (register int i = 1; i <= n; i++) nodes[i].x = 0, nodes[i].y = i, pos[nodes[i].z = read<int>()] = i, nodes[i].sign = 1;
+    for (register int i = 1; i <= n; i++)
+        nodes[i].x = 0, nodes[i].y = i, pos[nodes[i].z = read<int>()] = i, nodes[i].sign = 1;
     for (register int i = 1; i <= m; i++)
         nodes[++n].z = read<int>(), nodes[n].y = pos[nodes[n].z], nodes[n].x = i, nodes[n].sign = -1;
     work(1, n);

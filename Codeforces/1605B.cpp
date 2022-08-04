@@ -2,9 +2,9 @@
  * @file 1605B.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-12-31
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>

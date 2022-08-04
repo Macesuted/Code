@@ -2,9 +2,9 @@
  * @file 1379E.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2021-11-01
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <bits/stdc++.h>

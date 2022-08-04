@@ -23,8 +23,7 @@ void solve(void) {
     int n, m, r, c;
     cin >> n >> m >> r >> c;
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            cin >> a[i][j];
+        for (int j = 1; j <= m; j++) cin >> a[i][j];
     if (a[r][c] == 'B') return cout << 0 << endl, void();
     bool check1 = false;
     for (int i = 1; i <= n; i++)

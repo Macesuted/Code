@@ -56,8 +56,7 @@ void solve(void) {
     long long ans = 0;
     for (int k = 0; k <= K; k++)
         for (int l = 0; l < maxn; l++)
-            if (k + popcount(l) <= K)
-                Add(ans, f[m][n][k][l]);
+            if (k + popcount(l) <= K) Add(ans, f[m][n][k][l]);
     write(ans), putchar('\n');
     return;
 }

@@ -102,7 +102,8 @@ class SegmentTree {
         int cl, cr, len, ans, pre, suf;
         Node operator+(const Node& o) const {
             Node ans, l = *this, r = o;
-            ans.cl = l.cl, ans.cr = r.cr, ans.len = l.len + r.len, ans.ans = l.ans + r.ans, ans.pre = l.pre, ans.suf = r.suf;
+            ans.cl = l.cl, ans.cr = r.cr, ans.len = l.len + r.len, ans.ans = l.ans + r.ans, ans.pre = l.pre,
+            ans.suf = r.suf;
             if (l.suf == l.len) ans.pre = l.suf;
             if (r.pre == r.len) ans.suf = r.pre;
             if (l.cr != r.cl) {

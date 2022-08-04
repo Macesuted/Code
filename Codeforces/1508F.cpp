@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -65,7 +67,8 @@ int l[maxn], r[maxn], lef[maxn][2], rig[maxn][2];
 int main() {
     int n = read<int>(), q = read<int>();
     a[0] = n + 1, a[n + 1] = 0;
-    for (register int i = 1; i <= n; i++) a[i] = read<int>(), l[i] = r[i] = i, lef[i][1] = rig[i][1] = 0, lef[i][0] = rig[i][0] = n + 1;
+    for (register int i = 1; i <= n; i++)
+        a[i] = read<int>(), l[i] = r[i] = i, lef[i][1] = rig[i][1] = 0, lef[i][0] = rig[i][0] = n + 1;
     int answer = 0;
     while (q--) {
         int L = read<int>(), R = read<int>();
@@ -73,12 +76,14 @@ int main() {
             while (l[i] > L) {
                 l[i]--;
                 bool op = a[l[i]] > a[i];
-                if (op != (a[l[i]] > a[lef[i][op]])) answer += (i == rig[l[i]][!op]) - (i == rig[lef[i][op]][!op]), lef[i][op] = l[i];
+                if (op != (a[l[i]] > a[lef[i][op]]))
+                    answer += (i == rig[l[i]][!op]) - (i == rig[lef[i][op]][!op]), lef[i][op] = l[i];
             }
             while (r[i] < R) {
                 r[i]++;
                 bool op = a[i] < a[r[i]];
-                if (op != (a[rig[i][op]] < a[r[i]])) answer += (i == lef[r[i]][!op]) - (i == lef[rig[i][op]][!op]), rig[i][op] = r[i];
+                if (op != (a[rig[i][op]] < a[r[i]]))
+                    answer += (i == lef[r[i]][!op]) - (i == lef[rig[i][op]][!op]), rig[i][op] = r[i];
             }
         }
         write(answer), putch('\n');

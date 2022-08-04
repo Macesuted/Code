@@ -22,8 +22,7 @@ void solve(void) {
     for (int c = b; c < b + ans; c++) {
         int d = 0;
         for (int i = 30; ~i; i--)
-            if ((c >> i & 1) && d + (1 << i) < a)
-                d += 1 << i;
+            if ((c >> i & 1) && d + (1 << i) < a) d += 1 << i;
         int p = 0;
         for (int i = 0; i <= 30; i++)
             if ((c >> i & 1) && !(d >> i & 1)) {

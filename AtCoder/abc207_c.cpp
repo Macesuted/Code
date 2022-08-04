@@ -39,8 +39,9 @@ void work(void) {
     }
     sort(cac + 1, cac + 2 * n + 1);
     int tn = unique(cac + 1, cac + 2 * n + 1) - cac - 1;
-    for (register int i = 1; i <= n; i++) a[i].first = lower_bound(cac + 1, cac + tn + 1, a[i].first) - cac,
-                                          a[i].second = lower_bound(cac + 1, cac + tn + 1, a[i].second) - cac;
+    for (register int i = 1; i <= n; i++)
+        a[i].first = lower_bound(cac + 1, cac + tn + 1, a[i].first) - cac,
+        a[i].second = lower_bound(cac + 1, cac + tn + 1, a[i].second) - cac;
     sort(a + 1, a + n + 1);
     int answer = 0;
     for (register int i = 1; i <= n; i++) {

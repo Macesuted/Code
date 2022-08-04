@@ -32,8 +32,7 @@ int dfs(int p, int n, bool lim = true) {
         ans = min(ans, a[p] * pow10[n - p - 1] + dfs(p + 1, n, true));
         if (use) k++, S.erase(a[p]);
     }
-    if (S.upper_bound(a[p]) != S.end())
-        ans = min(ans, *S.upper_bound(a[p]) * pow10[n - p - 1] + dfs(p + 1, n, false));
+    if (S.upper_bound(a[p]) != S.end()) ans = min(ans, *S.upper_bound(a[p]) * pow10[n - p - 1] + dfs(p + 1, n, false));
     if (a[p] < 9 && k) {
         k--, S.insert(a[p] + 1);
         ans = min(ans, (a[p] + 1) * pow10[n - p - 1] + dfs(p + 1, n, false));

@@ -78,8 +78,9 @@ long double TIM, ans = numeric_limits<long double>::max();
 
 struct comp {
     long double getPos(const tidid& a) const {
-        return get<1>(a) == get<3>(a) ? get<0>(a)
-                                      : get<0>(a) + (TIM - get<1>(a)) * (get<2>(a) - get<0>(a)) / (get<3>(a) - get<1>(a));
+        return get<1>(a) == get<3>(a)
+                   ? get<0>(a)
+                   : get<0>(a) + (TIM - get<1>(a)) * (get<2>(a) - get<0>(a)) / (get<3>(a) - get<1>(a));
     }
     bool operator()(const tidid& a, const tidid& b) const { return getPos(a) < getPos(b); }
 };
@@ -112,8 +113,9 @@ int LCA(int x, int y) {
     return dep[x] < dep[y] ? x : y;
 }
 void calcCross(tidid a, tidid b) {
-    long double ak = (get<2>(a) - get<0>(a)) / (get<3>(a) - get<1>(a)), bk = (get<2>(b) - get<0>(b)) / (get<3>(b) - get<1>(b)),
-                ad = get<0>(a) - get<1>(a) * ak, bd = get<0>(b) - get<1>(b) * bk;
+    long double ak = (get<2>(a) - get<0>(a)) / (get<3>(a) - get<1>(a)),
+                bk = (get<2>(b) - get<0>(b)) / (get<3>(b) - get<1>(b)), ad = get<0>(a) - get<1>(a) * ak,
+                bd = get<0>(b) - get<1>(b) * bk;
     if ((ad < bd) != (ad + ak * TIM < bd + bk * TIM)) return;
     long double ret = (ad - bd) / (bk - ak);
     if (ret < max(get<1>(a), get<1>(b)) - eps || ret > min(get<3>(a), get<3>(b)) + eps) return;
@@ -161,8 +163,8 @@ void solve(void) {
         long double tim = read<int>(), c = read<int>();
         int x = read<int>(), y = read<int>(), t = LCA(x, y);
         while (top[x] != top[t]) {
-            heav[top[x]].emplace_back(x, tim, top[x], tim + (dep[x] - dep[top[x]]) / c), tim += (dep[x] - dep[top[x]]) / c,
-                x = top[x];
+            heav[top[x]].emplace_back(x, tim, top[x], tim + (dep[x] - dep[top[x]]) / c),
+                tim += (dep[x] - dep[top[x]]) / c, x = top[x];
             ligh[x].emplace_back(x, tim, fa[x], tim + 1 / c), tim += 1 / c, x = fa[x];
         }
         static stack<pii> cache;

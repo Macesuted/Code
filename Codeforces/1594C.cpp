@@ -29,8 +29,7 @@ void work(void) {
         int ttt = 0;
         for (int j = i; j <= n; j += i) ttt += (s[j] != c);
         if (ttt == 0) {
-            cout << 1 << endl
-                 << i << endl;
+            cout << 1 << endl << i << endl;
             return;
         }
     }

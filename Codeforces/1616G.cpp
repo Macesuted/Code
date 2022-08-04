@@ -107,7 +107,8 @@ void solve(void) {
         if (!cons[i]) r = i;
         for (auto j : graph[i - 1])
             if (j <= r + 1)
-                g[i - 1].push_back(n + j), g[n + i].push_back(j - 1), gr[n + j].push_back(i - 1), gr[j - 1].push_back(n + i);
+                g[i - 1].push_back(n + j), g[n + i].push_back(j - 1), gr[n + j].push_back(i - 1),
+                    gr[j - 1].push_back(n + i);
     }
     dfs(p, g, 0), dfs(p, gr, 0), dfs(n + p + 1, g, 1), dfs(n + p + 1, gr, 1);
     long long ans = 0, cnt1 = 0, cnt2 = 0;

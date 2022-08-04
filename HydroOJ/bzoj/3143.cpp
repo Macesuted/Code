@@ -12,8 +12,7 @@ inline T read() {
     char c = getchar();
     for (; c < '0' || c > '9'; c = getchar())
         if (c == '-') f = -1;
-    for (; c <= '9' && c >= '0'; c = getchar())
-        x = x * 10 + (c & 15);
+    for (; c <= '9' && c >= '0'; c = getchar()) x = x * 10 + (c & 15);
     return x * f;
 }
 
@@ -36,8 +35,7 @@ class Matrix {
         ans.resize(a.n, b.m);
         for (int i = 0; i < a.n; i++)
             for (int j = 0; j < a.m; j++)
-                for (int k = 0; k < b.m; k++)
-                    ans[i][k] += a.get(i, j) * b.get(j, k);
+                for (int k = 0; k < b.m; k++) ans[i][k] += a.get(i, j) * b.get(j, k);
         return ans;
     }
     Matrix getRev(void) {
@@ -58,8 +56,7 @@ class Matrix {
             }
         }
         for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                b[i][j] /= a[i][i];
+            for (int j = 0; j < n; j++) b[i][j] /= a[i][i];
         return b;
     }
 };

@@ -12,8 +12,7 @@ inline T read() {
     char c = getchar();
     for (; c < '0' || c > '9'; c = getchar())
         if (c == '-') f = -1;
-    for (; c <= '9' && c >= '0'; c = getchar())
-        x = x * 10 + (c & 15);
+    for (; c <= '9' && c >= '0'; c = getchar()) x = x * 10 + (c & 15);
     return x * f;
 }
 
@@ -70,13 +69,11 @@ void dfs1(int p, int pre = -1) {
 }
 void dfs2(int p, int pre = -1) {
     if (son[p])
-        dfs2(son[p], p),
-            trie[p] = trie[son[p]];
+        dfs2(son[p], p), trie[p] = trie[son[p]];
     else
         trie[p] = new Trie();
     for (auto i : graph[p])
-        if (i != pre && i != son[p])
-            dfs2(i, p), trie[p]->merge(trie[i]);
+        if (i != pre && i != son[p]) dfs2(i, p), trie[p]->merge(trie[i]);
     trie[p]->pushFront(a[p]);
     answer[p] = trie[p]->size + c[p];
     return;
@@ -103,7 +100,6 @@ int main() {
             maxv = answer[i], maxcnt = 1;
         else if (answer[i] == maxv)
             maxcnt++;
-    cout << maxv << endl
-         << maxcnt << endl;
+    cout << maxv << endl << maxcnt << endl;
     return 0;
 }

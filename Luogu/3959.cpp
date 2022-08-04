@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -91,8 +93,7 @@ int main() {
             for (register int k = (j - 1) & j; k; k = (k - 1) & j) {
                 long long cost = 0;
                 for (register int t = 0; t < n; t++)
-                    if ((j >> t & 1) && !(k >> t & 1))
-                        cost += dist[t][k];
+                    if ((j >> t & 1) && !(k >> t & 1)) cost += dist[t][k];
                 f[i][j] = min(f[i][j], f[i - 1][k] + cost * i);
             }
     long long answer = 0x3f3f3f3f3f3f3f3f;

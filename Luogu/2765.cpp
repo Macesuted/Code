@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -75,8 +77,7 @@ class Dinic {
             int p = que.front();
             que.pop();
             for (typename vector<Edge>::iterator i = graph[p].begin(); i != graph[p].end(); i++)
-                if (!vis[i->to] && i->cap > i->flow)
-                    que.push(i->to), vis[i->to] = true, h[i->to] = h[p] + 1;
+                if (!vis[i->to] && i->cap > i->flow) que.push(i->to), vis[i->to] = true, h[i->to] = h[p] + 1;
         }
         return vis[T];
     }
@@ -157,7 +158,8 @@ int main() {
     }
     write(--num), putch('\n');
     for (register int i = 1; i <= num; i++)
-        for (vector<Dinic<50005>::Edge>::iterator j = dinic.graph[i * 2 + 1].begin(); j != dinic.graph[i * 2 + 1].end(); j++)
+        for (vector<Dinic<50005>::Edge>::iterator j = dinic.graph[i * 2 + 1].begin(); j != dinic.graph[i * 2 + 1].end();
+             j++)
             if (j->cap == j->flow) aft[i] = (j->to - 1) / 2;
     for (register int i = 1; i <= num; i++)
         if (!vis[i]) {

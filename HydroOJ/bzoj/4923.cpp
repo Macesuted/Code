@@ -30,7 +30,9 @@ class Splay {
 
     bool get(Node* p) { return p->fa->son[1] == p; }
     int getSiz(Node* p) { return p ? p->siz : 0; }
-    void newNode(Node* f, bool w, int64_t v, int cnt_ = 1) { return f->son[w] = new Node(v, cnt_), f->son[w]->fa = f, void(); }
+    void newNode(Node* f, bool w, int64_t v, int cnt_ = 1) {
+        return f->son[w] = new Node(v, cnt_), f->son[w]->fa = f, void();
+    }
     void upd(Node* p, int v) { return p && (p->val += v, p->lazy += v), void(); }
     void pushDown(Node* p) { return p && (upd(p->son[0], p->lazy), upd(p->son[1], p->lazy), (p->lazy = 0)), void(); }
     void pushUp(Node* p) { return p && (p->siz = p->cnt + getSiz(p->son[0]) + getSiz(p->son[1])), void(); }

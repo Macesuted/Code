@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -90,8 +92,7 @@ int main() {
     if (n <= 10000) {
         static unordered_set<long long> S;
         for (register int l = 1; l <= n; l++)
-            for (register int r = l; r <= n; r++)
-                S.insert(arr[r] - arr[l - 1]);
+            for (register int r = l; r <= n; r++) S.insert(arr[r] - arr[l - 1]);
         write((int)S.size() - 1), putch('\n');
     } else {
         int tn = n, n2 = arr[n];

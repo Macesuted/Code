@@ -40,15 +40,13 @@ void solve(void) {
     cin >> T >> P;
     for (int i = 1; i <= n; i++)
         for (int j = 0; j <= T; j++)
-            for (int k = 0; k <= P; k++)
-                f[i][j][k] = numeric_limits<int>::min() / 2;
+            for (int k = 0; k <= P; k++) f[i][j][k] = numeric_limits<int>::min() / 2;
     f[0][0][0] = 0;
     for (int i = 1; i <= n; i++) {
         for (int k = 0; k <= T; k++) g[k] = numeric_limits<int>::min() / 2;
         g[0] = 0;
         for (auto j : a[i])
-            for (int k = T; k >= j.first; k--)
-                g[k] = max(g[k], g[k - j.first] + j.second);
+            for (int k = T; k >= j.first; k--) g[k] = max(g[k], g[k - j.first] + j.second);
         for (int k = 0; k <= T; k++) g[k] = min(g[k], 100LL);
         for (int k = 0; k <= T; k++)
             for (int j = T; j >= k; j--)
@@ -59,8 +57,7 @@ void solve(void) {
     }
     int ans = numeric_limits<int>::min();
     for (int j = 0; j <= T; j++)
-        for (int k = 0; k <= P; k++)
-            ans = max(ans, f[n][j][k]);
+        for (int k = 0; k <= P; k++) ans = max(ans, f[n][j][k]);
     cout << max(-1LL, ans) << endl;
     return;
 }

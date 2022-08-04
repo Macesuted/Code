@@ -12,8 +12,7 @@ inline void Mul(int &a, int b) { return void(a = mul(a, b)); }
 inline int Pow(int a, int b) {
     int c = 1;
     for (; b; Mul(a, a), b >>= 1)
-        if (1 & b)
-            Mul(c, a);
+        if (1 & b) Mul(c, a);
     return c;
 }
 inline int Inv(int x) { return Pow(x, mod - 2); }
@@ -33,31 +32,25 @@ int main(void) {
     for (int i = 0; i <= n; i++)
         if (i * k1 <= n - 1) {
             int res = n - 1 - i * k1;
-            if (res % k2)
-                continue;
+            if (res % k2) continue;
             int j = res / k2;
-            if (j > n)
-                continue;
+            if (j > n) continue;
             Inc(tot, Polycoef(i, j, n - i - j));
         }
     for (int i = 0; i <= n - 1; i++)
         if (i * k1 <= n - 1 - k1) {
             int res = n - 1 - k1 - i * k1;
-            if (res % k2)
-                continue;
+            if (res % k2) continue;
             int j = res / k2;
-            if (j > n - 1)
-                continue;
+            if (j > n - 1) continue;
             Inc(Sum, mul(Polycoef(i, j, n - 1 - i - j), a));
         }
     for (int i = 0; i <= n - 1; i++)
         if (i * k1 <= n - 1 - k2) {
             int res = n - 1 - k2 - i * k1;
-            if (res % k2)
-                continue;
+            if (res % k2) continue;
             int j = res / k2;
-            if (j > n - 1)
-                continue;
+            if (j > n - 1) continue;
             Inc(Sum, mul(Polycoef(i, j, n - 1 - i - j), b));
         }
     Mul(tot, Inv(n));

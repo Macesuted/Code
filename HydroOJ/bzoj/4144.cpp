@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -96,7 +98,8 @@ int main() {
     static priority_queue<pli, vector<pli>, greater<pli> > que;
     while (!que.empty()) que.pop();
     memset(dist, 0x3f, sizeof(dist)), memset(vis, 0, sizeof(vis));
-    for (vector<int>::iterator i = nodes.begin(); i != nodes.end(); i++) from[*i] = *i, que.push((pli){dist[*i] = 0, *i});
+    for (vector<int>::iterator i = nodes.begin(); i != nodes.end(); i++)
+        from[*i] = *i, que.push((pli){dist[*i] = 0, *i});
     while (!que.empty()) {
         int p = que.top().second;
         que.pop();

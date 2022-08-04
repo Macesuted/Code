@@ -115,7 +115,9 @@ class SegmentTree {
    public:
     SegmentTree(void) { roots.push_back(NULL); }
     void resize(int _n) { return n = _n, void(); }
-    void insert(int p, int r, int m) { return newRoot(), insert(roots.back(), roots[(int)roots.size() - 2], 1, n, p, r, m); }
+    void insert(int p, int r, int m) {
+        return newRoot(), insert(roots.back(), roots[(int)roots.size() - 2], 1, n, p, r, m);
+    }
     pll query(int ver, int l, int r) { return query(roots[ver], 1, n, l, r); }
 } ST;
 

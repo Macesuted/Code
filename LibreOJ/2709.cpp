@@ -2,9 +2,9 @@
  * @file 2709.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-03-31
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -101,7 +101,9 @@ typedef pair<int, int> pii;
 int a[maxn], sum[maxn], n, len;
 multiset<int> S;
 
-int calc(int p) { return p + len - 1 <= n ? sum[p + len - 1] - sum[p - 1] : sum[p + len - 1 - n] + sum[n] - sum[p - 1]; }
+int calc(int p) {
+    return p + len - 1 <= n ? sum[p + len - 1] - sum[p - 1] : sum[p + len - 1 - n] + sum[n] - sum[p - 1];
+}
 
 void solve(void) {
     n = read(), len = n >> 1;

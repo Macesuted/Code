@@ -128,7 +128,8 @@ void solve(void) {
         g[S] = Mod(mod - f[u] * g[rest] % mod);
         for (int T = (rest - 1) & rest; T; T = (T - 1) & rest) g[S] = Mod(g[S] + mod - f[T | u] * g[rest ^ T] % mod);
         f[S] = pow2[e[S]];
-        for (int T = S; T; T = (T - 1) & S) f[S] = Mod(f[S] + mod - g[T] * pow2[E(T, S ^ T)] % mod * pow2[e[S ^ T]] % mod);
+        for (int T = S; T; T = (T - 1) & S)
+            f[S] = Mod(f[S] + mod - g[T] * pow2[E(T, S ^ T)] % mod * pow2[e[S ^ T]] % mod);
         g[S] = Mod(g[S] + f[S]);
     }
     write(f[(1 << n) - 1]), putch('\n');

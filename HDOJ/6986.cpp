@@ -39,12 +39,10 @@ void solve(void) {
     for (int i = 1; i <= n; i++) {
         dfs(i);
         int ans = 0, p = 1;
-        for (int j = 1; j <= n; j++)
-            ans = (ans + p * f[j]) % mod1, p = p * base % mod1;
+        for (int j = 1; j <= n; j++) ans = (ans + p * f[j]) % mod1, p = p * base % mod1;
         cout << ans << ' ';
         ans = 0, p = 1;
-        for (int j = 1; j <= n; j++)
-            ans = (ans + p * f[j]) % mod2, p = p * base % mod2;
+        for (int j = 1; j <= n; j++) ans = (ans + p * f[j]) % mod2, p = p * base % mod2;
         cout << ans << endl;
     }
     graph.clear();

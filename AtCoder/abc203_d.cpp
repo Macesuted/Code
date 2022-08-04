@@ -39,15 +39,12 @@ int n, k;
 
 bool check(int lim) {
     for (register int i = 1; i <= n; i++)
-        for (register int j = 1; j <= n; j++)
-            b[i][j] = (a[i][j] <= lim);
+        for (register int j = 1; j <= n; j++) b[i][j] = (a[i][j] <= lim);
     for (register int i = 1; i <= n; i++)
-        for (register int j = 1; j <= n; j++)
-            b[i][j] = b[i][j] + b[i - 1][j] + b[i][j - 1] - b[i - 1][j - 1];
+        for (register int j = 1; j <= n; j++) b[i][j] = b[i][j] + b[i - 1][j] + b[i][j - 1] - b[i - 1][j - 1];
     for (register int i = k; i <= n; i++)
         for (register int j = k; j <= n; j++)
-            if (b[i][j] - b[i - k][j] - b[i][j - k] + b[i - k][j - k] >= ((k * k + 1) / 2))
-                return true;
+            if (b[i][j] - b[i - k][j] - b[i][j - k] + b[i - k][j - k] >= ((k * k + 1) / 2)) return true;
     return false;
 }
 
@@ -55,8 +52,7 @@ void work(void) {
     // INIT();
     cin >> n >> k;
     for (register int i = 1; i <= n; i++)
-        for (register int j = 1; j <= n; j++)
-            cin >> a[i][j], numbers.push_back(a[i][j]);
+        for (register int j = 1; j <= n; j++) cin >> a[i][j], numbers.push_back(a[i][j]);
     sort(numbers.begin(), numbers.end());
     int l = 0, r = n * n - 1;
     if (check(numbers[l])) return cout << numbers[l] << endl, void();

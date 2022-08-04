@@ -158,7 +158,8 @@ void solve(void) {
     auto check = [&](int p, int len, bool U, bool D) {
         int l = p, r = p + len - 1;
         return s[l] != 'L' && s[r] != 'R' && (U || getU(l, r) == 0) && (D || getD(l, r) == 0) &&
-               ((U ? getD(l - len, r - len) : 0) + getR(l, r - 1) * base + getL(l + 1, r) + (D ? getU(l + len, r + len) : 0)) %
+               ((U ? getD(l - len, r - len) : 0) + getR(l, r - 1) * base + getL(l + 1, r) +
+                (D ? getU(l + len, r + len) : 0)) %
                        mod ==
                    powpre[len - 1];
     };
@@ -199,7 +200,8 @@ int main() {
 
     powb[0] = powpre[0] = invpb[0] = 1, invpb[1] = Inv(powb[1] = base);
     for (int i = 1; i < maxn; i++)
-        powpre[i] = (powpre[i - 1] + (powb[i] = powb[i - 1] * powb[1] % mod)) % mod, invpb[i] = invpb[i - 1] * invpb[1] % mod;
+        powpre[i] = (powpre[i - 1] + (powb[i] = powb[i - 1] * powb[1] % mod)) % mod,
+        invpb[i] = invpb[i - 1] * invpb[1] % mod;
 
     int _ = 1;
     while (_--) solve();

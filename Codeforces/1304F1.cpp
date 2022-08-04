@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -104,8 +106,7 @@ long long f[maxn][maxm], sum[maxn][maxm];
 int main() {
     int n = read<int>(), m = read<int>(), k = read<int>();
     for (register int i = 1; i <= n; i++)
-        for (register int j = 1; j <= m; j++)
-            sum[i][j] = sum[i][j - 1] + (a[i][j] = read<int>());
+        for (register int j = 1; j <= m; j++) sum[i][j] = sum[i][j - 1] + (a[i][j] = read<int>());
     for (register int l = 1; l + k - 1 <= m; l++) {
         int r = l + k - 1;
         f[1][l] = sum[1][r] - sum[1][l - 1];
@@ -114,8 +115,7 @@ int main() {
     for (register int i = 2; i <= n; i++) {
         for (register int j = 1; j + k - 1 <= m; j++)
             tree.update(j, j, f[i - 1][j] + sum[i][min(m, j + k - 1)] - sum[i][j - 1] - tree.query(j, j));
-        for (register int j = 1; j < k; j++)
-            tree.update(max(1, j - k + 1), min(m - k + 1, j), -a[i][j]);
+        for (register int j = 1; j < k; j++) tree.update(max(1, j - k + 1), min(m - k + 1, j), -a[i][j]);
         for (register int l = 1; l + k - 1 <= m; l++) {
             int r = l + k - 1;
             if (l > 1) tree.update(max(1, l - k), min(m - k + 1, l - 1), a[i][l - 1]);

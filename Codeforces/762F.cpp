@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -104,8 +106,7 @@ void dfs(vector<vector<int> >& graph, int p, int pre = -1) {
                 if (g[!cnt][j]) {
                     g[cnt][j] = Mod(g[cnt][j] + g[!cnt][j]);
                     for (register int k = 0; k < m; k++)
-                        if (!(j >> k & 1))
-                            g[cnt][j ^ (1 << k)] = (g[cnt][j ^ (1 << k)] + g[!cnt][j] * f[*i][k]) % mod;
+                        if (!(j >> k & 1)) g[cnt][j ^ (1 << k)] = (g[cnt][j ^ (1 << k)] + g[!cnt][j] * f[*i][k]) % mod;
                 }
         }
     for (register int i = 0; i < m; i++) f[p][i] = g[cnt][sons[i]];

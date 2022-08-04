@@ -87,7 +87,9 @@ class SegmentTree {
                void();
     }
     int getMin(int p) { return tree[p].S.empty() ? numeric_limits<int>::max() : *tree[p].S.begin(); }
-    void pushUp(int p) { return tree[p].maxVal = min(max(tree[p << 1].maxVal, tree[p << 1 | 1].maxVal), getMin(p)), void(); }
+    void pushUp(int p) {
+        return tree[p].maxVal = min(max(tree[p << 1].maxVal, tree[p << 1 | 1].maxVal), getMin(p)), void();
+    }
     void insert(int p, int l, int r, int ql, int qr, int v) {
         if (ql <= l && r <= qr) return tree[p].S.erase(v), pushUp(p);
         erase(p, v);

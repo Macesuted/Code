@@ -100,8 +100,7 @@ long long solve(void) {
     for (int i = 1; i <= n; i++) {
         int c = b[i] - 'a', near = -1;
         for (int j = 0; j < c; j++)
-            if (pos[j].size() && (near == -1 || pos[j].front() < pos[near].front()))
-                near = j;
+            if (pos[j].size() && (near == -1 || pos[j].front() < pos[near].front())) near = j;
         if (near != -1) ans = min(ans, cost + dist.sum(pos[near].front()));
         if (pos[c].size() && (near == -1 || pos[c].front() < pos[near].front())) near = c;
         if (near != c) break;

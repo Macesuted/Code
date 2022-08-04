@@ -19,8 +19,7 @@ void dfs(int l, int r, int k, int dep = 1) {
     for (int tl = l, tr = l + t - 1; tl <= r; tl = tr + 1, tr = min(tl + t - 1, r)) {
         dfs(tl, tr, k, dep + 1);
         for (int i = tl; i <= tr; i++)
-            for (int j = tr + 1; j <= r; j++)
-                col[i][j] = dep;
+            for (int j = tr + 1; j <= r; j++) col[i][j] = dep;
     }
     return;
 }
@@ -33,8 +32,7 @@ void solve(void) {
     cout << ans << endl;
     dfs(1, n, k);
     for (int i = 1; i <= n; i++)
-        for (int j = i + 1; j <= n; j++)
-            cout << col[i][j] << ' ';
+        for (int j = i + 1; j <= n; j++) cout << col[i][j] << ' ';
     cout << endl;
     return;
 }

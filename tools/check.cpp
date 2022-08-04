@@ -31,7 +31,8 @@ int main(int argc, char* argv[]) {
         }
         char charAns = ans.curChar(), charOuf = ouf.curChar();
         bool eolnAns = checkEoln(ans), eolnOuf = checkEoln(ouf);
-        if (!eolnAns && !eolnOuf) quitf(_wa, "On line %d column %d, read '%c', expected '%c'.", line, column, charOuf, charAns);
+        if (!eolnAns && !eolnOuf)
+            quitf(_wa, "On line %d column %d, read '%c', expected '%c'.", line, column, charOuf, charAns);
         if (!eolnAns && eolnOuf) quitf(_wa, "Too short on line %d.", line);
         if (eolnAns && !eolnOuf) quitf(_wa, "Too long on line %d.", line);
     }

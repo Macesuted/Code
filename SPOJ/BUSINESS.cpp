@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -90,7 +92,8 @@ int main() {
     int m = read<int>(), test = 0;
     while (m) {
         int n = 0;
-        for (register int i = 1; i <= m; i++) from[i] = read<int>(), to[i] = read<int>(), n = max(n, max(from[i], to[i]));
+        for (register int i = 1; i <= m; i++)
+            from[i] = read<int>(), to[i] = read<int>(), n = max(n, max(from[i], to[i]));
         graph.resize(n + 1);
         for (register int i = 1; i <= m; i++) graph[from[i]].push_back(to[i]), graph[to[i]].push_back(from[i]);
         for (register int i = 1; i <= n; i++) vis[i] = sign[i] = 0;

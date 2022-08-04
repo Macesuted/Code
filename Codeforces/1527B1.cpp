@@ -58,4 +58,4 @@ int main() {
     cin >> _;
     while (_--) work();
     return 0;
-}//awa
+}  // awa

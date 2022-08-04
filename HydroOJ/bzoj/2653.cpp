@@ -104,7 +104,9 @@ class SegmentTree {
         struct Value {
             int sum, pre, suf;
 
-            Value operator+(const Value& o) const { return Value{sum + o.sum, max(pre, sum + o.pre), max(suf + o.sum, o.suf)}; }
+            Value operator+(const Value& o) const {
+                return Value{sum + o.sum, max(pre, sum + o.pre), max(suf + o.sum, o.suf)};
+            }
         };
 
         Node *l, *r;

@@ -71,7 +71,8 @@ bool mem1;
 #define P 37
 #define mod 19260817
 
-long long H[maxn / blockLen + 5][blockLen + 5], delt[maxn / blockLen + 5], Pow[maxn], PowSum[maxn], sum[maxn / blockLen + 5];
+long long H[maxn / blockLen + 5][blockLen + 5], delt[maxn / blockLen + 5], Pow[maxn], PowSum[maxn],
+    sum[maxn / blockLen + 5];
 int L[maxn / blockLen + 5], R[maxn / blockLen + 5], bel[maxn], a[maxn], n, blockCnt;
 
 long long getHashInBlock(int l, int r) {
@@ -82,7 +83,8 @@ long long getHashInBlock(int l, int r) {
 long long getHash(int l, int r) {
     int bl = bel[l], br = bel[r];
     if (bl == br) return getHashInBlock(l, r);
-    return (getHashInBlock(L[br], r) + (sum[br - 1] + mod - sum[bl] * Pow[R[br - 1] - R[bl]] % mod) * Pow[r - R[br - 1]] +
+    return (getHashInBlock(L[br], r) +
+            (sum[br - 1] + mod - sum[bl] * Pow[R[br - 1] - R[bl]] % mod) * Pow[r - R[br - 1]] +
             getHashInBlock(l, R[bl]) * Pow[r - R[bl]]) %
            mod;
 }
@@ -157,7 +159,9 @@ void recalc(int p) {
 }
 void recalcSum(void) {
     for (int i = 1; i <= blockCnt; i++)
-        sum[i] = (sum[i - 1] * Pow[R[i] - L[i] + 1] + H[i][R[i] - L[i] + 1] + mod + delt[i] * PowSum[R[i] - L[i]] % mod) % mod;
+        sum[i] =
+            (sum[i - 1] * Pow[R[i] - L[i] + 1] + H[i][R[i] - L[i] + 1] + mod + delt[i] * PowSum[R[i] - L[i]] % mod) %
+            mod;
     return;
 }
 

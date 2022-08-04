@@ -12,8 +12,7 @@ inline T read() {
     char c = getchar();
     for (; c < '0' || c > '9'; c = getchar())
         if (c == '-') f = -1;
-    for (; c <= '9' && c >= '0'; c = getchar())
-        x = x * 10 + (c & 15);
+    for (; c <= '9' && c >= '0'; c = getchar()) x = x * 10 + (c & 15);
     return x * f;
 }
 
@@ -70,9 +69,7 @@ void dfs2(int p, bool getAns = true) {
 }
 
 struct constructure {
-    constructure(int n) {
-        graph.resize(n << 1);
-    }
+    constructure(int n) { graph.resize(n << 1); }
     ~constructure() {
         edges.clear();
         graph.clear();

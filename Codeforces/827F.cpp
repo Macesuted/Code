@@ -105,8 +105,8 @@ vector<vector<tiii>::iterator> cur;
 int dist[maxn];
 
 void addEdge(int x, int y, int l, int r) {
-    return l <= r &&
-               (graph[x].emplace_back(l + (l & 1), r - (r & 1), y), graph[y].emplace_back(l + !(l & 1), r - !(r & 1), x), 1),
+    return l <= r && (graph[x].emplace_back(l + (l & 1), r - (r & 1), y),
+                      graph[y].emplace_back(l + !(l & 1), r - !(r & 1), x), 1),
            void();
 }
 
@@ -121,7 +121,8 @@ void solve(void) {
     memset(dist, 0x3f, sizeof(dist)), dist[1] = 0;
     static priority_queue<tiii, vector<tiii>, greater<tiii>> que;
     while (!que.empty()) que.pop();
-    while (cur[1] != graph[1].end() && get<0>(*cur[1]) == 0) que.emplace(1, get<1>(*cur[1]) + 1, get<2>(*cur[1])), cur[1]++;
+    while (cur[1] != graph[1].end() && get<0>(*cur[1]) == 0)
+        que.emplace(1, get<1>(*cur[1]) + 1, get<2>(*cur[1])), cur[1]++;
     while (!que.empty()) {
         auto [l, r, x] = que.top();
         que.pop(), dist[(x - 1) % n + 1] = min(dist[(x - 1) % n + 1], l);

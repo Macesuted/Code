@@ -11,7 +11,9 @@ namespace io {
 char ibuf[SIZE], *iS, *iT, obuf[SIZE], *oS = obuf, *oT = oS + SIZE - 1, c, qu[55];
 int f, qr;
 inline void flush(void) { return fwrite(obuf, 1, oS - obuf, stdout), oS = obuf, void(); }
-inline char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
+inline char getch(void) {
+    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
+}
 inline void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();
@@ -107,33 +109,27 @@ int main() {
             int dist = mid - 1 + i->first / 2 - 1;
             if (i->first % 2 == 0 && S.find(i->first + 1) != S.end()) {
                 int lSiz = i->second.size(), rSiz = S[i->first + 1].size();
-                vector<long long>&LF = go[i->first], &LG = back[i->first],
-                            &RF = go[i->first + 1], &RG = back[i->first + 1];
+                vector<long long>&LF = go[i->first], &LG = back[i->first], &RF = go[i->first + 1],
+                            &RG = back[i->first + 1];
 
                 for (register int j = 0; j <= k; j++) h[j] = g[j];
                 for (register int j = 1; j <= lSiz; j++)
-                    for (register int t = k; t >= j; t--)
-                        h[t] = min(h[t], g[t - j] + LG[j]);
+                    for (register int t = k; t >= j; t--) h[t] = min(h[t], g[t - j] + LG[j]);
                 for (register int j = 0; j <= rSiz; j++)
-                    for (register int t = k; t >= j; t--)
-                        f[t] = min(f[t], dist + h[t - j] + RF[j]);
+                    for (register int t = k; t >= j; t--) f[t] = min(f[t], dist + h[t - j] + RF[j]);
 
                 for (register int j = 0; j <= k; j++) h[j] = g[j];
                 for (register int j = 1; j <= rSiz; j++)
-                    for (register int t = k; t >= j; t--)
-                        h[t] = min(h[t], g[t - j] + RG[j]);
+                    for (register int t = k; t >= j; t--) h[t] = min(h[t], g[t - j] + RG[j]);
                 for (register int j = 0; j <= lSiz; j++)
-                    for (register int t = k; t >= j; t--)
-                        f[t] = min(f[t], dist + h[t - j] + LF[j]);
+                    for (register int t = k; t >= j; t--) f[t] = min(f[t], dist + h[t - j] + LF[j]);
 
                 for (register int j = 0; j <= k; j++) h[j] = g[j];
                 for (register int j = 1; j <= lSiz; j++)
-                    for (register int t = k; t >= j; t--)
-                        g[t] = min(g[t], h[t - j] + LG[j]);
+                    for (register int t = k; t >= j; t--) g[t] = min(g[t], h[t - j] + LG[j]);
                 for (register int j = 0; j <= k; j++) h[j] = g[j];
                 for (register int j = 1; j <= rSiz; j++)
-                    for (register int t = k; t >= j; t--)
-                        g[t] = min(g[t], h[t - j] + RG[j]);
+                    for (register int t = k; t >= j; t--) g[t] = min(g[t], h[t - j] + RG[j]);
                 i++;
             } else {
                 int siz = i->second.size();
@@ -162,8 +158,7 @@ int main() {
                     }
                 }
                 for (auto t : i.second)
-                    for (register int j = k; j; j--)
-                        f[j] = min(f[j], f[j - 1] + t.second);
+                    for (register int j = k; j; j--) f[j] = min(f[j], f[j - 1] + t.second);
                 for (register int i = 0; i <= siz; i++) f[i] = min(f[i], F[i]);
             } else
                 break;

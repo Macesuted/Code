@@ -38,11 +38,11 @@ void solve(void) {
     for (int y = +R; y >= -R; y--)
         for (int d = sqrt(R * R - y * y), x = -d; x <= +d; x++)
             for (int i = -R; i <= +R + 1; i++)
-                f[x + maxr][y - 1 + maxr][i + maxr] =
-                    (f[x + maxr][y + maxr][i + maxr] + (i == R + 1 ? mod - 1 : 0) + mod -
-                     f[x - 1 + maxr][y + maxr][i + maxr] * a1 % mod + mod - f[x + 1 + maxr][y + maxr][i + maxr] * a3 % mod +
-                     mod - f[x + maxr][y + 1 + maxr][i + maxr] * a4 % mod) *
-                    inva2 % mod;
+                f[x + maxr][y - 1 + maxr][i + maxr] = (f[x + maxr][y + maxr][i + maxr] + (i == R + 1 ? mod - 1 : 0) +
+                                                       mod - f[x - 1 + maxr][y + maxr][i + maxr] * a1 % mod + mod -
+                                                       f[x + 1 + maxr][y + maxr][i + maxr] * a3 % mod + mod -
+                                                       f[x + maxr][y + 1 + maxr][i + maxr] * a4 % mod) *
+                                                      inva2 % mod;
     for (int x = -R; x <= +R; x++)
         for (int y = -sqrt(R * R - x * x) - 1, i = -R; i <= +R + 1; i++)
             a[x + R][i + R] = f[x + maxr][y + maxr][i + maxr] * (i == R + 1 ? mod - 1 : 1) % mod;
