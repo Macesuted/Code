@@ -9,20 +9,15 @@
             },
             "command": "g++",
             "args": [
-                "\"${file}\"",
+                "'${fileBasename}'",
                 "-o",
-                "\"${fileBasenameNoExtension}\"",
-                "-lm",
+                "'${fileBasenameNoExtension}.exe'",
                 "-Wall",
                 "-Wextra",
                 "-O2",
-                "-std=c++20",
                 "'-Wl,--stack=512000000'",
-                "-I",
-                "/Code/libs/ac-library",
-                "-I",
-                "/Code/libs/testlib",
-                "-DLOCAL"
+                "-D LOCAL",
+                "-I /Code/libs/ac-library"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -48,17 +43,8 @@
             }
         },
         {
-            "label": "Kill Process",
-            "type": "shell",
-            "command": "taskkill",
-            "args": [
-                "/IM",
-                "${fileBasenameNoExtension}",
-                "/F",
-            ]
-        },
-        {
             "label": "C++ Compile & Run",
+            "type": "shell",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -78,34 +64,38 @@
             }
         },
         {
-            "label": "C++ Compile (Debug)",
+            "label": "Clang++ Build",
             "type": "shell",
-            "group": {
-                "kind": "build"
-            },
-            "command": "g++",
+            "command": "clang++",
             "args": [
-                "-g",
-                "${file}",
+                "'${fileBasename}'",
                 "-o",
-                "${fileBasenameNoExtension}",
-                "-lm",
+                "'${fileBasenameNoExtension}.exe'",
+                "-glldb",
                 "-Wall",
                 "-Wextra",
-                "-std=c++20",
+                "-O2",
                 "'-Wl,--stack=512000000'",
-                "-I",
-                "/Code/libs/ac-library",
-                "-I",
-                "/Code/libs/testlib",
-                "-DLOCAL"
+                "-D LOCAL",
+                "-I E:/Code/libs/ac-library/"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
-            "presentation": {
-                "reveal": "silent"
+            "problemMatcher": {
+                "owner": "lldb",
+                "fileLocation": [
+                    "relative",
+                    "${fileDirname}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*\\.cpp):(\\d+):(\\d+): (.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "message": 4
+                },
             }
         }
-    ]
+    ],
 }

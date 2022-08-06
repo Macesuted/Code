@@ -1,0 +1,6 @@
+-Wall
+-Wextra
+-O2
+-Wl,--stack=256000000
+-D LOCAL
+-I E:/Code/libs/ac-library/

@@ -1,4 +1,7 @@
 {
+  "clangd.arguments": [
+    "--clang-tidy"
+  ],
   "doxdocgen.file.versionTag": "",
   "doxdocgen.generic.authorEmail": "i@macesuted.moe",
   "doxdocgen.generic.authorName": "Macesuted",
@@ -18,11 +21,17 @@
   "files.autoSave": "onFocusChange",
   "git.detectSubmodules": false,
   "git.mergeEditor": true,
-  "workbench.list.smoothScrolling": true,
-  "task.quickOpen.skip": false,
-  "workbench.settings.openDefaultKeybindings": false,
-  "clangd.arguments": [
-    "--clang-tidy"
+  "lldb.consoleMode": "evaluate",
+  "lldb.launch.sourceLanguages": [
+    "cpp"
   ],
-  "C_Cpp.intelliSenseEngine": "Disabled"
+  "lldb.launch.expressions": "native",
+  "lldb.displayFormat": "auto",
+  "lldb.dereferencePointers": false,
+  "lldb.showDisassembly": "auto",
+  "resmon.show.cpufreq": false,
+  "resmon.updatefrequencyms": 1000,
+  "task.quickOpen.skip": false,
+  "workbench.list.smoothScrolling": true,
+  "workbench.settings.openDefaultKeybindings": false
 }
