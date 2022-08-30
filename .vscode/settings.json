@@ -30,7 +30,7 @@
   "lldb.dereferencePointers": false,
   "lldb.showDisassembly": "auto",
   "resmon.show.cpufreq": false,
-  "resmon.updatefrequencyms": 1000,
+  "resmon.updatefrequencyms": 500,
   "task.quickOpen.skip": false,
   "workbench.list.smoothScrolling": true,
   "workbench.settings.openDefaultKeybindings": false
