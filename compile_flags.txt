@@ -4,3 +4,4 @@
 -Wl,--stack=512000000
 -D LOCAL
 -I E:/Code/libs/ac-library/
+-std=c++20
