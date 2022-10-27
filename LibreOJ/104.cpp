@@ -1,7 +1,7 @@
 /**
  * @file 104.cpp
  * @author Macesuted (i@macesuted.moe)
- * @date 2022-05-01
+ * @date 2022-10-27
  *
  * @copyright Copyright (c) 2022
  *
@@ -10,37 +10,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#ifndef LOCAL
+#define endl '\n'
+#endif
+
 bool mem1;
 
 class FhqTreap {
    private:
     struct Node {
         Node *l, *r;
-        int val, rnk, siz;
-        Node(int val_) { l = r = NULL, val = val_, rnk = rand(), siz = 1; }
+        int v, siz, rnk;
+        Node(int _v) { l = r = nullptr, v = _v, siz = 1, rnk = rand(); }
     };
 
-    Node *root;
+    Node* root;
 
-    int getSiz(Node *p) { return p ? p->siz : 0; }
-    void pushUp(Node *p) { return p->siz = getSiz(p->l) + getSiz(p->r) + 1, void(); }
-    void splitV(Node *p, Node *&t1, Node *&t2, int v) {
-        if (!p) return t1 = t2 = NULL, void();
-        if (p->val <= v)
+    int getSiz(Node* p) { return p ? p->siz : 0; }
+    void pushUp(Node* p) { return p->siz = 1 + getSiz(p->l) + getSiz(p->r), void(); }
+    void splitV(Node* p, Node*& t1, Node*& t2, int v) {
+        if (!p) return t1 = t2 = nullptr, void();
+        if (p->v <= v)
             t1 = p, splitV(p->r, t1->r, t2, v);
         else
             t2 = p, splitV(p->l, t1, t2->l, v);
         return pushUp(p);
     }
-    void splitS(Node *p, Node *&t1, Node *&t2, int s) {
-        if (!p) return t1 = t2 = NULL, void();
+    void splitS(Node* p, Node*& t1, Node*& t2, int s) {
+        if (!p) return t1 = t2 = nullptr, void();
         if (1 + getSiz(p->l) <= s)
             t1 = p, splitS(p->r, t1->r, t2, s - 1 - getSiz(p->l));
         else
             t2 = p, splitS(p->l, t1, t2->l, s);
         return pushUp(p);
     }
-    void merge(Node *&p, Node *t1, Node *t2) {
+    void merge(Node*& p, Node* t1, Node* t2) {
         if (!t1) return p = t2, void();
         if (!t2) return p = t1, void();
         if (t1->rnk < t2->rnk)
@@ -51,61 +55,59 @@ class FhqTreap {
     }
 
    public:
-    FhqTreap(void) { root = NULL; }
-    void insert(int x) {
-        Node *tr = NULL;
-        splitV(root, root, tr, x), merge(root, root, new Node(x)), merge(root, root, tr);
-        return;
+    FhqTreap(void) { root = nullptr; }
+    void insert(int v) {
+        Node* tl = nullptr;
+        splitV(root, tl, root, v);
+        return merge(tl, tl, new Node(v)), merge(root, tl, root);
     }
-    void erase(int x) {
-        Node *tr = NULL, *tp = NULL;
-        splitV(root, root, tr, x), splitS(root, root, tp, getSiz(root) - 1);
-        if (tp && tp->val == x) delete tp;
-        merge(root, root, tr);
-        return;
+    void erase(int v) {
+        Node *tl = nullptr, *tp = nullptr;
+        splitV(root, tl, root, v), splitS(tl, tl, tp, getSiz(tl) - 1);
+        delete tp;
+        return merge(root, tl, root);
     }
-    int queryRnk(int x) {
-        Node *tr = NULL;
-        splitV(root, root, tr, x - 1);
-        int ans = getSiz(root) + 1;
-        merge(root, root, tr);
-        return ans;
+    int getRank(int v) {
+        Node* tl = nullptr;
+        splitV(root, tl, root, v - 1);
+        int ans = getSiz(tl) + 1;
+        return merge(root, tl, root), ans;
     }
-    int getRnk(int x) {
-        Node *tr = NULL, *tp = NULL;
-        splitS(root, root, tr, x - 1), splitS(tr, tp, tr, 1);
-        int ans = (tp ? tp->val : 0);
-        merge(root, root, tp), merge(root, root, tr);
-        return ans;
+    int findRank(int v) {
+        Node *tl = nullptr, *tp = nullptr;
+        splitS(root, tl, root, v - 1), splitS(root, tp, root, 1);
+        return merge(tl, tl, tp), merge(root, tl, root), tp->v;
     }
-    int pre(int x) {
-        Node *tr = NULL, *tp = NULL;
-        splitV(root, root, tr, x - 1), splitS(root, root, tp, getSiz(root) - 1);
-        int ans = (tp ? tp->val : 0);
-        merge(root, root, tp), merge(root, root, tr);
-        return ans;
+    int pre(int v) {
+        Node *tl = nullptr, *tp = nullptr;
+        splitV(root, tl, root, v - 1), splitS(tl, tl, tp, getSiz(tl) - 1);
+        return merge(tl, tl, tp), merge(root, tl, root), tp->v;
     }
-    int suc(int x) {
-        Node *tr = NULL, *tp = NULL;
-        splitV(root, root, tr, x), splitS(tr, tp, tr, 1);
-        int ans = (tp ? tp->val : 0);
-        merge(root, root, tp), merge(root, root, tr);
-        return ans;
+    int nex(int v) {
+        Node *tr = nullptr, *tp = nullptr;
+        splitV(root, root, tr, v), splitS(tr, tp, tr, 1);
+        return merge(tr, tp, tr), merge(root, root, tr), tp->v;
     }
-} FHQ;
+} FT;
 
 void solve(void) {
     int n;
     cin >> n;
     while (n--) {
-        int op, x;
-        cin >> op >> x;
-        if (op == 1) FHQ.insert(x);
-        if (op == 2) FHQ.erase(x);
-        if (op == 3) cout << FHQ.queryRnk(x) << endl;
-        if (op == 4) cout << FHQ.getRnk(x) << endl;
-        if (op == 5) cout << FHQ.pre(x) << endl;
-        if (op == 6) cout << FHQ.suc(x) << endl;
+        int op, v;
+        cin >> op >> v;
+        if (op == 1)
+            FT.insert(v);
+        else if (op == 2)
+            FT.erase(v);
+        else if (op == 3)
+            cout << FT.getRank(v) << endl;
+        else if (op == 4)
+            cout << FT.findRank(v) << endl;
+        else if (op == 5)
+            cout << FT.pre(v) << endl;
+        else
+            cout << FT.nex(v) << endl;
     }
     return;
 }
@@ -113,7 +115,7 @@ void solve(void) {
 bool mem2;
 
 int main() {
-    ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false), cin.tie(nullptr);
 #ifdef LOCAL
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
