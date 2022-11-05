@@ -14,6 +14,7 @@
   "editor.fontLigatures": true,
   "editor.fontWeight": "600",
   "editor.formatOnType": true,
+  "editor.inlayHints.enabled": "off",
   "editor.smoothScrolling": true,
   "editor.snippetSuggestions": "top",
   "editor.suggest.snippetsPreventQuickSuggestions": true,
