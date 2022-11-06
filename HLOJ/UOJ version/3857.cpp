@@ -110,8 +110,7 @@ class Trie {
     }
     long long getAns(Node* p) {
         if (p == NULL) return 0;
-        return (p->son[1] == NULL ? 0 : ((p->son[1]->sum << 1) + p->son[1]->siz - p->son[1]->cnt2k) * 2) +
-               getAns(p->son[0]);
+        return (p->son[1] == NULL ? 0 : ((p->son[1]->sum << 1) + p->son[1]->siz - p->son[1]->cnt2k) * 2) + getAns(p->son[0]);
     }
 
    public:

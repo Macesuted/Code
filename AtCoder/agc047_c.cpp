@@ -46,8 +46,7 @@ void solve(void) {
     int n;
     int64_t ans = 0;
     cin >> n;
-    for (int i = 1, v; i <= n; i++)
-        cin >> v, v ? a[cnt[v]].real(a[cnt[v]].real() + 1) : void(), ans -= int64_t(v) * v % mod;
+    for (int i = 1, v; i <= n; i++) cin >> v, v ? a[cnt[v]].real(a[cnt[v]].real() + 1) : void(), ans -= int64_t(v) * v % mod;
     int len = 1, lgLen = 0;
     while (len <= 2 * mod) len <<= 1, lgLen++;
     for (int i = 1; i < len; i++) rev[i] = (rev[i >> 1] >> 1) | ((i & 1) << (lgLen - 1));

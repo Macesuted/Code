@@ -170,8 +170,7 @@ int main() {
         HLPP::INIT(n + m + 2);
         for (register int i = 1; i <= n; i++)
             for (register int j = 1; j <= m; j++) HLPP::addEdge(i, j + n, 19);
-        for (register int i = 1, pre = 0, now; i <= n; i++, pre = now)
-            now = read<int>(), HLPP::addEdge(S, i, now - pre - m);
+        for (register int i = 1, pre = 0, now; i <= n; i++, pre = now) now = read<int>(), HLPP::addEdge(S, i, now - pre - m);
         for (register int i = 1, pre = 0, now; i <= m; i++, pre = now)
             now = read<int>(), HLPP::addEdge(i + n, T, now - pre - n);
         HLPP::work(S, T);

@@ -80,9 +80,7 @@ class SegmentTree {
     int n;
 
     int getTop(int p) { return tree[p].heap.empty() ? -1 : tree[p].heap.top(); }
-    void pushUp(int p) {
-        return tree[p].maxVal = max({tree[p << 1].maxVal, tree[p << 1 | 1].maxVal, getTop(p)}), void();
-    }
+    void pushUp(int p) { return tree[p].maxVal = max({tree[p << 1].maxVal, tree[p << 1 | 1].maxVal, getTop(p)}), void(); }
     void insert(int p, int l, int r, int ql, int qr, int v) {
         if (ql <= l && r <= qr) return tree[p].maxVal = max(tree[p].maxVal, v), tree[p].heap.push(v);
         int mid = (l + r) >> 1;

@@ -115,8 +115,7 @@ class Trie {
 
     Node* find(const string& s) {
         Node* p = root;
-        for (int i = 0; i < (int)s.size();)
-            tie(i, p) = make_pair(i + p->childstr[s[i] - 'a'].size(), p->child[s[i] - 'a']);
+        for (int i = 0; i < (int)s.size();) tie(i, p) = make_pair(i + p->childstr[s[i] - 'a'].size(), p->child[s[i] - 'a']);
         return p;
     }
     int64_t query(Node* p, int len = 0) {
@@ -153,8 +152,7 @@ class Trie {
     void insert(const string& s, int id) {
         Node* p = root;
         for (auto i : s) {
-            if (p->child[i - 'a'] == NULL)
-                p->cnt++, p->child[i - 'a'] = new Node(), p->childstr[i - 'a'] = string(1, i);
+            if (p->child[i - 'a'] == NULL) p->cnt++, p->child[i - 'a'] = new Node(), p->childstr[i - 'a'] = string(1, i);
             p = p->child[i - 'a'];
         }
         return p->id = id, void();
@@ -220,8 +218,7 @@ class Trie {
         }
         for (auto i = qr.rbegin(); i + 1 != qr.rend(); i++) {
             int x = getSon(*i, *(i + 1));
-            if ((~(*i)->fLef && (*i)->fLef != x) || ~(*i)->lef[x] ||
-                (toRight(*i, x) == (*i)->fRig && len(*i, x) != (*i)->cnt))
+            if ((~(*i)->fLef && (*i)->fLef != x) || ~(*i)->lef[x] || (toRight(*i, x) == (*i)->fRig && len(*i, x) != (*i)->cnt))
                 return false;
         }
         lca->rig[lw] = rw, lca->lef[rw] = lw;

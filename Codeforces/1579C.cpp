@@ -23,8 +23,7 @@ void work(void) {
             if (a[i][j] == '.') continue;
             bool check = true;
             for (register int h = 0; h <= k; h++)
-                if (!(i - h > 0 && j - h > 0 && j + h <= m && a[i - h][j - h] == '*' && a[i - h][j + h] == '*'))
-                    check = false;
+                if (!(i - h > 0 && j - h > 0 && j + h <= m && a[i - h][j - h] == '*' && a[i - h][j + h] == '*')) check = false;
             if (!check) {
                 if (vis[i][j]) continue;
                 cout << "NO" << endl;

@@ -57,15 +57,13 @@ void solve(void) {
     cin >> r >> c >> n >> q;
     for (int i = 1; i <= r; i++) cin >> s[i], s[i] = " " + s[i];
     memset(dist, 0x3f, sizeof(dist));
-    for (int i = 1; i <= n; i++)
-        cin >> px[i] >> py[i], dist[px[i]][py[i]] = {0, i}, que.emplace(px[i], py[i]), fa[i] = i;
+    for (int i = 1; i <= n; i++) cin >> px[i] >> py[i], dist[px[i]][py[i]] = {0, i}, que.emplace(px[i], py[i]), fa[i] = i;
     while (!que.empty()) {
         int px, py;
         tie(px, py) = que.front(), que.pop();
         for (int t = 0; t < 4; t++) {
             int wx = px + way[0][t], wy = py + way[1][t];
-            if (1 <= wx && wx <= r && 1 <= wy && wy <= c && s[wx][wy] != '#' &&
-                dist[wx][wy].first > dist[px][py].first + 1)
+            if (1 <= wx && wx <= r && 1 <= wy && wy <= c && s[wx][wy] != '#' && dist[wx][wy].first > dist[px][py].first + 1)
                 dist[wx][wy] = {dist[px][py].first + 1, dist[px][py].second}, que.emplace(wx, wy);
         }
     }

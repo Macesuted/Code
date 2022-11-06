@@ -176,8 +176,7 @@ void solve(void) {
     tie(na, nb) = split(n);
     for (int ans = n + 1;; ans++) {
         tie(a, b) = split(ans);
-        if (!US.merge(a.first, a.second, b) && siz < 47)
-            siz += basis.insert(US.getDist(a.first) ^ US.getDist(a.second) ^ b);
+        if (!US.merge(a.first, a.second, b) && siz < 47) siz += basis.insert(US.getDist(a.first) ^ US.getDist(a.second) ^ b);
         if (US.check(na.first, na.second) && basis.query(US.getDist(na.first) ^ US.getDist(na.second) ^ nb))
             return write(ans), putch('\n');
     }

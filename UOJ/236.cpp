@@ -47,12 +47,10 @@ long long plan_roller_coaster(vector<int> s, vector<int> t) {
     US.init(tn);
     deg[0]++, deg[tn - 1]--;
     for (int i = 0; i < n; i++)
-        deg[s[i] = lower_bound(v, v + tn, s[i]) - v]--, deg[t[i] = lower_bound(v, v + tn, t[i]) - v]++,
-            US.merge(s[i], t[i]);
+        deg[s[i] = lower_bound(v, v + tn, s[i]) - v]--, deg[t[i] = lower_bound(v, v + tn, t[i]) - v]++, US.merge(s[i], t[i]);
     int64_t ans = 0;
     for (int i = 0; i < tn; i++)
-        if (deg[i])
-            ans += max(0, -deg[i]) * int64_t(v[i + 1] - v[i]), deg[i + 1] += deg[i], deg[i] = 0, US.merge(i, i + 1);
+        if (deg[i]) ans += max(0, -deg[i]) * int64_t(v[i + 1] - v[i]), deg[i + 1] += deg[i], deg[i] = 0, US.merge(i, i + 1);
     for (int i = 1; i < tn; i++)
         if (!US.check(i - 1, i)) edges.emplace_back(v[i] - v[i - 1], i - 1, i);
     sort(edges.begin(), edges.end());

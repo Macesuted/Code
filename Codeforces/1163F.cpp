@@ -143,8 +143,7 @@ class SPT {
     bool dfs2(int p, int to) {
         if (p == to) return true;
         for (vector<pli>::iterator i = tree[p].begin(); i != tree[p].end(); i++)
-            if (i->second != fa[p][0] && dfs2(i->second, to))
-                return Snodes.push_front(i->second), S.insert(i->id), true;
+            if (i->second != fa[p][0] && dfs2(i->second, to)) return Snodes.push_front(i->second), S.insert(i->id), true;
         return false;
     }
 
@@ -215,8 +214,7 @@ int main() {
     for (register int i = 0; i < (int)Snodes.size(); i++) pos[Snodes[i]] = i;
     sgtree.build(n);
     for (register int i = 1; i <= m; i++)
-        if (!S.count(i))
-            work(edges[i].from, edges[i].to, edges[i].dist), work(edges[i].to, edges[i].from, edges[i].dist);
+        if (!S.count(i)) work(edges[i].from, edges[i].to, edges[i].dist), work(edges[i].to, edges[i].from, edges[i].dist);
     // for (register int i = 0; i < (int)Snodes.size(); i++) printf("%d ", Snodes[i]);
     // puts("");
     // for (register int i = 1; i < (int)Snodes.size(); i++) printf("%lld ", sgtree.get(i));

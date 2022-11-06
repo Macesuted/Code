@@ -41,8 +41,8 @@ int main() {
     for (int i = 0; i < maxn; i++)
         for (int j = (i == 0); j < maxn; j++)
             for (int k = 0; k < 2; k++)
-                sg[i][j][k] = ((i ? !sg[i - 1][j][!(((i - 1) & 1) ^ (!k))] : false) ||
-                               (j ? !sg[i][j - 1][!((i & 1) ^ k)] : false));
+                sg[i][j][k] =
+                    ((i ? !sg[i - 1][j][!(((i - 1) & 1) ^ (!k))] : false) || (j ? !sg[i][j - 1][!((i & 1) ^ k)] : false));
     int _ = 1;
     cin >> _;
     while (_--) solve();

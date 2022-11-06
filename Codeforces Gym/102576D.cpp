@@ -83,8 +83,7 @@ void solve(void) {
     ST.resize(R + 1);
     for (int p = 1; p <= n; p++) {
         int l = 1, r = (a[p].second - a[p].first + R) % R + 1;
-        for (int i = 1; i <= n; i++)
-            b[i] = {(a[i].first - a[p].first + R) % R + 1, (a[i].second - a[p].first + R) % R + 1};
+        for (int i = 1; i <= n; i++) b[i] = {(a[i].first - a[p].first + R) % R + 1, (a[i].second - a[p].first + R) % R + 1};
         auto in = [](int l, int r, int c) { return l <= c && c <= r; };
         int m = 0, cnt = 0;
         for (int i = 1; i <= n; i++) {

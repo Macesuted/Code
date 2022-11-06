@@ -89,8 +89,7 @@ int main() {
             insert(a[x][y], x, y, -1), insert(a[x][y] = c, x, y, 1);
         } else {
             int X1 = read<int>(), X2 = read<int>(), Y1 = read<int>(), Y2 = read<int>(), c = read<int>();
-            write(getSum(c, X2, Y2) - getSum(c, X1 - 1, Y2) - getSum(c, X2, Y1 - 1) + getSum(c, X1 - 1, Y1 - 1)),
-                putch('\n');
+            write(getSum(c, X2, Y2) - getSum(c, X1 - 1, Y2) - getSum(c, X2, Y1 - 1) + getSum(c, X1 - 1, Y1 - 1)), putch('\n');
         }
     return 0;
 }

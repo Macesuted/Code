@@ -59,9 +59,7 @@ class LinkCutTree {
     }
     void makeRoot(Node* p) { return access(p), splay(p), rev(p); }
     void link(Node* p, Node* fa) { return makeRoot(p), p->fa = fa, void(); }
-    void cut(Node* p, Node* fa) {
-        return makeRoot(p), access(fa), splay(fa), p->fa = fa->son[get(p)] = NULL, pushUp(fa);
-    }
+    void cut(Node* p, Node* fa) { return makeRoot(p), access(fa), splay(fa), p->fa = fa->son[get(p)] = NULL, pushUp(fa); }
 
    public:
     void build(int n_, int fa[]) {

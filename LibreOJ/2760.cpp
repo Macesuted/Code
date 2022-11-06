@@ -24,9 +24,7 @@ class FhqTreap {
         Node *l, *r;
         int pl, pr, pc, rnk, siz;
         bool res;
-        Node(int pl_, int pr_, int pc_) {
-            l = r = nullptr, pl = pl_, pr = pr_, pc = pc_, rnk = rand(), siz = 1, res = false;
-        }
+        Node(int pl_, int pr_, int pc_) { l = r = nullptr, pl = pl_, pr = pr_, pc = pc_, rnk = rand(), siz = 1, res = false; }
     };
 
     Node* root;

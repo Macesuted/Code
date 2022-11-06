@@ -151,8 +151,7 @@ int main() {
     n = read<int>();
     int m = read<int>(), S = n * 2 + 1, T = S + 1;
     dinic.INIT(T);
-    for (register int i = 1, from, to; i <= m; i++)
-        from = read<int>(), to = read<int>(), dinic.addEdge(from, to + n, 1);
+    for (register int i = 1, from, to; i <= m; i++) from = read<int>(), to = read<int>(), dinic.addEdge(from, to + n, 1);
     for (register int i = 1; i <= n; i++) dinic.addEdge(S, i, 1), dinic.addEdge(i + n, T, 1);
     int ret = dinic.maxFlow(S, T);
     for (register int i = 1; i <= n; i++) fa[i] = i;

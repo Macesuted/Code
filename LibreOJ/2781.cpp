@@ -47,23 +47,19 @@ void solve(void) {
         int w = get<0>(i) / 2;
         fa[getfa(get<1>(i))] = getfa(get<2>(i));
         if (getfa(n + 1) == getfa(n + 2))
-            Min(lim[1][2], w), Min(lim[2][1], w), Min(lim[2][3], w), Min(lim[2][4], w), Min(lim[3][2], w),
-                Min(lim[4][2], w);
+            Min(lim[1][2], w), Min(lim[2][1], w), Min(lim[2][3], w), Min(lim[2][4], w), Min(lim[3][2], w), Min(lim[4][2], w);
         if (getfa(n + 1) == getfa(n + 3))
-            Min(lim[1][2], w), Min(lim[1][3], w), Min(lim[2][1], w), Min(lim[2][4], w), Min(lim[3][1], w),
-                Min(lim[3][4], w), Min(lim[4][2], w), Min(lim[4][3], w);
+            Min(lim[1][2], w), Min(lim[1][3], w), Min(lim[2][1], w), Min(lim[2][4], w), Min(lim[3][1], w), Min(lim[3][4], w),
+                Min(lim[4][2], w), Min(lim[4][3], w);
         if (getfa(n + 1) == getfa(n + 4))
-            Min(lim[1][2], w), Min(lim[1][3], w), Min(lim[1][4], w), Min(lim[2][1], w), Min(lim[3][1], w),
-                Min(lim[4][1], w);
+            Min(lim[1][2], w), Min(lim[1][3], w), Min(lim[1][4], w), Min(lim[2][1], w), Min(lim[3][1], w), Min(lim[4][1], w);
         if (getfa(n + 2) == getfa(n + 3))
-            Min(lim[1][3], w), Min(lim[2][3], w), Min(lim[3][1], w), Min(lim[3][2], w), Min(lim[3][4], w),
-                Min(lim[4][3], w);
+            Min(lim[1][3], w), Min(lim[2][3], w), Min(lim[3][1], w), Min(lim[3][2], w), Min(lim[3][4], w), Min(lim[4][3], w);
         if (getfa(n + 2) == getfa(n + 4))
-            Min(lim[1][3], w), Min(lim[1][4], w), Min(lim[2][3], w), Min(lim[2][4], w), Min(lim[3][1], w),
-                Min(lim[3][2], w), Min(lim[4][1], w), Min(lim[4][2], w);
+            Min(lim[1][3], w), Min(lim[1][4], w), Min(lim[2][3], w), Min(lim[2][4], w), Min(lim[3][1], w), Min(lim[3][2], w),
+                Min(lim[4][1], w), Min(lim[4][2], w);
         if (getfa(n + 3) == getfa(n + 4))
-            Min(lim[1][4], w), Min(lim[2][4], w), Min(lim[3][4], w), Min(lim[4][1], w), Min(lim[4][2], w),
-                Min(lim[4][3], w);
+            Min(lim[1][4], w), Min(lim[2][4], w), Min(lim[3][4], w), Min(lim[4][1], w), Min(lim[4][2], w), Min(lim[4][3], w);
     }
     while (m--) {
         int r, e;

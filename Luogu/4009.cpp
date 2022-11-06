@@ -81,8 +81,7 @@ class ZkwCostFlow {
                     dist[i->to] = dist[p] - i->cost;
                     if (!vis[i->to]) {
                         vis[i->to] = true;
-                        (!que.empty() && dist[i->to] < dist[que.front()]) ? que.push_front(i->to)
-                                                                          : que.push_back(i->to);
+                        (!que.empty() && dist[i->to] < dist[que.front()]) ? que.push_front(i->to) : que.push_back(i->to);
                     }
                 }
             vis[p] = false;
@@ -152,8 +151,7 @@ ZkwCostFlow<200005> web;
 int a[maxn][maxn];
 
 int main() {
-    int n = read<int>(), K = read<int>(), A = read<int>(), B = read<int>(), C = read<int>(), S = n * n * (K + 1) + 1,
-        T = S + 1;
+    int n = read<int>(), K = read<int>(), A = read<int>(), B = read<int>(), C = read<int>(), S = n * n * (K + 1) + 1, T = S + 1;
     web.INIT(T);
     for (register int i = 1; i <= n; i++)
         for (register int j = 1; j <= n; j++) a[i][j] = read<int>();

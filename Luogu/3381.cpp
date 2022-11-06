@@ -109,9 +109,7 @@ class CostFlow {
     }
 
    public:
-    inline void resize(int _n) {
-        return n = _n, graph.resize(n + 1), cur.resize(n + 1), vis.resize(n + 1), dist.resize(n + 1);
-    }
+    inline void resize(int _n) { return n = _n, graph.resize(n + 1), cur.resize(n + 1), vis.resize(n + 1), dist.resize(n + 1); }
     inline void addEdge(int from, int to, flowType cap, costType cost) {
         return graph[from].push_back(Edge{to, cap, 0, cost, (int)graph[to].size()}),
                graph[to].push_back(Edge{from, cap, cap, -cost, (int)graph[from].size() - 1});

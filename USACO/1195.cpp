@@ -98,8 +98,7 @@ void solve(void) {
         if (p.dep == n2 + 1)
             S.push_back(p);
         else
-            que.push(Node{p.x, p.y, p.dep + 1, p.use}),
-                que.push(Node{p.x + a[p.dep], p.y + b[p.dep], p.dep + 1, p.use + 1});
+            que.push(Node{p.x, p.y, p.dep + 1, p.use}), que.push(Node{p.x + a[p.dep], p.y + b[p.dep], p.dep + 1, p.use + 1});
     }
     que.push(Node{X, Y, n, 0});
     while (!que.empty()) {
@@ -108,8 +107,7 @@ void solve(void) {
         if (p.dep == n2)
             S.push_back(p);
         else
-            que.push(Node{p.x, p.y, p.dep - 1, p.use}),
-                que.push(Node{p.x - a[p.dep], p.y - b[p.dep], p.dep - 1, p.use + 1});
+            que.push(Node{p.x, p.y, p.dep - 1, p.use}), que.push(Node{p.x - a[p.dep], p.y - b[p.dep], p.dep - 1, p.use + 1});
     }
     sort(S.begin(), S.end());
     for (auto i = S.begin(), j = i; i < S.end(); i = j) {

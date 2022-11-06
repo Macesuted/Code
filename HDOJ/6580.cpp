@@ -109,8 +109,7 @@ int main() {
             int dist = mid - 1 + i->first / 2 - 1;
             if (i->first % 2 == 0 && S.find(i->first + 1) != S.end()) {
                 int lSiz = i->second.size(), rSiz = S[i->first + 1].size();
-                vector<long long>&LF = go[i->first], &LG = back[i->first], &RF = go[i->first + 1],
-                            &RG = back[i->first + 1];
+                vector<long long>&LF = go[i->first], &LG = back[i->first], &RF = go[i->first + 1], &RG = back[i->first + 1];
 
                 for (register int j = 0; j <= k; j++) h[j] = g[j];
                 for (register int j = 1; j <= lSiz; j++)

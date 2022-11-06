@@ -51,8 +51,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         f[i][0] = f[i - 1][0];
         for (int j = 1; j <= i; j++)
-            f[i][j] =
-                (f[i - 1][j] + f[i][j - 1] * (n - j + 1) % mod * C(n * k - i - (j - 1) * (k - 1) - 1, k - 2)) % mod;
+            f[i][j] = (f[i - 1][j] + f[i][j - 1] * (n - j + 1) % mod * C(n * k - i - (j - 1) * (k - 1) - 1, k - 2)) % mod;
     }
     cout << f[n][n] << endl;
     return 0;

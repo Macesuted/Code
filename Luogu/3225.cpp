@@ -93,8 +93,7 @@ int main() {
     int m = read<int>(), test = 0;
     while (m) {
         int n = 0;
-        for (register int i = 1; i <= m; i++)
-            from[i] = read<int>(), to[i] = read<int>(), n = max(n, max(from[i], to[i]));
+        for (register int i = 1; i <= m; i++) from[i] = read<int>(), to[i] = read<int>(), n = max(n, max(from[i], to[i]));
         graph.resize(n + 1);
         for (register int i = 1; i <= m; i++) graph[from[i]].push_back(to[i]), graph[to[i]].push_back(from[i]);
         for (register int i = 1; i <= n; i++) vis[i] = 0;

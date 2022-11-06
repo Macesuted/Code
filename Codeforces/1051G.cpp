@@ -83,8 +83,8 @@ void solve(void) {
         BST->insert(y);
         auto v = make_tuple(x, x, BST);
         if (p != S.begin() && x <= get<1>(*--p) + 1)
-            v = *p, S.erase(p), ans -= 1LL * get<0>(v) * get<2>(v)->getSum() + get<2>(v)->getAns(),
-            BST->mergeTo(get<2>(v)), get<1>(v)++;
+            v = *p, S.erase(p), ans -= 1LL * get<0>(v) * get<2>(v)->getSum() + get<2>(v)->getAns(), BST->mergeTo(get<2>(v)),
+            get<1>(v)++;
         p = S.lower_bound({get<1>(v) + 1, 0, nullptr});
         if (p != S.end() && get<0>(*p) == get<1>(v) + 1) {
             auto u = *p;

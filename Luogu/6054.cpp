@@ -162,8 +162,7 @@ int main() {
                 dinic.addEdge((i - 1) * (m + 1) + j, (i - 1) * (m + 1) + j + 1, f);
                 dinic.addEdge((i - 1) * (m + 1) + j + 1, (i - 1) * (m + 1) + j, INF);
             }
-        for (register int i = 1; i <= n; i++)
-            dinic.addEdge(S, (i - 1) * (m + 1) + 1, INF), dinic.addEdge(i * (m + 1), T, INF);
+        for (register int i = 1; i <= n; i++) dinic.addEdge(S, (i - 1) * (m + 1) + 1, INF), dinic.addEdge(i * (m + 1), T, INF);
         for (register int t = 1; t <= y; t++) {
             int x, y, k;
             scanf("%d%d%d", &x, &y, &k);

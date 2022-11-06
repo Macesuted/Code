@@ -82,8 +82,7 @@ int main() {
             cac[i][j] = (cac[i][j - 1] + g[i][j - 1]) % mod, h[i][j] = (h[i][j - 1] + cac[i][j] + g[i][j - 1]) % mod;
     long long answer = 0;
     for (register int i = 1; i <= n; i++)
-        for (register int j = 0; j <= m - 2; j++)
-            answer = (answer + (m - j - 1) * g[i][j] % mod * (1 + h[n - i][j])) % mod;
+        for (register int j = 0; j <= m - 2; j++) answer = (answer + (m - j - 1) * g[i][j] % mod * (1 + h[n - i][j])) % mod;
     write(answer), putch('\n');
     return 0;
 }

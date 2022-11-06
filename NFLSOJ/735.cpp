@@ -135,14 +135,12 @@ void solve(int l, int r) {
     }
     for (int i = mid + 1; i <= r; i++) {
         len[i] = 1;
-        if (pt[i] && chain[bel[i]][pt[i] - 1] > mid)
-            len[i] = len[chain[bel[i]][pt[i] - 1]] + i - chain[bel[i]][pt[i] - 1];
+        if (pt[i] && chain[bel[i]][pt[i] - 1] > mid) len[i] = len[chain[bel[i]][pt[i] - 1]] + i - chain[bel[i]][pt[i] - 1];
         fr[i] = max(fr[i - 1], len[i]);
     }
     for (int i = mid; i >= l; i--) {
         if (pt[i] + 1 != (int)chain[bel[i]].size() && chain[bel[i]][pt[i] + 1] > mid)
-            for (int j = pt[i] + 1; j < (int)chain[bel[i]].size() && chain[bel[i]][j] <= r; j++)
-                S.push_back(chain[bel[i]][j]);
+            for (int j = pt[i] + 1; j < (int)chain[bel[i]].size() && chain[bel[i]][j] <= r; j++) S.push_back(chain[bel[i]][j]);
         while (!ques[i].empty() && ques[i].back().first > mid) {
             int qr = ques[i].back().first, id = ques[i].back().second;
             ques[i].pop_back();

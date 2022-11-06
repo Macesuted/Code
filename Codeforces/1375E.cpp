@@ -78,11 +78,9 @@ void solve(void) {
     sort(a + 1, a + n + 1);
     for (int i = 1; i <= n; i++)
         for (int j = n - 1; j >= i; j--)
-            if (a[j].second > a[j + 1].second)
-                swap(a[j].second, a[j + 1].second), answer.push({a[j].second, a[j + 1].second});
+            if (a[j].second > a[j + 1].second) swap(a[j].second, a[j + 1].second), answer.push({a[j].second, a[j + 1].second});
     write((int)answer.size()), putch('\n');
-    while (!answer.empty())
-        write(answer.front().first), putch(' '), write(answer.front().second), putch('\n'), answer.pop();
+    while (!answer.empty()) write(answer.front().first), putch(' '), write(answer.front().second), putch('\n'), answer.pop();
     return;
 }
 

@@ -124,8 +124,7 @@ void solve(void) {
         for (int j = -i; j <= i; j++)
             for (int y = 0; y <= n - i; y++)
                 if (!(abs(j - y) & 1) && j + y >= 0)
-                    f[i + y][abs(j - y) / 2] =
-                        (f[i + y][abs(j - y) / 2] + g[i][j + n] * ifac[n - i - y] % mod * ifac[y]) % mod;
+                    f[i + y][abs(j - y) / 2] = (f[i + y][abs(j - y) / 2] + g[i][j + n] * ifac[n - i - y] % mod * ifac[y]) % mod;
         for (int j = 0; j <= i; j++)
             for (int y = max(1, j); y <= n - i; y++)
                 if (!((j + y) & 1))

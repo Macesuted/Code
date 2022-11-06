@@ -34,8 +34,7 @@ bool chk;
 int build(int l, int r, int up = INT_MAX) {
     if (l > r) return 0;
     int p = getMax(l, r).second;
-    if (a[p] == 0)
-        return ques[id[p]] = {max(build(l, p - 1, up), build(p + 1, r, up)) + 1, up - 1}, ques[id[p]].first - 1;
+    if (a[p] == 0) return ques[id[p]] = {max(build(l, p - 1, up), build(p + 1, r, up)) + 1, up - 1}, ques[id[p]].first - 1;
     if (a[p] < up) return build(l, p - 1, a[p]), build(p + 1, r, a[p]), a[p];
     return chk = false, -1;
 }

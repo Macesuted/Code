@@ -73,8 +73,7 @@ class BigInt {
         BigInt a = *this;
         a.number.resize(max(a.number.size(), b.number.size()));
         for (register int i = 0; i < b.number.size(); i++) a.number[i] += b.number[i];
-        for (register int i = 1; i < a.number.size(); i++)
-            a.number[i] += a.number[i - 1] / base, a.number[i - 1] %= base;
+        for (register int i = 1; i < a.number.size(); i++) a.number[i] += a.number[i - 1] / base, a.number[i - 1] %= base;
         if (a.number.size() && a.number.back() >= base) {
             int rest = a.number.back() / base;
             a.number.back() %= base, a.number.push_back(rest);

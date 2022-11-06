@@ -118,8 +118,7 @@ void solve(void) {
     while (p > 0) S.push(pre[p]), p = fa[p];
     write((int)S.size()), putch('\n');
     while (!S.empty())
-        write(get<0>(S.top())), putch(' '), write(get<1>(S.top())), putch(' '), write(get<2>(S.top())), putch('\n'),
-            S.pop();
+        write(get<0>(S.top())), putch(' '), write(get<1>(S.top())), putch(' '), write(get<2>(S.top())), putch('\n'), S.pop();
     return;
 }
 

@@ -95,8 +95,7 @@ class SegmentTree {
         }
         if (l == r) return p->sum++, void();
         int mid = (l + r) >> 1;
-        qp <= mid ? insert(p->l, o == NULL ? NULL : o->l, l, mid, qp)
-                  : insert(p->r, o == NULL ? NULL : o->r, mid + 1, r, qp);
+        qp <= mid ? insert(p->l, o == NULL ? NULL : o->l, l, mid, qp) : insert(p->r, o == NULL ? NULL : o->r, mid + 1, r, qp);
         return pushUp(p);
     }
     int query(Node* p, int l, int r, int ql, int qr) {
@@ -156,8 +155,7 @@ void solve(void) {
                 break;
             }
             if (rest) {
-                int p =
-                    ST.findKTh(get<0>(S.top()) + 1, ques[i], ST.query(get<0>(S.top()) + 1, ques[i], 1, h - 1) + rest);
+                int p = ST.findKTh(get<0>(S.top()) + 1, ques[i], ST.query(get<0>(S.top()) + 1, ques[i], 1, h - 1) + rest);
                 rest -= ST.query(get<0>(S.top()) + 1, ques[i], h, p - 1), h = p;
                 if (rest == ST.query(get<0>(S.top()) + 1, ques[i], p, p)) rest = 0, h = p + 1;
             }

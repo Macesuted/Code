@@ -125,18 +125,16 @@ int64_t solve(int64_t R0, int64_t R1, int64_t R2) {
 }
 void solve(void) {
     int64_t ans = 1;
-    for (int i = 0; i < 7; i++)
-        l[i] = read<int64_t>(), r[i] = read<int64_t>(), ans = ans * ((r[i] - l[i] + 1) % mod) % mod;
+    for (int i = 0; i < 7; i++) l[i] = read<int64_t>(), r[i] = read<int64_t>(), ans = ans * ((r[i] - l[i] + 1) % mod) % mod;
     L[0] = max({l[0], l[1], l[2]}) - 1, R[0] = min({r[0], r[1], r[2]});
     L[1] = l[3] - 1, R[1] = r[3];
     L[2] = max({l[4], l[5], l[6]}) - 1, R[2] = min({r[4], r[5], r[6]});
     if (L[0] > R[0] || L[1] > R[1] || L[2] > R[2]) return write(ans), putch('\n');
-    write(
-        ((ans - solve(R[0], R[1], R[2]) + solve(L[0], R[1], R[2]) + solve(R[0], L[1], R[2]) + solve(R[0], R[1], L[2]) -
-          solve(L[0], L[1], R[2]) - solve(L[0], R[1], L[2]) - solve(R[0], L[1], L[2]) + solve(L[0], L[1], L[2])) %
-             mod +
-         mod) %
-        mod),
+    write(((ans - solve(R[0], R[1], R[2]) + solve(L[0], R[1], R[2]) + solve(R[0], L[1], R[2]) + solve(R[0], R[1], L[2]) -
+            solve(L[0], L[1], R[2]) - solve(L[0], R[1], L[2]) - solve(R[0], L[1], L[2]) + solve(L[0], L[1], L[2])) %
+               mod +
+           mod) %
+          mod),
         putch('\n');
     return;
 }

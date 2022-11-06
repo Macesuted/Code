@@ -103,8 +103,7 @@ class Hashlist {
 } ha;
 
 int n;
-long long maxS, mod, rec[105], X[maxn * 2], vS1[1 << 7], vS2[1 << 7], vS3[1 << 19], vC1[1 << 7], vC2[1 << 7],
-    vC3[1 << 19];
+long long maxS, mod, rec[105], X[maxn * 2], vS1[1 << 7], vS2[1 << 7], vS3[1 << 19], vC1[1 << 7], vC2[1 << 7], vC3[1 << 19];
 vector<int> S1, S2, S3;
 
 long long R(long long S) { return (S >> 1) | ((long long)(S & 1) << (2 * n - 1)); }

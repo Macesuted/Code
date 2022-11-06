@@ -68,8 +68,7 @@ int answer[maxm];
 struct Ask {
     int bell, l, r, p, id;
     inline bool operator<(const Ask& oth) const {
-        return (this->bell != oth.bell) ? this->bell < oth.bell
-                                        : ((this->bell & 1) ? this->r > oth.r : this->r < oth.r);
+        return (this->bell != oth.bell) ? this->bell < oth.bell : ((this->bell & 1) ? this->r > oth.r : this->r < oth.r);
     }
 };
 
@@ -114,8 +113,7 @@ int main() {
     for (register int i = 1; i <= n; i++) a[i] = lower_bound(b + 1, b + btail + 1, a[i]) - b;
     int sqrtn = sqrt(n);
     for (register int i = 1; i <= m; i++)
-        ask[i].l = read<int>(), ask[i].r = read<int>(), ask[i].p = read<int>(), ask[i].bell = ask[i].l / sqrtn,
-        ask[i].id = i;
+        ask[i].l = read<int>(), ask[i].r = read<int>(), ask[i].p = read<int>(), ask[i].bell = ask[i].l / sqrtn, ask[i].id = i;
     sort(ask + 1, ask + m + 1);
     int l = 1, r = 0;
     for (register int i = 1; i <= m; i++) {

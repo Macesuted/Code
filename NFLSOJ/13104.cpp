@@ -49,8 +49,7 @@ void solve(void) {
     int n, m, k;
     cin >> n >> m >> k;
     for (int i = 1, c, x; i <= n; i++) cin >> c >> x, a[c].push_back(x);
-    for (int i = 1; i <= m; i++)
-        cin >> l[i] >> r[i], r[i] = min(r[i], (int)a[i].size()), sort(a[i].begin(), a[i].end());
+    for (int i = 1; i <= m; i++) cin >> l[i] >> r[i], r[i] = min(r[i], (int)a[i].size()), sort(a[i].begin(), a[i].end());
     for (int i = 1; i <= m; i++) {
         int64_t sum = 0;
         if (l[i] == 0) f[i].push_back(0);

@@ -90,15 +90,13 @@ void dfs1(int p) {
             for (int j1 = 0; j1 <= i1; j1++)
                 for (int i2 = 1; i1 + i2 < maxlgn; i2++)
                     for (int j2 = 0; j2 <= i2; j2++)
-                        f[p][i1 + i2][max(j1, j2)] =
-                            (f[p][i1 + i2][max(j1, j2)] + 1LL * g[i1][j1] * f[x][i2][j2]) % mod;
+                        f[p][i1 + i2][max(j1, j2)] = (f[p][i1 + i2][max(j1, j2)] + 1LL * g[i1][j1] * f[x][i2][j2]) % mod;
     }
     for (int i = 0; i < maxlgn; i++)
         for (int j = 0; j <= i; j++) g[i][j] = f[p][i][j], f[p][i][j] = 0;
     for (int i = 0; i < maxlgn; i++)
         for (int j = 0; j <= i; j++)
-            for (int k = j; p == 1 ? (k == j) : (j + k < maxlgn); k++)
-                f[p][i + k][k] = (f[p][i + k][k] + g[i][j]) % mod;
+            for (int k = j; p == 1 ? (k == j) : (j + k < maxlgn); k++) f[p][i + k][k] = (f[p][i + k][k] + g[i][j]) % mod;
     return;
 }
 int dfs2(vector<int>::iterator p, long long val, long long k, long long sum) {

@@ -52,8 +52,7 @@ class SegmentTree {
         if (!p) return {0, 0};
         if (r <= qr) return p->sum;
         int mid = (l + r) >> 1;
-        return qr <= mid ? query(p->l, l, mid, qr)
-                         : merge(p->l ? p->l->sum : array<int, 2>{0, 0}, query(p->r, mid + 1, r, qr));
+        return qr <= mid ? query(p->l, l, mid, qr) : merge(p->l ? p->l->sum : array<int, 2>{0, 0}, query(p->r, mid + 1, r, qr));
     }
 
    public:

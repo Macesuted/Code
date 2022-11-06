@@ -80,16 +80,11 @@ class SegmentTree {
     Node tree[maxn << 2];
     int n;
 
-    void update(int p, long long v) {
-        return tree[p].siz += v, tree[p].lazy += v, tree[p].ans += v * tree[p].c, void();
-    }
-    void pushDown(int p) {
-        return update(p << 1, tree[p].lazy), update(p << 1 | 1, tree[p].lazy), tree[p].lazy = 0, void();
-    }
+    void update(int p, long long v) { return tree[p].siz += v, tree[p].lazy += v, tree[p].ans += v * tree[p].c, void(); }
+    void pushDown(int p) { return update(p << 1, tree[p].lazy), update(p << 1 | 1, tree[p].lazy), tree[p].lazy = 0, void(); }
     void pushUp(int p) {
-        return tree[p].siz = max(tree[p << 1].siz, tree[p << 1 | 1].siz),
-               tree[p].ans = tree[p << 1].ans + tree[p << 1 | 1].ans, tree[p].c = tree[p << 1].c + tree[p << 1 | 1].c,
-               void();
+        return tree[p].siz = max(tree[p << 1].siz, tree[p << 1 | 1].siz), tree[p].ans = tree[p << 1].ans + tree[p << 1 | 1].ans,
+               tree[p].c = tree[p << 1].c + tree[p << 1 | 1].c, void();
     }
     void build(int p, int l, int r, int c[]) {
         if (l == r) return tree[p].c = c[l], void();

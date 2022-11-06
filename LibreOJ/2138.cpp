@@ -151,9 +151,9 @@ void solve(void) {
     for (int i = 1; i < (int)nodes.size(); i++) {
         pff f1 = net.dinic((double)nodes[i - 1].first + eps), f2 = net.dinic((double)nodes[i].first - eps),
             f3 = net.dinic((double)nodes[i].first + eps);
-        ans += Frac(1, 2) * (nodes[i].second - f1.first * nodes[i - 1].first - f1.second) *
-                   (nodes[i - 1].first + nodes[i].first) +
-               nodes[i].first * (f3.first * nodes[i].first + f3.second - f2.first * nodes[i].first - f2.second);
+        ans +=
+            Frac(1, 2) * (nodes[i].second - f1.first * nodes[i - 1].first - f1.second) * (nodes[i - 1].first + nodes[i].first) +
+            nodes[i].first * (f3.first * nodes[i].first + f3.second - f2.first * nodes[i].first - f2.second);
     }
     ans.print(), cout << endl;
     return;

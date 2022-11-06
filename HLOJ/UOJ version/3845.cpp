@@ -64,8 +64,7 @@ void solve(void) {
     for (int i = 1; i <= n; i++)
         if (a[i - 1] <= 0 && a[i] == -1 && a[i + 1] <= 0) return write(-1), putchar('\n'), void();
     for (int i = 1; i < n; i++)
-        if (a[i] > 0 && a[i + 1] > 0 && K / a[i] / a[i + 1] < min(a[i], a[i + 1]))
-            return write(0), putchar('\n'), void();
+        if (a[i] > 0 && a[i + 1] > 0 && K / a[i] / a[i + 1] < min(a[i], a[i + 1])) return write(0), putchar('\n'), void();
     long long ans = 1;
     for (int i = 1; i <= n; i++) {
         if (a[i] != -1) continue;

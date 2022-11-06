@@ -185,7 +185,6 @@ int main() {
         for (vector<HLPP::Edge>::iterator j = HLPP::graph[i].begin(); j != HLPP::graph[i].end(); j++)
             if (j->real && vis[i] && !vis[j->to]) answer.push_back(i);
     sort(answer.begin(), answer.end());
-    for (vector<int>::iterator i = answer.begin(); i != answer.end(); i++)
-        write(*i), putch(" \n"[i + 1 == answer.end()]);
+    for (vector<int>::iterator i = answer.begin(); i != answer.end(); i++) write(*i), putch(" \n"[i + 1 == answer.end()]);
     return 0;
 }

@@ -23,8 +23,7 @@ void solve(void) {
     static vector<int> a;
     a.clear();
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            a.push_back(max({dist(i, j, 1, 1), dist(i, j, 1, m), dist(i, j, n, 1), dist(i, j, n, m)}));
+        for (int j = 1; j <= m; j++) a.push_back(max({dist(i, j, 1, 1), dist(i, j, 1, m), dist(i, j, n, 1), dist(i, j, n, m)}));
     sort(a.begin(), a.end());
     for (auto i : a) cout << i << ' ';
     cout << endl;

@@ -121,8 +121,7 @@ void solve(int n, int m, int k) {
                     f[t][j][k_][l] += f[!t][j][k][l] * (2 * j - l);
                     if (j) f[t][j - 1][k_][l] += f[!t][j][k][l] * (j - 1);
                     if (l < 2)
-                        f[t][j + 1][k_][l + 1] += f[!t][j][k][l] * (2 - l),
-                            f[t][j][k_][l + 1] += f[!t][j][k][l] * (2 - l);
+                        f[t][j + 1][k_][l + 1] += f[!t][j][k][l] * (2 - l), f[t][j][k_][l + 1] += f[!t][j][k][l] * (2 - l);
                 }
     }
     __float128 ans = 0;
@@ -152,8 +151,7 @@ void solve(int n, int m, int k) {
                     f[t][j][k_][l] += f[!t][j][k][l] * (2 * j - l);
                     if (j) f[t][j - 1][k_][l] += f[!t][j][k][l] * (j - 1);
                     if (l < 2)
-                        f[t][j + 1][k_][l + 1] += f[!t][j][k][l] * (2 - l),
-                            f[t][j][k_][l + 1] += f[!t][j][k][l] * (2 - l);
+                        f[t][j + 1][k_][l + 1] += f[!t][j][k][l] * (2 - l), f[t][j][k_][l + 1] += f[!t][j][k][l] * (2 - l);
                 }
     }
     long double ans = 0;

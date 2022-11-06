@@ -36,8 +36,7 @@ void solve(void) {
         lp = min(lp, i - 1);
         while (lp && f[lp]) lp--;
         for (int p = lp; p >= i - p; p = lef[p])
-            if (getHash(p - (i - p) + 1, p) == getHash(p + 1, i))
-                f[p] = true, lef[rig[p]] = lef[p], rig[lef[p]] = rig[p];
+            if (getHash(p - (i - p) + 1, p) == getHash(p + 1, i)) f[p] = true, lef[rig[p]] = lef[p], rig[lef[p]] = rig[p];
     }
     for (int i = 1; !f[i - 1]; i++) cout << s[i];
     cout << endl;

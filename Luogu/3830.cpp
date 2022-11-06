@@ -74,8 +74,7 @@ int main() {
         for (register int i = 2; i <= n; i++) {
             f[i][0] = 1;
             for (register int j = 1; j < i; j++) {
-                for (register int k = 1; k < i; k++)
-                    f[i][j] += f[k][j - 1] + f[i - k][j - 1] - f[k][j - 1] * f[i - k][j - 1];
+                for (register int k = 1; k < i; k++) f[i][j] += f[k][j - 1] + f[i - k][j - 1] - f[k][j - 1] * f[i - k][j - 1];
                 f[i][j] /= 1.00 * (i - 1);
             }
         }

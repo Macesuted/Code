@@ -39,8 +39,7 @@ void solve(void) {
             cin >> k;
             if (calc(S.back())) {
                 pll p = {n, -mul * n - plus};
-                while (S.size() > 1 && slope(S[S.size() - 2], S[S.size() - 1]) < slope(S[S.size() - 1], p))
-                    S.pop_back();
+                while (S.size() > 1 && slope(S[S.size() - 2], S[S.size() - 1]) < slope(S[S.size() - 1], p)) S.pop_back();
                 S.push_back(p);
             }
             n += k;

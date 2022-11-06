@@ -89,8 +89,7 @@ int main() {
                 max2 = a[*j];
         }
         ans1 = max(ans1, max1 * max2);
-        for (vector<int>::iterator j = graph[i].begin(); j != graph[i].end(); j++)
-            ans2 = (ans2 + a[*j] * (sum - a[*j])) % mod;
+        for (vector<int>::iterator j = graph[i].begin(); j != graph[i].end(); j++) ans2 = (ans2 + a[*j] * (sum - a[*j])) % mod;
     }
     write(ans1), putch(' '), write((ans2 + mod) % mod), putch('\n');
     return 0;

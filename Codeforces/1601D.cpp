@@ -26,9 +26,8 @@ void solve(void) {
     int n, d, cnt = 0;
     cin >> n >> d;
     for (int i = 1; i <= n; i++) cin >> a[i].first >> a[i].second;
-    sort(a + 1, a + n + 1, [](pii a, pii b) {
-        return make_pair(max(a.first, a.second), a.first) < make_pair(max(b.first, b.second), b.first);
-    });
+    sort(a + 1, a + n + 1,
+         [](pii a, pii b) { return make_pair(max(a.first, a.second), a.first) < make_pair(max(b.first, b.second), b.first); });
     for (int i = 1; i <= n; i++)
         if (a[i].first >= d) cnt++, d = max(d, a[i].second);
     cout << cnt << endl;

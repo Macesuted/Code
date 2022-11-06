@@ -107,9 +107,7 @@ class ODT {
     }
 
    public:
-    inline void build(int l, int r, int col) {
-        return color[(pii){l, r}] = col, record[col].insert((pii){l, r}), void();
-    }
+    inline void build(int l, int r, int col) { return color[(pii){l, r}] = col, record[col].insert((pii){l, r}), void(); }
     void insert(int tim, int l, int r, int col) {
         map<pii, int>::iterator t = --color.lower_bound((pii){l + 1, 0});
         if (t->first.first != l) split(t->first.first, l - 1, t->first.second);

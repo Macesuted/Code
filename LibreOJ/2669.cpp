@@ -109,8 +109,7 @@ int main() {
 
     long long ans2 = B[ringCnt];
 
-    for (int i = 1; i < ringCnt; i++)
-        ans2 = min(max(max(B[i], D[i + 1]), A[i] + C[i + 1] + tmp), ans2);  //从i拆开的三种情况
+    for (int i = 1; i < ringCnt; i++) ans2 = min(max(max(B[i], D[i + 1]), A[i] + C[i + 1] + tmp), ans2);  //从i拆开的三种情况
 
     printf("%.1lf\n", (double)max(ans, ans2) / 2.0);
     return 0;

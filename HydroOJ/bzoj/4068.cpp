@@ -82,12 +82,8 @@ class SegmentTree1 {
 
     pii rMin(pii a, pii b) { return a.first != b.first ? (a.first < b.first ? a : b) : (a.second < b.second ? b : a); }
     array<pii, 2> merge(const array<pii, 2>& a, const array<pii, 2>& b) { return {min(a[0], b[0]), rMin(a[1], b[1])}; }
-    void update(int p, int v) {
-        return tree[p].lazy += v, tree[p].minVal[0].first += v, tree[p].minVal[1].first += v, void();
-    }
-    void pushDown(int p) {
-        return update(p << 1, tree[p].lazy), update(p << 1 | 1, tree[p].lazy), tree[p].lazy = 0, void();
-    }
+    void update(int p, int v) { return tree[p].lazy += v, tree[p].minVal[0].first += v, tree[p].minVal[1].first += v, void(); }
+    void pushDown(int p) { return update(p << 1, tree[p].lazy), update(p << 1 | 1, tree[p].lazy), tree[p].lazy = 0, void(); }
     void pushUp(int p) { return tree[p].minVal = merge(tree[p << 1].minVal, tree[p << 1 | 1].minVal), void(); }
     void build(int p, int l, int r) {
         if (l == r) return tree[p].minVal = {pii{l, l}, pii{l, l}}, void();

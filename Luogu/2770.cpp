@@ -147,8 +147,8 @@ int n, S, T;
 void dfs(int p, int id) {
     if (p == T) return;
     answer[id].push_back(p);
-    for (vector<ZkwCostFlow<long long, long long>::Edge>::iterator i = flow.graph[p + n].begin();
-         i != flow.graph[p + n].end(); i++)
+    for (vector<ZkwCostFlow<long long, long long>::Edge>::iterator i = flow.graph[p + n].begin(); i != flow.graph[p + n].end();
+         i++)
         if (i->real && i->flow) dfs(i->to, id);
     return;
 }
@@ -168,8 +168,8 @@ int main() {
     int ret = flow.maxFlow(S, T), ans = -flow.minCost;
     if (ret == 0) return putstr("No Solution!\n"), 0;
     int cnt = 0;
-    for (vector<ZkwCostFlow<long long, long long>::Edge>::iterator i = flow.graph[1 + n].begin();
-         i != flow.graph[1 + n].end(); i++)
+    for (vector<ZkwCostFlow<long long, long long>::Edge>::iterator i = flow.graph[1 + n].begin(); i != flow.graph[1 + n].end();
+         i++)
         if (i->real && i->flow) dfs(i->to, ++cnt);
     if (ret == 1) {
         write(ans), putch('\n');
@@ -181,8 +181,7 @@ int main() {
     write(ans - 2), putch('\n');
     putstr(str[1]), putch('\n');
     for (vector<int>::iterator i = answer[1].begin(); i != answer[1].end(); i++) putstr(str[*i]), putch('\n');
-    for (vector<int>::reverse_iterator i = answer[2].rbegin() + 1; i != answer[2].rend(); i++)
-        putstr(str[*i]), putch('\n');
+    for (vector<int>::reverse_iterator i = answer[2].rbegin() + 1; i != answer[2].rend(); i++) putstr(str[*i]), putch('\n');
     putstr(str[1]), putch('\n');
     return 0;
 }

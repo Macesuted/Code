@@ -34,8 +34,7 @@ void solve(void) {
     for (int i = 1; i <= n; i++) cin >> a[i];
     cout << (a[1] == 1 ? "-1" : "INF") << endl;
     for (int i = 2; i <= n; i++) {
-        for (int j = 0; j < a[1]; j++)
-            graph[j].emplace_back((j + a[i]) % a[1], a[i]), dist[j] = INT64_MAX, vis[j] = false;
+        for (int j = 0; j < a[1]; j++) graph[j].emplace_back((j + a[i]) % a[1], a[i]), dist[j] = INT64_MAX, vis[j] = false;
         que.emplace(dist[0] = 0, 0);
         while (!que.empty()) {
             int p = que.top().second;

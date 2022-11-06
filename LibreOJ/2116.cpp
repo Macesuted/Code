@@ -123,8 +123,7 @@ void solve(void) {
             while (p) tot -= 2 * ST.query(v, dfni[top[p]], dfni[p]), p = fa[top[p]];
             return tot;
         };
-        l = lower_bound(ord + 1, ord + n + 1, pii{l, 0}) - ord,
-        r = lower_bound(ord + 1, ord + n + 1, pii{r + 1, 0}) - ord - 1;
+        l = lower_bound(ord + 1, ord + n + 1, pii{l, 0}) - ord, r = lower_bound(ord + 1, ord + n + 1, pii{r + 1, 0}) - ord - 1;
         cout << (last = calc(r, x) - calc(l - 1, x)) << endl;
     }
     return;

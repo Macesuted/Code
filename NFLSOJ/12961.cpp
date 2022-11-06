@@ -55,16 +55,14 @@ int solve(void) {
         pushMax(ld, l[i] + i), pop(rd, l[i - 1] - (i - 1)), pushMin(lu, r[i] - i), pop(ru, r[i - 1] + (i - 1)), V++;
         if (i + V - 1 <= n &&
             max({ld.front() + V - i - 1, rd.empty() ? 0 : rd.front() + V + i - 1, l[i + V - 2] + 1, l[i + V - 1]}) <=
-                min({lu.front() - V + i + 1, ru.empty() ? INT_MAX : ru.front() - V - i + 1, r[i + V - 2] - 1,
-                     r[i + V - 1]})) {
+                min({lu.front() - V + i + 1, ru.empty() ? INT_MAX : ru.front() - V - i + 1, r[i + V - 2] - 1, r[i + V - 1]})) {
             pushMax(rd, l[i + V - 2] - (i + V - 2)), pushMax(rd, l[i + V - 1] - (i + V - 1));
             pushMin(ru, r[i + V - 2] + (i + V - 2)), pushMin(ru, r[i + V - 1] + (i + V - 1));
             continue;
         }
         pop(ld, l[i - V + 1] + (i - V + 1)), pop(lu, r[i - V + 1] - (i - V + 1)), V--;
-        if (i + V - 1 <= n &&
-            max({ld.front() + V - i - 1, rd.empty() ? 0 : rd.front() + V + i - 1, l[i + V - 1]}) <=
-                min({lu.front() - V + i + 1, ru.empty() ? INT_MAX : ru.front() - V - i + 1, r[i + V - 1]})) {
+        if (i + V - 1 <= n && max({ld.front() + V - i - 1, rd.empty() ? 0 : rd.front() + V + i - 1, l[i + V - 1]}) <=
+                                  min({lu.front() - V + i + 1, ru.empty() ? INT_MAX : ru.front() - V - i + 1, r[i + V - 1]})) {
             pushMax(rd, l[i + V - 1] - (i + V - 1)), pushMin(ru, r[i + V - 1] + (i + V - 1));
             continue;
         }

@@ -75,9 +75,7 @@ class SegmentTree {
    private:
     struct Node {
         long long maxVal, sum, cnt;
-        Node operator+(const Node& oth) const {
-            return Node{max(maxVal + oth.sum, oth.maxVal), sum + oth.sum, cnt + oth.cnt};
-        }
+        Node operator+(const Node& oth) const { return Node{max(maxVal + oth.sum, oth.maxVal), sum + oth.sum, cnt + oth.cnt}; }
     };
 
     Node tree[maxn << 2];
@@ -99,8 +97,7 @@ class SegmentTree {
     int search(int p, int l, int r, long long cnt) {
         if (l == r) return l;
         int mid = (l + r) >> 1;
-        return tree[p << 1].cnt >= cnt ? search(p << 1, l, mid, cnt)
-                                       : search(p << 1 | 1, mid + 1, r, cnt - tree[p << 1].cnt);
+        return tree[p << 1].cnt >= cnt ? search(p << 1, l, mid, cnt) : search(p << 1 | 1, mid + 1, r, cnt - tree[p << 1].cnt);
     }
 
    public:

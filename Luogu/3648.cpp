@@ -80,8 +80,7 @@ int main() {
             long long k = a[n] - a[j];
             while (que.size() > 1 && (Y(pf2) - Y(pf1)) > k * (X(pf2) - X(pf1))) que.pop_front();
             f[i][j] = f[i - 1][pf1] + (a[j] - a[pf1]) * (a[n] - a[j]);
-            while (que.size() > 1 && (Y(pb2) - Y(pb1)) * (X(j) - X(pb2)) <= (Y(j) - Y(pb2)) * (X(pb2) - X(pb1)))
-                que.pop_back();
+            while (que.size() > 1 && (Y(pb2) - Y(pb1)) * (X(j) - X(pb2)) <= (Y(j) - Y(pb2)) * (X(pb2) - X(pb1))) que.pop_back();
             que.push_back(j);
         }
     }

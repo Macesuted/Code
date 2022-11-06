@@ -111,8 +111,7 @@ void solve(void) {
             for (int j = 1; j <= K; j++) distc[i][j] = min(distc[i][j], distc[i][k] + 1 + distc[k][j]);
     int q = read<int>();
     while (q--) {
-        int r1 = read<int>(), c1 = read<int>(), r2 = read<int>(), c2 = read<int>(),
-            ans = distp(pii{r1, c1}, pii{r2, c2});
+        int r1 = read<int>(), c1 = read<int>(), r2 = read<int>(), c2 = read<int>(), ans = distp(pii{r1, c1}, pii{r2, c2});
         for (int k = 1; k <= K; k++) ans = min(ans, dist[k][r1][c1] + 1 + dist[k][r2][c2]);
         for (int k1 = 1; k1 <= K; k1++)
             for (int k2 = 1; k2 <= K; k2++) ans = min(ans, dist[k1][r1][c1] + 1 + distc[k1][k2] + 1 + dist[k2][r2][c2]);

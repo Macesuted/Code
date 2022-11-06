@@ -79,9 +79,7 @@ class SegmentTree {
     int n;
 
     void update(int p, int v) { return tree[p].minVal += v, tree[p].lazy += v, void(); }
-    void pushDown(int p) {
-        return update(p << 1, tree[p].lazy), update(p << 1 | 1, tree[p].lazy), tree[p].lazy = 0, void();
-    }
+    void pushDown(int p) { return update(p << 1, tree[p].lazy), update(p << 1 | 1, tree[p].lazy), tree[p].lazy = 0, void(); }
     void pushUp(int p) {
         tree[p].minVal = min(tree[p << 1].minVal, tree[p << 1 | 1].minVal), tree[p].cnt = 0;
         if (tree[p].minVal == tree[p << 1].minVal) tree[p].cnt += tree[p << 1].cnt;

@@ -103,15 +103,13 @@ inline void pushUp(int p, int l, int r) {
     tree[p].bl = left.bl;
     if (tree[p].bl.sum < left.sum + right.bl.sum) tree[p].bl = (Segment){l, right.bl.r, left.sum + right.bl.sum};
     tree[p].bm = left.bm.sum > right.bm.sum ? left.bm : right.bm;
-    if (tree[p].bm.sum < left.br.sum + right.bl.sum)
-        tree[p].bm = (Segment){left.br.l, right.bl.r, left.br.sum + right.bl.sum};
+    if (tree[p].bm.sum < left.br.sum + right.bl.sum) tree[p].bm = (Segment){left.br.l, right.bl.r, left.br.sum + right.bl.sum};
     tree[p].br = right.br;
     if (tree[p].br.sum < left.br.sum + right.sum) tree[p].br = (Segment){left.br.l, r, left.br.sum + right.sum};
     tree[p].sl = left.sl;
     if (tree[p].sl.sum > left.sum + right.sl.sum) tree[p].sl = (Segment){l, right.sl.r, left.sum + right.sl.sum};
     tree[p].sm = left.sm.sum < right.sm.sum ? left.sm : right.sm;
-    if (tree[p].sm.sum > left.sr.sum + right.sl.sum)
-        tree[p].sm = (Segment){left.sr.l, right.sl.r, left.sr.sum + right.sl.sum};
+    if (tree[p].sm.sum > left.sr.sum + right.sl.sum) tree[p].sm = (Segment){left.sr.l, right.sl.r, left.sr.sum + right.sl.sum};
     tree[p].sr = right.sr;
     if (tree[p].sr.sum > left.sr.sum + right.sum) tree[p].sr = (Segment){left.sr.l, r, left.sr.sum + right.sum};
     return;

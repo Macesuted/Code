@@ -38,8 +38,7 @@ void solve(void) {
         while (!S.empty() && t >= S.begin()->second)
             ans += 1LL * S.begin()->first * S.begin()->second, t -= S.begin()->second, S.erase(S.begin());
         if (!S.empty() && t)
-            x = S.begin()->first, ans += 1LL * x * t, t = S.begin()->second - t, S.erase(S.begin()), S.emplace(x, t),
-            t = 0;
+            x = S.begin()->first, ans += 1LL * x * t, t = S.begin()->second - t, S.erase(S.begin()), S.emplace(x, t), t = 0;
         if (t) return cout << -1 << endl, void();
         S[v] += l, sum += l;
         while (!S.empty() && sum - S.rbegin()->second >= c) sum -= S.rbegin()->second, S.erase(--S.end());

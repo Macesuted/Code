@@ -36,8 +36,7 @@ void dfs1(int p, int dep = 1, int pre = -1) {
         for (int i = 0; i <= MAX; i++)
             for (int j = 0; i + j < maxlgn; j++)
                 if (f[p][i][j])
-                    for (int k = 0; i + j + k < maxlgn; k++)
-                        g[i][j + k] = Mod(g[i][j + k] + f[p][i][j] * f[x][i][k] % mod);
+                    for (int k = 0; i + j + k < maxlgn; k++) g[i][j + k] = Mod(g[i][j + k] + f[p][i][j] * f[x][i][k] % mod);
         for (int j = 0; j <= MAX; j++)
             for (int k = 0; k < maxlgn; k++) f[p][j][k] = g[j][k], g[j][k] = 0;
     }

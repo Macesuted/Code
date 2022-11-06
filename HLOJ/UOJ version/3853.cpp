@@ -21,9 +21,7 @@ void flush(void) {
     oS = obuf;
     return;
 }
-char getch(void) {
-    return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++);
-}
+char getch(void) { return (iS == iT ? (iT = (iS = ibuf) + fread(ibuf, 1, SIZE, stdin), (iS == iT ? EOF : *iS++)) : *iS++); }
 void putch(char x) {
     *oS++ = x;
     if (oS == oT) flush();

@@ -43,8 +43,7 @@ void tarjan(int p) {
             if (low[i] == dfn[p]) {
                 tree[p].push_back(++tn), tree[tn].push_back(p), loc[tn][p] = tree[tn].size();
                 while (S.top() != i)
-                    tree[S.top()].push_back(tn), tree[tn].push_back(S.top()), loc[tn][S.top()] = tree[tn].size(),
-                                                                              S.pop();
+                    tree[S.top()].push_back(tn), tree[tn].push_back(S.top()), loc[tn][S.top()] = tree[tn].size(), S.pop();
                 tree[i].push_back(tn), tree[tn].push_back(i), loc[tn][i] = tree[tn].size(), S.pop();
             }
         } else

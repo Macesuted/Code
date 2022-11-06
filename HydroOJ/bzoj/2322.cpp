@@ -152,8 +152,7 @@ void dfs(int p) {
 
 void solve(void) {
     int n = read(), m = read(), q = read();
-    for (int i = 1; i <= m; i++)
-        get<0>(edges[i]) = read(), get<1>(edges[i]) = read(), get<2>(edges[i]) = read<int64_t>();
+    for (int i = 1; i <= m; i++) get<0>(edges[i]) = read(), get<1>(edges[i]) = read(), get<2>(edges[i]) = read<int64_t>();
     for (int i = 1; i <= q; i++) era[ques[i] = read()] = true;
     graph.resize(n + 1);
     for (int i = 1; i <= m; i++)

@@ -81,8 +81,7 @@ class ZkwCostFlow {
                     dist[i->to] = dist[p] - i->cost;
                     if (!vis[i->to]) {
                         vis[i->to] = true;
-                        (!que.empty() && dist[i->to] < dist[que.front()]) ? que.push_front(i->to)
-                                                                          : que.push_back(i->to);
+                        (!que.empty() && dist[i->to] < dist[que.front()]) ? que.push_front(i->to) : que.push_back(i->to);
                     }
                 }
             vis[p] = false;
@@ -156,8 +155,7 @@ int main() {
     int S = n * n * 2 + 1, T = n * n * 2;
     web.INIT(S);
     web.addEdge(S, 1, read<int>(), 0);
-    for (register int i = 1; i <= n * n; i++)
-        web.addEdge(i, i + n * n, 1, -read<int>()), web.addEdge(i, i + n * n, INF, 0);
+    for (register int i = 1; i <= n * n; i++) web.addEdge(i, i + n * n, 1, -read<int>()), web.addEdge(i, i + n * n, INF, 0);
     for (register int i = 1; i <= n; i++)
         for (register int j = 1; j <= n; j++) {
             int p = turn(i, j);

@@ -161,8 +161,7 @@ class SegmentTree {
             AnsType ans = (AnsType){0, 0x3f3f3f3f, 0};
             for (vector<pii>::iterator i = p->rec.begin(); i != p->rec.end(); i++)
                 if (ql <= i->first && i->first <= qr)
-                    ans.sum += i->second, ans.minVal = min(ans.minVal, i->second),
-                                          ans.maxVal = max(ans.maxVal, i->second);
+                    ans.sum += i->second, ans.minVal = min(ans.minVal, i->second), ans.maxVal = max(ans.maxVal, i->second);
             return ans;
         }
         pushDown(p, l, r);

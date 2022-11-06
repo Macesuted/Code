@@ -112,9 +112,7 @@ class Network {
    public:
     vector<bool> col;
 
-    inline void resize(int _n) {
-        return n = _n, graph.resize(n + 1), cur.resize(n + 1), dist.resize(n + 1), col.resize(n + 1);
-    }
+    inline void resize(int _n) { return n = _n, graph.resize(n + 1), cur.resize(n + 1), dist.resize(n + 1), col.resize(n + 1); }
     inline void addEdge(int from, int to, long long cap) {
         return graph[from].push_back(Edge{to, cap, (int)graph[to].size()}),
                graph[to].push_back(Edge{from, 0, (int)graph[from].size() - 1});
@@ -150,8 +148,7 @@ void solve(void) {
     for (int i = 1; i <= n; i++)
         if (net.col[i + n]) answer.push(+i);
     write((int)answer.size()), putch('\n');
-    while (!answer.empty())
-        write(abs(answer.front())), putch(' '), putch("-+"[answer.front() > 0]), putch('\n'), answer.pop();
+    while (!answer.empty()) write(abs(answer.front())), putch(' '), putch("-+"[answer.front() > 0]), putch('\n'), answer.pop();
     return;
 }
 

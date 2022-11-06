@@ -85,8 +85,7 @@ class Matrix {
         ans.resize(n, m);
         for (register int i = 1; i <= n; i++)
             for (register int j = 1; j <= m; j++)
-                for (register int k = 1; k <= this->m; k++)
-                    ans[i][j] = (ans[i][j] + (long long)a[i][k] * b.get(k, j)) % mod;
+                for (register int k = 1; k <= this->m; k++) ans[i][j] = (ans[i][j] + (long long)a[i][k] * b.get(k, j)) % mod;
         return ans;
     }
     Matrix operator^(int x) {

@@ -73,10 +73,8 @@ void solve(void) {
     int n = read<int>();
     for (int i = 1; i <= n; i++) {
         int x = read<int>(), y = read<int>(), a = read<int>(), b = read<int>(), d = (a - 1) / b + 1;
-        A[max(1, x - d + 1)][max(1, y - d + 1)] += a - (d - 1) * b,
-            A[min(W + 1, x + d)][min(H + 1, y + d)] += a - (d - 1) * b;
-        A[max(1, x - d + 1)][min(H + 1, y + d)] -= a - (d - 1) * b,
-            A[min(W + 1, x + d)][max(1, y - d + 1)] -= a - (d - 1) * b;
+        A[max(1, x - d + 1)][max(1, y - d + 1)] += a - (d - 1) * b, A[min(W + 1, x + d)][min(H + 1, y + d)] += a - (d - 1) * b;
+        A[max(1, x - d + 1)][min(H + 1, y + d)] -= a - (d - 1) * b, A[min(W + 1, x + d)][max(1, y - d + 1)] -= a - (d - 1) * b;
         d--;
         {
             int dx = x - d, dy = y - d, xl = max(0, 1 - dx - 1), yl = max(0, 1 - dy - 1);

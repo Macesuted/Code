@@ -82,8 +82,7 @@ int main() {
     }
     p[1] = 1;
     for (register int i = 1; i < n; i++)
-        for (vector<int>::iterator j = graph[i].begin(); j != graph[i].end(); j++)
-            p[*j] += p[i] / (double)graph[i].size();
+        for (vector<int>::iterator j = graph[i].begin(); j != graph[i].end(); j++) p[*j] += p[i] / (double)graph[i].size();
     double answer = f[1];
     for (register int i = 1; i <= n; i++) {
         if (graph[i].size() == 1 && p[i] == p[graph[i][0]]) continue;

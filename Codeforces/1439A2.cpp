@@ -141,8 +141,8 @@ void solve(void) {
         }
     write((int)answer.size()), putch('\n');
     for (vector<Option>::iterator i = answer.begin(); i != answer.end(); i++)
-        write(i->a1), putch(' '), write(i->b1), putch(' '), write(i->a2), putch(' '), write(i->b2), putch(' '),
-            write(i->a3), putch(' '), write(i->b3), putch('\n');
+        write(i->a1), putch(' '), write(i->b1), putch(' '), write(i->a2), putch(' '), write(i->b2), putch(' '), write(i->a3),
+            putch(' '), write(i->b3), putch('\n');
     return;
 }
 

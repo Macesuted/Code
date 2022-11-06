@@ -97,8 +97,7 @@ void solve(vector<tiiiii>::iterator l, vector<tiiiii>::iterator r, vector<tiiii>
     auto mid = l + (r - l) / 2;
     vector<tiiii> lin;
     for (auto i = l + 1; i <= mid; i++)
-        lin.emplace_back(get<0>(*i), get<2>(*i), get<3>(*i), +1),
-            lin.emplace_back(get<1>(*i) + 1, get<2>(*i), get<3>(*i), -1);
+        lin.emplace_back(get<0>(*i), get<2>(*i), get<3>(*i), +1), lin.emplace_back(get<1>(*i) + 1, get<2>(*i), get<3>(*i), -1);
     sort(lin.begin(), lin.end());
     ST.clear();
     vector<tiiii> ql, qr;

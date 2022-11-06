@@ -124,8 +124,8 @@ void solve(void) {
         g[0][0] = f[p] - d[ring.back()], g[0][1] = f[p] - hson[p];
         for (int i = 1; i < tn; i++)
             g[i][0] = g[i - 1][0] + f[ring[i]] - d[ring[i - 1]],
-            g[i][1] = min(min(g[i - 1][0], g[i - 1][1]) + f[ring[i]] - hson[ring[i]],
-                          g[i - 1][1] + f[ring[i]] - d[ring[i - 1]]);
+            g[i][1] =
+                min(min(g[i - 1][0], g[i - 1][1]) + f[ring[i]] - hson[ring[i]], g[i - 1][1] + f[ring[i]] - d[ring[i - 1]]);
         answer += g[tn - 1][(int)ring.size() != n];
     }
     return write(answer), putch('\n');

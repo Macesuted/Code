@@ -38,8 +38,7 @@ void solve(void) {
     cin >> n >> m >> s >> t;
     for (int i = 1, x, y; i <= m; i++) cin >> x >> y, graph[x].push_back(y), indeg[y]++;
     int64_t ans = 1, prod = 1;
-    for (int i = 2; i <= n; i++)
-        ans = ans * (indeg[i] + (i == t)) % mod, prod = prod * indeg[i] % mod, ind[i] = indeg[i];
+    for (int i = 2; i <= n; i++) ans = ans * (indeg[i] + (i == t)) % mod, prod = prod * indeg[i] % mod, ind[i] = indeg[i];
     queue<int> que;
     f[t] = prod, que.push(1);
     while (!que.empty()) {

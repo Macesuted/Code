@@ -98,8 +98,7 @@ void solve(void) {
     }
     graph.clear(), graph.resize((k + 1) * (k + 1) + 1);
 #define _(x, y) (((x)-1) * (k + 1) + (y))
-    for (int i = 1; i <= k; i++)
-        graph[_(1, i)].emplace_back(_(1, i + 1), 0), graph[_(1, i + 1)].emplace_back(_(1, i), 0);
+    for (int i = 1; i <= k; i++) graph[_(1, i)].emplace_back(_(1, i + 1), 0), graph[_(1, i + 1)].emplace_back(_(1, i), 0);
     for (int i = 1; i <= k; i++)
         for (int j = 1; j <= k; j++)
             graph[_(i + 1, j)].emplace_back(_(i + 1, j + 1), dow[i][j]),

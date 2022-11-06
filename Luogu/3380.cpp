@@ -200,8 +200,7 @@ int main() {
             int vl = -1, vr = 1e8;
             while (vl + 1 < vr) {
                 int mid = (vl + vr) >> 1, cnt = 0;
-                for (vector<FhqTreap<int>*>::iterator i = nodes.begin(); i != nodes.end(); i++)
-                    cnt += (*i)->rank(mid) - 1;
+                for (vector<FhqTreap<int>*>::iterator i = nodes.begin(); i != nodes.end(); i++) cnt += (*i)->rank(mid) - 1;
                 cnt < k ? vl = mid : vr = mid;
             }
             write(vl), putch('\n');
@@ -211,14 +210,12 @@ int main() {
         } else if (opt == 4) {
             int l = read<int>(), r = read<int>(), k = read<int>(), answer = -2147483647;
             nodes.clear(), getNodes(1, 1, n, l, r);
-            for (vector<FhqTreap<int>*>::iterator i = nodes.begin(); i != nodes.end(); i++)
-                answer = max(answer, (*i)->pre(k));
+            for (vector<FhqTreap<int>*>::iterator i = nodes.begin(); i != nodes.end(); i++) answer = max(answer, (*i)->pre(k));
             write(answer), putch('\n');
         } else {
             int l = read<int>(), r = read<int>(), k = read<int>(), answer = 2147483647;
             nodes.clear(), getNodes(1, 1, n, l, r);
-            for (vector<FhqTreap<int>*>::iterator i = nodes.begin(); i != nodes.end(); i++)
-                answer = min(answer, (*i)->suf(k));
+            for (vector<FhqTreap<int>*>::iterator i = nodes.begin(); i != nodes.end(); i++) answer = min(answer, (*i)->suf(k));
             write(answer), putch('\n');
         }
     }

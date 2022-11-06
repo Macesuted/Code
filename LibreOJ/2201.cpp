@@ -110,8 +110,7 @@ struct Info {
         return Info{sumX - o.sumX, sumY - o.sumY, sumXX - o.sumXX, sumYY - o.sumYY, sumXY - o.sumXY, len - o.len};
     }
     double calc(void) const {
-        double A = sumXX - 1. * sumX * sumX / len, B = 2. * sumX * sumY / len - 2 * sumXY,
-               C = sumYY - 1. * sumY * sumY / len;
+        double A = sumXX - 1. * sumX * sumX / len, B = 2. * sumX * sumY / len - 2 * sumXY, C = sumYY - 1. * sumY * sumY / len;
         return (A + C - sqrt((A - C) * (A - C) + B * B)) / 2;
     }
 };
@@ -140,8 +139,7 @@ bool dfs1(int p, int pre = -1) {
 }
 void dfs2(int p, int top, int pre = 0) {
     dep[p] = dep[pre] + 1, fa[p][0] = pre, inf[p][0] = Info(X[p], Y[p]);
-    for (int i = 1; i < maxlgn; i++)
-        fa[p][i] = fa[fa[p][i - 1]][i - 1], inf[p][i] = inf[p][i - 1] + inf[fa[p][i - 1]][i - 1];
+    for (int i = 1; i < maxlgn; i++) fa[p][i] = fa[fa[p][i - 1]][i - 1], inf[p][i] = inf[p][i - 1] + inf[fa[p][i - 1]][i - 1];
     in[p] = top;
     for (auto i : graph[p])
         if (i != pre && !vis[i]) dfs2(i, top, p);

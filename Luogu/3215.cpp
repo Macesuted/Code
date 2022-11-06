@@ -100,8 +100,7 @@ class FhqTreap {
     inline void markInvert(Node* p) {
         if (p == NULL) return;
         p->lazyInvert ^= true;
-        p->val = -p->val, p->sum = -p->sum, p->lMin = -p->lMin, p->lMax = -p->lMax, p->rMin = -p->rMin,
-        p->rMax = -p->rMax;
+        p->val = -p->val, p->sum = -p->sum, p->lMin = -p->lMin, p->lMax = -p->lMax, p->rMin = -p->rMin, p->rMax = -p->rMax;
         swap(p->lMin, p->lMax), swap(p->rMin, p->rMax);
         return;
     }

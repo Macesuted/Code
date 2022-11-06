@@ -44,8 +44,7 @@ void Dijkstra(int S, int64_t d[]) {
 void solve(void) {
     int n, m, k;
     cin >> n >> m;
-    for (int i = 1, x, y, w; i <= m; i++)
-        cin >> x >> y >> w, graph[x].emplace_back(y, w * 2), graph[y].emplace_back(x, w * 2);
+    for (int i = 1, x, y, w; i <= m; i++) cin >> x >> y >> w, graph[x].emplace_back(y, w * 2), graph[y].emplace_back(x, w * 2);
     memset(dist, 0x3f, sizeof(dist)), Dijkstra(1, dist[0]);
     cin >> k;
     for (int i = 1, x; i <= k; i++) cin >> x, Dijkstra(x, dist[i]);

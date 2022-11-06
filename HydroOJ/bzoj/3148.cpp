@@ -50,8 +50,7 @@ class SegmentTree {
     }
     void set1(int p, int l, int r) {
         return tree[p].cnt1 = r - l + 1, tree[p].cnt11 = int64_t(r - l + 1) * (r - l) / 2,
-               tree[p].cnt0 = tree[p].cnt01 = tree[p].cnt10 = tree[p].cnt011 = tree[p].cnt110 = 0, tree[p].laz = 1,
-               void();
+               tree[p].cnt0 = tree[p].cnt01 = tree[p].cnt10 = tree[p].cnt011 = tree[p].cnt110 = 0, tree[p].laz = 1, void();
     }
     void pushDown(int p, int l, int r) {
         if (!~tree[p].laz) return;
@@ -106,8 +105,7 @@ void solve(void) {
         int l, r, v;
         cin >> l >> r >> v, ST.update(l, r, v);
         auto ret = ST.query();
-        (Frac(ret.cnt0 * (ret.cnt0 - 1) / 2, 2) + Frac(ret.cnt01 + ret.cnt10 + ret.cnt011 + ret.cnt110, ret.cnt1 + 1))
-            .print();
+        (Frac(ret.cnt0 * (ret.cnt0 - 1) / 2, 2) + Frac(ret.cnt01 + ret.cnt10 + ret.cnt011 + ret.cnt110, ret.cnt1 + 1)).print();
     }
     return;
 }

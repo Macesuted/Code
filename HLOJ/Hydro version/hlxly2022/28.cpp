@@ -36,9 +36,8 @@ vector<int> merge(vector<int> a, vector<int> b, int length) {
     }
     int len = length / sqrt(0.35 * ques.size());
     sort(ques.begin(), ques.end(), [=](const pii& a, const pii& b) {
-        return get<0>(a) / len == get<0>(b) / len
-                   ? (((get<0>(a) / len) & 1) ? get<1>(a) > get<1>(b) : get<1>(a) < get<1>(b))
-                   : (get<0>(a) < get<0>(b));
+        return get<0>(a) / len == get<0>(b) / len ? (((get<0>(a) / len) & 1) ? get<1>(a) > get<1>(b) : get<1>(a) < get<1>(b))
+                                                  : (get<0>(a) < get<0>(b));
     });
     for (auto& i : ques)
         if (cmp(get<0>(i), get<1>(i))) pos[get<0>(i)] = min(pos[get<0>(i)], pos[get<1>(i)]);

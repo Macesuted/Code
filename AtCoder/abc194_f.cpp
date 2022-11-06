@@ -83,8 +83,7 @@ int main() {
     vis[a[1]] = true, cnt = 1, f[1][1] = a[1] - 1;
     for (register int i = 2; i <= n; i++) {
         f[i][1] = (f[i - 1][1] + 15) % mod;
-        for (register int j = 2; j <= k; j++)
-            f[i][j] = (f[i][j] + f[i - 1][j - 1] * (16 - j + 1) + f[i - 1][j] * j) % mod;
+        for (register int j = 2; j <= k; j++) f[i][j] = (f[i][j] + f[i - 1][j - 1] * (16 - j + 1) + f[i - 1][j] * j) % mod;
         for (register int t = 0; t < a[i]; t++) f[i][cnt + (!vis[t])]++;
         if (!vis[a[i]]) cnt++;
         vis[a[i]] = true;

@@ -103,9 +103,7 @@ class Network {
         while (p != S) graph[pre[p]].cap -= flo[T], graph[pre[p] ^ 1].cap += flo[T], p = graph[pre[p]].from;
         return true;
     }
-    void addEdge_(int from, int to, int cap) {
-        return graph[tail] = {from, to, cap, head[from]}, head[from] = tail++, void();
-    }
+    void addEdge_(int from, int to, int cap) { return graph[tail] = {from, to, cap, head[from]}, head[from] = tail++, void(); }
 
    public:
     int flow;

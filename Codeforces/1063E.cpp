@@ -112,8 +112,7 @@ int main() {
     for (register int i = 1; i <= n; i++)
         for (register int j = 1; j <= n; j++) out[i][j] = '.';
     for (register int i = 1; i <= n; i++)
-        for (vector<int>::iterator j = mirror[i].begin(); j != mirror[i].end(); j++)
-            out[i][abs(*j)] = *j < 0 ? '/' : '\\';
+        for (vector<int>::iterator j = mirror[i].begin(); j != mirror[i].end(); j++) out[i][abs(*j)] = *j < 0 ? '/' : '\\';
     for (register int i = 1; i <= n; i++) {
         for (register int j = 1; j <= n; j++) putch(out[i][j]);
         putch('\n');

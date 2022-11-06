@@ -129,8 +129,7 @@ void solve(void) {
         int r1 = read<int>() + 1, c1 = read<int>(), r2 = read<int>() + 1, c2 = read<int>();
         in[c2].emplace_back(r1, r2, i), out[c1].emplace_back(r1, r2, i);
     }
-    for (int i = 1; i < maxv; i++)
-        sort(out[i].begin(), out[i].end(), [](tiii a, tiii b) { return get<0>(a) > get<0>(b); });
+    for (int i = 1; i < maxv; i++) sort(out[i].begin(), out[i].end(), [](tiii a, tiii b) { return get<0>(a) > get<0>(b); });
     int m = read<int>();
     for (int i = 1; i <= m; i++) {
         int r = read<int>() + 1, c = read<int>();

@@ -112,8 +112,7 @@ void work(int l, int r) {
 
 int main() {
     n = read<int>(), m = read<int>();
-    for (register int i = 1; i <= n; i++)
-        nodes[i].x = 0, nodes[i].y = i, pos[nodes[i].z = read<int>()] = i, nodes[i].sign = 1;
+    for (register int i = 1; i <= n; i++) nodes[i].x = 0, nodes[i].y = i, pos[nodes[i].z = read<int>()] = i, nodes[i].sign = 1;
     for (register int i = 1; i <= m; i++)
         nodes[++n].z = read<int>(), nodes[n].y = pos[nodes[n].z], nodes[n].x = i, nodes[n].sign = -1;
     work(1, n);

@@ -67,9 +67,7 @@ using io::write;
 
 struct Ask {
     int l, r, bel, id, vl, vr;
-    inline bool operator<(const Ask& oth) const {
-        return bel == oth.bel ? ((bel & 1) ? r > oth.r : r < oth.r) : bel < oth.bel;
-    }
+    inline bool operator<(const Ask& oth) const { return bel == oth.bel ? ((bel & 1) ? r > oth.r : r < oth.r) : bel < oth.bel; }
 };
 
 int a[maxn];

@@ -24,8 +24,7 @@ class SegmentTree {
         Node(void) { memset(sum, 0, sizeof(sum)), memset(d, 0, sizeof(d)), d[0][0] = d[1][1] = d[2][2] = 1; }
         Node operator+(const Node& o) const {
             Node ret;
-            ret.sum[0] = Mod(sum[0] + o.sum[0]), ret.sum[1] = Mod(sum[1] + o.sum[1]),
-            ret.sum[2] = Mod(sum[2] + o.sum[2]);
+            ret.sum[0] = Mod(sum[0] + o.sum[0]), ret.sum[1] = Mod(sum[1] + o.sum[1]), ret.sum[2] = Mod(sum[2] + o.sum[2]);
             return ret;
         }
     };
@@ -44,9 +43,7 @@ class SegmentTree {
     void opA(int p, int len, int64_t v) {
         return tree[p].sum[0] = (tree[p].sum[0] + len * v) % mod, tree[p].d[0][3] = Mod(tree[p].d[0][3] + v), void();
     }
-    void opB(int p, int64_t v) {
-        return tree[p].sum[1] = tree[p].sum[1] * v % mod, plus(tree[p].d[1], tree[p].d[1], v - 1);
-    }
+    void opB(int p, int64_t v) { return tree[p].sum[1] = tree[p].sum[1] * v % mod, plus(tree[p].d[1], tree[p].d[1], v - 1); }
     void opC(int p, int len, int64_t v) {
         tree[p].sum[2] = len * v % mod, tree[p].d[2][0] = tree[p].d[2][1] = tree[p].d[2][2] = 0, tree[p].d[2][3] = v;
         return;
@@ -58,8 +55,7 @@ class SegmentTree {
             tree[p].sum[i] = (tree[p].d[i][3] = d[i][3]) * len % mod;
             for (int j = 0; j < 3; j++)
                 if (d[i][j])
-                    tree[p].sum[i] = (tree[p].sum[i] + old.sum[j] * d[i][j]) % mod,
-                    plus(tree[p].d[i], old.d[j], d[i][j]);
+                    tree[p].sum[i] = (tree[p].sum[i] + old.sum[j] * d[i][j]) % mod, plus(tree[p].d[i], old.d[j], d[i][j]);
         }
         return;
     }

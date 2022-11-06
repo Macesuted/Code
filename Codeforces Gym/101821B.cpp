@@ -45,8 +45,7 @@ class SegmentTree {
     }
     void update(int p, int l, int r, int qp, pii v, pii val) {
         if (l == r)
-            return tree[p].v = v.first, tree[p].cnt = v.second, tree[p].val1 = val.first, tree[p].val2 = val.second,
-                   void();
+            return tree[p].v = v.first, tree[p].cnt = v.second, tree[p].val1 = val.first, tree[p].val2 = val.second, void();
         int mid = (l + r) >> 1;
         qp <= mid ? update(p << 1, l, mid, qp, v, val) : update(p << 1 | 1, mid + 1, r, qp, v, val);
         return tree[p] = merge(tree[p << 1], tree[p << 1 | 1]), void();
@@ -91,8 +90,7 @@ void solve(void) {
     for (int i = 1; i <= n; i++) maxLDS = max(maxLDS, fl[i].first);
     int64_t tot = 0;
     for (int i = 1; i <= n; i++)
-        if (fl[i].first + fr[i].first - 1 == maxLDS)
-            tot = Mod(tot + (f[i] = (int64_t)fl[i].second * fr[i].second % mod));
+        if (fl[i].first + fr[i].first - 1 == maxLDS) tot = Mod(tot + (f[i] = (int64_t)fl[i].second * fr[i].second % mod));
     tot = tot * Inv(maxLDS) % mod;
     ST.clear(), ST.update(0, {0, 1}, {0, -1});
     for (int i = 1; i <= n; i++) {
@@ -103,8 +101,7 @@ void solve(void) {
     }
     for (int i = 1; i <= n; i++) maxLIS = max(maxLIS, g[i].first);
     for (int i = 1; i <= n; i++)
-        if (g[i].first == maxLIS &&
-            (((~gv[i].first) && gv[i].first != tot) || ((~gv[i].second) && gv[i].second != tot)))
+        if (g[i].first == maxLIS && (((~gv[i].first) && gv[i].first != tot) || ((~gv[i].second) && gv[i].second != tot)))
             pos = i, val = (((~gv[i].first) && gv[i].first != tot) ? gv[i].first : gv[i].second);
     if (!pos) return cout << "IMPOSSIBLE" << endl, void();
     len = maxLIS;

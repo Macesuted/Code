@@ -28,8 +28,7 @@ bool inq[maxn];
 void solve(void) {
     int n, m, k;
     cin >> n >> m >> k;
-    for (int i = 1, p, x, q, y; i <= k; i++)
-        cin >> p >> x >> q >> y, rec[p].insert({x, {q, y}}), rec[q].insert({y, {p, x}});
+    for (int i = 1, p, x, q, y; i <= k; i++) cin >> p >> x >> q >> y, rec[p].insert({x, {q, y}}), rec[q].insert({y, {p, x}});
     for (int i = 1; i <= n; i++)
         if (rec[i].count(a[i] = 1)) que.push(i);
     while (!que.empty()) {

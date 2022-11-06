@@ -57,8 +57,7 @@ void solve(void) {
                 continue;
         }
         for (auto i : graph[p])
-            if (dist[i.first] > dist[p] + i.second)
-                que.emplace(dist[i.first] = dist[p] + i.second, i.first), pre[i.first] = p;
+            if (dist[i.first] > dist[p] + i.second) que.emplace(dist[i.first] = dist[p] + i.second, i.first), pre[i.first] = p;
     }
     if (dist[T] == INT_MAX) return cout << "NO" << endl, void();
     cout << "YES" << endl;

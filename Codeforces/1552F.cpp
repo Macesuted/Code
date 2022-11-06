@@ -77,9 +77,8 @@ void solve(void) {
     int n = read<int>();
     for (int i = 1; i <= n; i++) x[i] = read<int>(), y[i] = read<int>(), s[i] = read<int>();
     for (int i = 1; i <= n; i++)
-        g[i] = (g[i - 1] +
-                (f[i] = (x[i] + 3LL * mod - y[i] + g[i - 1] - g[lower_bound(x + 1, x + i, y[i]) - x - 1]) % mod)) %
-               mod;
+        g[i] =
+            (g[i - 1] + (f[i] = (x[i] + 3LL * mod - y[i] + g[i - 1] - g[lower_bound(x + 1, x + i, y[i]) - x - 1]) % mod)) % mod;
     long long ans = (x[n] + 1) % mod;
     for (int i = 1; i <= n; i++) ans = (ans + s[i] * f[i]) % mod;
     write(ans), putch('\n');

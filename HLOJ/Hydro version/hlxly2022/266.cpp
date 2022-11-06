@@ -91,8 +91,7 @@ void solve(void) {
         tie(t, l, r, c) = blk[p];
         ans = (ans + (int64_t)dist[p] * (dist[p] - 1) / 2 % mod * (r - l + 1)) % mod;
         vector<int> ret = ST[t].query(c, l, r);
-        for (auto i : ret)
-            ST[t].erase(get<1>(blk[i]), get<2>(blk[i]), {get<3>(blk[i]), i}), dist[i] = dist[p] + 1, que.push(i);
+        for (auto i : ret) ST[t].erase(get<1>(blk[i]), get<2>(blk[i]), {get<3>(blk[i]), i}), dist[i] = dist[p] + 1, que.push(i);
     }
     cout << ans << endl;
     return;

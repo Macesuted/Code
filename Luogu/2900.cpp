@@ -85,8 +85,7 @@ int main() {
         long long k = -a[i].second;
         while (que.size() > 1 && (Y(py) - Y(px)) > k * (X(py) - X(px))) que.pop_back();
         f[i] = f[py] + 1LL * a[py + 1].first * a[i].second;
-        while (que.size() > 1 &&
-               (Y(que[0]) - Y(i)) * (X(que[1]) - X(que[0])) >= (Y(que[1]) - Y(que[0])) * (X(que[0]) - X(i)))
+        while (que.size() > 1 && (Y(que[0]) - Y(i)) * (X(que[1]) - X(que[0])) >= (Y(que[1]) - Y(que[0])) * (X(que[0]) - X(i)))
             que.pop_front();
         que.push_front(i);
     }

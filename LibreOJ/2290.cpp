@@ -57,8 +57,7 @@ void solve(void) {
         else {
             cin >> a2 >> b2, a2--, b2--;
             edge[a1].emplace_back(1 << a1, 1 << b1, 1), edge[a2].emplace_back(1 << a2, 1 << b2, 1);
-            if (a1 != a2)
-                edge[min(a1, a2)].emplace_back((1 << a1) | (1 << a2), (1 << b1) | (1 << b2), op == 1 ? 1 : -1);
+            if (a1 != a2) edge[min(a1, a2)].emplace_back((1 << a1) | (1 << a2), (1 << b1) | (1 << b2), op == 1 ? 1 : -1);
         }
     }
     cout << f(0, 0) << endl;

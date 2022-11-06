@@ -66,9 +66,7 @@ class FhqTreap {
         T val;
         int rank, size, ver, deg;
         Node *l, *r;
-        Node(int rnk = 0, T v = 0, int version = 0) {
-            rank = rnk, size = 1, l = r = NULL, val = v, ver = version, deg = 0;
-        }
+        Node(int rnk = 0, T v = 0, int version = 0) { rank = rnk, size = 1, l = r = NULL, val = v, ver = version, deg = 0; }
         Node(const Node* p) { *this = *p; }
     };
     static const long long kMul = 0x9ddfea08eb382d69ULL;

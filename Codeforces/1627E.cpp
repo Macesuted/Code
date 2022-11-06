@@ -66,8 +66,7 @@ void solve(void) {
             int last = j->second, lastp = j->first;
             while (++j != line[i].end())
                 graph[j->second].emplace_back(last, 1LL * abs(j->first - lastp) * x[i]),
-                    graph[last].emplace_back(j->second, 1LL * abs(j->first - lastp) * x[i]), last = j->second,
-                                                                                             lastp = j->first;
+                    graph[last].emplace_back(j->second, 1LL * abs(j->first - lastp) * x[i]), last = j->second, lastp = j->first;
         }
     static priority_queue<tili, vector<tili>, greater<tili>> que;
     while (!que.empty()) que.pop();

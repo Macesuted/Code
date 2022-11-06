@@ -26,8 +26,7 @@ int dp(void) {
             for (int t1 = 0; t1 <= 4; t1++)
                 for (int t2 = 0; t2 <= 4; t2++)
                     if (f[i][t1][t2] != 0x3f3f3f3f) {
-                        int u = max(0, t1 - T[mode + i + 1]), rest = 4 - S[mode + i + 1] - u,
-                            p = max(0, T[mode + i + 1] - t1);
+                        int u = max(0, t1 - T[mode + i + 1]), rest = 4 - S[mode + i + 1] - u, p = max(0, T[mode + i + 1] - t1);
                         for (int x = p; x <= p + rest; x++, u++)
                             if (x == 4) {
                                 if (i < 8 && t2 <= 3) Min(f[i + 1][t2 + 1][1], f[i][t1][t2] + u);

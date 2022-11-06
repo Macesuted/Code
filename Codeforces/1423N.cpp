@@ -93,7 +93,6 @@ int main() {
     write((int)answer.size()), putch('\n');
     for (vector<int>::iterator i = answer.begin(); i != answer.end(); i++) write(*i), putch(' ');
     if (!answer.empty()) putch('\n');
-    for (register int i = 1; i <= k; i++)
-        write(from[i]), putch(' '), write(to[i]), putch(' '), write(w[i]), putch('\n');
+    for (register int i = 1; i <= k; i++) write(from[i]), putch(' '), write(to[i]), putch(' '), write(w[i]), putch('\n');
     return 0;
 }

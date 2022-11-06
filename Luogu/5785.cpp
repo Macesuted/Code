@@ -76,9 +76,8 @@ int main() {
             ((Y(que[mid + 1]) - Y(que[mid])) / (X(que[mid + 1]) - X(que[mid])) < tim[i]) ? l = mid : r = mid;
         }
         f[i] = f[que[r]] + s * (cost[n] - cost[que[r]]) + tim[i] * (cost[i] - cost[que[r]]);
-        while (que.size() > 1 &&
-               (Y(que[que.size() - 2]) - Y(que[que.size() - 1])) * (X(que[que.size() - 1]) - X(i)) >=
-                   (Y(que[que.size() - 1]) - Y(i)) * (X(que[que.size() - 2]) - X(que[que.size() - 1])))
+        while (que.size() > 1 && (Y(que[que.size() - 2]) - Y(que[que.size() - 1])) * (X(que[que.size() - 1]) - X(i)) >=
+                                     (Y(que[que.size() - 1]) - Y(i)) * (X(que[que.size() - 2]) - X(que[que.size() - 1])))
             que.pop_back();
         que.push_back(i);
     }

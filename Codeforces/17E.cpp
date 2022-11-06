@@ -80,8 +80,7 @@ int main() {
         while (a[i - p[i]] == a[i + p[i]]) p[i]++;
         if (i + p[i] > r) r = (mid = i) + p[i] - 1;
     }
-    for (register int i = 1; i <= n; i++)
-        f[(i + 1) / 2]++, f[(i + p[i]) / 2]--, g[(i - p[i] + 2) / 2]++, g[(i + 2) / 2]--;
+    for (register int i = 1; i <= n; i++) f[(i + 1) / 2]++, f[(i + p[i]) / 2]--, g[(i - p[i] + 2) / 2]++, g[(i + 2) / 2]--;
     n = n / 2 - 1;
     for (register int i = 1; i <= n; i++) f[i] = (f[i] + f[i - 1]) % mod, g[i] = (g[i] + g[i - 1]) % mod;
     for (register int i = n; i; i--) g[i] = (g[i] + g[i + 1]) % mod;

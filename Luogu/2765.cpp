@@ -158,8 +158,7 @@ int main() {
     }
     write(--num), putch('\n');
     for (register int i = 1; i <= num; i++)
-        for (vector<Dinic<50005>::Edge>::iterator j = dinic.graph[i * 2 + 1].begin(); j != dinic.graph[i * 2 + 1].end();
-             j++)
+        for (vector<Dinic<50005>::Edge>::iterator j = dinic.graph[i * 2 + 1].begin(); j != dinic.graph[i * 2 + 1].end(); j++)
             if (j->cap == j->flow) aft[i] = (j->to - 1) / 2;
     for (register int i = 1; i <= num; i++)
         if (!vis[i]) {

@@ -125,8 +125,7 @@ void insert(Func a, int64_t x) {
     auto p = S.emplace(a, x).first, pl = p, pr = p;
     if (pl != S.begin()) {
         pl--;
-        if (++pr != S.end())
-            near.erase(near.find({cross(pl->first, pr->first), *pr})), near.emplace(cross(a, pr->first), *pr);
+        if (++pr != S.end()) near.erase(near.find({cross(pl->first, pr->first), *pr})), near.emplace(cross(a, pr->first), *pr);
         near.emplace(cross(pl->first, a), *p);
     } else if (++pr != S.end())
         near.emplace(cross(a, pr->first), *pr);
@@ -137,8 +136,7 @@ void erase(Func a, int64_t x) {
     assert(p != S.end());
     if (pl != S.begin()) {
         pl--;
-        if (++pr != S.end())
-            near.emplace(cross(pl->first, pr->first), *pr), near.erase(near.find({cross(a, pr->first), *pr}));
+        if (++pr != S.end()) near.emplace(cross(pl->first, pr->first), *pr), near.erase(near.find({cross(a, pr->first), *pr}));
         near.erase(near.find({cross(pl->first, a), *p}));
     } else if (++pr != S.end())
         near.erase(near.find({cross(a, pr->first), *pr}));

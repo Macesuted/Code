@@ -57,9 +57,7 @@ int a[maxn], b[maxn];
 
 struct Ask {
     int l, r, bell, id;
-    inline bool operator<(const Ask& oth) const {
-        return this->bell != oth.bell ? this->bell < oth.bell : this->r < oth.r;
-    }
+    inline bool operator<(const Ask& oth) const { return this->bell != oth.bell ? this->bell < oth.bell : this->r < oth.r; }
 };
 
 Ask ask[maxn];

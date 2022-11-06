@@ -109,8 +109,7 @@ long long sum(int p) {
 int main() {
     int n = read<int>(), q = read<int>();
     graph.resize(n + 1);
-    for (register int i = 1; i <= q; i++)
-        ask[i].op = (getstr()[0] == 'Q'), ask[i].x = read<int>(), ask[i].y = read<int>();
+    for (register int i = 1; i <= q; i++) ask[i].op = (getstr()[0] == 'Q'), ask[i].x = read<int>(), ask[i].y = read<int>();
     for (register int i = 0; i <= n; i++) f[i] = i;
     for (register int i = 1; i <= q; i++)
         if (!ask[i].op) {

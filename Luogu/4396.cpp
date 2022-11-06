@@ -97,8 +97,8 @@ int main() {
     int n = read<int>(), m = read<int>(), sqrtn = sqrt(n);
     for (register int i = 1; i <= n; i++) a[i] = read<int>();
     for (register int i = 1; i <= m; i++)
-        ask[i].l = read<int>(), ask[i].r = read<int>(), ask[i].down = read<int>(), ask[i].up = read<int>(),
-        ask[i].id = i, ask[i].bel = ask[i].l / sqrtn;
+        ask[i].l = read<int>(), ask[i].r = read<int>(), ask[i].down = read<int>(), ask[i].up = read<int>(), ask[i].id = i,
+        ask[i].bel = ask[i].l / sqrtn;
     sort(ask + 1, ask + m + 1);
     for (register int i = 1, l = 1, r = 0; i <= m; i++) {
         while (l > ask[i].l) add(--l);

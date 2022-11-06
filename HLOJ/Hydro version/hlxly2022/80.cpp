@@ -68,8 +68,7 @@ void solve(void) {
     for (int i = 0; i < len; i++) b[i] = a[0][i] * a[1][i] % mod * a[2][i] % mod * a[3][i] % mod * a[4][i] % mod;
     DFT(b, len, -1);
     int64_t ans = 0;
-    for (int i = 0; i < len && i <= k; i++)
-        ans = (ans + fac[k] * fac[2 * k - 2 * i] % mod * ifac[k - i] % mod * b[i]) % mod;
+    for (int i = 0; i < len && i <= k; i++) ans = (ans + fac[k] * fac[2 * k - 2 * i] % mod * ifac[k - i] % mod * b[i]) % mod;
     cout << ans * Inv(Pow(2, k)) % mod << endl;
     return;
 }

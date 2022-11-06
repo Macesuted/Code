@@ -43,8 +43,7 @@ std::string getstr(const std::string& suf = "") {
     Il--;
     while (Il != Ir) {
         char* p = Il;
-        while (Il < Ir && *Il != ' ' && *Il != '\t' && *Il != '\n' && *Il != '\v' && *Il != '\f' && *Il != '\r' &&
-               *Il != EOF)
+        while (Il < Ir && *Il != ' ' && *Il != '\t' && *Il != '\n' && *Il != '\v' && *Il != '\f' && *Il != '\r' && *Il != EOF)
             Il++;
         s.append(p, Il);
         if (Il < Ir) break;

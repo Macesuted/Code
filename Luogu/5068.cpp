@@ -110,8 +110,8 @@ int main() {
         for (register int j = 0; j * i + 1 <= n; j++) {
             int l = j * i + 1, r = (j + 1) * i;
             if (j) f[i][j] = f[i][j - 1];
-            f[i][j] = max(f[i][j],
-                          min(ST[l][lg[i]], (r - (1 << lg[i]) + 1 > n) ? 0x3f3f3f3f : ST[r - (1 << lg[i]) + 1][lg[i]]));
+            f[i][j] =
+                max(f[i][j], min(ST[l][lg[i]], (r - (1 << lg[i]) + 1 > n) ? 0x3f3f3f3f : ST[r - (1 << lg[i]) + 1][lg[i]]));
             changes.push_back((pii){f[i][j], i});
         }
     }

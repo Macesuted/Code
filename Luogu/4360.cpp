@@ -83,8 +83,7 @@ int main() {
         long long k = a[i];
         while (que.size() > 1 && (Y(pf2) - Y(pf1)) > (X(pf2) - X(pf1)) * k) que.pop_front();
         answer = max(answer, dis[pf1] * a[pf1] + (dis[i] - dis[pf1]) * a[i]);
-        while (que.size() > 1 && (Y(pb2) - Y(pb1)) * (X(i) - X(pb2)) < (Y(i) - Y(pb2)) * (X(pb2) - X(pb1)))
-            que.pop_back();
+        while (que.size() > 1 && (Y(pb2) - Y(pb1)) * (X(i) - X(pb2)) < (Y(i) - Y(pb2)) * (X(pb2) - X(pb1))) que.pop_back();
         que.push_back(i);
     }
     write(total - answer), putch('\n');

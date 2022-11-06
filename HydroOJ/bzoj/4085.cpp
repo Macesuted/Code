@@ -85,8 +85,7 @@ class SegmentTree {
     int n;
 
     void update(int p, Matrix l, Matrix r) {
-        return tree[p].ans = l * tree[p].ans * r, tree[p].laz1 = l * tree[p].laz1, tree[p].laz2 = tree[p].laz2 * r,
-               void();
+        return tree[p].ans = l * tree[p].ans * r, tree[p].laz1 = l * tree[p].laz1, tree[p].laz2 = tree[p].laz2 * r, void();
     }
     void pushDown(int p) {
         return update(p << 1, tree[p].laz1, tree[p].laz2), update(p << 1 | 1, tree[p].laz1, tree[p].laz2),

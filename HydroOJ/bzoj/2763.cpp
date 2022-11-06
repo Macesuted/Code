@@ -78,8 +78,7 @@ void solve(void) {
     graph.resize((k + 1) * n + 1);
     for (int i = 1; i <= m; i++) {
         int x = read<int>(), y = read<int>(), d = read<int>();
-        for (int t = 0; t <= k; t++)
-            graph[t * n + x].emplace_back(t * n + y, d), graph[t * n + y].emplace_back(t * n + x, d);
+        for (int t = 0; t <= k; t++) graph[t * n + x].emplace_back(t * n + y, d), graph[t * n + y].emplace_back(t * n + x, d);
         for (int t = 1; t <= k; t++)
             graph[t * n + x].emplace_back((t - 1) * n + y, 0), graph[t * n + y].emplace_back((t - 1) * n + x, 0);
     }

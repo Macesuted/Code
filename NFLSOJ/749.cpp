@@ -120,8 +120,7 @@ int64_t H(int s, int t, int k, int v) {
         for (int j = 0; j <= t; j++)
             if (!(i == 0 && j == t) && !(i == s && j == 0))
                 h[s][t][k][v] =
-                    (h[s][t][k][v] + C[s][i] * C[t][j] % mod * H(i, j, k - 1, v) % mod * H(s - i, t - j, k - 1, v)) %
-                    mod;
+                    (h[s][t][k][v] + C[s][i] * C[t][j] % mod * H(i, j, k - 1, v) % mod * H(s - i, t - j, k - 1, v)) % mod;
     return h[s][t][k][v];
 }
 int64_t G(int s, int t, int k) {
@@ -137,8 +136,8 @@ int64_t F(int n, int m) {
     if (~f[n][m]) return f[n][m];
     f[n][m] = 2 * F(n, m - 1) % mod;
     for (int i = 1; i < n; i++)
-        f[n][m] = (f[n][m] + (F(i, m - 1) * pow2[(n - i) * (m - 1)] + F(n - i, m - 1) * pow2[i * (m - 1)] +
-                              G(i, n - i, m - 1) + pow2[(n + 1) * (m - 1)]) %
+        f[n][m] = (f[n][m] + (F(i, m - 1) * pow2[(n - i) * (m - 1)] + F(n - i, m - 1) * pow2[i * (m - 1)] + G(i, n - i, m - 1) +
+                              pow2[(n + 1) * (m - 1)]) %
                                  mod * C[n][i]) %
                   mod;
     return f[n][m];

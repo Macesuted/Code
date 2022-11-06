@@ -80,8 +80,7 @@ void mark(int p, int id) {
 void dfs(int p, int root) {
     if (record[statu[p]]) ans[root] = max(ans[root], record[statu[p]] + dep[p] - 2 * dep[root]);
     for (int i = 0; i < 22; i++)
-        if (record[statu[p] ^ (1 << i)])
-            ans[root] = max(ans[root], record[statu[p] ^ (1 << i)] + dep[p] - 2 * dep[root]);
+        if (record[statu[p] ^ (1 << i)]) ans[root] = max(ans[root], record[statu[p] ^ (1 << i)] + dep[p] - 2 * dep[root]);
     for (auto i : graph[p]) dfs(i, root);
     return;
 }

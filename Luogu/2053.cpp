@@ -81,8 +81,7 @@ class ZkwCostFlow {
                     dist[i->to] = dist[p] - i->cost;
                     if (!vis[i->to]) {
                         vis[i->to] = true;
-                        (!que.empty() && dist[i->to] < dist[que.front()]) ? que.push_front(i->to)
-                                                                          : que.push_back(i->to);
+                        (!que.empty() && dist[i->to] < dist[que.front()]) ? que.push_front(i->to) : que.push_back(i->to);
                     }
                 }
             vis[p] = false;

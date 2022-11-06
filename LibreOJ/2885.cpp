@@ -206,8 +206,7 @@ void pig::hurt(int who) {
 
 bool pig::canuse(char c) {
     if (c == 'P' && this->hp < 4) return true;
-    if ((c == 'K' && this->find_K() != 0) || (c == 'F' && this->find_F() != 0) || c == 'N' || c == 'W' || c == 'Z')
-        return true;
+    if ((c == 'K' && this->find_K() != 0) || (c == 'F' && this->find_F() != 0) || c == 'N' || c == 'W' || c == 'Z') return true;
     return false;
 }
 
