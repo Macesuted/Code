@@ -24,9 +24,7 @@ class SegmentTree {
    private:
     int maxv[maxn << 2], n;
 
-    void pushUp(int p) {
-        return maxv[p] = max(maxv[p << 1], maxv[p << 1 | 1]), void();
-    }
+    void pushUp(int p) { return maxv[p] = max(maxv[p << 1], maxv[p << 1 | 1]), void(); }
     void build(int p, int l, int r, int a[]) {
         if (l == r) return maxv[p] = a[l], void();
         int mid = (l + r) >> 1;
@@ -92,7 +90,7 @@ bool mem2;
 
 int main() {
 #ifndef LOCAL
-   freopen("game.in", "r", stdin), freopen("game.out", "w", stdout);
+    freopen("game.in", "r", stdin), freopen("game.out", "w", stdout);
 #endif
     ios::sync_with_stdio(false), cin.tie(nullptr);
 #ifdef LOCAL
