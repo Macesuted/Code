@@ -48,8 +48,6 @@ void solve(void) {
         if ((int)a.size() == 2 * h - 3) break;
     }
     sort(a.begin(), a.end(), [&](int x, int y) { return query(L1, x, y); });
-    for (auto i : a) cerr << i << ' ';
-    cerr << endl;
     cout << "! " << a[a.size() >> 1] << endl;
     return;
 }
