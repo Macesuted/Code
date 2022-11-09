@@ -1,14 +1,14 @@
 # Macesuted's Code Repository
 
-Here Macesuted shares her solutions to the problems those she has done in some online judges.  
-**Please do not simply submit these codes.**  
+**Please do not simply submit these codes.**
+
 If you find it useful, please star it, thank you!
 
-[Her blog site](https://macesuted.moe/) contains tutorials to some problems. (Only in Chinese)
+[This blog site](https://macesuted.moe/) contains tutorials to some of these problems. (In Chinese)
 
 ---
 
-Her accounts in these online judges:
+Accounts in these online judges:
 
 - [51Nod](https://www.51nod.com/): [Macesuted](https://www.51nod.com/User/Index.html#userId=199786)
 - [Aizu](https://judge.u-aizu.ac.jp/onlinejudge/): [Macesuted](https://judge.u-aizu.ac.jp/onlinejudge/user.jsp?id=Macesuted)
@@ -19,7 +19,7 @@ Her accounts in these online judges:
 - [Codeforces Gym](https://codeforces.com/gyms): [Macesuted-Moe](https://codeforces.com/profile/Macesuted-Moe)
 - [Codeforces](https://codeforces.com/): [Macesuted-Moe](https://codeforces.com/profile/Macesuted-Moe)
 - [HDOJ](https://acm.hdu.edu.cn/): [Macesuted](https://acm.hdu.edu.cn/userstatus.php?user=macesuted)
-- (Private) HLOJ(UOJ version/Hydro version): Macesuted(UOJ version/Hydro version)
+- (Private) HLOJ: Macesuted
 - [HydroOJ](https://hydro.ac/): [Macesuted](https://hydro.ac/user/2)
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
 - [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)
