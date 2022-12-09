@@ -17,8 +17,8 @@
                 "-Wextra",
                 "-O2",
                 "'-Wl,--stack=512000000'",
-                "-D LOCAL",
-                "-I /Code/libs/ac-library"
+                "-IE:/Code/libs/testlib/",
+                "-DLOCAL",
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -78,8 +78,7 @@
                 "-Wextra",
                 "-O2",
                 "'-Wl,--stack=512000000'",
-                "-D LOCAL",
-                "-I E:/Code/libs/ac-library/"
+                "-D LOCAL"
             ],
             "options": {
                 "cwd": "${fileDirname}"
