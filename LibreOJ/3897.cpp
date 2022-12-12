@@ -2,9 +2,9 @@
  * @file 3897.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2022-12-10
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <bits/stdc++.h>
