@@ -22,17 +22,7 @@ bool mem1;
 
 vector<int> graph[maxn], ngraph[maxn];
 int dfn[maxn], low[maxn], bel[maxn], nsiz[maxn];
-int64_t pow2[maxm], f[maxn][2];
-
-int64_t Pow(int64_t a, int64_t x) {
-    int64_t ans = 1;
-    while (x) {
-        if (x & 1) ans = ans * a % mod;
-        a = a * a % mod, x >>= 1;
-    }
-    return ans;
-}
-int64_t Inv(int64_t a) { return Pow(a, mod - 2); }
+int64_t pow2[maxm], f[maxn];
 
 stack<int> S;
 int dfnt = 0, bcnt = 0;
@@ -54,18 +44,13 @@ void tarjan(int p, int pre = -1) {
 }
 int64_t ans = 0;
 void dfs(int p, int pre = -1) {
-    f[p][0] = f[p][1] = 1;
+    f[p] = 1;
     for (auto i : ngraph[p])
-        if (i != pre) {
-            dfs(i, p);
-            f[p][0] = f[p][0] * f[i][0] % mod;
-            f[p][1] = f[p][1] * (f[i][0] + f[i][1] * inv2 % mod) % mod;
-        }
-    ans = (ans + f[p][1] * pow2[nsiz[p]]) % mod;
-    ans = (ans + mod - f[p][0]) % mod;
+        if (i != pre) dfs(i, p), f[p] = f[p] * (1 + f[i] * inv2 % mod) % mod;
+    ans = (ans + f[p] * pow2[nsiz[p]] - 1) % mod;
     for (auto i : ngraph[p])
-        if (i != pre) ans = (ans + mod - f[p][0] * Inv(f[i][0]) % mod * f[i][1] % mod * inv2 % mod) % mod;
-    f[p][1] = (f[p][1] * pow2[nsiz[p]] + mod - f[p][0]) % mod;
+        if (i != pre) ans = (ans + mod - f[i] * inv2 % mod) % mod;
+    f[p] = (f[p] * pow2[nsiz[p]] - 1) % mod;
     return;
 }
 
