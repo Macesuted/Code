@@ -65,7 +65,7 @@
             }
         },
         {
-            "label": "Clang++ Build",
+            "label": "LLDB Build",
             "type": "shell",
             "command": "clang++",
             "args": [
@@ -85,10 +85,6 @@
             },
             "problemMatcher": {
                 "owner": "lldb",
-                "fileLocation": [
-                    "relative",
-                    "${fileDirname}"
-                ],
                 "pattern": {
                     "regexp": "^(.*\\.cpp):(\\d+):(\\d+): (.*)$",
                     "file": 1,
