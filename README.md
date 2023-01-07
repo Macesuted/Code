@@ -24,7 +24,7 @@ Accounts in these online judges:
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
 - [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)
 - (Private) NFLSOJ: Macesuted
-- [Nowcoder](https://www.nowcoder.com/)
+- [Nowcoder](https://www.nowcoder.com/): [Macesuted-Moe](https://www.nowcoder.com/users/215582977)
 - [Online Judge](https://onlinejudge.org/): [macesuted](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=19&page=show_authorstats&userid=999082)
 - [POJ](http://poj.org/): [Macesuted](http://poj.org/userstatus?user_id=Macesuted)
 - [Public Judge](https://pjudge.ac): [Macesuted](https://pjudge.ac/user/profile/Macesuted)
