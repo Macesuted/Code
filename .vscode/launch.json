@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "clang++",
+            "name": "LLDB Debug",
             "type": "lldb",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
@@ -11,7 +11,7 @@
             "sourceLanguages": [
                 "C++"
             ],
-            "preLaunchTask": "Clang++ Build"
+            "preLaunchTask": "LLDB Build"
         },
     ]
 }
