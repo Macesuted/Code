@@ -24,7 +24,7 @@ void solve(void) {
     int k, n, m, o;
     cin >> k >> n >> m >> o;
     n = n / k + (n % k > 0);
-    int B = sqrt(n), cntB = n / B;
+    int B = sqrt(n * k), cntB = n / B;
     L[0] = 0, R[0] = B - 1;
     for (int i = 1; i < cntB; i++) L[i] = R[i - 1] + 1, R[i] = R[i - 1] + B;
     if (R[cntB - 1] < n - 1) L[cntB] = R[cntB - 1] + 1, R[cntB] = n - 1, cntB++;
