@@ -89,8 +89,7 @@ void solve(void) {
         vector<pii> d;
         for (int i = 0; i < (int)b.size(); i++)
             if (S >> i & 1)
-                for (int j = 0, v = b[i].first; j < plen[i]; j++, v += b[i].second)
-                    qlen[d.size()] = 1, d.emplace_back(v, 0);
+                for (int j = 0, v = b[i].first; j < plen[i]; j++, v += b[i].second) qlen[d.size()] = 1, d.emplace_back(v, 0);
             else
                 qlen[d.size()] = plen[i], d.push_back(b[i]);
         if (dfs(init(d), gen(d.size()), k)) {
