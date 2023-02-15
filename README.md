@@ -19,6 +19,7 @@ Accounts in these online judges:
 - [Codeforces Gym](https://codeforces.com/gyms): [Macesuted-Moe](https://codeforces.com/profile/Macesuted-Moe)
 - [Codeforces](https://codeforces.com/): [Macesuted-Moe](https://codeforces.com/profile/Macesuted-Moe)
 - [HDOJ](https://acm.hdu.edu.cn/): [Macesuted](https://acm.hdu.edu.cn/userstatus.php?user=macesuted)
+- (Private) HEZOJ: Macesuted
 - (Private) HLOJ: Macesuted
 - [HydroOJ](https://hydro.ac/): [Macesuted](https://hydro.ac/user/2)
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)

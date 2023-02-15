@@ -101,7 +101,6 @@ void solve(void) {
         }
     }
     return cout << "NIE" << endl, void();
-    return;
 }
 
 bool mem2;
