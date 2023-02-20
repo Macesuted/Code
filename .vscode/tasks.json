@@ -2,12 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "C++ Compile",
+            "label": "C++ Compile (LLDB)",
             "type": "shell",
             "group": {
                 "kind": "test"
             },
-            "command": "g++",
+            "command": "clang++",
             "args": [
                 "'${fileBasename}'",
                 "-o",
@@ -44,14 +44,14 @@
             }
         },
         {
-            "label": "C++ Compile & Run",
+            "label": "C++ Compile & Run (LLDB)",
             "type": "shell",
             "group": {
                 "kind": "test",
                 "isDefault": true
             },
             "dependsOn": [
-                "C++ Compile",
+                "C++ Compile (LLDB)",
                 "C++ Run"
             ],
             "dependsOrder": "sequence",

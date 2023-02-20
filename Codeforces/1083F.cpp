@@ -17,7 +17,6 @@ using namespace std;
 bool mem1;
 
 #define maxn 200005
-#define maxsqrtn 500
 
 class Block {
    private:
@@ -52,6 +51,7 @@ class Block {
         if (bel[p] < m - 1) build(bel[p], -1);
         a[p] ^= v;
         if (bel[p] < m - 1) build(bel[p], +1);
+        return;
     }
     int64_t query(void) {
         int tot = 0, pre = 0;
