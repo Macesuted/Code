@@ -12,7 +12,7 @@
                 "'${fileBasename}'",
                 "-o",
                 "'${fileBasenameNoExtension}.exe'",
-                "-std=c++20",
+                "-std=c++17",
                 "-Wall",
                 "-Wextra",
                 "-O2",
@@ -72,13 +72,13 @@
                 "'${fileBasename}'",
                 "-o",
                 "'${fileBasenameNoExtension}.exe'",
-                "-std=c++20",
                 "-glldb",
+                "-std=c++17",
                 "-Wall",
                 "-Wextra",
                 "-O2",
                 "'-Wl,--stack=512000000'",
-                "-D LOCAL"
+                "-DLOCAL"
             ],
             "options": {
                 "cwd": "${fileDirname}"

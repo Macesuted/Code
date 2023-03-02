@@ -2,4 +2,5 @@
 -std=c++17
 -Wall
 -Wextra
+-IE:/Code/libs/testlib/
 -DLOCAL
