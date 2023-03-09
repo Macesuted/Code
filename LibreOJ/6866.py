@@ -1,8 +1,19 @@
+"""
+File:   6866.py
+Author: Macesuted (i@macesuted.moe)
+Date:   2023-03-05
+
+Copyright (c) 2023
+"""
+
 n, k = input().split(' ');
 n, k = int(n), int(k)
 
 if k == 1:
-    print('Poor E.S.!')
+    if n == 1:
+        print(1)
+    else:
+        print('Poor E.S.!')
     exit()
 
 if k == 2:

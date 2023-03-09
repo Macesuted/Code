@@ -1,5 +1,5 @@
 /**
- * @file 7.cpp
+ * @file 6872.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2023-03-05
  *
