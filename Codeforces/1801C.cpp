@@ -2,9 +2,9 @@
  * @file 1801C.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2023-03-09
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 
 #include <bits/stdc++.h>
