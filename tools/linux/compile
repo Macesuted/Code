@@ -1,2 +1,2 @@
-@echo off
-g++ %1.cpp -o %1 -std=c++17 -Wall -Wextra -O2 -DLOCAL
+#!/bin/bash
+g++ $1.cpp -o $1 -std=c++14 -Wall -Wextra -O2 -DLOCAL

@@ -3,5 +3,5 @@ echo Compiling...
 compile $1
 echo Running...
 ulimit -s unlimited
-./$1 < ./samp/$1/$2.in
+./$1
 rm $1 &>/dev/null
