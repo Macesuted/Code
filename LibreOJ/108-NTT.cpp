@@ -1,14 +1,18 @@
 /**
  * @file 108-NTT.cpp
  * @author Macesuted (i@macesuted.moe)
- * @date 2022-05-01
+ * @date 2023-03-29
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright (c) 2023
  *
  */
 
 #include <bits/stdc++.h>
 using namespace std;
+
+#ifndef LOCAL
+#define endl '\n'
+#endif
 
 bool mem1;
 
@@ -30,20 +34,23 @@ const int64_t inv3 = Inv(3);
 int64_t a[maxn], b[maxn];
 int rev[maxn];
 
-void DFT(int64_t a[], int len, int mode) {
-    for (int i = 0; i < len; i++)
+int Mod(int x) { return x >= mod ? x - mod : x; }
+
+void DFT(int64_t a[], int n, int mode) {
+    for (int i = 0; i < n; i++)
         if (i < rev[i]) swap(a[i], a[rev[i]]);
-    for (int i = 1; i < len; i <<= 1) {
-        int64_t base = Pow(mode == 1 ? 3 : inv3, (mod - 1) / (i << 1));
-        for (int j = 0; j < len; j += i << 1) {
-            int64_t w = 1;
-            for (int k = j; k < j + i; k++, w = w * base % mod)
-                tie(a[k], a[k + i]) = make_pair((a[k] + w * a[k + i]) % mod, (a[k] + mod - w * a[k + i] % mod) % mod);
-        }
+    for (int i = 1; i < n; i <<= 1) {
+        int64_t w[i];
+        w[0] = 1, w[1] = Pow(mode == +1 ? 3 : inv3, mod / (i << 1));
+        for (int j = 2; j < i; j++) w[j] = w[j - 1] * w[1] % mod;
+        for (int j = 0; j < n; j += i << 1)
+            for (int k = j; k < j + i; k++)
+                tie(a[k], a[k + i]) =
+                    make_pair((a[k] + w[k - j] * a[k + i]) % mod, Mod((a[k] - w[k - j] * a[k + i]) % mod + mod));
     }
     if (mode == -1) {
-        int64_t invLen = Inv(len);
-        for (int i = 0; i < len; i++) a[i] = a[i] * invLen % mod;
+        int64_t invn = Inv(n);
+        for (int i = 0; i < n; i++) a[i] = a[i] * invn % mod;
     }
     return;
 }
@@ -67,7 +74,7 @@ void solve(void) {
 bool mem2;
 
 int main() {
-    ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false), cin.tie(nullptr);
 #ifdef LOCAL
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
