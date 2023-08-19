@@ -37,6 +37,7 @@
   "resmon.show.cpufreq": false,
   "resmon.updatefrequencyms": 500,
   "task.quickOpen.skip": false,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "workbench.colorTheme": "Community Material Theme Lighter High Contrast",
   "workbench.iconTheme": "material-icon-theme",
