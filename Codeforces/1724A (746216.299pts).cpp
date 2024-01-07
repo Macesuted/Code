@@ -26,7 +26,7 @@ vector<_VMBase> VMType;
 #ifdef LOCAL
 #define SEED chrono::system_clock::now().time_since_epoch().count()
 #elif
-#define SEED 962000536 
+#define SEED 962000536
 #endif
 
 mt19937 rnd(SEED);
@@ -82,8 +82,7 @@ class _SP {
                         if (VMType[i].cor == 1)
                             for (int j = 0; j < (int)CR.size(); j++) numVM[i] += CR[j].calcVM(i);
                         else
-                            for (int j = 0; j < (int)CR.size(); j += 2)
-                                numVM[i] += min(CR[j].calcVM(i), CR[j ^ 1].calcVM(i));
+                            for (int j = 0; j < (int)CR.size(); j += 2) numVM[i] += min(CR[j].calcVM(i), CR[j ^ 1].calcVM(i));
                     totCPU = totMEM = usedCPU = usedMEM = 0;
                     for (const auto& i : CR)
                         totCPU += i.CPU, totMEM += i.MEM, usedCPU += i.CPU - i.restCPU, usedMEM += i.MEM - i.restMEM;
@@ -108,8 +107,7 @@ class _SP {
                 for (int i = 0; i < (int)VMType.size(); i++)
                     for (const auto& j : PM) numVM[i] += j.numVM[i];
                 totCPU = totMEM = usedCPU = usedMEM = 0;
-                for (const auto& i : PM)
-                    totCPU += i.totCPU, totMEM += i.totMEM, usedCPU += i.usedCPU, usedMEM += i.usedMEM;
+                for (const auto& i : PM) totCPU += i.totCPU, totMEM += i.totMEM, usedCPU += i.usedCPU, usedMEM += i.usedMEM;
                 return;
             }
             _VM createVM(pii loc, int typ, _PG& pg, bool force) {
@@ -166,8 +164,7 @@ class _SP {
         _VM createVM(int loc, int typ, _PG& pg, int par, bool force) {
             vector<int> order;
             for (int i = 0; i < (int)RK.size(); i++)
-                if (RK[i].numVM[typ] && (!par || !pg.RKBel.count({loc, i}) || pg.RKBel[{loc, i}] == par))
-                    order.push_back(i);
+                if (RK[i].numVM[typ] && (!par || !pg.RKBel.count({loc, i}) || pg.RKBel[{loc, i}] == par)) order.push_back(i);
             sort(order.begin(), order.end(), [&](int a, int b) { return RK[a].usage() > RK[b].usage(); });
             if (par) {
                 vector<int> cache;
