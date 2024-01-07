@@ -16,17 +16,61 @@ using namespace std;
 
 bool mem1;
 
-void solve(void) { return; }
+#define maxn 100005
+
+typedef pair<int, int> pii;
+
+int fa[2 * maxn + 10], val[maxn];
+
+int getfa(int p) { return fa[p] == p ? p : (fa[p] = getfa(fa[p])); }
+
+void solve(void) {
+    int n, m;
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++) val[i] = i;
+    for (int i = 1; i <= 2 * n + 3; i++) fa[i] = i;
+    int D = n + 1;
+    for (int i = 1; i <= m; i++) {
+        char c;
+        cin >> c;
+        if (c == '+') {
+            int x, y;
+            cin >> x >> y;
+            val[x] = val[y];
+        } else if (c == '-') {
+            int x, y;
+            cin >> x >> y;
+            val[x] = -val[y];
+        } else {
+            int x;
+            cin >> x;
+            if (c == 'T') val[x] = n + 1;
+            if (c == 'U') val[x] = 0;
+            if (c == 'F') val[x] = -n - 1;
+        }
+    }
+    for (int i = 1; i <= n; i++) fa[D + i] = getfa(D + val[i]), fa[D - i] = getfa(D - val[i]);
+    for (int i = 1; i <= n; i++)
+        if (getfa(D + i) == getfa(D - i)) fa[getfa(D + i)] = getfa(D);
+    int ans = 0;
+    for (int i = 1; i <= n; i++) ans += (getfa(i) == getfa(D));
+    cout << ans << endl;
+    return;
+}
 
 bool mem2;
 
 int main() {
+#ifndef LOCAL
+    freopen("tribool.in", "r", stdin), freopen("tribool.out", "w", stdout);
+#endif
     ios::sync_with_stdio(false), cin.tie(nullptr);
 #ifdef LOCAL
     cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
-    int _ = 1;
+    int c, _;
+    cin >> c >> _;
     while (_--) solve();
 
 #ifdef LOCAL

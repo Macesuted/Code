@@ -1,14 +1,10 @@
 # Macesuted's Code Repository
 
-**Please do not simply submit these codes.**
+Here I store all the codes I wrote when solving algorithm problems on various platforms.
 
-If you find it useful, please star it, thank you!
+[This blog site](https://macesuted.moe/) contains text tutorials of some of these problems. (In Chinese)
 
-[This blog site](https://macesuted.moe/) contains tutorials to some of these problems. (In Chinese)
-
----
-
-Accounts in these online judges:
+My accounts on these online judge platforms:
 
 - [51Nod](https://www.51nod.com/): [Macesuted](https://www.51nod.com/User/Index.html#userId=199786)
 - [Aizu](https://judge.u-aizu.ac.jp/onlinejudge/): [Macesuted](https://judge.u-aizu.ac.jp/onlinejudge/user.jsp?id=Macesuted)
@@ -18,7 +14,7 @@ Accounts in these online judges:
 - [CodeChef](https://www.codechef.com/): [Macesuted](https://www.codechef.com/users/macesuted)
 - [Codeforces Gym](https://codeforces.com/gyms): [Macesuted-Moe](https://codeforces.com/profile/Macesuted-Moe)
 - [Codeforces](https://codeforces.com/): [Macesuted-Moe](https://codeforces.com/profile/Macesuted-Moe)
-- GDFZOJ
+- (Private) GDFZOJ
 - [HDOJ](https://acm.hdu.edu.cn/): [Macesuted](https://acm.hdu.edu.cn/userstatus.php?user=macesuted)
 - (Private) HEZOJ: Macesuted
 - (Private) HLOJ: Macesuted
