@@ -34,11 +34,11 @@
     "cpp"
   ],
   "lldb.showDisassembly": "auto",
+  "python.analysis.typeCheckingMode": "basic",
   "resmon.show.cpufreq": false,
   "resmon.updatefrequencyms": 500,
   "task.quickOpen.skip": false,
   "terminal.integrated.defaultProfile.windows": "PowerShell",
-  "terminal.integrated.enableMultiLinePasteWarning": false,
   "workbench.colorTheme": "Material Theme Lighter High Contrast",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.list.smoothScrolling": true,
