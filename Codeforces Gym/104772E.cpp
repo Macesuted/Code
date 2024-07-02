@@ -47,9 +47,8 @@ void solve(void) {
                 i = S.erase(i);
             else
                 i++;
-        // cerr << "###" << x1 << ' ' << f1 << ' ' << x2 << ' ' << f2 << ' ' << x3 << ' ' << f3 << ' ' << x4 << ' ' << f4 << endl;
-        // for (auto [x, y] : S) cerr << x << ' ' << y << endl;
-        // cerr << endl;
+        // cerr << "###" << x1 << ' ' << f1 << ' ' << x2 << ' ' << f2 << ' ' << x3 << ' ' << f3 << ' ' << x4 << ' ' << f4 <<
+        // endl; for (auto [x, y] : S) cerr << x << ' ' << y << endl; cerr << endl;
     }
     if (!S.empty()) return cout << "YES" << endl << S.begin()->first << ' ' << S.begin()->second << endl, void();
     if (x1) return cout << "YES" << endl << f1 << ' ' << 0 << endl, void();
