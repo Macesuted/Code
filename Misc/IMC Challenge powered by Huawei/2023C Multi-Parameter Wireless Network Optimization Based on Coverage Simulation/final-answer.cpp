@@ -68,7 +68,8 @@ int main() {
         stringstream ssin(s);
         ssin.get();
         while (true) {
-            while (!ssin.eof() && ssin.get() != '[');
+            while (!ssin.eof() && ssin.get() != '[')
+                ;
             if (ssin.eof()) break;
             ssin.get(), ssin.get(), ssin.get(), ssin.get(), ssin.get();
             int BSid = 0, ant, azm, tlt, ptn;
@@ -175,8 +176,9 @@ int main() {
 
         vector<int> ids;
         for (int k = 0; k < (int)mods[i][j].size(); k++) ids.push_back(k);
-        sort(ids.begin(), ids.end(),
-             [&](int x, int y) { return diff(mods[i][j][x], answer[{i, j}]) < diff(mods[i][j][y], answer[{i, j}]); });
+        sort(ids.begin(), ids.end(), [&](int x, int y) {
+            return diff(mods[i][j][x], answer[{i, j}]) < diff(mods[i][j][y], answer[{i, j}]);
+        });
 
         auto ans = answer;
         ans[{i, j}] = mods[i][j][ids[rnd() % min(3, (int)mods[i][j].size() - 1) + 1]];
