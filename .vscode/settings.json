@@ -21,6 +21,7 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "onFocusChange",
+  "git.allowForcePush": true,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.detectSubmodules": false,
