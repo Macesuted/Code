@@ -2,9 +2,9 @@
  * @file 535265J.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2024-07-16
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -20,7 +20,7 @@ class SegmentTree {
         int limL, limR, delta;
         int64_t dist;
     };
-    
+
     Node tree[maxn << 2];
     int n, xL, xR;
 
@@ -41,10 +41,10 @@ class SegmentTree {
         tree[p].delta += tree[p << 1 | 1].delta, tree[p].dist += tree[p << 1 | 1].dist;
         if (pl > tree[p << 1 | 1].limR)
             return tree[p].limR = tree[p].limL, tree[p].delta += tree[p << 1 | 1].limR - pl,
-                tree[p].dist -= (pl - tree[p << 1 | 1].limR), void();
+                   tree[p].dist -= (pl - tree[p << 1 | 1].limR), void();
         if (pr < tree[p << 1 | 1].limL)
             return tree[p].limL = tree[p].limR, tree[p].delta += tree[p << 1 | 1].limL - pr,
-                tree[p].dist -= (tree[p << 1 | 1].limL - pr), void();
+                   tree[p].dist -= (tree[p << 1 | 1].limL - pr), void();
         if (tree[p << 1 | 1].limL > pl) tree[p].limL += tree[p << 1 | 1].limL - pl;
         if (tree[p << 1 | 1].limR < pr) tree[p].limR -= pr - tree[p << 1 | 1].limR;
         return;

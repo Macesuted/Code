@@ -2,9 +2,9 @@
  * @file 535265I.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2024-07-16
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include <bits/stdc++.h>

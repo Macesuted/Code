@@ -2,9 +2,9 @@
  * @file 535265H.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2024-07-16
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -15,17 +15,14 @@ using namespace std;
 struct Team {
     string name;
     int solve, time;
-    
-    bool operator < (const Team& o) const { return this->solve == o.solve ? this->time < o.time : this->solve > o.solve; }
-};
 
+    bool operator<(const Team& o) const { return this->solve == o.solve ? this->time < o.time : this->solve > o.solve; }
+};
 
 Team A[maxn], B[maxn];
 unordered_map<string, int> S;
 
-
 int main() {
-
     int n, m;
 
     cin >> n;

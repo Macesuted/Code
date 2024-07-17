@@ -2,9 +2,9 @@
  * @file 535265B.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2024-07-16
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -26,7 +26,6 @@ int64_t qpow(int64_t a, int64_t x) {
 int64_t C[maxn][maxn], f[maxn], pow2[maxn];
 
 int main() {
-
     int n, m;
     cin >> n >> m >> mod;
 
@@ -39,8 +38,7 @@ int main() {
     }
 
     for (int i = 1; i <= n; i++)
-        for (int j = i, x = 1; j >= 0; j--, x = -x)
-            f[i] = (f[i] + x * C[i][j] * qpow(pow2[i] - 1 - (i - j), m - 1)) % mod;
+        for (int j = i, x = 1; j >= 0; j--, x = -x) f[i] = (f[i] + x * C[i][j] * qpow(pow2[i] - 1 - (i - j), m - 1)) % mod;
 
     int64_t ans = 0;
     for (int t = 2; t <= n; t++)

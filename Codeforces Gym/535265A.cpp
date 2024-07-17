@@ -2,9 +2,9 @@
  * @file 535265A.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2024-07-16
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include <bits/stdc++.h>
@@ -26,7 +26,6 @@ int64_t qpow(int64_t a, int64_t x) {
 }
 
 int main() {
-
     int n, m;
     cin >> n >> m >> mod;
 
