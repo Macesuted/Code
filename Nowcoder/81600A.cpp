@@ -102,8 +102,7 @@ void solve(void) {
         for (int j = 1; j < maxlgn; j++)
             for (int k = 1; k + pow2[j] - 1 <= s; k++)
                 ST[i][j][k] = (rnk[1][ST[i][j - 1][k]] < rnk[1][ST[i][j - 1][k + pow2[j - 1]]] ? ST[i][j - 1][k]
-                                                                                               : ST[i][j - 1][k + pow2[j -
-                                                                                               1]]);
+                                                                                               : ST[i][j - 1][k + pow2[j - 1]]);
     }
 
     for (int i = 0; i <= m; i++) cache[i].reserve(m);
