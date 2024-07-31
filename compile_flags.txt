@@ -1,6 +1,4 @@
 -xc++
--std=c++20
 -Wall
 -Wextra
--IE:/Code/libs/testlib/
 -DLOCAL
