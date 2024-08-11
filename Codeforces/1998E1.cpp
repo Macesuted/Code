@@ -26,7 +26,6 @@ bool f[maxn];
 pii rec[maxn];
 set<int> S;
 
-
 void solve(void) {
     int n, x;
     cin >> n >> x;
