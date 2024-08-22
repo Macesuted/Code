@@ -2,9 +2,9 @@
  * @file B.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2024-08-22
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include <bits/stdc++.h>
