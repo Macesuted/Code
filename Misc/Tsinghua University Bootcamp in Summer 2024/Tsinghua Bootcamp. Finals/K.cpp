@@ -2,12 +2,12 @@
  * @file K.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2024-08-26
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
- #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define endl '\n'
