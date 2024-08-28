@@ -1,153 +1,4 @@
-# Template
-
-## FastIO
-
-```cpp
-namespace FastIO {
-const int SIZE = 1 << 20;
-char Ibuf[SIZE], *Il = Ibuf, *Ir = Ibuf, Obuf[SIZE], *Ol = Obuf, *Or = Ol + SIZE - 1;
-int cache[100];
-void fill(void) { return Ir = (Il = Ibuf) + fread(Ibuf, 1, SIZE, stdin), void(); }
-void flush(void) { return fwrite(Obuf, 1, Ol - Obuf, stdout), Ol = Obuf, void(); }
-char getch(void) { return Il == Ir ? fill(), Il == Ir ? EOF : *Il++ : *Il++; }
-void putch(char x) { return *Ol++ = x, Ol == Or && (flush(), 0), void(); }
-template <typename T = int>
-T read(void) {
-    T x = 0, f = +1;
-    char c = getch();
-    while (c < '0' || c > '9') (c == '-') && (f = -f), c = getch();
-    while ('0' <= c && c <= '9') x = (x << 3) + (x << 1) + (c ^ 48), c = getch();
-    return x * f;
-}
-template <typename T>
-void write(T x) {
-    if (!x) return putch('0');
-    if (x < 0) putch('-'), x = -x;
-    int top = 0;
-    while (x) cache[top++] = x % 10, x /= 10;
-    while (top) putch(cache[--top] ^ 48);
-    return;
-}
-struct Flusher_ {
-    ~Flusher_() { flush(); }
-} io_flusher_;
-}  // namespace FastIO
-```
-
-## Dinic
-
-```cpp
-class Dinic {
-   private:
-    struct Edge {
-        int to, cap, rev;
-    };
-
-    vector<vector<Edge>> graph;
-    vector<vector<Edge>::iterator> cur;
-    vector<int> dist;
-    queue<int> que;
-    int n, S, T;
-
-    bool bfs(void) {
-        for (int i = 1; i <= n; i++) dist[i] = INT_MAX, cur[i] = graph[i].begin();
-        que.push(S), dist[S] = 0;
-        while (!que.empty()) {
-            int p = que.front();
-            que.pop();
-            for (auto i : graph[p])
-                if (i.cap && dist[i.to] > dist[p] + 1) dist[i.to] = dist[p] + 1, que.push(i.to);
-        }
-        return dist[T] != INT_MAX;
-    }
-    int64_t dfs(int p, int64_t rest) {
-        if (p == T) return rest;
-        int64_t use = 0, c;
-        for (auto i = cur[p]; i != graph[p].end() && rest; i++) {
-            cur[p] = i;
-            if (!i->cap || dist[i->to] != dist[p] + 1) continue;
-            if (!(c = dfs(i->to, min(rest, (int64_t)i->cap)))) dist[i->to] = -1;
-            i->cap -= c, graph[i->to][i->rev].cap += c, use += c, rest -= c;
-        }
-        return use;
-    }
-
-   public:
-    void resize(int _n) { return graph.resize((n = _n) + 1), cur.resize(n + 1), dist.resize(n + 1); }
-    void addEdge(int from, int to, int cap) {
-        return graph[from].push_back(Edge{to, cap, (int)graph[to].size()}),
-               graph[to].push_back(Edge{to, 0, (int)graph[from].size() - 1});
-    }
-    int64_t maxFlow(int _S, int _T) {
-        S = _S, T = _T;
-        int64_t ans = 0;
-        while (bfs()) ans += dfs(S, INT64_MAX);
-        return ans;
-    }
-};
-```
-
-## Dinic with Cost
-
-```cpp
-class DinicWithCost {
-   private:
-    struct Edge {
-        int to, cap, cost, rev;
-    };
-
-    vector<vector<Edge>> graph;
-    vector<vector<Edge>::iterator> cur;
-    vector<int> dist;
-    vector<bool> vis;
-    queue<int> que;
-    int n, S, T;
-
-    bool bfs(void) {
-        for (int i = 1; i <= n; i++) dist[i] = INT_MAX, vis[i] = false, cur[i] = graph[i].begin();
-        que.push(S), dist[S] = 0;
-        while (!que.empty()) {
-            int p = que.front();
-            que.pop(), vis[p] = false;
-            for (auto i : graph[p])
-                if (i.cap && dist[i.to] > dist[p] + i.cost) {
-                    dist[i.to] = dist[p] + i.cost;
-                    if (!vis[i.to]) vis[i.to] = true, que.push(i.to);
-                }
-        }
-        return dist[T] != INT_MAX;
-    }
-    int dfs(int p, int rest) {
-        if (p == T) return rest;
-        vis[p] = true;
-        int use = 0, c;
-        for (auto i = cur[p]; i != graph[p].end() && rest; i++) {
-            cur[p] = i;
-            if (!i->cap || dist[i->to] != dist[p] + i->cost || vis[i->to]) continue;
-            if (!(c = dfs(i->to, min(rest, i->cap)))) dist[i->to] = -1;
-            i->cap -= c, graph[i->to][i->rev].cap += c, use += c, rest -= c;
-        }
-        vis[p] = false;
-        return use;
-    }
-
-   public:
-    void resize(int _n) { return graph.resize((n = _n) + 1), cur.resize(n + 1), dist.resize(n + 1), vis.resize(n + 1); }
-    void addEdge(int from, int to, int cap, int cost) {
-        return graph[from].push_back(Edge{to, cap, cost, (int)graph[to].size()}),
-               graph[to].push_back(Edge{from, 0, -cost, (int)graph[from].size() - 1});
-    }
-    pair<int, int> maxFlow(int _S, int _T) {
-        S = _S, T = _T;
-        int flow = 0, cost = 0;
-        while (bfs()) {
-            int c = dfs(S, INT_MAX);
-            flow += c, cost += dist[T] * c;
-        }
-        return {flow, cost};
-    }
-};
-```
+# Data Structure
 
 ## Fenwick Tree
 
@@ -431,4 +282,39 @@ class FhqTreap {
 };
 ```
 
+## Leftist Heap (Persistent)
 
+```cpp
+class LeftistHeap {
+   private:
+    struct Node {
+        Node *l, *r;
+        int dist, val;
+        Node(int v) { l = r = nullptr, dist = 0, val = v; }
+    };
+
+    Node *root;
+
+    int getDist(Node *p) { return p ? p->dist : -1; }
+    void merge(Node *&p, Node *t1, Node *t2) {
+        if (!t1) return p = t2, void();
+        if (!t2) return p = t1, void();
+        if (t1->val > t2->val) swap(t1, t2);
+        p = new Node(*t1), merge(p->r, t1->r, t2);
+        if (getDist(p->l) < getDist(p->r)) swap(p->l, p->r);
+        p->dist = getDist(p->r) + 1;
+        return;
+    }
+
+   public:
+    LeftistTree(void) { root = nullptr; }
+
+    void push(int v) { return merge(root, root, new Node(v)); }
+    void pop(void) {
+        Node *p = root->l, *q = root->r;
+        return merge(root, p, q);
+    }
+    void merge(LeftistTree *t) { return merge(root, root, t->root); }
+    int top(void) { return root ? root->val : -1; }
+};
+```
