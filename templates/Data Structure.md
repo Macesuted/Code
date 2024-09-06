@@ -44,7 +44,8 @@ class STList {
     void build(int a[]) {
         for (int i = 1; i <= n; i++) list[0][i] = a[i];
         for (int j = 1; j <= lg[n]; j++)
-            for (int i = 1; i + (1 << j) - 1 <= n; i++) list[j][i] = max(list[j - 1][i], list[j - 1][i + (1 << (j - 1))]);
+            for (int i = 1; i + (1 << j) - 1 <= n; i++)
+                list[j][i] = max(list[j - 1][i], list[j - 1][i + (1 << (j - 1))]);
         return;
     }
     int query(int l, int r) {
@@ -196,9 +197,9 @@ class SegmentTree {
 ## Fhq Treap
 
 ```cpp
+mt19937 rnd;
 class FhqTreap {
    private:
-    static mt19937 rnd;
 
     struct Node {
         Node *l, *r;
@@ -237,7 +238,9 @@ class FhqTreap {
     }
 
    public:
-    FhqTreap(void) { rnd.seed(chrono::system_clock::now().time_since_epoch().count()), root = nullptr; }
+    FhqTreap(void) {
+        rnd.seed(chrono::system_clock::now().time_since_epoch().count()), root = nullptr;
+    }
     void insert(int x) {
         Node* tr = nullptr;
         splitV(root, root, tr, x);

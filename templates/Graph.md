@@ -39,7 +39,9 @@ class Dinic {
     }
 
    public:
-    void resize(int _n) { return graph.resize((n = _n) + 1), cur.resize(n + 1), dist.resize(n + 1); }
+    void resize(int _n) {
+        return graph.resize((n = _n) + 1), cur.resize(n + 1), dist.resize(n + 1);
+    }
     void addEdge(int from, int to, int cap) {
         return graph[from].push_back(Edge{to, cap, (int)graph[to].size()}),
                graph[to].push_back(Edge{from, 0, (int)graph[from].size() - 1});
@@ -98,7 +100,9 @@ class DinicWithCost {
     }
 
    public:
-    void resize(int _n) { return graph.resize((n = _n) + 1), cur.resize(n + 1), dist.resize(n + 1), vis.resize(n + 1); }
+    void resize(int _n) {
+        return graph.resize((n = _n) + 1), cur.resize(n + 1), dist.resize(n + 1), vis.resize(n + 1);
+    }
     void addEdge(int from, int to, int cap, int cost) {
         return graph[from].push_back(Edge{to, cap, cost, (int)graph[to].size()}),
                graph[to].push_back(Edge{from, 0, -cost, (int)graph[from].size() - 1});
