@@ -268,20 +268,132 @@ class FhqTreap {
         merge(root, root, tp), merge(root, root, tr);
         return ans;
     }
-    int pre(int x) {
+    int getPrev(int x) {
         Node *tr = nullptr, *tp = nullptr;
         splitV(root, root, tr, x), splitS(root, root, tp, getSiz(root) - 1);
         int ans = tp->val;
         merge(root, root, tp), merge(root, root, tr);
         return ans;
     }
-    int suc(int x) {
+    int getNext(int x) {
         Node *tr = nullptr, *tp = nullptr;
         splitV(root, root, tr, x + 1), splitS(tr, tp, tr, 1);
         int ans = tp->val;
         merge(root, root, tp), merge(root, root, tr);
         return ans;
     }
+};
+```
+
+## Splay Tree
+
+```cpp
+class Splay {
+   private:
+    struct Node {
+        Node *fa, *child[2];
+        int val, cnt, siz;
+        Node(int _v) { fa = child[0] = child[1] = nullptr, val = _v, cnt = siz = 1; }
+    };
+
+    Node *root;
+
+    bool getChild(Node *p) { return p->fa->child[1] == p; }
+    int getSiz(Node *p) { return p ? p->siz : 0; }
+    void pushUp(Node *p) { return p->siz = getSiz(p->child[0]) + getSiz(p->child[1]) + p->cnt, void(); }
+    void rotate(Node *p) {
+        Node *f = p->fa, *g = f->fa;
+        bool d = getChild(p);
+
+        if (g) g->child[getChild(f)] = p;
+        p->fa = g;
+
+        f->child[d] = p->child[!d];
+        if (p->child[!d]) p->child[!d]->fa = f;
+
+        p->child[!d] = f, f->fa = p;
+        return pushUp(f), pushUp(p);
+    }
+    void splay(Node *p, Node *tar = nullptr) {
+        if (!p) return;
+        for (Node *f = p->fa; f != tar; rotate(p), f = p->fa)
+            if (f->fa != tar) rotate(getChild(p) == getChild(f) ? f : p);
+        if (!tar) root = p;
+        return;
+    }
+
+    void print(Node *p) {
+        if (!p) return;
+        print(p->child[0]);
+        cout << '(' << p->val << ',' << p->cnt << ')';
+        print(p->child[1]);
+        return;
+    }
+
+   public:
+    Splay(void) { root = nullptr; }
+
+    bool insert(int v) {
+        if (!root) return root = new Node(v), true;
+
+        Node *f = nullptr;
+        for (Node *p = root; p; f = p, p = p->child[p->val < v])
+            if (p->val == v) return p->cnt++, splay(p), false;
+
+        Node *x = new Node(v);
+        f->child[f->val < v] = x, x->fa = f;
+        return splay(x), true;
+    }
+    bool erase(int v) {
+        Node *f = nullptr, *x = nullptr;
+        for (Node *p = root; p && !x; f = p, p = p->child[p->val < v])
+            if (p->val == v) x = p;
+
+        if (!x) return splay(f), false;
+        splay(x);
+
+        if (--x->cnt) return true;
+        if (!x->child[0] && !x->child[1]) return root = nullptr, delete x, true;
+        if (!x->child[0]) return (root = x->child[1])->fa = nullptr, delete x, true;
+        if (!x->child[1]) return (root = x->child[0])->fa = nullptr, delete x, true;
+
+        getPrev(x->val);
+        root->child[1] = x->child[1], x->child[1]->fa = root, pushUp(root);
+        return delete x, true;
+    }
+    int queryRank(int v) {
+        int ans = 0;
+        Node *f = nullptr;
+        for (Node *p = root; p; f = p, p = p->child[p->val < v])
+            if (p->val < v) ans += getSiz(p->child[0]) + p->cnt;
+        return splay(f), ans + 1;
+    }
+    Node *getRank(int v) {
+        Node *f = nullptr;
+        for (Node *p = root; p;) {
+            f = p;
+            if (v <= getSiz(p->child[0]))
+                p = p->child[0];
+            else if (v <= getSiz(p->child[0]) + p->cnt)
+                return splay(p), p;
+            else
+                v -= getSiz(p->child[0]) + p->cnt, p = p->child[1];
+        }
+        return splay(f), nullptr;
+    }
+    Node *getPrev(int v) {
+        Node *f = nullptr, *x = nullptr;
+        for (Node *p = root; p; f = p, p = p->child[p->val < v])
+            if (p->val < v) x = p;
+        return splay(f), x;
+    }
+    Node *getNext(int v) {
+        Node *f = nullptr, *x = nullptr;
+        for (Node *p = root; p; f = p, p = p->child[p->val <= v])
+            if (p->val > v) x = p;
+        return splay(f), x;
+    }
+    void print(void) { return cout << '[', print(root), cout << ']' << endl, void(); }
 };
 ```
 
