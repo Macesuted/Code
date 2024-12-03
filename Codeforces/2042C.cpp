@@ -44,7 +44,7 @@ bool mem2;
 int main() {
     ios::sync_with_stdio(false), cin.tie(nullptr);
 #ifdef LOCAL
-    cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. <<     "MB" << endl;
+    cerr << "Memory Cost: " << abs(&mem1 - &mem2) / 1024. / 1024. << "MB" << endl;
 #endif
 
     int _ = 1;
