@@ -40,11 +40,14 @@ void solve(void) {
 
     if (p) {
         int v = query(p, p % n + 1);
-        return cout << "! " << "AB"[v > 0] << endl, void();
+        return cout << "! "
+                    << "AB"[v > 0] << endl,
+               void();
     }
 
     int v = query(pos[1], pos[n]), w = query(pos[n], pos[1]);
-    cout << "! " << "AB"[v >= n - 1 && w >= n - 1] << endl;
+    cout << "! "
+         << "AB"[v >= n - 1 && w >= n - 1] << endl;
     return;
 }
 
