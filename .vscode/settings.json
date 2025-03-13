@@ -43,7 +43,7 @@
   "resmon.updatefrequencyms": 500,
   "task.quickOpen.skip": false,
   "terminal.integrated.defaultProfile.windows": "PowerShell",
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Material Theme Darker High Contrast",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.list.smoothScrolling": true,
   "workbench.settings.openDefaultKeybindings": false,
