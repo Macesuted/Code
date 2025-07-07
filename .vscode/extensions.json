@@ -2,21 +2,17 @@
     "recommendations": [
         "aaron-bond.better-comments",
         "cschlosser.doxdocgen",
+        "divyanshuagrawal.competitive-programming-helper",
         "donjayamanne.githistory",
-        "eamodio.gitlens",
-        "equinusocio.vsc-community-material-theme",
         "equinusocio.vsc-material-theme",
         "llvm-vs-code-extensions.vscode-clangd",
         "ms-python.python",
         "ms-vscode.hexeditor",
-        "ms-vscode-remote.remote-ssh",
-        "ms-vscode-remote.remote-ssh-edit",
         "mutantdino.resourcemonitor",
         "pkief.material-icon-theme",
-        "tomoki1207.pdf",
         "usernamehw.errorlens",
         "vadimcn.vscode-lldb",
         "yzhang.markdown-all-in-one",
-        "zh9528.file-size"
+        "zh9528.file-size",
     ]
 }

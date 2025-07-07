@@ -20,9 +20,6 @@
   "editor.tabCompletion": "onlySnippets",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "files.associations": {
-    "*.scm": "racket"
-  },
   "files.autoSave": "onFocusChange",
   "git.allowForcePush": true,
   "git.autofetch": true,
