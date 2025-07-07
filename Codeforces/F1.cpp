@@ -51,8 +51,7 @@ void solve(void) {
         for (int x = 1; x <= n; x++) {
             if (!f[i][x]) continue;
             for (int s = x + 1, r = x + 1; i + s <= n; s++)
-                if (nxt[i + 1][r] > i + s - r + 1 && (r == 1 || nxt[i + s - r + 2][1] > i + s))
-                    Add(f[i + s][0], mod - f[i][x]);
+                if (nxt[i + 1][r] > i + s - r + 1 && (r == 1 || nxt[i + s - r + 2][1] > i + s)) Add(f[i + s][0], mod - f[i][x]);
         }
     }
 
