@@ -9,6 +9,7 @@
         "ms-python.python",
         "ms-vscode.hexeditor",
         "mutantdino.resourcemonitor",
+        "pdconsec.vscode-print",
         "pkief.material-icon-theme",
         "usernamehw.errorlens",
         "vadimcn.vscode-lldb",
