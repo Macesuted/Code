@@ -1,5 +1,5 @@
 /**
- * @file 3358.cpp
+ * @file 3304.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2025-09-28
  *
@@ -16,9 +16,8 @@ using namespace std;
 
 bool mem1;
 
-#define maxn 505
+#define maxn 500005
 
-using tiii = tuple<int, int, int>;
 using pli = pair<int64_t, int>;
 
 class Dinic {
@@ -73,7 +72,7 @@ class Dinic {
         return graph[from].push_back(Edge{to, cap, (int)graph[to].size(), cost}),
                graph[to].push_back(Edge{from, 0, (int)graph[from].size() - 1, -cost});
     }
-    int64_t flowk(int _S, int _T, int flow) {
+    int64_t flow2(int _S, int _T) {
         S = _S, T = _T;
 
         for (int i = 1; i <= n; i++) ht[i] = 0;
@@ -81,7 +80,7 @@ class Dinic {
             for (auto e : graph[i])
                 if (e.cap) ht[e.to] = max(ht[e.to], ht[i] + e.cost);
 
-        int64_t ans = 0;
+        int64_t flow = 2, ans = 0;
         while (flow && bfs()) {
             int64_t c = dfs(S, flow);
             flow -= c, ans += c * (dist[T] + ht[T]);
@@ -91,30 +90,24 @@ class Dinic {
     }
 };
 
-tiii a[maxn];
-
 void solve(void) {
-    int n, k;
-    cin >> n >> k;
-
-    vector<int> vals;
-    for (int i = 1, l, r; i <= n; i++) cin >> l >> r, a[i] = {l, r, r - l}, vals.push_back(l), vals.push_back(r);
-
-    sort(vals.begin(), vals.end());
-    vals.resize(unique(vals.begin(), vals.end()) - vals.begin());
-    for (int i = 1; i <= n; i++)
-        get<0>(a[i]) = lower_bound(vals.begin(), vals.end(), get<0>(a[i])) - vals.begin() + 1,
-        get<1>(a[i]) = lower_bound(vals.begin(), vals.end(), get<1>(a[i])) - vals.begin() + 1;
+    int n;
+    cin >> n;
 
     Dinic dnc;
-    int V = vals.size();
+    int V = 500001;
     dnc.resize(V);
 
-    for (int i = 1; i < V; i++) dnc.addEdge(i, i + 1, INT_MAX, 0);
+    for (int i = 1; i < V; i++) dnc.addEdge(i, i + 1, 2, 0);
 
-    for (int i = 1; i <= n; i++) dnc.addEdge(get<0>(a[i]), get<1>(a[i]), 1, get<2>(a[i]));
+    for (int i = 1; i <= n; i++) {
+        int x, y;
+        int64_t w;
+        cin >> x >> y >> w;
+        dnc.addEdge(x, y + 1, 1, w);
+    }
 
-    cout << dnc.flowk(1, V, k) << endl;
+    cout << dnc.flow2(1, V) << endl;
 
     return;
 }
