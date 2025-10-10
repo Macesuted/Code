@@ -101,4 +101,6 @@ int main() {
 #ifdef LOCAL
     cerr << "Time Cost: " << clock() * 1000. / CLOCKS_PER_SEC << "MS" << endl;
 #endif
-    return 0
+
+    return 0;
+}
