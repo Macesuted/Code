@@ -422,14 +422,14 @@ class LeftistHeap {
     }
 
    public:
-    LeftistTree(void) { root = nullptr; }
+    LeftistHeap(void) { root = nullptr; }
 
     void push(int v) { return merge(root, root, new Node(v)); }
     void pop(void) {
         Node *p = root->l, *q = root->r;
         return merge(root, p, q);
     }
-    void merge(LeftistTree *t) { return merge(root, root, t->root); }
+    void merge(LeftistHeap *t) { return merge(root, root, t->root); }
     int top(void) { return root ? root->val : -1; }
 };
 ```
