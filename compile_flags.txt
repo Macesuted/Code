@@ -2,4 +2,3 @@
 -Wall
 -Wextra
 -DLOCAL
--std=c++23
