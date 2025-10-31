@@ -19,6 +19,7 @@ My accounts on these online judge platforms:
 - (Private) HEZOJ: Macesuted
 - (Private) HLOJ: Macesuted
 - [HydroOJ](https://hydro.ac/): [Macesuted](https://hydro.ac/user/2)
+- [Kattis](https://open.kattis.com/): [macesuted](https://open.kattis.com/users/macesuted)
 - [LibreOJ](https://loj.ac/): [Macesuted](https://loj.ac/u/Macesuted)
 - [Luogu](https://www.luogu.com.cn/): [Macesuted](https://www.luogu.com.cn/user/98482)
 - (Private) NFLSOJ: Macesuted
