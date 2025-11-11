@@ -48,6 +48,5 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.list.smoothScrolling": true,
   "workbench.settings.openDefaultKeybindings": false,
-  "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none"
 }
