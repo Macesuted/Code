@@ -22,7 +22,8 @@ void solve(void) {
 
     vector<pair<Chain *, Chain *>> cA(d);
     for (int i = 0; i < d; i++) cA[i] = {new Chain(), new Chain()};
-    for (int i = 0, j = 0; i < n; i++, j = (j + 1) % d) ((int)cA[j].first->size() < k ? cA[j].first : cA[j].second)->push_back(i);
+    for (int i = 0, j = 0; i < n; i++, j = (j + 1) % d)
+        ((int)cA[j].first->size() < k ? cA[j].first : cA[j].second)->push_back(i);
 
     for (auto v : cA) que[0].push_back(v);
 
