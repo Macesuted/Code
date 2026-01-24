@@ -108,7 +108,8 @@ void solve(void) {
     swap(a[x1][y1], a[x2][y2]);
 
     while (true) {
-        while (stage1());
+        while (stage1())
+            ;
         if (!stage2()) break;
     }
 
