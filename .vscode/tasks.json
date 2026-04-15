@@ -11,12 +11,11 @@
             "args": [
                 "'${fileBasename}'",
                 "-o",
-                "'${fileBasenameNoExtension}.exe'",
+                "'${fileBasenameNoExtension}'",
                 "-std=c++23",
                 "-Wall",
                 "-Wextra",
                 "-O2",
-                "'-Wl,--stack=512000000'",
                 "-DLOCAL",
             ],
             "options": {
@@ -32,7 +31,7 @@
             "group": {
                 "kind": "test"
             },
-            "command": "./\"${fileBasenameNoExtension}\"; if ($?) { rm \"${fileBasenameNoExtension}.exe\" };",
+            "command": "./'${fileBasenameNoExtension}' &&  rm '${fileBasenameNoExtension}'",
             "options": {
                 "cwd": "${fileDirname}"
             },
@@ -70,13 +69,12 @@
             "args": [
                 "'${fileBasename}'",
                 "-o",
-                "'${fileBasenameNoExtension}.exe'",
+                "'${fileBasenameNoExtension}'",
                 "-glldb",
                 "-std=c++23",
                 "-Wall",
                 "-Wextra",
                 "-O2",
-                "'-Wl,--stack=512000000'",
                 "-DLOCAL"
             ],
             "options": {

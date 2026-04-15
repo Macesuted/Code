@@ -5,9 +5,9 @@
             "name": "LLDB Debug",
             "type": "lldb",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${fileDirname}",
             "sourceLanguages": [
                 "C++"
             ],

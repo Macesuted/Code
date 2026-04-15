@@ -1,3 +1,6 @@
+# Workspace
 _work
+
+# Tool executables
 tools/linux/check
 tools/windows/check.exe
