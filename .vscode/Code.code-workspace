@@ -1,0 +1,147 @@
+{
+	"folders": [
+		{
+			"name": "_work",
+			"path": "../_work"
+		},
+		{
+			"name": "Code",
+			"path": ".."
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"llvm-vs-code-extensions.vscode-clangd",
+			"ms-python.python",
+			"vadimcn.vscode-lldb",
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "LLDB Debug",
+				"type": "lldb",
+				"request": "launch",
+				"program": "${fileDirname}/${fileBasenameNoExtension}",
+				"args": [],
+				"cwd": "${fileDirname}",
+				"sourceLanguages": [
+					"C++"
+				],
+				"preLaunchTask": "LLDB Build"
+			},
+		]
+	},
+	"settings": {
+		"cph.general.defaultLanguage": "cpp",
+		"cph.general.ignoreSTDERROR": true,
+		"cph.general.showLiveUserCount": true,
+		"cph.general.timeOut": 8000,
+		"cph.general.useShortAtCoderName": true,
+		"cph.general.useShortCodeForcesName": true,
+		"cph.general.useShortLuoguName": true,
+		"cph.language.cpp.Command": "clang++",
+		"cph.language.cpp.Args": "-Wall -Wextra -O2 -DLOCAL",
+		"git.allowForcePush": true,
+		"git.detectSubmodules": false,
+		"lldb.launch.sourceLanguages": [
+			"cpp"
+		],
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "C++ Compile (LLDB)",
+				"type": "shell",
+				"group": {
+					"kind": "test"
+				},
+				"command": "clang++",
+				"args": [
+					"'${fileBasename}'",
+					"-o",
+					"'${fileBasenameNoExtension}'",
+					"-std=c++23",
+					"-Wall",
+					"-Wextra",
+					"-O2",
+					"-DLOCAL",
+				],
+				"options": {
+					"cwd": "${fileDirname}"
+				},
+				"presentation": {
+					"panel": "dedicated"
+				}
+			},
+			{
+				"label": "C++ Run",
+				"type": "shell",
+				"group": {
+					"kind": "test"
+				},
+				"command": "./'${fileBasenameNoExtension}' &&  rm '${fileBasenameNoExtension}'",
+				"options": {
+					"cwd": "${fileDirname}"
+				},
+				"presentation": {
+					"panel": "dedicated",
+					"focus": true,
+					"showReuseMessage": false
+				}
+			},
+			{
+				"label": "C++ Compile & Run (LLDB)",
+				"type": "shell",
+				"group": {
+					"kind": "test",
+					"isDefault": true
+				},
+				"dependsOn": [
+					"C++ Compile (LLDB)",
+					"C++ Run"
+				],
+				"dependsOrder": "sequence",
+				"options": {
+					"cwd": "${fileDirname}"
+				},
+				"presentation": {
+					"panel": "dedicated",
+					"focus": true,
+					"showReuseMessage": false
+				}
+			},
+			{
+				"label": "LLDB Build",
+				"type": "shell",
+				"command": "clang++",
+				"args": [
+					"'${fileBasename}'",
+					"-o",
+					"'${fileBasenameNoExtension}'",
+					"-glldb",
+					"-std=c++23",
+					"-Wall",
+					"-Wextra",
+					"-O2",
+					"-DLOCAL"
+				],
+				"options": {
+					"cwd": "${fileDirname}"
+				},
+				"problemMatcher": {
+					"owner": "lldb",
+					"pattern": {
+						"regexp": "^(.*\\.cpp):(\\d+):(\\d+): (.*)$",
+						"file": 1,
+						"line": 2,
+						"column": 3,
+						"message": 4
+					},
+				}
+			}
+		],
+	}
+}
