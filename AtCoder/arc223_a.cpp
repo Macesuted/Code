@@ -30,7 +30,7 @@ void solve(void) {
 
     if (sumw <= W) return cout << sumv << endl, void();
 
-    for (int i = n; i; i--){
+    for (int i = n; i; i--) {
         if (sumw <= W) return cout << max(ans, cur + sumv) << endl, void();
         sumw -= w[i], sumv -= v[i];
         if (w[i] <= W) ans = max(ans, cur + sumv), cur += v[i], W -= w[i];
