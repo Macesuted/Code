@@ -1,9 +1,9 @@
 /**
- * @file B.cpp
+ * @file 2239B.cpp
  * @author Macesuted (i@macesuted.moe)
- * @date 2025-07-06
+ * @date 2026-06-27
  *
- * @copyright Copyright (c) 2025
+ * @copyright Copyright (c) 2026
  *
  */
 
@@ -19,19 +19,28 @@ bool mem1;
 #define maxn 200005
 
 int a[maxn];
+int64_t f[maxn];
 
 void solve(void) {
-    int n;
-    cin >> n;
-    for (int i = 1; i <= n; i++) cin >> a[i];
-    int64_t ans = 0, cur = 0;
-    for (int i = 1, pre = a[1]; i <= n; i++) ans += (pre = min(pre, a[i]));
-    for (int i = 1, pre = INT32_MAX; i < n; i++) {
-        int v = a[i] + a[i + 1];
-        ans = min(ans, cur + min(pre, v));
-        cur += (pre = min(pre, a[i]));
+    int n, d;
+    cin >> n >> d;
+    f[0] = 0;
+    for (int i = 1; i <= n; i++) cin >> a[i], f[i] = f[i - 1] + a[i];
+
+    auto getSum = [&](int l, int r) -> int64_t { return f[r] - f[l - 1]; };
+
+    int64_t ans = 0;
+    for (int i = 1; i <= n; i++) {
+        int l = i - d, r = i + d;
+        int64_t cur = -a[i];
+        if (l <= 0) cur += getSum(n + l, n), l = 1;
+        if (r > n) cur += getSum(1, r - n), r = n;
+        cur += getSum(l, r);
+        ans += max((int64_t)0, (int64_t)a[i] * 2 * d - cur);
     }
+
     cout << ans << endl;
+
     return;
 }
 

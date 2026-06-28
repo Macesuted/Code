@@ -1,5 +1,5 @@
 /**
- * @file A.cpp
+ * @file 2124C.cpp
  * @author Macesuted (i@macesuted.moe)
  * @date 2025-07-06
  *
@@ -16,23 +16,23 @@ using namespace std;
 
 bool mem1;
 
-#define maxn 105
+#define maxn 600005
 
-int a[maxn];
+int64_t a[maxn];
 
 void solve(void) {
     int n;
     cin >> n;
     for (int i = 1; i <= n; i++) cin >> a[i];
-    for (int x = 1; x <= n; x++)
-        for (int y = x + 1; y <= n; y++) {
-            if (a[x] <= a[y]) continue;
-            cout << "YES" << endl;
-            cout << 2 << endl;
-            cout << a[x] << ' ' << a[y] << endl;
-            return;
-        }
-    cout << "NO" << endl;
+    int64_t ans = 1;
+    for (int i = 2; i <= n; i++) {
+        if (a[i] % a[i - 1] == 0) continue;
+        a[i] *= ans;
+        if (a[i] % a[i - 1] == 0) continue;
+        int64_t v = a[i - 1] / gcd(a[i], a[i - 1]);
+        a[i] *= v, ans *= v;
+    }
+    cout << ans << endl;
     return;
 }
 
